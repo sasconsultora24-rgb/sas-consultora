@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAS — Plan de Acción 60 Días</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D1B2A;--deep:#02142B;--green:#1F5A52;--gold:#C7A65A;--gray:#D5D5D5;--cream:#F5F2EB;--white:#fff;--red:#C0392B;--teal:#1ABC9C;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--navy);font-size:14px;line-height:1.6;}
+.hdr{background:var(--navy);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--gold);}
+.hdr-logo{font-size:20px;font-weight:900;letter-spacing:3px;color:#fff;}.hdr-logo span{color:var(--gold);}
+.hdr-r{text-align:right;}.hdr-r h1{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}.hdr-r p{font-size:10px;color:var(--gray);}
+.nav{background:var(--deep);display:flex;overflow-x:auto;border-bottom:1px solid rgba(199,166,90,.2);scrollbar-width:none;}
+.nav::-webkit-scrollbar{display:none;}
+.nt{padding:11px 16px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);cursor:pointer;border:none;background:none;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+.nt:hover{color:var(--gold);}.nt.active{color:var(--gold);border-bottom-color:var(--gold);}
+.main{max-width:1060px;margin:0 auto;padding:24px 18px 100px;}
+.sec{display:none;animation:fadeIn .2s ease;}.sec.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+/* CARDS */
+.card{background:#fff;border-radius:8px;border:1px solid rgba(0,0,0,.08);padding:20px;margin-bottom:14px;}
+.card-dark{background:var(--navy);border-radius:8px;padding:20px;margin-bottom:14px;}
+/* LABELS */
+.sec-lbl{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:4px;}
+.sec-h{font-size:22px;font-weight:900;margin-bottom:20px;}.sec-h span{color:var(--gold);}
+.blk-t{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(31,90,82,.2);}
+/* GRIDS */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+@media(max-width:720px){.two,.three{grid-template-columns:1fr;}}
+/* HIGHLIGHTS */
+.hi{background:var(--green);color:#fff;border-radius:6px;padding:11px 16px;font-size:13px;font-weight:600;margin-bottom:12px;}
+.hi-gold{background:var(--gold);color:var(--navy);border-radius:6px;padding:11px 16px;font-size:13px;font-weight:700;margin-bottom:12px;}
+.hi-red{background:var(--red);color:#fff;border-radius:6px;padding:11px 16px;font-size:13px;font-weight:700;margin-bottom:12px;}
+/* INSIGHT */
+.insight{background:#f8f7f4;border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:10px 13px;font-size:12px;margin:8px 0;line-height:1.6;}
+.insight strong{color:var(--green);}
+/* COPY MSG */
+.msg{background:#f0f4ff;border-left:3px solid #0077B5;border-radius:0 6px 6px 0;padding:12px 15px;font-size:13px;line-height:1.85;margin-top:8px;white-space:pre-line;font-family:'Montserrat',sans-serif;}
+.msg.wa{background:#f0fff4;border-left-color:#25D366;}
+.msg.gold{background:rgba(199,166,90,.07);border-left-color:var(--gold);}
+.msg.script{background:#0D1B2A;color:#fff;border-left:4px solid var(--gold);border-radius:6px;padding:16px 18px;font-size:13px;line-height:1.9;margin-top:10px;white-space:pre-line;}
+.copy-btn{background:rgba(199,166,90,.15);border:1px solid var(--gold);color:var(--navy);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;padding:5px 13px;border-radius:4px;cursor:pointer;letter-spacing:.5px;margin-top:7px;display:inline-block;transition:all .2s;}
+.copy-btn:hover{background:var(--gold);}.copy-btn.ok{background:var(--green);color:#fff;border-color:var(--green);}
+/* TAGS */
+.tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-right:3px;margin-bottom:3px;}
+.tt{background:#111;color:#fff;}.ig{background:#E1306C;color:#fff;}.li{background:#0077B5;color:#fff;}
+.wa-tag{background:#25D366;color:#fff;}.eo{background:var(--gold);color:var(--navy);}.ml{background:var(--teal);color:var(--navy);}
+/* ACCORDION */
+.acc{margin-bottom:10px;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,.1);}
+.ahdr{background:var(--navy);color:#fff;padding:13px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;}
+.ahdr:hover{background:#1a2d3d;}
+.albl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+.atit{font-size:13px;font-weight:700;margin-top:2px;}
+.ach{font-size:16px;color:var(--gold);transition:transform .3s;flex-shrink:0;margin-left:12px;}
+.acc.open .ach{transform:rotate(180deg);}
+.abody{display:none;background:#fff;padding:16px;}.acc.open .abody{display:block;}
+/* SCRIPT CARD */
+.gcard{background:#fff;border-radius:10px;border:1px solid rgba(0,0,0,.1);overflow:hidden;margin-bottom:18px;}
+.gcardh{background:var(--navy);padding:14px 18px;display:flex;align-items:center;gap:14px;}
+.gnum{font-size:36px;font-weight:900;color:var(--gold);line-height:1;flex-shrink:0;}
+.gtitle{font-size:15px;font-weight:800;color:#fff;}
+.gsub{font-size:11px;color:var(--gray);margin-top:2px;}
+.gbody{padding:16px 18px;}
+.gsec{margin-bottom:14px;border-left:3px solid var(--gold);padding-left:12px;}
+.gsec-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.gsec-txt{font-size:13px;line-height:1.75;color:var(--navy);}
+.hook-box{background:linear-gradient(135deg,var(--navy),#1a3550);border-radius:8px;padding:14px 18px;margin-bottom:14px;}
+.hook-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.hook-txt{font-size:17px;font-weight:800;color:#fff;line-height:1.4;font-style:italic;}
+.caption-box{background:#f0f4ff;border-radius:6px;padding:12px 15px;margin-top:10px;}
+.cap-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#0077B5;margin-bottom:6px;}
+/* DAY PLAN */
+.dia{background:#fff;border-radius:8px;border:1px solid rgba(0,0,0,.08);margin-bottom:12px;overflow:hidden;}
+.dia-hdr{background:var(--navy);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;}
+.dia-fecha{font-size:12px;font-weight:800;color:var(--gold);}
+.dia-titulo{font-size:11px;color:var(--gray);margin-top:2px;}
+.dia-badge{font-size:9px;font-weight:800;letter-spacing:1px;padding:3px 9px;border-radius:20px;text-transform:uppercase;}
+.db-v{background:var(--green);color:#fff;}
+.db-li{background:#0077B5;color:#fff;}
+.db-wa{background:#25D366;color:var(--navy);}
+.db-c{background:var(--red);color:#fff;}
+.dia-body{padding:14px 16px;}
+.bloque{background:#f8f7f4;border-radius:6px;padding:10px 13px;margin-bottom:10px;border-left:3px solid var(--green);}
+.bloque.li-b{border-left-color:#0077B5;}
+.bloque.wa-b{border-left-color:#25D366;}
+.bloque.gold-b{border-left-color:var(--gold);}
+.bloque.red-b{border-left-color:var(--red);}
+.b-hora{font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:3px;}
+.bloque.li-b .b-hora{color:#0077B5;}
+.bloque.wa-b .b-hora{color:#25D366;}
+.bloque.gold-b .b-hora{color:var(--gold);}
+.bloque.red-b .b-hora{color:var(--red);}
+.b-titulo{font-size:13px;font-weight:700;margin-bottom:4px;}
+.b-detalle{font-size:12px;color:#555;line-height:1.65;}
+.b-detalle strong{color:var(--navy);}
+/* CHECKLIST */
+.chk{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.06);}
+.chk:last-child{border-bottom:none;}
+.chk input[type=checkbox]{width:16px;height:16px;margin-top:2px;flex-shrink:0;cursor:pointer;accent-color:var(--green);}
+.chk label{font-size:13px;cursor:pointer;line-height:1.5;}
+.chk label.done{text-decoration:line-through;color:#999;}
+/* STATS BAR */
+.stat-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:18px;}
+.stat{background:var(--navy);border-radius:7px;padding:14px;text-align:center;border-bottom:3px solid var(--gold);}
+.stat .n{font-size:28px;font-weight:900;color:#fff;line-height:1;}
+.stat .l{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:3px;}
+.stat .s{font-size:10px;color:var(--gold);margin-top:2px;}
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;}
+.tbl th{background:var(--navy);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:8px 12px;text-align:left;}
+.tbl td{padding:8px 12px;border-bottom:1px solid rgba(0,0,0,.07);font-size:12px;vertical-align:top;}
+.tbl tr:hover td{background:rgba(31,90,82,.04);}
+/* HOY TAB */
+.hoy-date{font-size:30px;font-weight:900;color:var(--navy);}
+.hoy-date span{color:var(--gold);}
+.hoy-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0;}
+.kpi{background:var(--navy);border-radius:6px;padding:12px;text-align:center;}
+.kpi .kn{font-size:24px;font-weight:900;color:var(--gold);}
+.kpi .kl{font-size:9px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+input.ked{background:transparent;border:none;font-family:'Montserrat',sans-serif;font-weight:900;font-size:24px;color:var(--gold);width:100%;text-align:center;}
+input.ked:focus{outline:none;}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-logo">SAS<span>.</span></div>
+  <div class="hdr-r"><h1>Plan de Acción 60 Días</h1><p>5 clientes · 200% engagement · Junio–Agosto 2026</p></div>
+</div>
+
+<div class="nav" id="mainNav">
+  <button class="nt active" onclick="showSec('hoy',this)">📍 HOY</button>
+  <button class="nt" onclick="showSec('guiones',this)">🎬 Guiones</button>
+  <button class="nt" onclick="showSec('s1',this)">S1 · 9-15 Jun</button>
+  <button class="nt" onclick="showSec('s2',this)">S2 · 16-22 Jun</button>
+  <button class="nt" onclick="showSec('s3',this)">S3 · 23-29 Jun</button>
+  <button class="nt" onclick="showSec('s4',this)">S4 · 30Jun-6Jul</button>
+  <button class="nt" onclick="showSec('s5',this)">S5 · 7-13 Jul</button>
+  <button class="nt" onclick="showSec('s6',this)">S6 · 14-20 Jul</button>
+  <button class="nt" onclick="showSec('s7',this)">S7 · 21-27 Jul</button>
+  <button class="nt" onclick="showSec('s8',this)">S8 · 28Jul-3Ago</button>
+  <button class="nt" onclick="showSec('linkedin',this)">💼 LinkedIn</button>
+  <button class="nt" onclick="showSec('metricas',this)">📊 Métricas</button>
+</div>
+
+<div class="main">
+
+<!-- ═══════════ HOY ═══════════ -->
+<div id="hoy" class="sec active">
+  <div class="sec-lbl">Panel diario</div>
+  <div id="hoyFecha" class="hoy-date"></div>
+  <div class="hoy-kpi">
+    <div class="kpi"><input class="ked" id="k1" type="number" value="0" onchange="saveK()" placeholder="0"><div class="kl">Videos semana</div></div>
+    <div class="kpi"><input class="ked" id="k2" type="number" value="0" onchange="saveK()" placeholder="0"><div class="kl">Solicitudes LI</div></div>
+    <div class="kpi"><input class="ked" id="k3" type="number" value="0" onchange="saveK()" placeholder="0"><div class="kl">Reuniones mes</div></div>
+    <div class="kpi"><input class="ked" id="k4" type="number" value="0" onchange="saveK()" placeholder="0"><div class="kl">Clientes cerrados</div></div>
+  </div>
+  <div class="card">
+    <div class="blk-t">Checklist diario — marcar al completar</div>
+    <div id="hoyChecks">
+      <div class="chk"><input type="checkbox" id="c1" onchange="saveChk(this)"><label for="c1">Publicar TikTok + IG Reel (usar script del día)</label></div>
+      <div class="chk"><input type="checkbox" id="c2" onchange="saveChk(this)"><label for="c2">Responder TODOS los comentarios de videos anteriores (primeras 2 horas)</label></div>
+      <div class="chk"><input type="checkbox" id="c3" onchange="saveChk(this)"><label for="c3">LinkedIn: revisar aceptaciones + responder conversaciones activas</label></div>
+      <div class="chk"><input type="checkbox" id="c4" onchange="saveChk(this)"><label for="c4">LinkedIn: 5-7 solicitudes nuevas a GG/Director/Dueño de PYME</label></div>
+      <div class="chk"><input type="checkbox" id="c5" onchange="saveChk(this)"><label for="c5">Responder todos los DMs de TikTok, Instagram y LinkedIn (mismo día)</label></div>
+      <div class="chk"><input type="checkbox" id="c6" onchange="saveChk(this)"><label for="c6">Stories IG: 2-3 stories contando proceso o insight del día</label></div>
+      <div class="chk"><input type="checkbox" id="c7" onchange="saveChk(this)"><label for="c7">Seguimiento pipeline: ¿alguien necesita respuesta hoy?</label></div>
+      <div class="chk"><input type="checkbox" id="c8" onchange="saveChk(this)"><label for="c8">Preparar video del día siguiente (script, locación, idea)</label></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="blk-t">Las 3 reglas que no se negocian</div>
+    <div class="hi-gold">1. Ningún DM sin respuesta el mismo día. Cada mensaje ignorado es un lead quemado.</div>
+    <div class="hi">2. Ninguna semana sin 4+ videos. El algoritmo castiga el silencio más que el mal contenido.</div>
+    <div class="hi-red">3. Cada reunión que termina bien → propuesta enviada en menos de 24 horas. Sin excepción.</div>
+  </div>
+</div>
+
+<!-- ═══════════ GUIONES ═══════════ -->
+<div id="guiones" class="sec">
+  <div class="sec-lbl">20 scripts completos</div>
+  <h2 class="sec-h">Guiones <span>POSTURA + CASO + TENSIÓN</span></h2>
+  <div class="hi-gold">Cada guión tiene: Hook (3 seg) · Postura (30 seg) · Caso (20 seg) · Tensión (30 seg) · CTA único (5 seg) · Caption IG/TikTok listo para pegar.</div>
+
+  <!-- G01 -->
+  <div class="gcard" id="g01">
+    <div class="gcardh"><div class="gnum">G01</div><div><div class="gtitle">Dos días</div><div class="gsub">Semana 1 · Lunes 9/6 · Video de apertura · Engagement objetivo: saves + comentarios</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook — primeros 3 segundos</div><div class="hook-txt">"Si tu empresa no puede funcionar dos días sin vos, no tenés empresa. Tenés trabajo."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura — 30 segundos</div><div class="gsec-txt">Muchos dueños de PyME construyeron algo que depende completamente de ellos. No lo notan porque lo viven como sacrificio necesario o como responsabilidad. Pero no es ninguna de las dos cosas. Es el resultado de cómo diseñaron — o dejaron de diseñar — su empresa. Una empresa bien diseñada puede funcionar sin su dueño. La tuya, ¿puede?</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso — 20 segundos</div><div class="gsec-txt">Tuve un cliente, dueño de una distribuidora en Entre Ríos. En diez años se tomó vacaciones cinco veces. Cada vez volvía al segundo día porque "algo pasaba". El negocio no podía funcionar sin él — porque nunca había construido para que lo hiciera. Ni siquiera sabía que eso era un problema.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión — 30 segundos</div><div class="gsec-txt">La pregunta que te hago es esta: ¿tu equipo te llama porque no puede sin vos, o porque vos los entrenaste para necesitarte? Son cosas distintas. Una es un problema del equipo. La otra es un problema tuyo. Y la diferencia entre las dos define todo lo que sigue.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA único — 5 segundos</div><div class="gsec-txt">Si te reconociste, escribime <strong>"ORDEN"</strong> y te cuento el primer paso que di con él.</div></div>
+      <div class="caption-box">
+        <div class="cap-lbl">📱 Caption TikTok + IG — copy/paste</div>
+        <div id="cap01" style="font-size:13px;line-height:1.8;color:var(--navy);">Si tu empresa no puede funcionar dos días sin vos, no tenés empresa. Tenés trabajo.
+
+Y no es culpa del equipo. Es el resultado de cómo lo diseñaste.
+
+La pregunta que vale hacerse: ¿tu equipo te llama porque no puede sin vos, o porque vos los entrenaste para necesitarte?
+
+Son dos problemas distintos con soluciones distintas.
+
+Si te reconociste → escribime ORDEN.
+
+#PyME #LiderazgoEmpresarial #DueñoDePyme #GestionDeEquipos #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap01',this)">COPIAR CAPTION</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- G02 -->
+  <div class="gcard" id="g02">
+    <div class="gcardh"><div class="gnum">G02</div><div><div class="gtitle">El mejor empleado se va a ir</div><div class="gsub">Semana 1 · Martes 10/6 · Engagement objetivo: comentarios "a mí me pasó"</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Tu mejor empleado se va a ir. Y no es culpa de él."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Los buenos empleados no se van por plata. Se van porque el líder nunca les construyó el espacio para crecer. Y la ironía más dolorosa es que los dueños que más invierten en su gente son los que más sufren cuando se van — porque nunca construyeron el marco para retenerlos.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un cliente invirtió tres años en su mejor vendedor. Lo formó, le confió cuentas grandes, le enseñó todo. Un día el vendedor le dijo que se iba. El dueño le ofreció más plata. El vendedor se fue igual. Porque lo que quería no era más sueldo. Quería más autonomía. Y eso nunca se lo habían dado.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Pregunta: ¿cuándo fue la última vez que tu mejor empleado tomó una decisión importante sin consultarte? Si la respuesta es "nunca" o "no me acuerdo" — el problema no es el empleado. Es que nunca se lo permitiste. Y eso tiene una solución, pero no es subir el sueldo.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">¿Te pasó algo parecido? Contame en comentarios.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap02" style="font-size:13px;line-height:1.8;">Tu mejor empleado se va a ir. Y no es culpa de él.
+
+Los buenos no se van por plata. Se van porque nadie les construyó el espacio para crecer.
+
+Tres años de inversión. Un ofrecimiento de aumento. Se fue igual.
+
+No era plata lo que quería. Era autonomía.
+
+¿Cuándo fue la última vez que tu mejor empleado decidió algo importante sin consultarte?
+
+Si tardás en responder, ya tenés la respuesta.
+
+#LiderazgoEmpresarial #PyME #GestionDePersonas #Autonomia #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap02',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G03 -->
+  <div class="gcard" id="g03">
+    <div class="gcardh"><div class="gnum">G03</div><div><div class="gtitle">Delegar no funciona</div><div class="gsub">Semana 1 · Miércoles 11/6 · Engagement objetivo: guardados + compartidos</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"'Delegá más' es el consejo más inútil que te pueden dar."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">La delegación sin estructura no es delegación. Es abandono disfrazado de confianza. Y los dueños que intentan delegar sin haberle dado a su equipo el marco, las herramientas y la autoridad para decidir, terminan con empleados que hacen mal lo que hacían bien ellos. Y con la creencia de que "mi equipo no está listo para más".</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Trabajé con el dueño de una constructora que me dijo que había intentado delegar tres veces y las tres terminó peor que antes. Cuando me explicó cómo delegaba, entendí el problema: le daba la tarea, no el criterio para decidir cuando algo salía distinto. Le daba el qué. Nunca el cómo pensar.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Delegar no es soltar una tarea. Es transferirle la capacidad de decisión dentro de un marco que vos definiste. Si no construiste ese marco, no podés delegar. Solo podés abandonar y esperar que salga bien. Y si no sale bien, el problema no era la delegación. Eras vos, que nunca diste el marco.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">¿Delegás, o tirás trabajo? La diferencia importa. Escribime si querés saberla.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap03" style="font-size:13px;line-height:1.8;">"Delegá más" es el consejo más inútil que te pueden dar.
+
+No porque esté mal. Sino porque nadie te explica que para delegar primero necesitás construir el marco dentro del cual tu equipo puede decidir sin preguntarte.
+
+Tres intentos fallidos. Siempre el mismo resultado.
+
+No era el equipo. Era que le daba la tarea sin el criterio.
+
+Delegar es transferir la capacidad de decidir. No tirar el trabajo y esperar.
+
+¿Lo intentaste? ¿Cómo te fue?
+
+#Delegacion #PyME #LiderazgoEmpresarial #GestionDeEquipos #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap03',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G04 -->
+  <div class="gcard" id="g04">
+    <div class="gcardh"><div class="gnum">G04</div><div><div class="gtitle">La reunión de los lunes</div><div class="gsub">Semana 1 · Jueves 12/6 · Engagement objetivo: comentarios + preguntas</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"La reunión de los lunes que nadie quiere tener pero todos necesitan."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Las empresas sin reunión semanal estructurada tienen un problema de información que se convierte en problema de decisión, que se convierte en problema de resultado. Y el dueño termina siendo el único que lo sabe todo y el único que puede decidir todo. No porque sea el más capaz. Sino porque nadie más tiene la información completa.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un cliente llegó a mí porque "el equipo no se comunicaba". Cuando empezamos a trabajar descubrí que en seis años nunca habían tenido una reunión semanal estructurada. Todo pasaba por WhatsApp o en el pasillo. El dueño era el hub de toda la información. Sin él, nadie sabía lo suficiente para decidir.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">La reunión semanal no es para controlar. Es para que el equipo se sincronice sin necesitarte. Si tu equipo no puede sincronizarse sin tu presencia, el problema no es de comunicación. Es de diseño. La buena noticia: el diseño se puede cambiar.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">¿Tenés reunión semanal en tu empresa? ¿Cómo la hacés? Contame.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap04" style="font-size:13px;line-height:1.8;">La reunión de los lunes que nadie quiere tener pero todos necesitan.
+
+6 años de empresa. Nunca una reunión semanal estructurada. Todo por WhatsApp y pasillo.
+
+El dueño era el único que sabía todo. Y sin él, nadie podía decidir nada.
+
+La reunión no es para controlar. Es para que el equipo se sincronice sin necesitarte.
+
+Si tu equipo no funciona sin tu presencia → no es un problema de comunicación. Es de diseño.
+
+¿Tenés reunión semanal? ¿Cómo la hacés?
+
+#ReunionDeEquipo #PyME #GestionEmpresarial #LiderazgoEmpresarial #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap04',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G05 -->
+  <div class="gcard" id="g05">
+    <div class="gcardh"><div class="gnum">G05</div><div><div class="gtitle">El límite que nunca pusiste</div><div class="gsub">Semana 1 · Viernes 13/6 · Engagement objetivo: saves + CTA escritura activa</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"El problema no es que tu equipo no tenga límites. Es que vos nunca los pusiste."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Los líderes que se quejan de que "el equipo siempre le carga todo a uno" son exactamente los mismos que nunca definieron qué puede decidir cada persona sin consultar. La ausencia de límites claros no libera al equipo. Lo paraliza. Porque cuando no saben hasta dónde pueden ir, no van a ningún lado.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Trabajé con una directora de una empresa de servicios agotada. Todo llegaba a su escritorio — cotizaciones, problemas de clientes, el tema del microondas. Cuando le pregunté qué había definido explícitamente que su equipo podía decidir sin consultarla, se quedó en silencio. Nunca lo había escrito. Nunca lo había dicho.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">El equipo no te consulta porque no puede solo. Te consulta porque nunca le dijiste que podía. Primera acción concreta: agarrá un papel y escribí qué puede decidir cada persona de tu equipo sin pedirte permiso. Si tardás más de dos minutos, el problema ya lo encontraste.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">Hacelo ahora. Después contame qué encontraste.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap05" style="font-size:13px;line-height:1.8;">Tu equipo no te consulta porque no puede solo.
+Te consulta porque nunca le dijiste que podía.
+
+Directora de servicios. Todo llegaba a ella. Hasta el tema del microondas.
+
+Le pregunté qué había definido que su equipo podía decidir sin consultarla.
+
+Silencio.
+
+Nunca lo había escrito. Nunca lo había dicho.
+
+Primera acción: anotá en un papel qué puede decidir cada persona sin pedirte permiso.
+
+Si tardás más de 2 minutos → ya encontraste el problema.
+
+#LimitesEnLaEmpresa #PyME #LiderazgoEmpresarial #GestionDeEquipos #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap05',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G06 -->
+  <div class="gcard" id="g06">
+    <div class="gcardh"><div class="gnum">G06</div><div><div class="gtitle">El sueldo del dueño</div><div class="gsub">Semana 2 · Lunes 16/6 · Engagement objetivo: saves masivos + comentarios incómodos</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"¿Cuánto te pagás? La respuesta dice todo sobre tu empresa."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Los dueños de PyME son los peores pagados de su propia empresa. Trabajan más que nadie, cobran menos de lo que deberían, y encima ponen el capital. Y lo justifican con "es para el negocio". Eso no es sacrificio empresarial. Es una señal de que el negocio no está diseñado para sostenerse sin que vos te sacrifiques.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un cliente llevaba cuatro años sin pagarse un sueldo fijo. Reinvertía todo. Cuando hicimos los números, descubrimos que si contratara a alguien que hiciera lo que él hacía, le costaría el doble de lo que él se pagaba. Su empresa era rentable porque él se pagaba mal.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Si tu empresa no puede pagarte lo que vale tu trabajo, no es una empresa rentable. Es una empresa que te usa. La pregunta no es si lo sabés. La pregunta es cuándo vas a dejar de aceptar ese trato.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">Escribime "SUELDO" si querés que hablemos de esto en serio.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap06" style="font-size:13px;line-height:1.8;">¿Cuánto te pagás?
+
+4 años sin sueldo fijo. "Todo va al negocio."
+
+Cuando hicimos los números: si contrataba a alguien que hiciera lo que él hacía, le costaría el doble.
+
+Su empresa era rentable porque él se pagaba mal.
+
+Si tu empresa no puede pagarte lo que vale tu trabajo → no es una empresa rentable. Es una empresa que te usa.
+
+¿Cuándo vas a dejar de aceptar ese trato?
+
+Escribime SUELDO si querés hablarlo.
+
+#DueñoDePyme #SueldoDelDueño #RentabilidadEmpresarial #LiderazgoEmpresarial #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap06',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G07 -->
+  <div class="gcard" id="g07">
+    <div class="gcardh"><div class="gnum">G07</div><div><div class="gtitle">El que apaga el incendio</div><div class="gsub">Semana 2 · Martes 17/6 · Engagement objetivo: identificación masiva</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Si vos sos el que apaga todos los incendios en tu empresa, vos sos también el que los enciende."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">El dueño siempre disponible para resolver los problemas de su equipo no es un buen líder. Es un líder que, sin darse cuenta, enseñó a su equipo a no resolver solos. La cultura de la urgencia permanente la construyó él, un problema resuelto a la vez, durante años.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un cliente me decía que no podía desconectarse porque siempre pasaba algo. Cuando empezamos a registrar qué "cosas pasaban", descubrimos que el 80% eran situaciones que cualquier persona de su equipo podía resolver. Pero nadie lo hacía — porque él siempre llegaba primero. En 10 minutos. Siempre.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">La pregunta no es "¿por qué mi equipo no resuelve?" La pregunta es "¿qué hice yo para que mi equipo aprendiera a no resolver?" Son preguntas distintas. La primera culpa al equipo. La segunda te da el control — porque si vos construiste el patrón, vos podés cambiarlo.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">¿Sos el bombero de tu empresa? Contame.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap07" style="font-size:13px;line-height:1.8;">Si vos sos el que apaga todos los incendios → vos sos también el que los enciende.
+
+80% de los "incendios" eran situaciones que el equipo podía resolver solo.
+
+Pero el dueño siempre llegaba primero. En 10 minutos. Siempre.
+
+¿Por qué resolverlo solos si él lo resuelve mejor y más rápido?
+
+La pregunta que importa no es "¿por qué mi equipo no resuelve?"
+
+Es "¿qué hice YO para que mi equipo aprendiera a no resolver?"
+
+¿Sos el bombero? Contame.
+
+#GestionDeEquipos #LiderazgoEmpresarial #PyME #CulturaDeTrabajo #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap07',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G08 -->
+  <div class="gcard" id="g08">
+    <div class="gcardh"><div class="gnum">G08</div><div><div class="gtitle">Creciste. Te perdiste.</div><div class="gsub">Semana 2 · Miércoles 18/6 · Engagement objetivo: identificación + shares</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Tu empresa creció. Y en algún momento dejaste de saber cómo funciona."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Las PyMEs crecen bien en los primeros años porque el dueño lo sabe todo. Los clientes, los procesos, el equipo, los números. Pero llega un punto donde la empresa es demasiado grande para que una persona la conozca completa. Y ahí aparece el caos. No porque el equipo sea malo. Sino porque el dueño siguió operando como si nada hubiera cambiado.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Empresa que triplicó su facturación en dos años. El dueño estaba feliz. Pero cuando me sentaba con el equipo, cada área trabajaba con su propio criterio y su propia versión de "lo que el dueño quiere". No había un sistema. Había improvisación coordinada. Funcionaba hasta que dejó de hacerlo.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">El crecimiento no crea problemas de estructura. Los expone. Si tu empresa creció y ahora está desordenada, el desorden estaba antes. Simplemente era pequeño y pasaba desapercibido. La pregunta es si vas a esperar a que sea un problema grande o lo ordenás ahora.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">¿En qué momento de tu empresa estás hoy? Escribime.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap08" style="font-size:13px;line-height:1.8;">Tu empresa creció. Y en algún momento dejaste de saber cómo funciona.
+
+Facturación x3 en dos años.
+
+Pero cada área tenía su propia versión de "lo que el dueño quiere."
+
+No había sistema. Había improvisación coordinada.
+
+El crecimiento no crea problemas de estructura. Los expone.
+
+Si tu empresa creció y ahora está desordenada → el desorden estaba antes.
+
+¿En qué momento de tu empresa estás hoy?
+
+#CrecimientoEmpresarial #PyME #EstructuraOrganizacional #LiderazgoEmpresarial #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap08',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G09 -->
+  <div class="gcard" id="g09">
+    <div class="gcardh"><div class="gnum">G09</div><div><div class="gtitle">El empleado que nunca da el paso</div><div class="gsub">Semana 2 · Jueves 19/6 · Engagement objetivo: reflexión profunda + saves</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Tenés un empleado muy bueno que nunca da el paso solo. Antes de culparlo, escuchá esto."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Hay empleados que hacen perfecto lo que se les pide y nunca más. No proponen, no deciden, no se adelantan. Los líderes los catalogan como "sin iniciativa". Pero la mayoría de las veces, ese empleado tuvo iniciativa una vez. Y algo pasó que enseñó que tenerla no era seguro.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">En una empresa que asesoré había una coordinadora que todos reconocían como muy capaz pero "reactiva". Cuando hablé con ella, me contó que dos años antes había tomado una decisión por iniciativa propia y el dueño la había corregido públicamente frente al equipo. Nunca más volvió a decidir sola.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">La iniciativa se construye o se destruye. Cada corrección pública, cada decisión revertida sin explicar por qué, cada "lo hago yo que sale mejor" — le enseña a tu equipo que la iniciativa es peligrosa. Eso no es un problema de ellos. Es el resultado del ambiente que construiste vos.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">¿Cuándo fue la última vez que alguien de tu equipo sorprendió con una decisión propia? Contame.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap09" style="font-size:13px;line-height:1.8;">Tenés un empleado muy bueno que nunca da el paso solo.
+
+Antes de decir que "no tiene iniciativa" → escuchá esto.
+
+Dos años antes tomó una decisión por cuenta propia.
+El dueño la corrigió públicamente frente al equipo.
+
+Nunca más volvió a decidir sola.
+
+La iniciativa se construye o se destruye.
+Cada corrección pública la destruye.
+
+¿Es un problema de ella, o del ambiente que construiste?
+
+#Iniciativa #LiderazgoEmpresarial #CulturaDeEquipo #GestionDePersonas #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap09',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G10 -->
+  <div class="gcard" id="g10">
+    <div class="gcardh"><div class="gnum">G10</div><div><div class="gtitle">La empresa de una persona</div><div class="gsub">Semana 2 · Viernes 20/6 · Engagement objetivo: alto impacto + CTA directo</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Construiste una empresa. Pero en realidad construiste un trabajo para una sola persona: vos."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Hay una diferencia fundamental entre tener una empresa y tener un trabajo propio con empleados. En una empresa, el sistema funciona sin el dueño. En un trabajo propio, el dueño es el sistema. La mayoría de las PyMEs argentinas son la segunda opción, aunque sus dueños crean que son la primera.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un cliente llegó a mí después de un problema de salud que lo tuvo fuera de la empresa 45 días. Cuando volvió: dos clientes perdidos, un conflicto con proveedor clave, decisiones incorrectas en las tres áreas principales. Todo por la ausencia de una sola persona.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Si tu empresa colapsa cuando vos no estás, construiste algo frágil. Y la fragilidad no es un problema del mercado ni del equipo ni de la economía. Es una decisión de diseño que tomaste sin darte cuenta — y que podés cambiar.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">¿Qué pasa en tu empresa si desaparecés 30 días? No es retórico. Pensalo en serio. Si querés hablar de la respuesta, escribime.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap10" style="font-size:13px;line-height:1.8;">Construiste una empresa. Pero en realidad construiste un trabajo para una persona: vos.
+
+45 días fuera de la empresa por un problema de salud.
+
+Resultado: 2 clientes perdidos, conflicto con proveedor, decisiones incorrectas en las 3 áreas.
+
+Todo por la ausencia de una sola persona.
+
+Si tu empresa colapsa cuando vos no estás → no es un problema del equipo.
+
+Es una decisión de diseño que tomaste sin darte cuenta.
+
+¿Qué pasa en tu empresa si desaparecés 30 días?
+
+#EmpresaFragil #PyME #DiseñoOrganizacional #LiderazgoEmpresarial #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap10',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+<!-- G11-G20 -->
+
+  <!-- G11 -->
+  <div class="gcard" id="g11">
+    <div class="gcardh"><div class="gnum">G11</div><div><div class="gtitle">El equipo que espera</div><div class="gsub">Semana 3 · Lunes 23/6 · Engagement objetivo: identificación inmediata</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Tu equipo te está esperando todos los días para saber qué hacer. Y eso es un problema tuyo, no de ellos."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Un equipo que necesita instrucciones diarias no es un equipo. Es un grupo de personas con buenas intenciones pero sin el marco para actuar solas. Y ese marco no lo da el talento del equipo. Lo da el líder que define hasta dónde puede ir cada uno.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">El dueño llegaba a las 8 y ya había cuatro personas esperándolo para preguntarle qué hacer con situaciones del día anterior. Adultos, con experiencia, esperando la instrucción. Cuando construimos los marcos de decisión, en tres semanas llegaba a las 9 y nadie lo esperaba.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">El equipo espera no porque no pueda solo. Espera porque nunca le diste las herramientas para no esperar. Y mientras no las construyas, vas a seguir siendo el primer turno de trabajo de tu empresa — el que abre y el que hace posible que arranque el día.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">¿Tu equipo arranca o espera? Contame.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap11" style="font-size:13px;line-height:1.8;">Tu equipo te espera todos los días para saber qué hacer.
+
+4 personas. Adultos con experiencia. Esperando instrucciones del día anterior.
+
+No porque no puedan. Porque nunca les diste el marco para actuar solos.
+
+3 semanas después de construir ese marco → nadie lo esperaba.
+
+Mientras no construyas el marco, sos el primer turno de tu propia empresa.
+
+¿Tu equipo arranca o espera? Contame.
+
+#LiderazgoEmpresarial #GestionDeEquipos #PyME #AutonomiaLaboral #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap11',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G12 -->
+  <div class="gcard" id="g12">
+    <div class="gcardh"><div class="gnum">G12</div><div><div class="gtitle">30 años en canchas</div><div class="gsub">Semana 3 · Miércoles 25/6 · Diferenciador único · Historia personal</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"30 años entrenando equipos que tenían que ganar bajo presión. Esto es lo que aprendí sobre liderazgo que ningún libro me enseñó."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Pasé 30 años en canchas de básquet formando equipos que tomaban decisiones en décimas de segundo, con resultado inmediato y a la vista de todos. Lo que aprendí sobre presión, liderazgo y construcción de equipos en esas canchas no se enseña en ningún MBA. Y lo aplico todos los días en las empresas que acompaño.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Final de una liga provincial. Abajo de seis puntos. Cuatro minutos. Pedí tiempo muerto. El equipo me miraba esperando la solución. Y cometí el error de los líderes: les di la solución. Ganamos el partido. Pero el equipo aprendió que en los momentos difíciles hay que esperar que el líder resuelva. En el siguiente partido difícil, me miraron igual.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">El error más costoso que cometí como entrenador es el mismo que veo en la mayoría de los líderes empresariales: resolver lo que el equipo podría resolver solo. No porque no puedan. Sino porque es más rápido para vos en ese momento. Y esa comodidad tuya tiene un costo enorme a largo plazo.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">30 años para entender eso. ¿Cuánto llevás vos?</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap12" style="font-size:13px;line-height:1.8;">30 años entrenando equipos bajo presión real.
+Esto es lo que aprendí que ningún libro me enseñó.
+
+Final de liga. -6 pts. 4 minutos. Tiempo muerto.
+
+Les di la solución. Ganamos.
+
+Pero el equipo aprendió que en los momentos difíciles → hay que esperar que el líder resuelva.
+
+En el siguiente partido difícil, me miraron igual.
+
+El error más costoso: resolver lo que el equipo podría resolver solo.
+
+Porque en ese momento es más rápido para vos. Y esa comodidad tiene un costo enorme.
+
+30 años para entender eso. ¿Cuánto llevás vos?
+
+#Basicket #LiderazgoDeportivo #LiderazgoEmpresarial #PyME #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap12',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G13 -->
+  <div class="gcard" id="g13">
+    <div class="gcardh"><div class="gnum">G13</div><div><div class="gtitle">Modo Líder — lo que aparece</div><div class="gsub">Semana 3 · Viernes 27/6 · Video de lead magnet · Objetivo: link en bio clicks</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Hice un ejercicio de liderazgo con más de 200 directores y dueños. Lo que apareció fue siempre lo mismo."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Desarrollé un ejercicio que simula cuatro situaciones de presión real. Cuatro rondas con el tiempo corriendo. No hay respuestas correctas. Hay patrones. Y los patrones revelan cómo tomás las decisiones cuando el tiempo se acaba — no cómo creés que las tomás.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">De los 200+ líderes que lo hicieron, el 73% mostró el mismo patrón: en la ronda 3, cuando la presión aumenta, vuelven a tomar las decisiones solos. Aunque en las rondas anteriores habían empezado a delegar. La presión revierte el comportamiento. Siempre.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">¿Cómo tomás las decisiones cuando el tiempo se acaba? No cómo creés que las tomás. Cómo las tomás de verdad. Hay una distancia enorme entre las dos cosas. Y esa distancia es exactamente donde trabajo.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">Link en bio. 5 minutos. Descubrís tu patrón.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap13" style="font-size:13px;line-height:1.8;">Hice este ejercicio con 200+ directores y dueños.
+
+El resultado fue siempre el mismo.
+
+Ronda 3 → cuando la presión sube → el 73% vuelve a decidir solo.
+
+Aunque antes había empezado a delegar.
+
+La presión revierte el comportamiento. Siempre.
+
+¿Cómo tomás las decisiones cuando el tiempo se acaba?
+
+No cómo creés. Cómo las tomás de verdad.
+
+👉 Link en bio · 5 minutos · Descubrís tu patrón.
+
+#ModoLider #LiderazgoEmpresarial #PyME #DesarrolloDirectivo #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap13',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G14 -->
+  <div class="gcard" id="g14">
+    <div class="gcardh"><div class="gnum">G14</div><div><div class="gtitle">No te falta liderazgo. Te falta estructura.</div><div class="gsub">Semana 4 · Lunes 30/6 · Postura fuerte · Polarización intencional</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"No te falta liderazgo. Te falta estructura. Son cosas muy distintas."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">La industria del coaching vende liderazgo como si fuera un atributo personal: carisma, visión, inspiración. Pero la mayoría de los problemas que veo en PyMEs no son de liderazgo. Son de estructura. Y la estructura se construye, no se inspira. No se consigue en un retiro de dos días.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un cliente llegó convencido de que necesitaba "mejorar como líder". Cuando empezamos a trabajar, descubrí que el problema no era él. Era que la empresa no tenía procesos definidos, roles claros ni criterios de decisión documentados. No era un problema de liderazgo. Era un problema de arquitectura.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">El carisma puede motivar a un equipo por una semana. La estructura hace que ese equipo funcione bien cuando el líder no está. Si querés una empresa que no dependa de tu presencia, necesitás arquitectura. No inspiración. La inspiración es el bonus. La arquitectura es el requisito.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">¿Qué te falta: liderazgo o estructura? Escribime qué creés.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap14" style="font-size:13px;line-height:1.8;">No te falta liderazgo. Te falta estructura.
+Son cosas muy distintas.
+
+Llegó convencido de que necesitaba "mejorar como líder."
+
+El problema real: sin procesos, sin roles claros, sin criterios de decisión.
+
+No era un problema de liderazgo. Era arquitectura.
+
+El carisma motiva una semana.
+La estructura hace funcionar al equipo cuando el líder no está.
+
+Si querés empresa que no dependa de vos → necesitás arquitectura. No inspiración.
+
+¿Qué te falta?
+
+#EstructuraEmpresarial #PyME #LiderazgoEmpresarial #GestionOrganizacional #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap14',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G15 -->
+  <div class="gcard" id="g15">
+    <div class="gcardh"><div class="gnum">G15</div><div><div class="gtitle">Lo que el básquet enseñó sobre despedir</div><div class="gsub">Semana 4 · Miércoles 2/7 · Historia personal profunda · Saves + shares</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Despedí a un jugador que amaba. Fue la decisión más difícil y la más correcta que tomé en 30 años."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Las decisiones de equipo más difíciles no involucran al peor. Involucran a los buenos que en algún momento dejaron de ser lo que el equipo necesita. Y la dificultad no es saber que hay que hacer el cambio. Es tener la conversación.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Diez años juntos. Crecimos juntos, ganamos juntos. Llegó un momento donde el juego que necesitaba el equipo no coincidía con lo que él podía dar. Tardé dos años en hacer el cambio porque le debía mucho. Esos dos años le costaron el campeonato a mi equipo.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Hay personas en tu empresa que fueron exactamente lo que necesitabas hace dos años y ya no lo son hoy. No porque sean malas. Sino porque vos cambiaste, la empresa cambió, y el rol cambió. La pregunta no es si lo ves. Es qué vas a hacer con eso hoy.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">¿Tenés esa conversación pendiente? Escribime si querés hablar de cómo encarar.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap15" style="font-size:13px;line-height:1.8;">Despedí a un jugador que amaba.
+La decisión más difícil y más correcta que tomé.
+
+10 años juntos. Ganamos juntos. Lo conocía como a nadie.
+
+Pero llegó un momento donde el juego que necesitaba el equipo y lo que él podía dar ya no coincidían.
+
+Tardé 2 años en hacer el cambio.
+Esos 2 años le costaron el campeonato a mi equipo.
+
+Hay personas en tu empresa que fueron exactamente lo que necesitabas hace 2 años y ya no lo son hoy.
+
+No porque sean malas. Porque el rol cambió.
+
+¿Tenés esa conversación pendiente?
+
+#DecisionesLaborales #LiderazgoEmpresarial #GestionDePersonas #PyME #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap15',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G16 -->
+  <div class="gcard" id="g16">
+    <div class="gcardh"><div class="gnum">G16</div><div><div class="gtitle">Cuando el negocio te satura</div><div class="gsub">Semana 5 · Lunes 7/7 · CTA directo a Espacio de Orden · Conversión</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Hay un momento en que el negocio que construiste empieza a consumirte. Se llama saturación. Y tiene solución."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">La saturación no aparece cuando el negocio va mal. Aparece cuando va bien. Cuando creció, cuando tiene más clientes, más empleados, más problemas — y vos seguís siendo el único punto de control de todo. Es la trampa del éxito.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">La primera señal de saturación que escucho siempre es la misma: "trabajo más que nunca pero siento que nunca alcanzo". No es falta de productividad. Es el síntoma de una empresa que creció pero cuya estructura no creció con ella.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">La saturación se resuelve con estructura, no con más horas ni más herramientas de productividad. Si estás trabajando 12 horas al día y nada alcanza, no necesitás más tiempo. Necesitás rediseñar cómo funciona lo que ya tenés.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">Si te sentís saturado, escribime "SATURADO". Tengo algo concreto para eso.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap16" style="font-size:13px;line-height:1.8;">Hay un momento en que el negocio que construiste empieza a consumirte.
+
+Se llama saturación. Y aparece cuando el negocio va BIEN.
+
+"Trabajo más que nunca pero siento que nunca alcanzo."
+
+No es falta de productividad.
+Es una empresa que creció y cuya estructura no creció con ella.
+
+La saturación no se resuelve con más horas.
+Se resuelve rediseñando cómo funciona lo que ya tenés.
+
+Si te reconociste → escribime SATURADO.
+Tengo algo concreto para eso.
+
+#Saturacion #DueñoDePyme #LiderazgoEmpresarial #EspacioDeOrden #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap16',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G17 -->
+  <div class="gcard" id="g17">
+    <div class="gcardh"><div class="gnum">G17</div><div><div class="gtitle">El mando medio que no existe</div><div class="gsub">Semana 5 · Miércoles 9/7 · RE-MEDIO angle · Conversión</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"El mando medio de tu empresa no existe. Y eso lo pagás vos todos los días."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">En la mayoría de las PyMEs argentinas falta un escalón crítico: el líder intermedio que toma decisiones operativas sin escalar al dueño. Sin ese escalón, todo sube. Y el dueño se convierte en el gerente de todas las áreas al mismo tiempo.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Empresa de 25 personas. El dueño respondía consultas de empleados 40 veces al día. Cuando empezamos a contar, descubrimos que el 35% de su tiempo laboral lo pasaba respondiendo preguntas que una segunda línea bien entrenada podría resolver sola. Eran 2,5 horas diarias.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Si no tenés una segunda línea que funcione, tenés dos opciones: seguir siendo el mando medio de tu propia empresa — que es lo que hacés hoy — o construir ese escalón. La segunda requiere 6 meses de trabajo enfocado. La primera requiere tu tiempo para siempre.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">¿Tenés segunda línea que funcione? Contame cómo.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap17" style="font-size:13px;line-height:1.8;">El mando medio de tu empresa no existe. Y eso lo pagás vos todos los días.
+
+25 personas. 40 consultas al día al dueño.
+
+35% de su tiempo → respondiendo preguntas que una segunda línea entrenada podría resolver sola.
+
+2,5 horas diarias. Todos los días.
+
+Si no tenés segunda línea que funcione → sos vos el mando medio de tu empresa.
+
+Podés seguir así para siempre.
+O construirlo en 6 meses.
+
+¿Tenés segunda línea? ¿Funciona?
+
+#MandosMedios #SegundaLinea #LiderazgoEmpresarial #PyME #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap17',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G18 -->
+  <div class="gcard" id="g18">
+    <div class="gcardh"><div class="gnum">G18</div><div><div class="gtitle">La empresa diseñada para necesitarte</div><div class="gsub">Semana 6 · Martes 15/7 · Máxima conversión · Espacio de Orden CTA directo</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Vos no sos indispensable para tu empresa. Tu empresa fue diseñada para necesitarte. Son cosas distintas."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">No poder tomarse vacaciones no es consecuencia del éxito. Es una señal de diseño. Una empresa bien diseñada puede funcionar sin su dueño dos semanas. Si la tuya no puede, hay algo en el diseño que necesita cambiar. No en tu equipo. En el diseño.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Primer cliente. Empresa de transporte. 7 años sin tomarse más de 3 días seguidos. Cuando empezamos a trabajar el diseño operativo, en 4 meses se tomó 10 días en Mendoza. Sin llamadas de emergencia. Sin el mundo derrumbándose.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">La diferencia entre "soy indispensable" y "mi empresa fue diseñada para necesitarme" es enorme. La primera es un problema sin solución. La segunda es un problema de diseño — y el diseño se puede cambiar. La pregunta es si estás dispuesto a invertir el tiempo en hacerlo.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">El Espacio de Orden son 2 sesiones donde trabajamos exactamente eso. Si estás listo, escribime.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap18" style="font-size:13px;line-height:1.8;">Vos no sos indispensable para tu empresa.
+Tu empresa fue diseñada para necesitarte.
+Son cosas muy distintas.
+
+7 años sin vacaciones reales. "Siempre pasa algo."
+
+4 meses de trabajo en el diseño operativo.
+10 días en Mendoza. Sin llamadas de emergencia.
+
+No porque el equipo cambió.
+Porque el diseño cambió.
+
+Si querés saber qué cambiar primero → el Espacio de Orden son 2 sesiones, un problema concreto, resultado visible.
+
+Escribime si estás listo.
+
+#EspacioDeOrden #DiseñoOperacional #PyME #LiderazgoEmpresarial #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap18',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G19 -->
+  <div class="gcard" id="g19">
+    <div class="gcardh"><div class="gnum">G19</div><div><div class="gtitle">La decisión que estás postergando</div><div class="gsub">Semana 7 · Lunes 21/7 · Engagement profundo · Reflexión incómoda</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Las decisiones más caras no son las que tomaste mal. Son las que postergaste porque eran incómodas."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Los líderes tomamos malas decisiones todo el tiempo. El problema no es eso. El problema es no aprender a reconocer cuándo el contexto cambió y la decisión que fue buena ayer ya no lo es hoy. Y quedarnos paralizados por el costo de la conversación que implica el cambio.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un jugador clave. Tres años juntos. Llegó un momento donde lo que le pedía el juego no coincidía con lo que él podía dar. Tardé en hacer el cambio porque le debía mucho. Porque era incómodo. Porque era conocido. Los equipos que perdí en ese período no vuelven.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Las decisiones más costosas no son las que tomamos rápido y mal. Son las que sabemos que tenemos que tomar y no tomamos. Porque implican una conversación difícil, un cambio incómodo, o reconocer que algo que funcionó dejó de funcionar. ¿Cuál es esa decisión en tu empresa hoy?</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">Escribime si querés pensar juntos esa decisión.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap19" style="font-size:13px;line-height:1.8;">Las decisiones más caras no son las que tomaste mal.
+Son las que postergaste porque eran incómodas.
+
+El jugador equivocado en el puesto equivocado.
+Lo sabía. No lo cambié.
+
+Porque le debía mucho. Porque era incómodo. Porque era conocido.
+
+Los campeonatos que perdí en ese período no vuelven.
+
+¿Cuál es la decisión que estás postergando hoy en tu empresa?
+
+No porque no sepas qué hacer.
+Sino porque la conversación es difícil.
+
+Escribime si querés pensar eso juntos.
+
+#DecisionesEmpresariales #LiderazgoEmpresarial #PyME #GestionDePersonas #SASConsultora</div>
+        <button class="copy-btn" onclick="copiar('cap19',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+  <!-- G20 -->
+  <div class="gcard" id="g20">
+    <div class="gcardh"><div class="gnum">G20</div><div><div class="gtitle">El resultado final — 60 días</div><div class="gsub">Semana 8 · Viernes 1/8 · Cierre de ciclo · Testimonio + nuevo comienzo</div></div></div>
+    <div class="gbody">
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"60 días publicando esto. Lo que cambió no fue solo la audiencia."</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">60 días de contenido consistente, de conversaciones con dueños y directores, de reuniones y de acompañamiento enseñan más sobre el problema real de las PyMEs que cualquier análisis de mercado. Y lo que aprendo en esas conversaciones vuelve a ser contenido.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">El problema que más aparece no es el que los dueños nombran cuando llegan. El que nombran es el síntoma. El que trabajamos juntos es la causa. Y casi siempre, la causa tiene que ver con el diseño de cómo funciona la empresa — no con el talento de la persona que la dirige.</div></div>
+      <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Si llegaste hasta acá es porque algo de lo que dijiste resonó. Y si resonó, probablemente hay algo en tu empresa que merezca una conversación. No una propuesta. Una conversación.</div></div>
+      <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">Link en bio. 30 minutos. Sin costo. Sin agenda de venta. Solo la conversación.</div></div>
+      <div class="caption-box"><div class="cap-lbl">📱 Caption</div>
+        <div id="cap20" style="font-size:13px;line-height:1.8;">60 días publicando esto.
+
+Lo que cambió no fue solo la audiencia.
+
+Cada conversación con un dueño o director me enseñó algo.
+Lo que nombran al llegar siempre es el síntoma.
+Lo que trabajamos juntos siempre es la causa.
+
+Y la causa casi siempre tiene que ver con el diseño.
+No con el talento de quien dirige.
+
+Si llegaste hasta acá → algo resonó.
+
+Y si resonó, hay una conversación que vale tener.
+
+No una propuesta. Una conversación.
+
+👉 Link en bio · 30 minutos · Sin costo · Sin agenda de venta.
+
+#SASConsultora #LiderazgoEmpresarial #PyME #ConsultoriaEmpresarial #TransformacionOrganizacional</div>
+        <button class="copy-btn" onclick="copiar('cap20',this)">COPIAR CAPTION</button></div>
+    </div>
+  </div>
+
+</div><!-- /guiones sec -->
+
+<!-- ═══════════ SEMANA 1 ═══════════ -->
+<div id="s1" class="sec">
+  <div class="sec-lbl">Semana 1 · 9 al 15 de junio</div>
+  <h2 class="sec-h">Activación — <span>Encender todos los motores</span></h2>
+  <div class="hi-gold">PRIORIDADES ESTA SEMANA: WhatsApp Grupo C HOY · 5 videos TikTok · LinkedIn Fellay (urgente) + 4 aperturas · Modo Líder a 5 contactos</div>
+  <div class="stat-bar">
+    <div class="stat"><div class="n">5</div><div class="l">Videos</div><div class="s">G01–G05</div></div>
+    <div class="stat"><div class="n">5</div><div class="l">Apertura LI</div><div class="s">Fellay urgente</div></div>
+    <div class="stat"><div class="n">1</div><div class="l">Grupo WA</div><div class="s">Grupo C hoy</div></div>
+    <div class="stat"><div class="n">5</div><div class="l">Modo Líder</div><div class="s">Enviados</div></div>
+  </div>
+
+  <div class="dia">
+    <div class="dia-hdr"><div><div class="dia-fecha">☀️ Lunes 9 de junio</div><div class="dia-titulo">Día 1 — Lanzamiento. Todo arranca hoy.</div></div><span class="dia-badge db-v">Video G01</span></div>
+    <div class="dia-body">
+      <div class="bloque gold-b">
+        <div class="b-hora">7:00 am — TIKTOK + IG REEL</div>
+        <div class="b-titulo">📹 Publicar G01 — "Dos días"</div>
+        <div class="b-detalle">Grabar el video usando el script G01 completo (ver pestaña Guiones). Hook exacto: <em>"Si tu empresa no puede funcionar dos días sin vos, no tenés empresa. Tenés trabajo."</em><br><br><strong>Formato:</strong> Vertical 9:16 · 45-55 segundos · Sin música de fondo · Hablar mirando directo a cámara · Fondo neutro o de trabajo<br><strong>TikTok:</strong> Publicar a las 7:00–8:00 am. Responder TODOS los comentarios en las primeras 2 horas (crítico para el algoritmo).<br><strong>IG Reel:</strong> Subir sin marca de agua de TikTok · Misma caption (del guión G01) · Agregar a Destacados "Contenido" si aplica</div>
+      </div>
+      <div class="bloque wa-b">
+        <div class="b-hora">8:00 am — WHATSAPP</div>
+        <div class="b-titulo">📱 Grupo C — Referidores (PRIORIDAD 1 del día)</div>
+        <div class="b-detalle">Enviar individualmente a: <strong>Baruh Guillermo · Fernando Schmukler · Luis Agrostiv · Germán Agrostiv · Ayelén Fontana · Patricia (Hotel Chajarí)</strong><br><br>Mensaje: <em>"Hola [NOMBRE], ¿cómo estás? Estoy lanzando un espacio nuevo para dueños y directores — muy concreto: dos sesiones, un solo problema, resultado visible. Se llama Espacio de Orden. Si conocés a alguien que esté peleando con algo difícil en su empresa o equipo, que no sabe cómo ordenar o que depende demasiado de él para que todo funcione, me encantaría que me lo presentes. Muchas gracias. Abrazo, Seba"</em><br><br><strong>Enviar uno por uno, no en grupo.</strong> Personalizar el nombre.</div>
+      </div>
+      <div class="bloque li-b">
+        <div class="b-hora">9:00 am — LINKEDIN</div>
+        <div class="b-titulo">💼 Mensaje urgente a Emanuel Fellay — Propuesta Espacio de Orden</div>
+        <div class="b-detalle">Ya conectado. Ya respondió. <strong>HOY va la propuesta directa.</strong><br><br>Mensaje: <em>"Hola Emanuel, bien que respondiste. Por lo que compartís y lo que veo de EntreNuts, me parece que estás en un momento donde la empresa necesita que vos puedas operar desde otro nivel. Tengo algo concreto para eso: el Espacio de Orden. Son exactamente 2 sesiones donde trabajamos el punto de mayor costo para vos hoy. ¿Te parece que lo charlamos 30 minutos esta semana? Online, sin costo."</em></div>
+      </div>
+      <div class="bloque li-b">
+        <div class="b-hora">9:15 am — LINKEDIN</div>
+        <div class="b-titulo">💼 Apertura a Emiliano Liguori — Modo Líder</div>
+        <div class="b-detalle">Ya conectado. Enviar Modo Líder:<br><em>"Emiliano, te mando algo que armé para líderes que gestionan equipos de alta presión. Es un ejercicio de 5 minutos que te da un perfil bastante preciso de cómo decidís cuando el tiempo aprieta. 👉 sasconsultora24-rgb.github.io/modo-lider/ Curioso qué te sale a vos."</em></div>
+      </div>
+      <div class="bloque li-b">
+        <div class="b-hora">9:30 am — LINKEDIN</div>
+        <div class="b-titulo">💼 5-7 solicitudes nuevas</div>
+        <div class="b-detalle">Usar filtros: <strong>Cargo = Gerente General / Dueño / Director</strong> · Provincia = Entre Ríos, Santa Fe, Córdoba, Buenos Aires · Empresa 10-100 empleados. Enviar sin nota adjunta. Meta diaria: 7 solicitudes.</div>
+      </div>
+      <div class="bloque">
+        <div class="b-hora">6:00 pm — IG STORIES</div>
+        <div class="b-titulo">📸 2-3 Stories del día</div>
+        <div class="b-detalle">Story 1: "Hoy arrancamos algo nuevo →" (crear expectativa)<br>Story 2: Foto/video detrás de escena del video que publicaste<br>Story 3: Poll o pregunta: "¿Tu empresa puede funcionar sin vos 48 horas?" Sí / No<br><br>El poll en stories activa el algoritmo y genera interacción que se convierte en alcance.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dia">
+    <div class="dia-hdr"><div><div class="dia-fecha">Martes 10 de junio</div><div class="dia-titulo">Día 2 — Construir momento</div></div><span class="dia-badge db-v">Video G02</span></div>
+    <div class="dia-body">
+      <div class="bloque gold-b">
+        <div class="b-hora">7:00 am — TIKTOK + IG</div>
+        <div class="b-titulo">📹 Publicar G02 — "El mejor empleado se va a ir"</div>
+        <div class="b-detalle">Script completo en pestaña Guiones. Hook: <em>"Tu mejor empleado se va a ir. Y no es culpa de él."</em><br>Este video busca <strong>comentarios de identificación</strong> ("a mí me pasó igual"). Responder todos en las primeras 2 horas. Cuando alguien comenta con su historia: responderle con una pregunta de profundidad, no solo un like.</div>
+      </div>
+      <div class="bloque li-b">
+        <div class="b-hora">8:30 am — LINKEDIN</div>
+        <div class="b-titulo">💼 Seguimiento Fellay + apertura Onaga y Matozo</div>
+        <div class="b-detalle">- Si Fellay respondió: agendar reunión esta semana o la próxima.<br>- Si no respondió: esperar hasta jueves para siguiente toque.<br>- Enviar apertura a <strong>Hernan Onaga</strong> (Co-Founder QUADANT): <em>"Hernan, gracias por conectar. Trabajo con fundadores en algo específico: cuando la empresa crece pero la estructura de decisión no acompaña el crecimiento. ¿Es algo que estás viviendo en QUADANT?"</em><br>- Enviar apertura a <strong>Eduardo Matozo</strong> (Parque Tecnológico): posicionarlo como referidor, no como cliente directo.<br>- 7 solicitudes nuevas.</div>
+      </div>
+      <div class="bloque wa-b">
+        <div class="b-hora">5:00 pm — WHATSAPP</div>
+        <div class="b-titulo">📱 Grupo A — Testimonios (arrancar esta semana)</div>
+        <div class="b-detalle">Enviar individualmente a: <strong>Ramiro · Patricia · Guadalupe · Liza · Massin · Cossy</strong><br><em>"Hola [NOMBRE], ¿cómo va todo? Estoy armando un empuje nuevo con SAS y me acordé de vos. Si en algún momento querés contar algo de lo que trabajamos juntos — una línea, lo que sea, lo que sientas — me ayudaría un montón para que otros lo vean. No hay apuro. Abrazo, Seba"</em></div>
+      </div>
+      <div class="bloque">
+        <div class="b-hora">6:00 pm — IG STORIES</div>
+        <div class="b-titulo">📸 Stories del día</div>
+        <div class="b-detalle">Story 1: Repostear el Reel con sticker de "¿te pasó?" o "comentá"<br>Story 2: Pregunta de engagement: "¿Tu mejor empleado tiene autonomía real?" Sí / Poco / Para nada</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dia">
+    <div class="dia-hdr"><div><div class="dia-fecha">Miércoles 11 de junio</div><div class="dia-titulo">Día 3 — Profundidad + primer carrusel</div></div><span class="dia-badge db-v">Video G03 + Carrusel</span></div>
+    <div class="dia-body">
+      <div class="bloque gold-b">
+        <div class="b-hora">7:00 am — TIKTOK + IG</div>
+        <div class="b-titulo">📹 Publicar G03 — "Delegar no funciona"</div>
+        <div class="b-detalle">Script en Guiones. Hook: <em>"'Delegá más' es el consejo más inútil que te pueden dar."</em><br>Este video busca <strong>saves y compartidos</strong>. Al final del video, después del CTA, añadir: <em>"Guardalo para acordarte cuando intentes delegar de nuevo."</em></div>
+      </div>
+      <div class="bloque gold-b">
+        <div class="b-hora">10:00 am — INSTAGRAM CARRUSEL</div>
+        <div class="b-titulo">📸 Carrusel: "5 señales de que tu empresa depende demasiado de vos"</div>
+        <div class="b-detalle"><strong>Slide 1 (portada):</strong> "5 señales de que tu empresa depende demasiado de vos" — fondo navy, tipografía grande<br><strong>Slide 2:</strong> "1. Recibís llamadas cuando estás de vacaciones"<br><strong>Slide 3:</strong> "2. Tu equipo te consulta antes de tomar cualquier decisión"<br><strong>Slide 4:</strong> "3. Cuando no estás, los proyectos se traban"<br><strong>Slide 5:</strong> "4. Los clientes prefieren hablar con vos directamente"<br><strong>Slide 6:</strong> "5. No podés tomarte más de 3 días seguidos sin angustia"<br><strong>Slide 7 (cierre):</strong> "Si marcaste 3 o más → el Espacio de Orden es para vos. Link en bio."<br><br>Caption: "¿Cuántas te aplican? Contame en comentarios (y guardalo — te lo vas a querer mostrar a alguien)."</div>
+      </div>
+      <div class="bloque li-b">
+        <div class="b-hora">9:00 am — LINKEDIN</div>
+        <div class="b-titulo">💼 Aperturas Cerini + Orzuza + 7 solicitudes</div>
+        <div class="b-detalle">- <strong>Mariano Cerini</strong> (Cooperativa León Sola): <em>"Mariano, gracias por conectar. Paisanos de Paraná. Trabajo con directivos de organizaciones en algo concreto: cuando el equipo del medio necesita más herramientas para sostener la operación. En estructuras como las cooperativas eso tiene un peso particular. ¿Es algo que resonó alguna vez en León Sola?"</em><br>- <strong>Martin Orzuza</strong> (OM Soluciones): <em>"Martín, gracias por conectar. Trabajo con dueños de empresas de servicios en algo específico: cuando todo sigue pasando por uno — las cotizaciones, los problemas en obra, las decisiones del equipo. ¿Es algo que reconocés en tu día a día?"</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dia">
+    <div class="dia-hdr"><div><div class="dia-fecha">Jueves 12 de junio</div><div class="dia-titulo">Día 4 — Reuniones y cierres</div></div><span class="dia-badge db-c">Reunión Fellay</span></div>
+    <div class="dia-body">
+      <div class="bloque gold-b">
+        <div class="b-hora">7:00 am — TIKTOK + IG</div>
+        <div class="b-titulo">📹 Publicar G04 — "La reunión de los lunes"</div>
+        <div class="b-detalle">Script en Guiones. Hook: <em>"La reunión de los lunes que nadie quiere tener pero todos necesitan."</em><br>CTA claro al final: preguntar si tienen reunión semanal. Los comentarios de este video son leads disfrazados.</div>
+      </div>
+      <div class="bloque red-b">
+        <div class="b-hora">SEGÚN ACUERDO — REUNIÓN</div>
+        <div class="b-titulo">🎯 Reunión con Emanuel Fellay (si confirmó)</div>
+        <div class="b-detalle"><strong>Agenda de 30 minutos:</strong><br>0-5 min: "Contame, ¿qué está pasando en EntreNuts que te genera más costo de tiempo o energía hoy?"<br>5-20 min: Escuchar. No proponer todavía. Preguntar: "¿Eso pasó siempre o apareció cuando la empresa creció?" / "¿Hay alguien en el equipo que podría resolver esto sin vos?"<br>20-27 min: Diagnóstico SAS — identificar momento (Saturación/Desorden/Dirección). Proponer intervención.<br>27-30 min: "Lo que te propongo es el Espacio de Orden — 2 sesiones, $100 USD, el próximo jueves. ¿Lo encaramos?"<br><br><strong>POST-REUNIÓN (mismo día, antes de las 24hs):</strong> Enviar propuesta escrita por WhatsApp o LinkedIn.</div>
+      </div>
+      <div class="bloque li-b">
+        <div class="b-hora">9:00 am — LINKEDIN</div>
+        <div class="b-titulo">💼 Aperturas Hartmann + Zentner + 7 solicitudes</div>
+        <div class="b-detalle">- <strong>Augusto Hartmann</strong>: <em>"Augusto, gracias por conectar. Trabajo con directivos de grupos empresariales en algo que aparece mucho: cuando la operación de cada unidad crece pero la dirección estratégica del conjunto queda en una sola persona. ¿Es algo con lo que estás lidiando?"</em><br>- <strong>Sebastian Zentner</strong>: enviar Modo Líder directamente (doble rol docente + director es el perfil ideal para el ejercicio).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dia">
+    <div class="dia-hdr"><div><div class="dia-fecha">Viernes 13 de junio</div><div class="dia-titulo">Día 5 — Cierre de semana + métricas</div></div><span class="dia-badge db-v">Video G05</span></div>
+    <div class="dia-body">
+      <div class="bloque gold-b">
+        <div class="b-hora">7:00 am — TIKTOK + IG</div>
+        <div class="b-titulo">📹 Publicar G05 — "El límite que nunca pusiste"</div>
+        <div class="b-detalle">Script en Guiones. Hook: <em>"El problema no es que tu equipo no tenga límites. Es que vos nunca los pusiste."</em><br>CTA de acción inmediata: "Agarrá papel y lápiz ahora mismo." Este video busca que la gente haga algo mientras lo mira — eso aumenta el watch time y el engagement.</div>
+      </div>
+      <div class="bloque li-b">
+        <div class="b-hora">9:00 am — LINKEDIN</div>
+        <div class="b-titulo">💼 Seguimiento semana + 7 solicitudes finales</div>
+        <div class="b-detalle">- Revisar todos los contactos de la semana. ¿Alguien respondió y necesita seguimiento?<br>- Si Liguori respondió al Modo Líder: proponer reunión.<br>- 7 solicitudes nuevas (completar las 35 de la semana).</div>
+      </div>
+      <div class="bloque">
+        <div class="b-hora">5:00 pm — REVISIÓN SEMANAL</div>
+        <div class="b-titulo">📊 Métricas Semana 1</div>
+        <div class="b-detalle">Registrar: Videos publicados (meta: 5) · Solicitudes LI enviadas (meta: 35) · Respuestas LI recibidas · Reuniones confirmadas · WhatsApp Grupo C respondidos · Stories publicadas (meta: 10)<br><br>Actualizar contadores en la pestaña HOY.</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /s1 -->
+
+<!-- ═══════════ SEMANA 2 ═══════════ -->
+<div id="s2" class="sec">
+  <div class="sec-lbl">Semana 2 · 16 al 22 de junio</div>
+  <h2 class="sec-h">Activación II — <span>WhatsApp Grupo B + completar contactos LI</span></h2>
+  <div class="hi-gold">PRIORIDADES: WhatsApp Grupo B (desde hoy 16/6) · 5 videos TikTok G06-G10 · Completar los 13 contactos LI · Primera reunión cerrada</div>
+  <div class="stat-bar">
+    <div class="stat"><div class="n">5</div><div class="l">Videos</div><div class="s">G06–G10</div></div>
+    <div class="stat"><div class="n">35</div><div class="l">Solicitudes LI</div><div class="s">7 por día</div></div>
+    <div class="stat"><div class="n">1</div><div class="l">WA Grupo B</div><div class="s">Desde hoy</div></div>
+    <div class="stat"><div class="n">1+</div><div class="l">Reuniones</div><div class="s">Meta mínima</div></div>
+  </div>
+
+  <div class="dia">
+    <div class="dia-hdr"><div><div class="dia-fecha">☀️ Lunes 16 de junio</div><div class="dia-titulo">Activar Grupo B + G06 + seguimientos</div></div><span class="dia-badge db-wa">Grupo B HOY</span></div>
+    <div class="dia-body">
+      <div class="bloque gold-b">
+        <div class="b-hora">7:00 am</div>
+        <div class="b-titulo">📹 Publicar G06 — "El sueldo del dueño"</div>
+        <div class="b-detalle">Hook: <em>"¿Cuánto te pagás? La respuesta dice todo sobre tu empresa."</em> Este es el video que más saves genera — el tema del sueldo del dueño es universalmente tabú y por eso masivamente compartido. Responder comentarios activamente.</div>
+      </div>
+      <div class="bloque wa-b">
+        <div class="b-hora">8:00 am — WHATSAPP GRUPO B</div>
+        <div class="b-titulo">📱 Activar prospectos: Cristian · Lucas · Flavia · Romi · Gegenschatz</div>
+        <div class="b-detalle">Enviar individualmente: <em>"Hola [NOMBRE], ¿cómo estás? Estoy cerrando agenda para junio y quería escribirte antes de que se llene. Arranco algo nuevo que creo que te puede interesar — te cuento en 30 minutos si tenés un rato esta semana. Online, sin compromiso. ¿Te queda bien martes o miércoles?"</em></div>
+      </div>
+      <div class="bloque li-b">
+        <div class="b-hora">9:00 am</div>
+        <div class="b-titulo">💼 Apertura Portnoy + Wasinger + 7 solicitudes</div>
+        <div class="b-detalle">- <strong>Mauricio Portnoy</strong> (CEO ModaShop): <em>"Mauricio, en empresas de retail como ModaShop, uno de los temas que más aparece es sostener la performance del equipo de ventas sin que todo dependa del CEO. ¿Es algo que estás trabajando?"</em><br>- <strong>Santiago Wasinger</strong>: <em>"Santiago, paisanos entrerrianos. Trabajo con gerentes en algo concreto: cuando tenés mucha responsabilidad pero no siempre las herramientas para ejercer la autoridad que el puesto requiere. ¿Te resuena?"</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dia">
+    <div class="dia-hdr"><div><div class="dia-fecha">Martes 17 de junio</div><div class="dia-titulo">Completar 13 contactos LI</div></div><span class="dia-badge db-v">Video G07</span></div>
+    <div class="dia-body">
+      <div class="bloque gold-b">
+        <div class="b-hora">7:00 am</div>
+        <div class="b-titulo">📹 Publicar G07 — "El que apaga el incendio"</div>
+        <div class="b-detalle">Hook: <em>"Si vos sos el que apaga todos los incendios, vos sos también el que los enciende."</em> Alta identificación. Los comentarios "yo soy exactamente así" son leads implícitos — responder con pregunta de diagnóstico.</div>
+      </div>
+      <div class="bloque li-b">
+        <div class="b-hora">9:00 am</div>
+        <div class="b-titulo">💼 Apertura Pittavino + Colobig + Rosell + 7 solicitudes</div>
+        <div class="b-detalle">- <strong>Hernan Pittavino</strong>: Modo Líder directo (perfil comercial, alta presión de resultados)<br>- <strong>Juan Colobig</strong> (Casino Victoria): <em>"Juan, gestionar operaciones en un casino es uno de los contextos de más presión que hay. Trabajo con gerentes de operaciones en algo específico: construir equipos con autonomía real. ¿Es algo que estás trabajando?"</em><br>- <strong>Estefanía Rosell</strong> (Nexum Partners): Modo Líder + ángulo colega-a-colega</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dia">
+    <div class="dia-hdr"><div><div class="dia-fecha">Miércoles 18 de junio</div><div class="dia-titulo">Carrusel + G08 + seguimientos</div></div><span class="dia-badge db-v">Video G08 + Carrusel</span></div>
+    <div class="dia-body">
+      <div class="bloque gold-b">
+        <div class="b-hora">7:00 am</div>
+        <div class="b-titulo">📹 Publicar G08 — "Creciste. Te perdiste."</div>
+        <div class="b-detalle">Hook: <em>"Tu empresa creció. Y en algún momento dejaste de saber cómo funciona."</em></div>
+      </div>
+      <div class="bloque gold-b">
+        <div class="b-hora">10:00 am — CARRUSEL</div>
+        <div class="b-titulo">📸 Carrusel 2: "3 momentos en que tu empresa te necesita diferente"</div>
+        <div class="b-detalle"><strong>Slide 1:</strong> "3 momentos en que tu empresa te necesita diferente" (portada)<br><strong>Slide 2:</strong> "SATURACIÓN → Espacio de Orden: 2 sesiones, un problema, claridad inmediata"<br><strong>Slide 3:</strong> "DESORDEN → RE-MEDIO: 6 meses construyendo la segunda línea"<br><strong>Slide 4:</strong> "DIRECCIÓN → Mentoría: cuando la operación funciona y vos necesitás crecer como líder"<br><strong>Slide 5:</strong> "¿En cuál estás? → link en bio para saberlo"<br>Caption: "¿En qué momento estás hoy? Escribime y lo analizamos."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dia">
+    <div class="dia-hdr"><div><div class="dia-fecha">Jueves 19 de junio</div><div class="dia-titulo">DÍA DE REUNIONES</div></div><span class="dia-badge db-c">Reuniones</span></div>
+    <div class="dia-body">
+      <div class="bloque gold-b">
+        <div class="b-hora">7:00 am</div>
+        <div class="b-titulo">📹 Publicar G09 — "El empleado que nunca da el paso"</div>
+        <div class="b-detalle">Hook: <em>"Tenés un empleado muy bueno que nunca da el paso solo. Antes de culparlo, escuchá esto."</em></div>
+      </div>
+      <div class="bloque red-b">
+        <div class="b-hora">Según agenda</div>
+        <div class="b-titulo">🎯 Reuniones de 30 minutos</div>
+        <div class="b-detalle">Concentrar reuniones los jueves. Si Fellay, Liguori o alguien del Grupo B confirmó → hoy.<br><br><strong>Estructura de cada reunión:</strong><br>1. "Contame, ¿qué está pasando que más te cuesta hoy?" → escuchar sin interrumpir<br>2. Preguntar: "¿Cuándo empezó eso?" / "¿Tiene que ver con el crecimiento de la empresa?"<br>3. Diagnóstico en voz alta: "Lo que estoy escuchando es..." → nombrar el momento SAS<br>4. Proponer: Espacio de Orden si es Saturación / RE-MEDIO si es Desorden<br>5. Cerrar: fecha y precio. Sin ambigüedad.<br><br><strong>Post-reunión:</strong> Propuesta enviada por escrito antes de las 24hs.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dia">
+    <div class="dia-hdr"><div><div class="dia-fecha">Viernes 20 de junio</div><div class="dia-titulo">G10 + métricas semana 2</div></div><span class="dia-badge db-v">Video G10</span></div>
+    <div class="dia-body">
+      <div class="bloque gold-b">
+        <div class="b-hora">7:00 am</div>
+        <div class="b-titulo">📹 Publicar G10 — "La empresa de una persona"</div>
+        <div class="b-detalle">Hook: <em>"Construiste una empresa. Pero en realidad construiste un trabajo para una persona: vos."</em> Mayor impacto de la semana. Poner este video los viernes maximiza el alcance del fin de semana.</div>
+      </div>
+      <div class="bloque">
+        <div class="b-hora">5:00 pm</div>
+        <div class="b-titulo">📊 Revisión Semana 2 — ¿Dónde estás?</div>
+        <div class="b-detalle"><strong>Meta acumulada al día 10:</strong><br>Videos TikTok/IG: 10 publicados ✓<br>Solicitudes LI enviadas: 70 totales ✓<br>Contactos 13 con mensaje enviado: todos ✓<br>Reuniones confirmadas: 1 mínimo ✓<br>WA Grupo C + A + B activados: todos ✓<br><br>Si algún indicador está en rojo → ajustar la semana 3.</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /s2 -->
+
+<!-- ═══════════ SEMANA 3 ═══════════ -->
+<div id="s3" class="sec">
+  <div class="sec-lbl">Semana 3 · 23 al 29 de junio</div>
+  <h2 class="sec-h">Aceleración I — <span>Más volumen, más conversiones</span></h2>
+  <div class="hi">A partir de esta semana el sistema ya está rodando. Foco: sostener el contenido + trabajar las conversaciones activas en LinkedIn + cerrar las primeras propuestas.</div>
+  <div class="stat-bar">
+    <div class="stat"><div class="n">5</div><div class="l">Videos</div><div class="s">G11–G13 + 2 extras</div></div>
+    <div class="stat"><div class="n">35</div><div class="l">Solicitudes LI</div><div class="s">7 por día</div></div>
+    <div class="stat"><div class="n">2</div><div class="l">Reuniones</div><div class="s">Meta semana</div></div>
+    <div class="stat"><div class="n">1</div><div class="l">Cliente cerrado</div><div class="s">Meta acumulada</div></div>
+  </div>
+  <div class="card">
+    <div class="blk-t">Lunes 23 — G11 + seguimiento LI masivo</div>
+    <div class="bloque gold-b"><div class="b-hora">7:00 am</div><div class="b-titulo">G11 — "El equipo que espera"</div><div class="b-detalle">Hook: "Tu equipo te está esperando todos los días para saber qué hacer. Y eso es un problema tuyo, no de ellos."<br>LI: Revisar todas las conversaciones activas. Quien respondió esta semana → mover hacia Modo Líder o reunión.<br>7 solicitudes nuevas. Foco en Santa Fe esta semana (para diversificar).</div></div>
+    <div class="blk-t" style="margin-top:14px;">Martes 24 — Seguimiento y conversiones</div>
+    <div class="bloque li-b"><div class="b-hora">9:00 am</div><div class="b-titulo">LI: Conversaciones activas → mover hacia reunión</div><div class="b-detalle">Para cada contacto que respondió: si mostró interés → proponer 30 minutos. Si hizo Modo Líder → "¿Qué apareció? ¿Cuándo charlamos?" Si no respondió (más de 5 días) → seguimiento ligero con un insight del contenido que publicaste.</div></div>
+    <div class="blk-t" style="margin-top:14px;">Miércoles 25 — G12 + LinkedIn Post</div>
+    <div class="bloque gold-b"><div class="b-hora">7:00 am</div><div class="b-titulo">G12 — "30 años en canchas" (el diferenciador)</div><div class="b-detalle">Este video es el que más genera comentarios personales y compartidos. Hook: "30 años entrenando equipos bajo presión real. Esto es lo que aprendí."<br><br><strong>LinkedIn Post (mismo día):</strong> Adaptar la historia del partido final como post de texto de LinkedIn. Formato: párrafo corto · salto de línea · párrafo corto. Sin bullets. La tensión narrative tiene que mantenerse hasta el final.</div></div>
+    <div class="blk-t" style="margin-top:14px;">Jueves 26 — REUNIONES</div>
+    <div class="bloque red-b"><div class="b-hora">Según agenda</div><div class="b-titulo">🎯 2 reuniones meta esta semana</div><div class="b-detalle">Concentrar jueves. Propuesta enviada el mismo día. El objetivo de esta semana es cerrar el primer Espacio de Orden — aunque sea a precio reducido si hay resistencia de precio (no bajar de $80 USD).</div></div>
+    <div class="blk-t" style="margin-top:14px;">Viernes 27 — G13 (Modo Líder video)</div>
+    <div class="bloque gold-b"><div class="b-hora">7:00 am</div><div class="b-titulo">G13 — "Modo Líder — lo que aparece" (lead magnet push)</div><div class="b-detalle">Hook: "Hice este ejercicio con 200+ directores. Lo que apareció siempre fue lo mismo."<br>CTA: link en bio. Este video tiene que ir acompañado de Stories mostrando ejemplos de resultados del ejercicio.</div></div>
+  </div>
+</div><!-- /s3 -->
+
+<!-- ═══════════ SEMANA 4 ═══════════ -->
+<div id="s4" class="sec">
+  <div class="sec-lbl">Semana 4 · 30 jun – 6 julio</div>
+  <h2 class="sec-h">Aceleración II — <span>Estructura + conversiones</span></h2>
+  <div class="hi-gold">Meta semana: 3 reuniones · 2 propuestas enviadas · 1 cliente nuevo cerrado (total acumulado: 2)</div>
+  <div class="card">
+    <div class="blk-t">Lunes 30/6 — G14 + LinkedIn post</div>
+    <div class="bloque gold-b"><div class="b-hora">7:00 am</div><div class="b-titulo">G14 — "No te falta liderazgo. Te falta estructura."</div><div class="b-detalle">Hook polarizante. Alta probabilidad de comentarios en desacuerdo (bueno — engagement). Responder todos con datos concretos, no con defensas.<br>LinkedIn: Post sobre la diferencia entre liderazgo e instrucción organizacional. Citar el caso del cliente que pensaba que necesitaba coaching y en realidad necesitaba arquitectura.</div></div>
+    <div class="blk-t" style="margin-top:14px;">Martes 1/7 — LI prospección nueva ronda</div>
+    <div class="bloque li-b"><div class="b-hora">9:00 am</div><div class="b-titulo">Nueva ronda de 7/día + seguimiento mes 1</div><div class="b-detalle">A los 13 contactos originales que no respondieron nada: último intento con un approach diferente. En lugar de pregunta diagnóstica, enviar Modo Líder directamente.<br>Nuevo filtro LI: buscar en Córdoba Capital específicamente (mercado sin explorar).</div></div>
+    <div class="blk-t" style="margin-top:14px;">Miércoles 2/7 — G15 + Carrusel 3</div>
+    <div class="bloque gold-b"><div class="b-hora">7:00 am</div><div class="b-titulo">G15 — "Lo que el básquet enseñó sobre despedir"</div><div class="b-detalle">La segunda historia personal de básquet. Estas generan el mayor tiempo de visualización y la mayor tasa de compartidos.<br><br><strong>Carrusel 3:</strong> "El sistema SAS en 4 momentos" — explicación visual del modelo SATURACIÓN / DESORDEN / DIRECCIÓN / CONSOLIDACIÓN con síntomas específicos de cada uno.</div></div>
+    <div class="blk-t" style="margin-top:14px;">Jueves 3/7 — REUNIONES + propuestas</div>
+    <div class="bloque red-b"><div class="b-hora">Según agenda</div><div class="b-titulo">🎯 3 reuniones esta semana · 2 propuestas escritas</div><div class="b-detalle">Al mes de haber arrancado, el pipeline debería tener conversaciones activas suficientes para llenar 3 reuniones esta semana. Si no las tenés: revisar si los mensajes de apertura LI se están enviando todos los días. El pipeline se seca si el outreach para.</div></div>
+    <div class="blk-t" style="margin-top:14px;">Viernes 4/7 — Video cierre del mes 1</div>
+    <div class="bloque gold-b"><div class="b-hora">7:00 am</div><div class="b-titulo">Video: "Un mes publicando esto. Lo que descubrí."</div><div class="b-detalle">Hook: "Llevo un mes publicando sobre liderazgo en PyMEs. Esto es lo que aprendí de los comentarios que dejaron."<br>Este video es el más personal del mes. Hablar sobre patrones que aparecieron, lo que más resonó, un insight nuevo. Muestra proceso = genera confianza.</div></div>
+  </div>
+</div><!-- /s4 -->
+
+<!-- ═══════════ SEMANA 5 ═══════════ -->
+<div id="s5" class="sec">
+  <div class="sec-lbl">Semana 5 · 7 al 13 de julio</div>
+  <h2 class="sec-h">Conversión I — <span>El sistema en régimen</span></h2>
+  <div class="hi-gold">Meta semana: 3 reuniones · 2 nuevos clientes cerrados (total acumulado: 4) · Primera semana con el ritmo completo sostenido</div>
+  <div class="card">
+    <div class="blk-t">Lunes 7/7 — G16 (Saturación)</div>
+    <div class="bloque gold-b"><div class="b-hora">7:00 am</div><div class="b-titulo">G16 — "Cuando el negocio te satura" · CTA directo a Espacio de Orden</div><div class="b-detalle">Hook: "Hay un momento en que el negocio que construiste empieza a consumirte. Se llama saturación. Y tiene solución."<br>Este video tiene CTA de conversión directa (escribime "SATURADO"). Es el primer video que menciona explícitamente el servicio. Funciona porque a este punto ya hay autoridad instalada.</div></div>
+    <div class="blk-t" style="margin-top:14px;">Martes–Miércoles 8-9/7</div>
+    <div class="bloque li-b"><div class="b-hora">Día continuo</div><div class="b-titulo">LI: nuevas rondas + seguimiento conversaciones activas</div><div class="b-detalle">A esta altura deberías tener 15-20 conversaciones activas en LinkedIn. Sistematizar: crear una lista manual o en papel con: Nombre / Estado (solicitó / respondió / Modo Líder / reunión agendada / propuesta enviada). Revisar todos los días.</div></div>
+    <div class="bloque gold-b"><div class="b-hora">7:00 am Miércoles 9/7</div><div class="b-titulo">G17 — "El mando medio que no existe" · RE-MEDIO angle</div><div class="b-detalle">Hook: "El mando medio de tu empresa no existe. Y eso lo pagás vos todos los días."<br>LinkedIn Post: versión adaptada enfocada en Gerentes Generales. Los GG son el buyer principal de RE-MEDIO.</div></div>
+    <div class="blk-t" style="margin-top:14px;">Jueves 10/7 — REUNIONES + primer testimonio</div>
+    <div class="bloque red-b"><div class="b-hora">Agenda + follow-up</div><div class="b-titulo">🎯 Reuniones + solicitar primer testimonio activo</div><div class="b-detalle">Si tenés clientes que ya completaron el Espacio de Orden → esta semana pedirles testimonio. No para Instagram todavía. Para entender qué frase usan para describir el resultado. Esas frases son tu próximo contenido.</div></div>
+    <div class="blk-t" style="margin-top:14px;">Viernes 11/7</div>
+    <div class="bloque gold-b"><div class="b-hora">7:00 am</div><div class="b-titulo">Video: "Por qué el Espacio de Orden son exactamente 2 sesiones y no más"</div><div class="b-detalle">Hook: "No son 3 sesiones. No son 5. Son exactamente 2. Y hay una razón."<br>Postura: la baja fricción de entrada es intencional. Un problema específico en 2 sesiones. Eso es lo que baja la barrera de entrada. CTA: precio y cómo empezar.</div></div>
+  </div>
+</div><!-- /s5 -->
+
+<!-- ═══════════ SEMANA 6 ═══════════ -->
+<div id="s6" class="sec">
+  <div class="sec-lbl">Semana 6 · 14 al 20 de julio</div>
+  <h2 class="sec-h">Conversión II — <span>Cerrar 5 clientes totales</span></h2>
+  <div class="hi-gold">META CRÍTICA: Al final de esta semana, 5 clientes nuevos totales. 3 actuales + 5 nuevos = 8 clientes. El sistema completo.</div>
+  <div class="card">
+    <div class="blk-t">Patrón semanal establecido</div>
+    <div class="insight"><strong>Lunes:</strong> Video G18 ("La empresa diseñada para necesitarte") + LI 7 solicitudes + revisar pipeline completo</div>
+    <div class="insight"><strong>Martes:</strong> Video tensión/pregunta + LI seguimiento conversaciones + WA follow-ups si aplica</div>
+    <div class="insight"><strong>Miércoles:</strong> Video más elaborado + LinkedIn Post (adaptación del video para formato largo) + Carrusel (quincenal)</div>
+    <div class="insight"><strong>Jueves:</strong> TODAS las reuniones del jueves. Meta: 3 por semana. Propuestas enviadas el mismo día.</div>
+    <div class="insight"><strong>Viernes:</strong> Video cierre + métricas de semana + ajuste para la semana siguiente</div>
+    <div class="blk-t" style="margin-top:14px;">El cierre de los 5 clientes</div>
+    <div class="hi-red">Si al jueves 17/7 no tenés 5 clientes nuevos cerrados, hacer diagnóstico urgente: ¿El problema está en reuniones (pocas) o en cierres (bajo porcentaje)? Las soluciones son distintas.</div>
+    <div class="insight"><strong>Si hay pocas reuniones:</strong> Aumentar LI outreach a 10/día + reactivar WA Grupo B con seguimiento individual + agregar CTA directo en Stories de IG</div>
+    <div class="insight"><strong>Si hay muchas reuniones pero bajo cierre:</strong> El problema está en la reunión misma. Revisar: ¿Proponés antes de escuchar suficiente? ¿El diagnóstico es claro? ¿La propuesta es concreta ($100, 2 sesiones, fecha)?</div>
+  </div>
+</div><!-- /s6 -->
+
+<!-- ═══════════ SEMANA 7 ═══════════ -->
+<div id="s7" class="sec">
+  <div class="sec-lbl">Semana 7 · 21 al 27 de julio</div>
+  <h2 class="sec-h">Sostenibilidad — <span>Construir el sistema de 5/mes</span></h2>
+  <div class="hi">Con 8 clientes ya en cartera, el foco cambia: ya no es conseguir los 5 primeros. Es construir el sistema que te trae 5 nuevos por mes de forma consistente.</div>
+  <div class="card">
+    <div class="blk-t">Revisión del sistema — ¿qué canal generó más clientes?</div>
+    <p style="font-size:12px;color:#555;margin-bottom:12px;">A esta altura tenés 4 semanas de datos reales. Analizar:</p>
+    <table class="tbl">
+      <tr><th>Canal</th><th>Reuniones generadas</th><th>Clientes cerrados</th><th>Decisión</th></tr>
+      <tr><td>LinkedIn Outreach</td><td contenteditable="true">_</td><td contenteditable="true">_</td><td>Si es el mejor → doblar</td></tr>
+      <tr><td>TikTok/IG Inbound</td><td contenteditable="true">_</td><td contenteditable="true">_</td><td>Si es el mejor → más volumen</td></tr>
+      <tr><td>WhatsApp Red caliente</td><td contenteditable="true">_</td><td contenteditable="true">_</td><td>Si es el mejor → más referidores</td></tr>
+      <tr><td>Referidos directos</td><td contenteditable="true">_</td><td contenteditable="true">_</td><td>Si es el mejor → programa formal</td></tr>
+    </table>
+    <div class="blk-t" style="margin-top:14px;">Video G19 + Carrusel de resultados</div>
+    <div class="insight"><strong>G19 — "La decisión que estás postergando":</strong> Lunes 21/7. Reflexión profunda, alto engagement, CTA a conversación 1:1.</div>
+    <div class="insight"><strong>Carrusel de resultados:</strong> Si tenés testimonios → publicar carrusel con resultados reales. Las frases de los clientes son el contenido más poderoso que podés publicar.</div>
+  </div>
+</div><!-- /s7 -->
+
+<!-- ═══════════ SEMANA 8 ═══════════ -->
+<div id="s8" class="sec">
+  <div class="sec-lbl">Semana 8 · 28 julio – 3 agosto</div>
+  <h2 class="sec-h">Cierre del ciclo — <span>Resultados y nuevo inicio</span></h2>
+  <div class="hi-gold">60 días completos. Medir. Documentar. Planificar el siguiente ciclo.</div>
+  <div class="card">
+    <div class="blk-t">Medición de los 60 días</div>
+    <table class="tbl">
+      <tr><th>Indicador</th><th>Meta</th><th>Real</th><th>Variación</th></tr>
+      <tr><td>Clientes nuevos</td><td>5</td><td contenteditable="true">_</td><td contenteditable="true">_</td></tr>
+      <tr><td>TikTok seguidores</td><td>650+ (200% de 217)</td><td contenteditable="true">_</td><td contenteditable="true">_</td></tr>
+      <tr><td>IG seguidores</td><td>3.168+ (200% de 1056)</td><td contenteditable="true">_</td><td contenteditable="true">_</td></tr>
+      <tr><td>LinkedIn seguidores</td><td>618+ (200% de 206)</td><td contenteditable="true">_</td><td contenteditable="true">_</td></tr>
+      <tr><td>Videos publicados</td><td>40+</td><td contenteditable="true">_</td><td contenteditable="true">_</td></tr>
+      <tr><td>Reuniones realizadas</td><td>20+</td><td contenteditable="true">_</td><td contenteditable="true">_</td></tr>
+      <tr><td>Propuestas enviadas</td><td>10+</td><td contenteditable="true">_</td><td contenteditable="true">_</td></tr>
+    </table>
+    <div class="blk-t" style="margin-top:14px;">G20 — Cierre del ciclo + apertura del siguiente</div>
+    <div class="insight"><strong>Viernes 1/8:</strong> Publicar G20 — "60 días publicando esto. Lo que cambió." Video de cierre y apertura. CTA: link en bio para reunión. Este video activa a todos los que te siguieron en 60 días pero nunca dieron el paso.</div>
+  </div>
+</div><!-- /s8 -->
+
+<!-- ═══════════ LINKEDIN ═══════════ -->
+<div id="linkedin" class="sec">
+  <div class="sec-lbl">Sistema de 5 pasos</div>
+  <h2 class="sec-h">LinkedIn — <span>Máquina de leads calificados</span></h2>
+  <div class="hi-gold">LinkedIn es el canal de mayor ROI por hora invertida. 10 minutos diarios + el sistema correcto = 3-4 reuniones mensuales con Gerentes Generales y Dueños calificados.</div>
+  <div class="card">
+    <div class="blk-t">Los 5 pasos — nunca saltear el orden</div>
+    <div class="acc open"><div class="ahdr" onclick="togAcc(this)"><div><div class="albl">Paso 1</div><div class="atit">Solicitud sin nota — mayor tasa de aceptación</div></div><div class="ach">▼</div></div><div class="abody"><p style="font-size:12px;margin-bottom:8px;">Enviar sin nota adjunta. Las notas reducen la aceptación porque generan fricción. El perfil optimizado hace el trabajo. Esperar 2-5 días antes de escribir.</p><div class="insight"><strong>Filtros Sales Navigator:</strong> Cargo = GG / Director / Dueño · Empresa 10-100 empleados · Provincias: ER / SF / CBA / BA · Sin contacto previo</div></div></div>
+    <div class="acc"><div class="ahdr" onclick="togAcc(this)"><div><div class="albl">Paso 2 — Al aceptar</div><div class="atit">Mensaje de apertura personalizado — NO hablar del servicio</div></div><div class="ach">▼</div></div><div class="abody"><div class="msg" id="li-open">Hola [NOMBRE], gracias por conectar.
+
+Trabajo con [cargo similar al de ellos] en algo específico: [síntoma que aplica a su industria/cargo].
+
+¿Es algo que está pasando en [empresa]?
+
+Abrazo, Seba — SAS Consultora</div><button class="copy-btn" onclick="copiar('li-open',this)">COPIAR PLANTILLA</button><p style="font-size:11px;color:#888;margin-top:8px;">→ Ver contactos específicos en la Estrategia Central para mensajes personalizados por persona.</p></div></div>
+    <div class="acc"><div class="ahdr" onclick="togAcc(this)"><div><div class="albl">Paso 3 — Si responde</div><div class="atit">Profundizar → Modo Líder o reunión directa</div></div><div class="ach">▼</div></div><div class="abody"><div class="msg" id="li-s3">Si mostró interés en el tema:
+→ "¿Qué está pasando puntualmente? ¿Tenés equipo a cargo?"
+
+Si describió un problema concreto:
+→ Enviar Modo Líder: "Te mando algo que puede ser relevante para lo que describís. Son 5 minutos. 👉 sasconsultora24-rgb.github.io/modo-lider/"
+
+Si el problema es urgente y claro:
+→ Proponer reunión directamente (sin pasar por Modo Líder)</div><button class="copy-btn" onclick="copiar('li-s3',this)">COPIAR GUÍA</button></div></div>
+    <div class="acc"><div class="ahdr" onclick="togAcc(this)"><div><div class="albl">Paso 4</div><div class="atit">Cierre a reunión — exactamente esta frase</div></div><div class="ach">▼</div></div><div class="abody"><div class="msg" id="li-cierre">30 minutos, online, sin agenda de venta.
+
+Es una conversación para entender tu momento y ver si puedo sumar algo concreto.
+
+¿Te queda bien el jueves que viene?</div><button class="copy-btn" onclick="copiar('li-cierre',this)">COPIAR MENSAJE CIERRE</button></div></div>
+    <div class="acc"><div class="ahdr" onclick="togAcc(this)"><div><div class="albl">Paso 5 — Post Modo Líder</div><div class="atit">Si hizo el ejercicio: activar reunión inmediatamente</div></div><div class="ach">▼</div></div><div class="abody"><div class="msg" id="li-ml">¿Lo pudiste hacer?
+
+Eso que apareció me ayuda a entender dónde estás.
+
+¿Cuándo tenés 30 minutos? Lo revisamos juntos y te doy mi lectura — sin compromiso.</div><button class="copy-btn" onclick="copiar('li-ml',this)">COPIAR MENSAJE POST ML</button></div></div>
+  </div>
+  <div class="card">
+    <div class="blk-t">Los 10 minutos diarios — en orden exacto</div>
+    <div class="insight"><strong>2 min:</strong> Revisar aceptaciones → enviar mensaje de apertura a cada uno</div>
+    <div class="insight"><strong>3 min:</strong> Responder todas las conversaciones activas (avanzar al siguiente paso)</div>
+    <div class="insight"><strong>3 min:</strong> Enviar 5-7 nuevas solicitudes (filtro: GG/Director/Dueño, 4 provincias)</div>
+    <div class="insight"><strong>2 min:</strong> Comentar 2-3 posts de prospectos target (visibilidad sin outreach directo)</div>
+  </div>
+</div><!-- /linkedin -->
+
+<!-- ═══════════ MÉTRICAS ═══════════ -->
+<div id="metricas" class="sec">
+  <div class="sec-lbl">Lo que medir cada semana</div>
+  <h2 class="sec-h">Métricas — <span>Qué medir y por qué</span></h2>
+  <div class="hi-gold">No todo se mide. Solo lo que te dice si el sistema funciona. Si no podés mejorarlo con la métrica, no la midás.</div>
+  <div class="card">
+    <div class="blk-t">Métricas semanales — actualizar todos los viernes</div>
+    <table class="tbl">
+      <tr><th>Métrica</th><th>Meta semanal</th><th>Por qué importa</th></tr>
+      <tr><td>Videos TikTok publicados</td><td>5</td><td>El volumen es el insumo del algoritmo</td></tr>
+      <tr><td>Views promedio TikTok</td><td>Creciente semana a semana</td><td>Indica si el contenido está mejorando</td></tr>
+      <tr><td>IG Reels publicados</td><td>4-5</td><td>Repurpose del TikTok sin trabajo extra</td></tr>
+      <tr><td>Solicitudes LI enviadas</td><td>35-49</td><td>El input que controla la salida</td></tr>
+      <tr><td>Conversaciones activas LI</td><td>8-12 activas</td><td>Calidad del mensaje de apertura</td></tr>
+      <tr><td>Modo Líder enviados</td><td>10-15</td><td>Lead qualifier — convierte interés en conversación</td></tr>
+      <tr><td>Reuniones realizadas</td><td>2-3</td><td>El único número que genera clientes directamente</td></tr>
+      <tr><td>Propuestas enviadas</td><td>1-2</td><td>50% de cierre meta</td></tr>
+      <tr><td>Clientes nuevos cerrados</td><td>1-2 por semana</td><td>La meta central</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <div class="blk-t">Metas de engagement a 60 días (+200%)</div>
+    <div class="three">
+      <div style="background:var(--navy);border-radius:8px;padding:16px;text-align:center;">
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#111;background:var(--gold);padding:3px 8px;border-radius:4px;margin-bottom:10px;display:inline-block;">TikTok</div>
+        <div style="color:var(--gray);font-size:12px;">Hoy: <strong style="color:#fff;">217</strong> seg</div>
+        <div style="color:var(--gray);font-size:12px;margin-top:4px;">Meta: <strong style="color:var(--gold);font-size:18px;">650+</strong></div>
+        <div style="color:var(--gray);font-size:11px;margin-top:4px;">Ruta: 5 videos/sem · responder comentarios</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#833AB4,#E1306C);border-radius:8px;padding:16px;text-align:center;">
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:rgba(255,255,255,.2);padding:3px 8px;border-radius:4px;margin-bottom:10px;display:inline-block;color:#fff;">Instagram</div>
+        <div style="color:rgba(255,255,255,.7);font-size:12px;">Hoy: <strong style="color:#fff;">1.056</strong> seg</div>
+        <div style="color:rgba(255,255,255,.7);font-size:12px;margin-top:4px;">Meta: <strong style="color:#fff;font-size:18px;">3.168+</strong></div>
+        <div style="color:rgba(255,255,255,.6);font-size:11px;margin-top:4px;">Ruta: Reels diarios · carruseles semanales · Stories</div>
+      </div>
+      <div style="background:#0077B5;border-radius:8px;padding:16px;text-align:center;">
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:rgba(255,255,255,.2);padding:3px 8px;border-radius:4px;margin-bottom:10px;display:inline-block;color:#fff;">LinkedIn</div>
+        <div style="color:rgba(255,255,255,.7);font-size:12px;">Hoy: <strong style="color:#fff;">206</strong> seg</div>
+        <div style="color:rgba(255,255,255,.7);font-size:12px;margin-top:4px;">Meta: <strong style="color:#fff;font-size:18px;">618+</strong></div>
+        <div style="color:rgba(255,255,255,.6);font-size:11px;margin-top:4px;">Ruta: 1 post/sem · 7 solicitudes/día · comentar prospectos</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /metricas -->
+
+</div><!-- /main -->
+
+<script>
+function showSec(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nt').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+function copiar(id,btn){
+  const el=document.getElementById(id);
+  const txt=el?el.innerText:'';
+  navigator.clipboard.writeText(txt).then(()=>{setOk(btn);}).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);setOk(btn);
+  });
+}
+function setOk(btn){const orig=btn.textContent;btn.textContent='✓ COPIADO';btn.classList.add('ok');setTimeout(()=>{btn.textContent=orig;btn.classList.remove('ok');},2000);}
+function togAcc(hdr){hdr.parentElement.classList.toggle('open');}
+function saveK(){try{['k1','k2','k3','k4'].forEach(k=>{localStorage.setItem(k,document.getElementById(k).value);});}catch(e){}}
+function loadK(){try{['k1','k2','k3','k4'].forEach(k=>{const v=localStorage.getItem(k);if(v)document.getElementById(k).value=v;});}catch(e){}}
+function saveChk(el){try{localStorage.setItem(el.id,el.checked);}catch(e){}}
+function loadChks(){try{document.querySelectorAll('#hoyChecks input[type=checkbox]').forEach(el=>{const v=localStorage.getItem(el.id);if(v==='true')el.checked=true;});}catch(e){}}
+function setDate(){
+  const d=new Date();const dias=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  const meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  document.getElementById('hoyFecha').innerHTML=`${dias[d.getDay()]}, ${d.getDate()} de <span>${meses[d.getMonth()]}</span>`;
+}
+window.onload=function(){setDate();loadK();loadChks();};
+</script>
+</body>
+</html>
