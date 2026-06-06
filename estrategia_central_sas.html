@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAS — Estrategia Central</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D1B2A;--deep:#02142B;--green:#1F5A52;--gold:#C7A65A;--gray:#D5D5D5;--cream:#F5F2EB;--white:#fff;--red:#C0392B;--orange:#E67E22;--teal:#1ABC9C;--purple:#7C3AED;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--navy);font-size:14px;line-height:1.6;}
+.hdr{background:var(--navy);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--gold);}
+.hdr-logo{font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;}.hdr-logo span{color:var(--gold);}
+.hdr-r{text-align:right;}.hdr-r h1{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}.hdr-r p{font-size:10px;color:var(--gray);}
+.nav{background:var(--deep);display:flex;overflow-x:auto;border-bottom:1px solid rgba(199,166,90,.2);scrollbar-width:none;}
+.nav::-webkit-scrollbar{display:none;}
+.nt{padding:12px 18px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);cursor:pointer;border:none;background:none;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+.nt:hover{color:var(--gold);}.nt.active{color:var(--gold);border-bottom-color:var(--gold);}
+.main{max-width:1100px;margin:0 auto;padding:28px 20px 100px;}
+.sec{display:none;}.sec.active{display:block;}
+.card{background:#fff;border-radius:8px;border:1px solid rgba(0,0,0,.08);padding:22px;margin-bottom:16px;}
+.card-dark{background:var(--navy);border-radius:8px;padding:22px;margin-bottom:16px;}
+.sec-lbl{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:4px;}
+.sec-h{font-size:22px;font-weight:900;margin-bottom:20px;}.sec-h span{color:var(--gold);}
+.blk-t{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(31,90,82,.2);}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+@media(max-width:700px){.two{grid-template-columns:1fr;}.three{grid-template-columns:1fr;}}
+.hi{background:var(--green);color:#fff;border-radius:6px;padding:12px 17px;font-size:13px;font-weight:600;margin-bottom:12px;}
+.hi-gold{background:var(--gold);color:var(--navy);border-radius:6px;padding:12px 17px;font-size:13px;font-weight:700;margin-bottom:12px;}
+.hi-red{background:var(--red);color:#fff;border-radius:6px;padding:12px 17px;font-size:13px;font-weight:700;margin-bottom:12px;}
+.msg{background:#f0f4ff;border-left:3px solid #0077B5;border-radius:0 6px 6px 0;padding:13px 17px;font-size:13px;line-height:1.8;margin-top:8px;white-space:pre-line;}
+.msg.wamsg{background:#f0fff4;border-left-color:#25D366;}
+.msg.gold{background:rgba(199,166,90,.08);border-left-color:var(--gold);}
+.tag{display:inline-block;padding:3px 9px;border-radius:20px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-right:4px;margin-bottom:3px;}
+.tt{background:#111;color:#fff;}.ig{background:#E1306C;color:#fff;}.li{background:#0077B5;color:#fff;}
+.wa{background:#25D366;color:#fff;}.eo{background:var(--gold);color:var(--navy);}.rm{background:var(--green);color:#fff;}
+.copy-btn{background:rgba(199,166,90,.15);border:1px solid var(--gold);color:var(--navy);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;padding:6px 14px;border-radius:4px;cursor:pointer;letter-spacing:.5px;margin-top:8px;display:inline-block;transition:all .2s;}
+.copy-btn:hover{background:var(--gold);}.copy-btn.ok{background:var(--green);color:#fff;border-color:var(--green);}
+/* NÚMEROS */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px;}
+.stat{background:var(--navy);border-radius:8px;padding:18px;text-align:center;position:relative;overflow:hidden;}
+.stat::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold);}
+.stat-n{font-size:32px;font-weight:900;color:#fff;line-height:1;}
+.stat-l{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:4px;}
+.stat-sub{font-size:10px;color:var(--gold);margin-top:3px;}
+/* FUNNEL */
+.funnel{display:flex;flex-direction:column;gap:0;}
+.funnel-step{background:var(--navy);border-radius:0;padding:15px 20px;display:flex;align-items:center;gap:16px;border-bottom:1px solid rgba(255,255,255,.06);position:relative;}
+.funnel-step:first-child{border-radius:8px 8px 0 0;}
+.funnel-step:last-child{border-radius:0 0 8px 8px;border-bottom:none;background:var(--green);}
+.funnel-n{font-size:28px;font-weight:900;color:var(--gold);width:36px;flex-shrink:0;line-height:1;}
+.funnel-step:last-child .funnel-n{color:#fff;}
+.funnel-info h4{font-size:13px;font-weight:800;color:#fff;}
+.funnel-info p{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px;}
+.funnel-info .fnum{font-size:11px;color:var(--gold);font-weight:700;margin-top:4px;}
+.funnel-step:last-child .funnel-info .fnum{color:#fff;}
+/* CANAL CARDS */
+.canal{background:#fff;border-radius:10px;border:1px solid rgba(0,0,0,.08);overflow:hidden;margin-bottom:16px;}
+.canal-hdr{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;}
+.canal-hdr h3{font-size:15px;font-weight:800;}
+.canal-hdr .canal-num{font-size:28px;font-weight:900;}
+.canal-body{padding:0 20px 20px;}
+.canal-tt .canal-hdr{background:#111;color:#fff;}
+.canal-tt .canal-hdr h3{color:#fff;}.canal-tt .canal-hdr .canal-num{color:var(--gold);}
+.canal-ig .canal-hdr{background:linear-gradient(135deg,#833AB4,#E1306C,#F77737);}
+.canal-ig .canal-hdr h3{color:#fff;}.canal-ig .canal-hdr .canal-num{color:#fff;opacity:.9;}
+.canal-li .canal-hdr{background:#0077B5;}
+.canal-li .canal-hdr h3{color:#fff;}.canal-li .canal-hdr .canal-num{color:#fff;opacity:.9;}
+.canal-wa .canal-hdr{background:#075E54;}
+.canal-wa .canal-hdr h3{color:#fff;}.canal-wa .canal-hdr .canal-num{color:#25D366;}
+.insight{background:#f8f7f4;border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:11px 14px;font-size:12px;margin:10px 0;line-height:1.6;}
+.insight strong{color:var(--green);}
+/* CONTACTOS */
+.contact{background:#fff;border-radius:8px;border:1px solid rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden;}
+.contact.urgente{border-color:rgba(192,57,43,.4);background:rgba(192,57,43,.02);}
+.contact.activo{border-color:rgba(199,166,90,.4);}
+.contact-hdr{background:var(--navy);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.contact.urgente .contact-hdr{background:#7B2D00;}
+.contact.activo .contact-hdr{background:#1a3a1a;}
+.contact-name{font-size:14px;font-weight:800;color:#fff;}
+.contact-role{font-size:11px;color:rgba(255,255,255,.6);margin-top:1px;}
+.contact-badge{font-size:9px;font-weight:800;letter-spacing:1px;padding:3px 10px;border-radius:20px;text-transform:uppercase;}
+.badge-urgente{background:var(--red);color:#fff;}
+.badge-activo{background:var(--gold);color:var(--navy);}
+.badge-nuevo{background:rgba(255,255,255,.15);color:#fff;}
+.badge-referidor{background:var(--teal);color:var(--navy);}
+.contact-body{padding:16px 18px;}
+.contact-context{font-size:11px;color:#666;font-style:italic;margin-bottom:10px;background:#f8f7f4;padding:8px 12px;border-radius:4px;}
+.status-sel{background:#f0f0f0;border:1px solid rgba(0,0,0,.12);border-radius:5px;font-family:'Montserrat',sans-serif;font-size:11px;padding:5px 10px;margin-top:8px;cursor:pointer;width:100%;max-width:260px;}
+/* WHATSAPP GROUPS */
+.wagroup{border-radius:8px;overflow:hidden;margin-bottom:16px;}
+.wagroup-hdr{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;}
+.wag-a .wagroup-hdr{background:#075E54;}
+.wag-b .wagroup-hdr{background:#128C7E;}
+.wag-c .wagroup-hdr{background:#1F5A52;}
+.wagroup-title{font-size:14px;font-weight:800;color:#fff;}
+.wagroup-sub{font-size:11px;color:rgba(255,255,255,.7);margin-top:1px;}
+.wagroup-body{background:#fff;border:1px solid rgba(0,0,0,.08);border-top:none;border-radius:0 0 8px 8px;padding:16px 18px;}
+/* RITMO */
+.semana{background:#fff;border-radius:8px;border:1px solid rgba(0,0,0,.08);padding:20px;margin-bottom:12px;}
+.sem-hdr{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.sem-n{font-size:40px;font-weight:900;color:var(--gold);line-height:1;width:52px;flex-shrink:0;}
+.sem-info h3{font-size:14px;font-weight:800;}
+.sem-info p{font-size:12px;color:#666;margin-top:2px;}
+.sem-items{display:grid;gap:8px;}
+.sem-item{background:#f8f7f4;border-radius:6px;padding:10px 14px;font-size:12px;border-left:3px solid var(--green);}
+.sem-item strong{display:block;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:2px;}
+/* MATH */
+.math-row{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:4px;align-items:center;margin-bottom:10px;}
+.math-box{background:var(--navy);border-radius:6px;padding:12px;text-align:center;}
+.math-box .mn{font-size:22px;font-weight:900;color:var(--gold);}
+.math-box .ml{font-size:9px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+.math-op{font-size:20px;font-weight:900;color:var(--green);text-align:center;padding:0 4px;}
+/* ACCORDION */
+.acc{margin-bottom:12px;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,.08);}
+.ahdr{background:var(--navy);color:#fff;padding:14px 18px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;}
+.ahdr:hover{background:var(--deep);}
+.albl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+.atit{font-size:13px;font-weight:700;margin-top:2px;}
+.ach{font-size:16px;color:var(--gold);transition:transform .3s;}
+.acc.open .ach{transform:rotate(180deg);}
+.abody{display:none;background:#fff;padding:18px;}.acc.open .abody{display:block;}
+/* FASE */
+.fase{background:linear-gradient(135deg,var(--navy),var(--deep));color:#fff;border-radius:8px;padding:16px 22px;margin-bottom:12px;border-left:4px solid var(--gold);display:flex;align-items:center;gap:16px;}
+.fase-n{font-size:40px;font-weight:900;color:var(--gold);line-height:1;}
+.fase-info h3{font-size:14px;font-weight:800;}.fase-info p{font-size:11px;color:var(--gray);margin-top:2px;}
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;}
+.tbl th{background:var(--navy);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 13px;text-align:left;}
+.tbl td{padding:9px 13px;border-bottom:1px solid rgba(0,0,0,.07);font-size:12px;vertical-align:top;}
+.tbl tr:hover td{background:rgba(31,90,82,.04);}
+/* DIAGNÓSTICO ALERT */
+.diag-alert{background:linear-gradient(135deg,#1a3a1a,var(--green));border-radius:10px;padding:20px 24px;margin-bottom:20px;border:2px solid var(--gold);}
+.diag-alert h2{color:var(--gold);font-size:18px;font-weight:900;margin-bottom:6px;}
+.diag-alert p{color:rgba(255,255,255,.85);font-size:12px;line-height:1.7;}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-logo">SAS<span>.</span></div>
+  <div class="hdr-r"><h1>Estrategia Central</h1><p>Sistema para 5 clientes/mes sostenidos · Junio 2026</p></div>
+</div>
+
+<div class="nav">
+  <button class="nt active" onclick="showSec('diagnostico',this)">🔬 Diagnóstico</button>
+  <button class="nt" onclick="showSec('maquina',this)">⚙️ La Máquina</button>
+  <button class="nt" onclick="showSec('canales',this)">📡 Canales</button>
+  <button class="nt" onclick="showSec('contactos',this)">👥 Contactos</button>
+  <button class="nt" onclick="showSec('whatsapp',this)">📱 WhatsApp</button>
+  <button class="nt" onclick="showSec('ritmo',this)">📆 Ritmo Mensual</button>
+</div>
+
+<div class="main">
+
+<!-- ══════════ DIAGNÓSTICO ══════════ -->
+<div id="diagnostico" class="sec active">
+  <div class="sec-lbl">Punto de partida real</div>
+  <h2 class="sec-h">Diagnóstico <span>Junio 2026</span></h2>
+
+  <div class="diag-alert">
+    <h2>La situación real: pequeño, pero el motor funciona</h2>
+    <p>TikTok 217 seguidores pero 2.896 likes — eso es un ratio de engagement de 13x, lo que dice que el contenido conecta cuando llega. Instagram 1.056 seguidores con 804 publicaciones — mucho volumen, bajo crecimiento, lo que indica que el formato o la distribución necesita ajuste. LinkedIn 206 seguidores — el canal más subutilizado y el más rentable para conversión directa. 3 clientes activos. La base existe. El trabajo ahora es construir el sistema de salida, no el de entrada.</p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="stat-n">217</div><div class="stat-l">TikTok Seg.</div><div class="stat-sub">2.896 likes · ratio 13x</div></div>
+    <div class="stat"><div class="stat-n">1.056</div><div class="stat-l">Instagram Seg.</div><div class="stat-sub">804 publicaciones</div></div>
+    <div class="stat"><div class="stat-n">206</div><div class="stat-l">LinkedIn Seg.</div><div class="stat-sub">29 visitas recientes</div></div>
+    <div class="stat"><div class="stat-n">3</div><div class="stat-l">Clientes Activos</div><div class="stat-sub">Meta: 8 total</div></div>
+    <div class="stat"><div class="stat-n">13</div><div class="stat-l">LinkedIn Confirmados</div><div class="stat-sub">Con mensajes listos</div></div>
+    <div class="stat"><div class="stat-n">$100</div><div class="stat-l">Espacio de Orden</div><div class="stat-sub">Exactamente 2 sesiones</div></div>
+  </div>
+
+  <div class="card">
+    <div class="blk-t">El diagnóstico canal por canal</div>
+    <div class="two">
+      <div>
+        <div class="insight"><strong>TikTok @pymesalhorno</strong><br>217 seguidores no es el problema. El mejor video llegó a 1.600+ vistas orgánicas — eso significa que el algoritmo Para Ti está distribuyendo. El problema es volumen: con 1-2 videos por semana, el canal no tiene masa crítica. Necesita 4-5 videos semanales consistentes para que el algoritmo construya contexto y empiece a distribuir de forma más agresiva.</div>
+        <div class="insight"><strong>Instagram @sebacoach24</strong><br>804 publicaciones y 1.056 seguidores es una señal: hay contenido pero algo en el formato o consistencia del mensaje no convierte visitas en seguimiento. La cuenta necesita un reencuadre visual + mayor cadencia de Reels (no solo posts). El contenido de TikTok publicado como Reel debería acelerar el crecimiento.</div>
+      </div>
+      <div>
+        <div class="insight"><strong>LinkedIn — 206 seguidores</strong><br>Es el canal más subutilizado y el más rentable. Cada conexión es un Gerente General, Director o Dueño de PYME calificado. Con el sistema de 7 solicitudes/día y los mensajes correctos, LinkedIn puede generar 3-4 reuniones mensuales de forma consistente. Es el canal de conversión directa.</div>
+        <div class="insight"><strong>WhatsApp — Red caliente</strong><br>Los grupos A, B, C representan docenas de personas que ya te conocen. La red caliente siempre convierte mejor que la red fría. El Grupo C (referidores) es el más urgente: si cada referidor activo te trae 1 prospecto, con 6 referidores ya tenés 6 conversaciones potenciales este mes.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="blk-t">Por qué TikTok es el motor principal de crecimiento</div>
+    <div class="hi-gold">Los algoritmos de TikTok e Instagram Reels son los únicos canales donde podés llegar a 10.000 personas con 217 seguidores. LinkedIn y WhatsApp convierten mejor, pero dependen de audiencias ya existentes. TikTok construye la audiencia nueva.</div>
+    <table class="tbl">
+      <tr><th>Canal</th><th>Rol en el sistema</th><th>Velocidad</th><th>Calidad de lead</th></tr>
+      <tr><td><strong>TikTok</strong></td><td>Construir audiencia · Top of funnel</td><td>Alta si hay volumen</td><td>Media (fría)</td></tr>
+      <tr><td><strong>Instagram</strong></td><td>Repositorio · Prueba social · DMs</td><td>Media</td><td>Media-Alta</td></tr>
+      <tr><td><strong>LinkedIn</strong></td><td>Conversión directa · Outreach calificado</td><td>Controlada</td><td>Alta (activa)</td></tr>
+      <tr><td><strong>WhatsApp</strong></td><td>Cierre · Referidos · Red caliente</td><td>Inmediata</td><td>Muy alta (caliente)</td></tr>
+      <tr><td><strong>Modo Líder</strong></td><td>Lead magnet · Cualificación · Conversación</td><td>Según distribución</td><td>Alta (self-selected)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="blk-t">Los dos productos y cómo se relacionan</div>
+    <div class="two">
+      <div style="border:2px solid var(--gold);border-radius:8px;padding:16px;">
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Entrada</div>
+        <div style="font-size:18px;font-weight:900;margin-bottom:6px;">Espacio de Orden</div>
+        <div style="font-size:22px;font-weight:900;color:var(--gold);margin-bottom:8px;">$100 USD</div>
+        <p style="font-size:12px;color:#555;line-height:1.6;">Exactamente 2 sesiones. Un problema específico. Resultado visible. Baja fricción de entrada. Diseñado para convertir → RE-MEDIO.</p>
+      </div>
+      <div style="border:2px solid var(--green);border-radius:8px;padding:16px;">
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:6px;">Principal</div>
+        <div style="font-size:18px;font-weight:900;margin-bottom:6px;">RE-MEDIO</div>
+        <div style="font-size:22px;font-weight:900;color:var(--green);margin-bottom:8px;">$800–1.000 USD/mes</div>
+        <p style="font-size:12px;color:#555;line-height:1.6;">6 meses. Mandos medios. El programa principal de SAS. La meta es tener 5 clientes en RE-MEDIO sostenidos.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ LA MÁQUINA ══════════ -->
+<div id="maquina" class="sec">
+  <div class="sec-lbl">El sistema de adquisición</div>
+  <h2 class="sec-h">La <span>Máquina</span></h2>
+
+  <div class="card">
+    <div class="blk-t">Cómo funciona el sistema completo</div>
+    <div class="hi-gold">Cada canal tiene un rol específico. Ningún canal hace todo. La magia está en que todos apuntan al mismo embudo y el mismo resultado: una reunión de 30 minutos que abre un Espacio de Orden.</div>
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="funnel-n">1</div>
+        <div class="funnel-info">
+          <h4>CONTENIDO — Construir autoridad y alcance</h4>
+          <p>TikTok + Instagram Reels. Postura + Caso + Tensión. El contenido no vende. Instala la voz y genera el contexto para que el DM tenga sentido.</p>
+          <div class="fnum">Meta: 5 videos/semana · 20/mes · Alcance progresivo</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-n">2</div>
+        <div class="funnel-info">
+          <h4>MODO LÍDER — Captura y cualifica leads</h4>
+          <p>Lead magnet gratuito. Quien lo hace levanta la mano como líder interesado en su desarrollo. El resultado abre la conversación de forma natural.</p>
+          <div class="fnum">Meta: 30 enviados/mes · Canal: WA, LinkedIn, bio IG/TikTok</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-n">3</div>
+        <div class="funnel-info">
+          <h4>LINKEDIN OUTREACH — Prospección directa calificada</h4>
+          <p>7 solicitudes/día a Gerentes Generales, Directores, Dueños de 4 provincias. Al aceptar: mensaje de apertura → Modo Líder → conversación → reunión.</p>
+          <div class="fnum">Meta: 210 solicitudes/mes → ~60 aceptan → ~8 conversaciones → 3-4 reuniones</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-n">4</div>
+        <div class="funnel-info">
+          <h4>WHATSAPP RED CALIENTE — Activación de red existente</h4>
+          <p>Grupos A (testimonios), B (prospectos), C (referidores). La red caliente convierte 5x mejor que la fría. Un referidor activo puede traer 2-3 prospectos en un mes.</p>
+          <div class="fnum">Meta: Grupos C activado hoy · Grupo B desde 15/6 · Grupo A rolling</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-n">5</div>
+        <div class="funnel-info">
+          <h4>REUNIÓN 30 MIN — El momento que decide todo</h4>
+          <p>Sin agenda de venta. El objetivo de la reunión es entender el momento SAS del prospecto y proponer la intervención correcta. La reunión es el producto, no el pitch.</p>
+          <div class="fnum">Meta: 10 reuniones/mes (fuentes: LinkedIn 3-4 + TikTok/IG inbound 3-4 + WA 2-3)</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-n">→</div>
+        <div class="funnel-info">
+          <h4>ESPACIO DE ORDEN → RE-MEDIO → CLIENTE SOSTENIDO</h4>
+          <p>El Espacio de Orden ($100, 2 sesiones) es la entrada de baja fricción. Funciona como diagnóstico real que naturalmente abre RE-MEDIO. Meta final: 5 clientes en RE-MEDIO sostenidos.</p>
+          <div class="fnum">10 reuniones × 50% cierre = 5 Espacios de Orden/mes → 1-2 pasan a RE-MEDIO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="blk-t">Los números: cómo llegar a 5 clientes/mes</div>
+    <div style="overflow-x:auto;margin-bottom:16px;">
+      <div class="math-row">
+        <div class="math-box"><div class="mn">210</div><div class="ml">Solicitudes LI/mes</div></div>
+        <div class="math-op">→</div>
+        <div class="math-box"><div class="mn">63</div><div class="ml">Aceptan (~30%)</div></div>
+        <div class="math-op">→</div>
+        <div class="math-box"><div class="mn">8</div><div class="ml">Conversaciones activas</div></div>
+        <div class="math-op">→</div>
+        <div class="math-box"><div class="mn">4</div><div class="ml">Reuniones LI</div></div>
+      </div>
+    </div>
+    <div class="two">
+      <div style="background:#f8f7f4;border-radius:8px;padding:14px;">
+        <div style="font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:8px;">Fuentes de reuniones/mes</div>
+        <div style="font-size:12px;line-height:2;">
+          LinkedIn outreach: <strong>3–4 reuniones</strong><br>
+          TikTok/IG inbound DMs: <strong>2–3 reuniones</strong><br>
+          WhatsApp red caliente: <strong>2–3 reuniones</strong><br>
+          Referidos activos: <strong>1–2 reuniones</strong><br>
+          <strong style="color:var(--green);">Total posible: 8–12 reuniones/mes</strong>
+        </div>
+      </div>
+      <div style="background:#f8f7f4;border-radius:8px;padding:14px;">
+        <div style="font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:8px;">Conversión hacia clientes</div>
+        <div style="font-size:12px;line-height:2;">
+          10 reuniones × 50% cierre = <strong>5 Esp. de Orden</strong><br>
+          5 Esp. Orden × 40% → RE-MEDIO = <strong>2 nuevos RE-MEDIO/mes</strong><br>
+          RE-MEDIO dura 6 meses → <strong>acumulás clientes</strong><br>
+          3 actuales + 2/mes × 3 meses = <strong>9 clientes en 3 meses</strong><br>
+          <strong style="color:var(--gold);">Sostenibilidad: reemplazar 2 que terminan con 2 nuevos/mes</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="blk-t">El modelo SAS como herramienta de conversión</div>
+    <p style="font-size:12px;color:#555;margin-bottom:14px;">En cada reunión, el objetivo es identificar en qué momento está el prospecto. Eso determina qué proponés. Nunca proponés antes de diagnosticar.</p>
+    <table class="tbl">
+      <tr><th>Momento SAS</th><th>Síntoma que nombra</th><th>Intervención</th><th>Precio entrada</th></tr>
+      <tr><td><strong>Saturación</strong></td><td>"Dependo demasiado de mí para que todo funcione"</td><td>Espacio de Orden → Mapa del Sistema</td><td>$100</td></tr>
+      <tr><td><strong>Desorden</strong></td><td>"Crece el negocio pero se desordenan los procesos"</td><td>RE-MEDIO + Roles Claros</td><td>$800–1000/mes</td></tr>
+      <tr><td><strong>Dirección</strong></td><td>"La operación funciona, yo necesito crecer como líder"</td><td>Mentoría Personalizada + Cultura en Acción</td><td>A convenir</td></tr>
+      <tr><td><strong>Consolidación</strong></td><td>"Funciona bien, quiero sostenerlo y medirlo"</td><td>Pulso</td><td>A convenir</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="blk-t">El diferenciador: 30 años en canchas, no en aulas</div>
+    <div class="hi">El posicionamiento de Seba no es "coach de negocios". Es el único consultor de la región con 30 años entrenando equipos en situaciones de presión real — canchas de básquet, asociaciones, organizaciones complejas. Eso no es un detalle del CV. Es el núcleo de la propuesta de valor y la razón por la que el contenido conecta.</div>
+    <div class="two">
+      <div class="insight"><strong>Lo que dice la competencia:</strong> "Te ayudo a liderar mejor", "Desarrollá tu potencial", "Coaching ejecutivo certificado". Genérico, intercambiable, olvidable.</div>
+      <div class="insight"><strong>Lo que dice Seba:</strong> "30 años entrenando equipos que tenían que ganar bajo presión. Eso lo aplico en tu empresa." Específico, memorable, con prueba implícita.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ CANALES ══════════ -->
+<div id="canales" class="sec">
+  <div class="sec-lbl">Sistema por plataforma</div>
+  <h2 class="sec-h">Estrategia de <span>Canales</span></h2>
+
+  <!-- TIKTOK -->
+  <div class="canal canal-tt">
+    <div class="canal-hdr">
+      <div><h3>TikTok @pymesalhorno</h3><p style="font-size:11px;color:rgba(255,255,255,.6);margin-top:2px;">217 seguidores · 2.896 likes · ratio 13x</p></div>
+      <div class="canal-num">🎬</div>
+    </div>
+    <div class="canal-body" style="padding-top:16px;">
+      <div class="hi-gold">Rol: construir audiencia nueva. El único canal donde 217 seguidores pueden generar 10.000 vistas. La fórmula ya funciona — falta volumen.</div>
+      <div class="two" style="margin-bottom:12px;">
+        <div class="insight"><strong>Qué funciona (datos reales):</strong> Contenido de dos personajes implícitos — el dueño y el empleado en conflicto. El mejor video (1.600+ vistas) fue "Para vs En". El Para Ti distribuye cuando hay watch time alto en los primeros 3 segundos.</div>
+        <div class="insight"><strong>Qué cambiar:</strong> Pasar de 1-2 videos/semana a 4-5. El algoritmo necesita consistencia para aprender el contexto del canal. Un video que explota compensa 10 que no lo hacen.</div>
+      </div>
+      <div class="blk-t">Sistema de contenido TikTok</div>
+      <table class="tbl">
+        <tr><th>Frecuencia</th><th>Tipo</th><th>Estructura</th><th>CTA</th></tr>
+        <tr><td>Lun · Mié · Jue</td><td>Normal — Autoridad</td><td>Postura + Caso + Tensión (45-55 seg)</td><td>Uno solo: "Escribime" o comentarios</td></tr>
+        <tr><td>Mar · Vie</td><td>Engagement — Tensión pura</td><td>Pregunta polarizante sin respuesta completa (30-40 seg)</td><td>"Decime en comentarios"</td></tr>
+        <tr><td>1x/semana</td><td>Extra — Modo Líder</td><td>Demo en pantalla o análisis de resultado</td><td>"Link en bio"</td></tr>
+      </table>
+      <div class="blk-t" style="margin-top:14px;">Fórmula de hook que funciona</div>
+      <div class="acc">
+        <div class="ahdr" onclick="togAcc(this)"><div><div class="albl">Tipo A — Conflicto implícito entre dos personas</div><div class="atit">El que más convierte en TikTok/IG</div></div><div class="ach">▼</div></div>
+        <div class="abody">
+          <p style="font-size:12px;color:#555;margin-bottom:10px;">Un dueño y alguien de su equipo. El problema entre los dos. Los dos lados del scroll se detienen.</p>
+          <div class="msg gold">Ejemplos:<br>"Tu mejor empleado se va a ir. Y la culpa es tuya."<br>"Le diste más responsabilidad. No le diste los medios para asumirla."<br>"Lo formaste. Ahora compite con vos."<br>"Te llaman en vacaciones porque vos los entrenaste para necesitarte."</div>
+        </div>
+      </div>
+      <div class="acc">
+        <div class="ahdr" onclick="togAcc(this)"><div><div class="albl">Tipo B — Postura incómoda sobre creencias comunes</div><div class="atit">Genera comentarios y saves</div></div><div class="ach">▼</div></div>
+        <div class="abody">
+          <div class="msg gold">Ejemplos:<br>"'Delegá más' es el consejo más inútil que le podés dar a un dueño de PYME."<br>"No es un problema de tu equipo. Es el resultado de cómo lo construiste."<br>"Si tu empresa no puede funcionar 48 horas sin vos, no tenés empresa. Tenés trabajo."<br>"Los buenos líderes no empoderan. Construyen el marco dentro del cual la gente puede actuar sola."</div>
+        </div>
+      </div>
+      <div class="acc">
+        <div class="ahdr" onclick="togAcc(this)"><div><div class="albl">Tipo C — Historia personal de básquet → empresa</div><div class="atit">El diferenciador único de Seba</div></div><div class="ach">▼</div></div>
+        <div class="abody">
+          <p style="font-size:12px;color:#555;margin-bottom:10px;">30 años de cancha como prueba de lo que enseña. Esto es lo que ningún otro consultor puede hacer.</p>
+          <div class="msg gold">Estructura: situación de partido real → decisión que tomé → resultado → lo que aprendí → el paralelo en una empresa → tensión para el dueño que escucha.<br><br>Ejemplos de hooks:<br>"Perdí una final que no debería haber perdido. La culpa fue mía, no del equipo."<br>"En el último cuarto, mis jugadores me miraban esperando instrucciones. Eso lo hice yo."<br>"El partido más difícil que dirigí no fue el más complicado tácticamente. Fue el que tuve que ganar con el equipo equivocado."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM -->
+  <div class="canal canal-ig">
+    <div class="canal-hdr">
+      <div><h3>Instagram @sebacoach24</h3><p style="font-size:11px;color:rgba(255,255,255,.7);margin-top:2px;">1.056 seguidores · 804 publicaciones</p></div>
+      <div class="canal-num">📸</div>
+    </div>
+    <div class="canal-body" style="padding-top:16px;">
+      <div class="hi">Rol: repositorio de autoridad + conversión de audiencia tibia. El contenido de TikTok publicado como Reel multiplica el alcance sin trabajo extra.</div>
+      <div class="two" style="margin-bottom:12px;">
+        <div class="insight"><strong>El problema:</strong> 804 publicaciones y 1.056 seguidores es señal de mucho contenido estático (posts) que no se distribuye. Instagram prioriza Reels en distribución orgánica. El shift es: de posts a Reels.</div>
+        <div class="insight"><strong>La solución:</strong> Todo video de TikTok se publica como Reel (sin marca de agua de TikTok). Agregar 1 carrusel semanal de alta retención (slides tipo "3 señales de que..."). Los carruseles generan guardados = alcance extra.</div>
+      </div>
+      <div class="blk-t">Sistema IG</div>
+      <table class="tbl">
+        <tr><th>Formato</th><th>Frecuencia</th><th>Propósito</th></tr>
+        <tr><td>Reel (repurpose TikTok)</td><td>4-5 por semana</td><td>Alcance · Nuevos seguidores</td></tr>
+        <tr><td>Carrusel "X señales de que..."</td><td>1 por semana</td><td>Saves · Shares · Credibilidad</td></tr>
+        <tr><td>Stories con CTA directo</td><td>3-4 por semana</td><td>Conversión · DMs · Link bio</td></tr>
+        <tr><td>Post estático</td><td>0 por semana</td><td>Eliminar — no distribuye</td></tr>
+      </table>
+      <div class="insight" style="margin-top:12px;"><strong>La bio ya está bien:</strong> "Tu empresa no debería depender de vos para funcionar. → Saturación: Espacio de Orden / → Desorden: RE-MEDIO / Escribime." Tiene el problema, la solución y el CTA. No cambiar.</div>
+    </div>
+  </div>
+
+  <!-- LINKEDIN -->
+  <div class="canal canal-li">
+    <div class="canal-hdr">
+      <div><h3>LinkedIn — Sebastian Alejandro Svetliza</h3><p style="font-size:11px;color:rgba(255,255,255,.7);margin-top:2px;">206 seguidores · Sales Navigator Premium · 3.500+ prospectos guardados</p></div>
+      <div class="canal-num">💼</div>
+    </div>
+    <div class="canal-body" style="padding-top:16px;">
+      <div class="hi-gold">Rol: conversión directa. Cada solicitud aceptada es un Gerente General, Director o Dueño que voluntariamente aceptó conectar. Más calificado que cualquier lead frío de TikTok.</div>
+      <div class="two" style="margin-bottom:12px;">
+        <div class="insight"><strong>Sales Navigator vence ~11/6:</strong> Usar al máximo esta semana. Extraer los mejores prospectos del filtro guardado. Después de que venza: búsqueda manual en LinkedIn con filtros de cargo + ubicación. Más lento pero posible.</div>
+        <div class="insight"><strong>13 contactos ya conectados:</strong> Emanuel Fellay (hottest, respondió), Emiliano Liguori (conversación activa), y 11 nuevos. Todos con mensajes personalizados en la pestaña Contactos.</div>
+      </div>
+      <div class="blk-t">Flujo de 5 pasos (ya probado)</div>
+      <div style="display:grid;gap:8px;">
+        <div class="insight"><strong>Paso 1 — Solicitud sin nota:</strong> Mayor tasa de aceptación. Esperar 2-5 días antes de escribir. No explicar nada todavía.</div>
+        <div class="insight"><strong>Paso 2 — Al aceptar (mensaje inmediato):</strong> Presentación + pregunta de diagnóstico. Nunca hablar del servicio todavía. → ver Contactos para mensajes personalizados por persona.</div>
+        <div class="insight"><strong>Paso 3 — Si responde con interés:</strong> Profundizar el contexto. "¿Qué está pasando puntualmente? ¿Tenés equipo a cargo?" Dependiendo de la respuesta, enviás Modo Líder o proponés reunión directa.</div>
+        <div class="insight"><strong>Paso 4 — Cierre a reunión:</strong> "30 minutos, sin agenda de venta, es una conversación para entender tu momento y ver si puedo sumar algo."</div>
+        <div class="insight"><strong>Paso 5 — Si hizo Modo Líder:</strong> "Eso me ayuda a entender tu situación. ¿Cuándo tenés 30 minutos? Lo revisamos juntos y te doy mi lectura."</div>
+      </div>
+      <div class="blk-t" style="margin-top:14px;">Ritual LinkedIn diario — 10 minutos</div>
+      <div class="msg" style="margin-top:0;">2 min — Solicitudes aceptadas → mensaje de apertura
+3 min — Responder conversaciones activas
+3 min — 5-7 nuevas solicitudes
+2 min — Comentar 2-3 posts de prospectos objetivo (visibilidad)</div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP -->
+  <div class="canal canal-wa">
+    <div class="canal-hdr">
+      <div><h3>WhatsApp — Red caliente</h3><p style="font-size:11px;color:rgba(255,255,255,.7);margin-top:2px;">Grupos A · B · C · Stand</p></div>
+      <div class="canal-num">📱</div>
+    </div>
+    <div class="canal-body" style="padding-top:16px;">
+      <div class="hi">Rol: activación de red caliente. La conversión más rápida del sistema. Alguien que ya te conoce necesita mucho menos fricción para llegar a una reunión.</div>
+      <div class="insight"><strong>La secuencia correcta:</strong> Grupo C (referidores) → hoy. Grupo A (testimonios) → esta semana. Grupo B (prospectos) → desde 15/6. El Grupo C puede multiplicar el alcance exponencialmente si cada referidor activo te presenta a 2-3 personas de su red.</div>
+      <p style="font-size:12px;color:#555;margin-top:10px;">→ Ver todos los mensajes listos en la pestaña <strong>WhatsApp</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ CONTACTOS LINKEDIN ══════════ -->
+<div id="contactos" class="sec">
+  <div class="sec-lbl">13 conexiones confirmadas</div>
+  <h2 class="sec-h">Contactos <span>LinkedIn</span></h2>
+  <div class="hi-gold">Todos aceptaron la conexión. El siguiente paso es abrir conversación. Mensaje personalizado por persona según su contexto. Nunca hablar del servicio antes de que el otro exprese una necesidad.</div>
+
+  <!-- URGENTE -->
+  <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin:16px 0 8px;">🔴 Urgente — respondió, proponer reunión ahora</div>
+
+  <div class="contact urgente">
+    <div class="contact-hdr">
+      <div><div class="contact-name">Emanuel Fellay</div><div class="contact-role">Gerente General — EntreNuts</div></div>
+      <span class="contact-badge badge-urgente">Respondió</span>
+    </div>
+    <div class="contact-body">
+      <div class="contact-context">El lead más caliente. Ya respondió. No es momento de Modo Líder — es momento de proponer el Espacio de Orden directamente. Tiene equipo, crece, necesita estructura.</div>
+      <div class="msg" id="msg-fellay">Hola Emanuel, bien que respondiste.
+
+Por lo que compartís y lo que veo de EntreNuts, me parece que estás en un momento donde la empresa necesita que vos puedas operar desde otro nivel — no solo apagar lo que aparece.
+
+Tengo algo concreto para eso: el Espacio de Orden. Son exactamente 2 sesiones donde trabajamos el punto de mayor costo para vos hoy — sin proceso largo, sin diagnóstico interminable.
+
+¿Te parece que lo charlamos 30 minutos esta semana? Online, sin costo.</div>
+      <button class="copy-btn" onclick="copiar('msg-fellay',this)">COPIAR MENSAJE</button>
+      <select class="status-sel" id="st-fellay" onchange="saveStatus('fellay',this.value)">
+        <option value="respondio">✅ Respondió</option>
+        <option value="propuesta">📨 Propuesta enviada</option>
+        <option value="reunion">📅 Reunión agendada</option>
+        <option value="cliente">🎯 Cliente</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ACTIVO -->
+  <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:16px 0 8px;">🟡 Conversación activa</div>
+
+  <div class="contact activo">
+    <div class="contact-hdr">
+      <div><div class="contact-name">Emiliano Liguori</div><div class="contact-role">Gerente General — Van Publicidad, Rosario</div></div>
+      <span class="contact-badge badge-activo">Activo</span>
+    </div>
+    <div class="contact-body">
+      <div class="contact-context">Conversación en curso. Agencia de publicidad = equipo creativo que el GG tiene que sostener con presión constante de clientes. RE-MEDIO angle fuerte.</div>
+      <div class="msg" id="msg-liguori">Emiliano, te mando algo que armé para líderes que gestionan equipos de alta presión.
+
+Es un ejercicio de 5 minutos que te da un perfil bastante preciso de cómo decidís cuando el tiempo aprieta — no es un test teórico, es situacional.
+
+👉 sasconsultora24-rgb.github.io/modo-lider/
+
+Curioso qué te sale a vos.</div>
+      <button class="copy-btn" onclick="copiar('msg-liguori',this)">COPIAR MENSAJE</button>
+      <select class="status-sel" id="st-liguori" onchange="saveStatus('liguori',this.value)">
+        <option value="activo">💬 Conversación activa</option>
+        <option value="modo-lider">📤 Modo Líder enviado</option>
+        <option value="reunion">📅 Reunión agendada</option>
+        <option value="cliente">🎯 Cliente</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- NUEVOS -->
+  <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin:16px 0 8px;">🟢 Nuevos — enviar apertura</div>
+
+  <!-- Hernan Onaga -->
+  <div class="contact">
+    <div class="contact-hdr">
+      <div><div class="contact-name">Hernan R. Onaga</div><div class="contact-role">Co-Founder — QUADANT Brokers, Rosario</div></div>
+      <span class="contact-badge badge-nuevo">Nuevo</span>
+    </div>
+    <div class="contact-body">
+      <div class="contact-context">Co-fundador de una brokers firm. La dinámica de co-founders suele generar tensiones de roles y decisiones no resueltas. Angle: claridad de roles en un equipo fundador.</div>
+      <div class="msg" id="msg-onaga">Hernan, gracias por conectar.
+
+Trabajo con fundadores y directores en algo específico: cuando la empresa crece pero la estructura de decisión no acompaña el crecimiento.
+
+¿Es algo que estás viviendo en QUADANT?
+
+Abrazo, Seba — SAS Consultora</div>
+      <button class="copy-btn" onclick="copiar('msg-onaga',this)">COPIAR MENSAJE</button>
+      <select class="status-sel" id="st-onaga" onchange="saveStatus('onaga',this.value)">
+        <option value="nuevo">🆕 Sin contactar</option>
+        <option value="enviado">📤 Mensaje enviado</option>
+        <option value="respondio">✅ Respondió</option>
+        <option value="modo-lider">🎮 Modo Líder enviado</option>
+        <option value="reunion">📅 Reunión agendada</option>
+        <option value="cliente">🎯 Cliente</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Eduardo Matozo -->
+  <div class="contact">
+    <div class="contact-hdr">
+      <div><div class="contact-name">Eduardo Matozo</div><div class="contact-role">Gerente General — Parque Tecnológico Litoral</div></div>
+      <span class="contact-badge badge-referidor">Referidor potencial</span>
+    </div>
+    <div class="contact-body">
+      <div class="contact-context">GG de un parque tecnológico = acceso a decenas de PyMEs tecnológicas en crecimiento con problemas de estructura. No targetear como cliente — targetear como conector.</div>
+      <div class="msg" id="msg-matozo">Eduardo, gracias por conectar.
+
+Conozco un poco el Parque Tecnológico Litoral y me imagino que tenés contacto con muchos fundadores y directores de empresas en crecimiento.
+
+Trabajo con PyMEs en un momento específico: cuando la empresa crece pero sigue dependiendo demasiado de una sola persona para funcionar.
+
+Si alguna vez ves eso en alguien de tu ecosistema, me interesaría mucho que me lo presentes.
+
+Abrazo, Seba</div>
+      <button class="copy-btn" onclick="copiar('msg-matozo',this)">COPIAR MENSAJE</button>
+      <select class="status-sel" id="st-matozo" onchange="saveStatus('matozo',this.value)">
+        <option value="nuevo">🆕 Sin contactar</option>
+        <option value="enviado">📤 Mensaje enviado</option>
+        <option value="respondio">✅ Respondió</option>
+        <option value="referidor-activo">🔗 Referidor activo</option>
+        <option value="cliente">🎯 Cliente</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Mariano Cerini -->
+  <div class="contact">
+    <div class="contact-hdr">
+      <div><div class="contact-name">Mariano Gabriel Cerini</div><div class="contact-role">Gerente General — Cooperativa León Sola, Paraná</div></div>
+      <span class="contact-badge badge-nuevo">Nuevo</span>
+    </div>
+    <div class="contact-body">
+      <div class="contact-context">GG de cooperativa en Paraná = estructura con múltiples mandos medios y gobierno complejo. El RE-MEDIO es muy relevante para este contexto. Mismo territorio.</div>
+      <div class="msg" id="msg-cerini">Mariano, gracias por conectar. Paisanos de Paraná.
+
+Trabajo con directivos de organizaciones en algo concreto: cuando el equipo del medio — los mandos medios y coordinadores — necesita más herramientas para sostener la operación sin depender del nivel superior.
+
+En estructuras como las cooperativas eso tiene un peso particular.
+
+¿Es algo que resonó alguna vez en León Sola?
+
+Abrazo, Seba — SAS Consultora</div>
+      <button class="copy-btn" onclick="copiar('msg-cerini',this)">COPIAR MENSAJE</button>
+      <select class="status-sel" id="st-cerini" onchange="saveStatus('cerini',this.value)">
+        <option value="nuevo">🆕 Sin contactar</option><option value="enviado">📤 Enviado</option><option value="respondio">✅ Respondió</option><option value="reunion">📅 Reunión</option><option value="cliente">🎯 Cliente</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Martin Orzuza -->
+  <div class="contact">
+    <div class="contact-hdr">
+      <div><div class="contact-name">Martin Orzuza</div><div class="contact-role">Dueño — OM Soluciones Eléctricas</div></div>
+      <span class="contact-badge badge-nuevo">Nuevo</span>
+    </div>
+    <div class="contact-body">
+      <div class="contact-context">Dueño de empresa de servicios técnicos. Alta probabilidad de que todo pase por él — cotizaciones, problemas de obra, decisiones de equipo. Saturación clásica. Espacio de Orden directo.</div>
+      <div class="msg" id="msg-orzuza">Martín, gracias por conectar.
+
+Trabajo con dueños de empresas de servicios en algo específico: cuando todo sigue pasando por uno — las cotizaciones, los problemas en obra, las decisiones del equipo.
+
+¿Es algo que reconocés en tu día a día con OM?
+
+Abrazo, Seba — SAS Consultora</div>
+      <button class="copy-btn" onclick="copiar('msg-orzuza',this)">COPIAR MENSAJE</button>
+      <select class="status-sel" id="st-orzuza" onchange="saveStatus('orzuza',this.value)">
+        <option value="nuevo">🆕 Sin contactar</option><option value="enviado">📤 Enviado</option><option value="respondio">✅ Respondió</option><option value="reunion">📅 Reunión</option><option value="cliente">🎯 Cliente</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Augusto Hartmann -->
+  <div class="contact">
+    <div class="contact-hdr">
+      <div><div class="contact-name">Augusto Hartmann</div><div class="contact-role">Gerente General — Grupo Hartmann, Rafaela</div></div>
+      <span class="contact-badge badge-nuevo">Nuevo</span>
+    </div>
+    <div class="contact-body">
+      <div class="contact-context">GG de un grupo con múltiples unidades. La complejidad de gestionar varias empresas a la vez es el escenario ideal para el modelo SAS. Angle: dirección estratégica.</div>
+      <div class="msg" id="msg-hartmann">Augusto, gracias por conectar.
+
+Trabajo con directivos de grupos empresariales en algo que aparece mucho en estructuras como la de Hartmann: cuando la operación de cada unidad crece pero la dirección estratégica del conjunto queda en una sola persona.
+
+¿Es algo con lo que estás lidiando?
+
+Abrazo, Seba — SAS Consultora</div>
+      <button class="copy-btn" onclick="copiar('msg-hartmann',this)">COPIAR MENSAJE</button>
+      <select class="status-sel" id="st-hartmann" onchange="saveStatus('hartmann',this.value)">
+        <option value="nuevo">🆕 Sin contactar</option><option value="enviado">📤 Enviado</option><option value="respondio">✅ Respondió</option><option value="reunion">📅 Reunión</option><option value="cliente">🎯 Cliente</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Sebastian Zentner -->
+  <div class="contact">
+    <div class="contact-hdr">
+      <div><div class="contact-name">Sebastian Zentner</div><div class="contact-role">Gerente General — Farmacia Zentner · Docente gestión estratégica</div></div>
+      <span class="contact-badge badge-nuevo">Nuevo</span>
+    </div>
+    <div class="contact-body">
+      <div class="contact-context">Doble rol: dirige una empresa y enseña gestión. Entiende el lenguaje académico pero necesita resultados prácticos. El Modo Líder es ideal — conecta con alguien que enseña liderazgo.</div>
+      <div class="msg" id="msg-zentner">Sebastián, gracias por conectar. Interesante el doble rol — dirigir y enseñar gestión es una combinación que pocas personas tienen.
+
+Armé algo para líderes que quieran ver cómo deciden en situaciones de presión real. No es teórico — es 4 rondas de ejercicios con tiempo corriendo.
+
+👉 sasconsultora24-rgb.github.io/modo-lider/
+
+Curioso tu mirada siendo alguien que además enseña el tema.
+
+Abrazo, Seba</div>
+      <button class="copy-btn" onclick="copiar('msg-zentner',this)">COPIAR MENSAJE</button>
+      <select class="status-sel" id="st-zentner" onchange="saveStatus('zentner',this.value)">
+        <option value="nuevo">🆕 Sin contactar</option><option value="enviado">📤 Enviado</option><option value="respondio">✅ Respondió</option><option value="reunion">📅 Reunión</option><option value="cliente">🎯 Cliente</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Mauricio Portnoy -->
+  <div class="contact">
+    <div class="contact-hdr">
+      <div><div class="contact-name">Mauricio Portnoy</div><div class="contact-role">CEO — ModaShop</div></div>
+      <span class="contact-badge badge-nuevo">Nuevo</span>
+    </div>
+    <div class="contact-body">
+      <div class="contact-context">CEO de retail de moda. Equipos de ventas + operaciones + logística. Alta rotación, alta presión de resultados. El tema de mandos medios que sostengan el equipo sin el CEO es muy relevante.</div>
+      <div class="msg" id="msg-portnoy">Mauricio, gracias por conectar.
+
+En empresas de retail como ModaShop, uno de los temas que más aparece es sostener la performance del equipo de ventas sin que todo dependa del foco del CEO.
+
+¿Es algo que estás trabajando o que querés trabajar?
+
+Abrazo, Seba — SAS Consultora</div>
+      <button class="copy-btn" onclick="copiar('msg-portnoy',this)">COPIAR MENSAJE</button>
+      <select class="status-sel" id="st-portnoy" onchange="saveStatus('portnoy',this.value)">
+        <option value="nuevo">🆕 Sin contactar</option><option value="enviado">📤 Enviado</option><option value="respondio">✅ Respondió</option><option value="reunion">📅 Reunión</option><option value="cliente">🎯 Cliente</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Santiago Wasinger -->
+  <div class="contact">
+    <div class="contact-hdr">
+      <div><div class="contact-name">Santiago Wasinger</div><div class="contact-role">Gerente — Crespo, Entre Ríos</div></div>
+      <span class="contact-badge badge-nuevo">Nuevo</span>
+    </div>
+    <div class="contact-body">
+      <div class="contact-context">Gerente (no dueño) en Entre Ríos. Mando medio de alta responsabilidad. El RE-MEDIO está diseñado exactamente para este perfil.</div>
+      <div class="msg" id="msg-wasinger">Santiago, gracias por conectar. Compatriotas entrerrianos.
+
+Trabajo con gerentes y líderes de segunda línea en algo concreto: cuando tenés mucha responsabilidad pero no siempre las herramientas para ejercer la autoridad que el puesto requiere.
+
+¿Es algo que reconocés en tu rol?
+
+Abrazo, Seba — SAS Consultora</div>
+      <button class="copy-btn" onclick="copiar('msg-wasinger',this)">COPIAR MENSAJE</button>
+      <select class="status-sel" id="st-wasinger" onchange="saveStatus('wasinger',this.value)">
+        <option value="nuevo">🆕 Sin contactar</option><option value="enviado">📤 Enviado</option><option value="respondio">✅ Respondió</option><option value="reunion">📅 Reunión</option><option value="cliente">🎯 Cliente</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Hernan Pittavino -->
+  <div class="contact">
+    <div class="contact-hdr">
+      <div><div class="contact-name">Hernan Nicolas Pittavino</div><div class="contact-role">Ejecutivo Comercial — Ruben Paul SRL</div></div>
+      <span class="contact-badge badge-nuevo">Nuevo</span>
+    </div>
+    <div class="contact-body">
+      <div class="contact-context">Ejecutivo comercial — perfil de performance bajo presión constante. El Modo Líder conecta directo con alguien que toma decisiones en situaciones de alta presión de resultados.</div>
+      <div class="msg" id="msg-pittavino">Hernan, gracias por conectar.
+
+Para ejecutivos comerciales que toman decisiones bajo presión de resultados, armé algo que puede ser interesante.
+
+Son 4 rondas de ejercicios de liderazgo — 5 minutos — que muestran cómo decidís cuando el tiempo se acaba.
+
+👉 sasconsultora24-rgb.github.io/modo-lider/
+
+Si lo hacés, me contás qué apareció.
+
+Abrazo, Seba</div>
+      <button class="copy-btn" onclick="copiar('msg-pittavino',this)">COPIAR MENSAJE</button>
+      <select class="status-sel" id="st-pittavino" onchange="saveStatus('pittavino',this.value)">
+        <option value="nuevo">🆕 Sin contactar</option><option value="enviado">📤 Enviado</option><option value="respondio">✅ Respondió</option><option value="reunion">📅 Reunión</option><option value="cliente">🎯 Cliente</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Juan Colobig -->
+  <div class="contact">
+    <div class="contact-hdr">
+      <div><div class="contact-name">Juan Matías Colobig</div><div class="contact-role">Gerente de Operaciones — Casino Victoria SA</div></div>
+      <span class="contact-badge badge-nuevo">Nuevo</span>
+    </div>
+    <div class="contact-body">
+      <div class="contact-context">Gerente de operaciones en un casino = equipos grandes, alta rotación, operación 24/7, decisiones bajo presión constante. El perfil ideal para RE-MEDIO.</div>
+      <div class="msg" id="msg-colobig">Juan, gracias por conectar.
+
+Gestionar operaciones en un casino es uno de los contextos de más presión que hay — equipos grandes, turnos, decisiones que no esperan.
+
+Trabajo con gerentes de operaciones en algo específico: construir equipos que sostengan la operación con autonomía, sin que todo pase por el gerente.
+
+¿Es algo que estás trabajando?
+
+Abrazo, Seba — SAS Consultora</div>
+      <button class="copy-btn" onclick="copiar('msg-colobig',this)">COPIAR MENSAJE</button>
+      <select class="status-sel" id="st-colobig" onchange="saveStatus('colobig',this.value)">
+        <option value="nuevo">🆕 Sin contactar</option><option value="enviado">📤 Enviado</option><option value="respondio">✅ Respondió</option><option value="reunion">📅 Reunión</option><option value="cliente">🎯 Cliente</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Estefania Rosell -->
+  <div class="contact">
+    <div class="contact-hdr">
+      <div><div class="contact-name">Estefanía Rosell</div><div class="contact-role">Directora General — Nexum Partners AR, Rosario</div></div>
+      <span class="contact-badge badge-nuevo">Nuevo</span>
+    </div>
+    <div class="contact-body">
+      <div class="contact-context">Directora General de una firma de consultoría. Entiende el mundo del consulting. El ángulo es colega-a-colega + desarrollo del liderazgo personal de ella misma.</div>
+      <div class="msg" id="msg-rosell">Estefanía, gracias por conectar. Consultoras del mismo mundo.
+
+Armé algo para directivos que quieren ver su propio patrón de decisión bajo presión — no para sus clientes, sino para ellos mismos.
+
+Son 4 rondas de ejercicios reales. 5 minutos.
+
+👉 sasconsultora24-rgb.github.io/modo-lider/
+
+Curioso tu mirada. A los que trabajamos con líderes nos cuesta igual mirarnos.
+
+Abrazo, Seba</div>
+      <button class="copy-btn" onclick="copiar('msg-rosell',this)">COPIAR MENSAJE</button>
+      <select class="status-sel" id="st-rosell" onchange="saveStatus('rosell',this.value)">
+        <option value="nuevo">🆕 Sin contactar</option><option value="enviado">📤 Enviado</option><option value="respondio">✅ Respondió</option><option value="reunion">📅 Reunión</option><option value="cliente">🎯 Cliente</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ WHATSAPP ══════════ -->
+<div id="whatsapp" class="sec">
+  <div class="sec-lbl">Red caliente</div>
+  <h2 class="sec-h">WhatsApp — <span>Activación</span></h2>
+  <div class="hi-red">🔴 Grupo C va HOY. Es el más urgente y el de mayor palanca — un referidor activo multiplica tu alcance sin contenido ni outreach.</div>
+
+  <!-- GRUPO C -->
+  <div class="wagroup wag-c">
+    <div class="wagroup-hdr">
+      <div><div class="wagroup-title">GRUPO C — Referidores</div><div class="wagroup-sub">Enviar HOY · Baruh Guillermo · Fernando Schmukler · Luis Agrostiv · Germán Agrostiv · Ayelén Fontana · Patricia (Hotel Chajarí)</div></div>
+      <span style="font-size:20px;">🔴</span>
+    </div>
+    <div class="wagroup-body">
+      <div class="insight"><strong>Por qué primero:</strong> Estas personas ya te conocen y conocen tu trabajo. Una presentación suya vale más que 10 mensajes fríos. Un solo referidor activo puede traerte 2-3 conversaciones calificadas este mes.</div>
+      <div class="msg wamsg" id="msg-grupo-c">Hola [NOMBRE], ¿cómo estás?
+
+Estoy lanzando un espacio nuevo para dueños y directores — muy concreto: dos sesiones, un solo problema, resultado visible. Se llama Espacio de Orden.
+
+Si conocés a alguien que esté peleando con algo difícil en su empresa o equipo — que no sabe cómo ordenar, que está desbordado, que depende demasiado de él para que todo funcione — me encantaría que me lo presentes.
+
+Muchas gracias. Abrazo, Seba</div>
+      <button class="copy-btn" onclick="copiar('msg-grupo-c',this)">COPIAR MENSAJE GRUPO C</button>
+    </div>
+  </div>
+
+  <!-- GRUPO A -->
+  <div class="wagroup wag-a">
+    <div class="wagroup-hdr">
+      <div><div class="wagroup-title">GRUPO A — Testimonios</div><div class="wagroup-sub">Esta semana · Ramiro · Patricia · Guadalupe · Liza · Massin · Cossy</div></div>
+      <span style="font-size:20px;">🟢</span>
+    </div>
+    <div class="wagroup-body">
+      <div class="insight"><strong>Objetivo:</strong> Activar prueba social. Un testimonio real en Instagram o LinkedIn vale más que 10 videos de autoridad. No pedir algo elaborado — una línea alcanza.</div>
+      <div class="msg wamsg" id="msg-grupo-a">Hola [NOMBRE], ¿cómo va todo?
+
+Estoy armando un empuje nuevo con SAS y me acordé de vos.
+
+Si en algún momento querés contar algo de lo que trabajamos juntos — una línea, lo que sea, lo que sientas — me ayudaría un montón para que otros lo vean.
+
+No hay apuro, y si no es el momento también está bien.
+
+Abrazo, Seba</div>
+      <button class="copy-btn" onclick="copiar('msg-grupo-a',this)">COPIAR MENSAJE GRUPO A</button>
+    </div>
+  </div>
+
+  <!-- GRUPO B -->
+  <div class="wagroup wag-b">
+    <div class="wagroup-hdr">
+      <div><div class="wagroup-title">GRUPO B — Prospectos</div><div class="wagroup-sub">Desde 15/6 · Cristian Pereyra · Lucas Roblon · Flavia Delgado · Romi Galo · Gegenschatz</div></div>
+      <span style="font-size:20px;">🟡</span>
+    </div>
+    <div class="wagroup-body">
+      <div class="insight"><strong>Timing:</strong> No antes del 15/6. Dejar espacio desde el arranque del plan. Cuando llegues, el contenido de TikTok/IG ya habrá calentado el contexto.</div>
+      <div class="msg wamsg" id="msg-grupo-b">Hola [NOMBRE], ¿cómo estás?
+
+Estoy cerrando agenda para junio y quería escribirte antes de que se llene.
+
+Arranco algo nuevo que creo que te puede interesar — te cuento en 30 minutos si tenés un rato esta semana. Online, sin compromiso.
+
+¿Te queda bien martes o miércoles?
+
+Abrazo, Seba</div>
+      <button class="copy-btn" onclick="copiar('msg-grupo-b',this)">COPIAR MENSAJE GRUPO B</button>
+    </div>
+  </div>
+
+  <!-- STAND -->
+  <div class="card" style="border:2px solid var(--gold);">
+    <div class="blk-t">Stand Santa Hospitalidad — el contacto que respondió</div>
+    <div class="insight">52 contactados, 1 respondió. Ese 1 es el más calificado de todos — demostró interés activo. Responder inmediatamente con propuesta concreta.</div>
+    <div class="msg wamsg" id="msg-stand">¡Hola! Qué bueno que respondiste.
+
+Me quedé pensando en lo que me contaste en el stand. Hay algo muy concreto que puedo hacer con eso.
+
+El Espacio de Orden son exactamente 2 sesiones donde trabajamos el punto de mayor costo para vos en este momento — sin proceso largo.
+
+¿Charlamos 30 minutos esta semana?
+
+Abrazo, Seba</div>
+    <button class="copy-btn" onclick="copiar('msg-stand',this)">COPIAR RESPUESTA STAND</button>
+  </div>
+</div>
+
+<!-- ══════════ RITMO MENSUAL ══════════ -->
+<div id="ritmo" class="sec">
+  <div class="sec-lbl">Sistema sostenible</div>
+  <h2 class="sec-h">Ritmo <span>Mensual</span></h2>
+  <div class="hi-gold">Esto es lo que hacés todos los meses para sostener 5 clientes nuevos. No es un plan de 60 días. Es el sistema operativo de SAS.</div>
+
+  <div class="card">
+    <div class="blk-t">Las 3 palancas que no se negocian</div>
+    <div class="three">
+      <div style="border-left:4px solid var(--gold);padding-left:12px;">
+        <strong style="font-size:12px;color:var(--gold);">1. Contenido consistente</strong>
+        <p style="font-size:12px;color:#555;margin-top:4px;line-height:1.6;">Sin contenido, no hay alcance nuevo. Sin alcance nuevo, el embudo se seca. Mínimo 4 videos/semana en TikTok. No hay semana sin publicar.</p>
+      </div>
+      <div style="border-left:4px solid var(--green);padding-left:12px;">
+        <strong style="font-size:12px;color:var(--green);">2. LinkedIn todos los días</strong>
+        <p style="font-size:12px;color:#555;margin-top:4px;line-height:1.6;">10 minutos diarios. Sin excepción. Es el canal con mayor ROI por hora invertida. Un mes sin LinkedIn = un mes sin leads calificados nuevos.</p>
+      </div>
+      <div style="border-left:4px solid #0077B5;padding-left:12px;">
+        <strong style="font-size:12px;color:#0077B5;">3. Reuniones cerradas</strong>
+        <p style="font-size:12px;color:#555;margin-top:4px;line-height:1.6;">El contenido y el outreach sirven para llegar a la reunión. Si no cerrás reuniones activamente, nada más importa. Meta: 10 reuniones/mes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="blk-t">Semana tipo — repetir cada mes</div>
+    <div class="semana">
+      <div class="sem-hdr"><div class="sem-n">L</div><div class="sem-info"><h3>Lunes — Lanzar la semana</h3><p>Contenido + outreach + seguimiento</p></div></div>
+      <div class="sem-items">
+        <div class="sem-item"><strong>Video 1</strong>Publicar TikTok + Reel IG. Responder TODOS los comentarios de la semana anterior en la primera hora (crítico para el algoritmo).</div>
+        <div class="sem-item"><strong>LinkedIn</strong>10 min: aceptaciones + respuestas + 7 solicitudes nuevas.</div>
+        <div class="sem-item"><strong>Pipeline</strong>Revisar quién está en conversación. ¿Alguien necesita seguimiento hoy?</div>
+      </div>
+    </div>
+    <div class="semana">
+      <div class="sem-hdr"><div class="sem-n">M</div><div class="sem-info"><h3>Martes — Conversaciones</h3><p>Foco en responder y mover el pipeline</p></div></div>
+      <div class="sem-items">
+        <div class="sem-item"><strong>Video 2</strong>Publicar TikTok + Reel IG (tensión/pregunta). Responder comentarios.</div>
+        <div class="sem-item"><strong>DMs</strong>Responder todos los DMs de TikTok, IG, LinkedIn. Nunca dejar un DM sin responder el mismo día.</div>
+        <div class="sem-item"><strong>WhatsApp</strong>Seguimiento a conversaciones abiertas. Si alguien hizo Modo Líder: oferta de análisis personal.</div>
+      </div>
+    </div>
+    <div class="semana">
+      <div class="sem-hdr"><div class="sem-n">M</div><div class="sem-info"><h3>Miércoles — Contenido de profundidad</h3><p>El video más elaborado de la semana</p></div></div>
+      <div class="sem-items">
+        <div class="sem-item"><strong>Video 3</strong>El video más trabajado (Postura + Caso + Tensión completo). Publicar TikTok + Reel IG.</div>
+        <div class="sem-item"><strong>LinkedIn Post</strong>Publicar adaptación del video como texto de LinkedIn. No copiar el caption — reescribir para el formato largo.</div>
+        <div class="sem-item"><strong>Carrusel IG</strong>1 carrusel quincenal tipo "3 señales de que...". Genera saves y shares.</div>
+      </div>
+    </div>
+    <div class="semana">
+      <div class="sem-hdr"><div class="sem-n">J</div><div class="sem-info"><h3>Jueves — Reuniones y cierres</h3><p>El día más importante del sistema</p></div></div>
+      <div class="sem-items">
+        <div class="sem-item"><strong>Video 4</strong>Publicar TikTok + Reel IG. Responder comentarios.</div>
+        <div class="sem-item"><strong>Reuniones</strong>Concentrar las reuniones de 30 min este día. Cuando terminan: propuesta o siguiente paso antes de las 24hs.</div>
+        <div class="sem-item"><strong>Propuestas</strong>Toda reunión que terminó bien → propuesta escrita enviada el mismo día.</div>
+      </div>
+    </div>
+    <div class="semana">
+      <div class="sem-hdr"><div class="sem-n">V</div><div class="sem-info"><h3>Viernes — Cierre + medición</h3><p>Cerrar la semana con datos</p></div></div>
+      <div class="sem-items">
+        <div class="sem-item"><strong>Video 5</strong>Publicar TikTok + Reel IG. Más corto, más directo.</div>
+        <div class="sem-item"><strong>Actualizar pipeline</strong>5 minutos en la tabla de leads. ¿Quién avanzó? ¿Quién necesita seguimiento la semana que viene?</div>
+        <div class="sem-item"><strong>Revisión semanal</strong>Videos publicados. Reuniones hechas. Conversaciones abiertas. Clientes cerrados. Sin esto, no sabés qué ajustar.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="blk-t">Lo que se mide cada mes</div>
+    <table class="tbl">
+      <tr><th>Métrica</th><th>Meta mensual</th><th>Por qué importa</th></tr>
+      <tr><td><strong>Videos publicados</strong></td><td>20 (TikTok) + 20 (IG Reels)</td><td>Sin volumen no hay distribución</td></tr>
+      <tr><td><strong>Solicitudes LinkedIn</strong></td><td>140–210</td><td>Alimenta el pipeline calificado</td></tr>
+      <tr><td><strong>Conversaciones activas LI</strong></td><td>8–12</td><td>Indicador de calidad del mensaje de apertura</td></tr>
+      <tr><td><strong>Modo Líder enviados</strong></td><td>30</td><td>Cualifica el interés antes de la reunión</td></tr>
+      <tr><td><strong>Reuniones realizadas</strong></td><td>10</td><td>El único número que directamente genera clientes</td></tr>
+      <tr><td><strong>Propuestas enviadas</strong></td><td>5</td><td>50% de cierre meta</td></tr>
+      <tr><td><strong>Clientes nuevos</strong></td><td>5</td><td>La meta central del sistema</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="blk-t">La meta en 90 días</div>
+    <div class="two">
+      <div>
+        <div class="fase"><div class="fase-n">1</div><div class="fase-info"><h3>Junio — Instalar el sistema</h3><p>Activar todos los canales. Construir cadencia de contenido. Cerrar los primeros 2 clientes nuevos (total 5).</p></div></div>
+        <div class="fase"><div class="fase-n">2</div><div class="fase-info"><h3>Julio — Acelerar</h3><p>El contenido empieza a acumular. LinkedIn con masa crítica. Meta: 3 clientes nuevos (total 6–7).</p></div></div>
+        <div class="fase"><div class="fase-n">3</div><div class="fase-info"><h3>Agosto — Sostener</h3><p>El sistema está rodando. Optimizar lo que funciona. Cerrar o soltar lo que no. Meta: llegar a 8 clientes y sostenerlos.</p></div></div>
+      </div>
+      <div style="background:var(--navy);border-radius:8px;padding:20px;">
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">Proyección de ingresos</div>
+        <div style="font-size:12px;color:var(--gray);line-height:2.2;">
+          3 clientes actuales<br>
+          <span style="color:var(--gold);">+ 5 Espacio de Orden/mes</span> = $500 USD/mes<br>
+          <span style="color:var(--teal);">+ 2 RE-MEDIO nuevos/mes</span> = $1.600–2.000 USD/mes<br>
+          <span style="color:#fff;">5 RE-MEDIO sostenidos</span> = $4.000–5.000 USD/mes<br><br>
+          <span style="color:var(--gold);font-size:13px;font-weight:800;">Sistema en régimen: $5.000–6.000 USD/mes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<button class="edit-btn" id="editBtn" onclick="toggleEdit()" style="position:fixed;bottom:20px;right:20px;background:var(--green);color:#fff;border:none;border-radius:50px;padding:10px 20px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer;z-index:200;box-shadow:0 4px 20px rgba(0,0,0,.3);">✏️ Editar</button>
+
+<script>
+function showSec(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nt').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+function togAcc(hdr){hdr.parentElement.classList.toggle('open');}
+
+function copiar(id,btn){
+  const el=document.getElementById(id);
+  const txt=el?el.innerText:'';
+  navigator.clipboard.writeText(txt).then(()=>{
+    btn.textContent='✓ COPIADO';btn.classList.add('ok');
+    setTimeout(()=>{btn.textContent='COPIAR MENSAJE';btn.classList.remove('ok');},2000);
+  }).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    btn.textContent='✓ COPIADO';btn.classList.add('ok');
+    setTimeout(()=>{btn.textContent='COPIAR MENSAJE';btn.classList.remove('ok');},2000);
+  });
+}
+
+function saveStatus(key,val){
+  try{localStorage.setItem('sas_st_'+key,val);}catch(e){}
+}
+function loadStatuses(){
+  document.querySelectorAll('.status-sel').forEach(sel=>{
+    const key=sel.id.replace('st-','');
+    const saved=localStorage.getItem('sas_st_'+key);
+    if(saved)sel.value=saved;
+  });
+}
+
+function toggleEdit(){
+  const btn=document.getElementById('editBtn');
+  const on=btn.classList.toggle('on');
+  document.querySelectorAll('[contenteditable]').forEach(el=>{
+    if(el.tagName!=='INPUT'&&el.tagName!=='BUTTON'&&el.tagName!=='SELECT')el.setAttribute('contenteditable',on?'true':'false');
+  });
+  btn.textContent=on?'💾 Listo':'✏️ Editar';
+  if(on)btn.style.background='var(--gold)';else btn.style.background='var(--green)';
+}
+
+window.onload=function(){loadStatuses();};
+document.addEventListener('change',e=>{if(e.target.type==='checkbox')localStorage.setItem(e.target.id,e.target.checked);});
+</script>
+</body>
+</html>
