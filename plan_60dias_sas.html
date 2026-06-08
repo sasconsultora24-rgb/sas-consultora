@@ -123,13 +123,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--nav
 input.ked{background:transparent;border:none;font-family:'Montserrat',sans-serif;font-weight:900;font-size:24px;color:var(--gold);width:100%;text-align:center;}
 input.ked:focus{outline:none;}
 
-/* DONE STATE */
-.bloque{position:relative;}
-.bloque.done{opacity:.45;}
-.bloque.done::after{content:'✓ HECHO';position:absolute;top:8px;right:8px;background:#1F5A52;color:#fff;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:3px 8px;border-radius:20px;}
-.btn-done{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.15);border-radius:20px;font-size:9px;font-weight:800;letter-spacing:1px;padding:3px 8px;cursor:pointer;color:inherit;text-transform:uppercase;transition:all .15s;}
-.btn-done:hover{background:var(--green);color:#fff;border-color:var(--green);}
-.bloque.done .btn-done{background:var(--green);color:#fff;border-color:var(--green);}
+.overlay-box{background:rgba(199,166,90,.12);border:1px solid rgba(199,166,90,.4);border-radius:6px;padding:10px 14px;margin-top:8px;}
+.overlay-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#C7A65A;margin-bottom:4px;}
+.overlay-txt{font-size:13px;font-weight:600;color:var(--navy);font-style:italic;}
 </style>
 </head>
 <body>
@@ -197,7 +193,7 @@ input.ked:focus{outline:none;}
   <div class="gcard" id="g01">
     <div class="gcardh"><div class="gnum">G01</div><div><div class="gtitle">Dos días</div><div class="gsub">Semana 1 · Lunes 8/6 · Video de apertura · Engagement objetivo: saves + comentarios</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook — primeros 3 segundos</div><div class="hook-txt">"Si tu empresa no puede funcionar dos días sin vos, no tenés empresa. Tenés trabajo."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook — primeros 3 segundos</div><div class="hook-txt">Construiste una empresa para ser libre. Y terminaste siendo el empleado más esclavo del negocio.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Podés tomarte una semana libre ahora mismo?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura — 30 segundos</div><div class="gsec-txt">Muchos dueños de PyME construyeron algo que depende completamente de ellos. No lo notan porque lo viven como sacrificio necesario o como responsabilidad. Pero no es ninguna de las dos cosas. Es el resultado de cómo diseñaron — o dejaron de diseñar — su empresa. Una empresa bien diseñada puede funcionar sin su dueño. La tuya, ¿puede?</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso — 20 segundos</div><div class="gsec-txt">Tuve un cliente, dueño de una distribuidora en Entre Ríos. En diez años se tomó vacaciones cinco veces. Cada vez volvía al segundo día porque "algo pasaba". El negocio no podía funcionar sin él — porque nunca había construido para que lo hiciera. Ni siquiera sabía que eso era un problema.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión — 30 segundos</div><div class="gsec-txt">La pregunta que te hago es esta: ¿tu equipo te llama porque no puede sin vos, o porque vos los entrenaste para necesitarte? Son cosas distintas. Una es un problema del equipo. La otra es un problema tuyo. Y la diferencia entre las dos define todo lo que sigue.</div></div>
@@ -224,7 +220,7 @@ Si te reconociste → escribime ORDEN.
   <div class="gcard" id="g02">
     <div class="gcardh"><div class="gnum">G02</div><div><div class="gtitle">El mejor empleado se va a ir</div><div class="gsub">Semana 1 · Martes 9/6 · Engagement objetivo: comentarios "a mí me pasó"</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Tu mejor empleado se va a ir. Y no es culpa de él."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">Tu mejor empleado se va a ir. Y no es culpa de él.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Cuándo fue la última vez que tomó una decisión sin consultarte?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Los buenos empleados no se van por plata. Se van porque el líder nunca les construyó el espacio para crecer. Y la ironía más dolorosa es que los dueños que más invierten en su gente son los que más sufren cuando se van — porque nunca construyeron el marco para retenerlos.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un cliente invirtió tres años en su mejor vendedor. Lo formó, le confió cuentas grandes, le enseñó todo. Un día el vendedor le dijo que se iba. El dueño le ofreció más plata. El vendedor se fue igual. Porque lo que quería no era más sueldo. Quería más autonomía. Y eso nunca se lo habían dado.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Pregunta: ¿cuándo fue la última vez que tu mejor empleado tomó una decisión importante sin consultarte? Si la respuesta es "nunca" o "no me acuerdo" — el problema no es el empleado. Es que nunca se lo permitiste. Y eso tiene una solución, pero no es subir el sueldo.</div></div>
@@ -251,7 +247,7 @@ Si tardás en responder, ya tenés la respuesta.
   <div class="gcard" id="g03">
     <div class="gcardh"><div class="gnum">G03</div><div><div class="gtitle">Delegar no funciona</div><div class="gsub">Semana 1 · Miércoles 10/6 · Engagement objetivo: guardados + compartidos</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"'Delegá más' es el consejo más inútil que te pueden dar."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Delegá más" es el consejo más inútil que te pueden dar.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Delegás — o tirás trabajo y esperás resultados?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">La delegación sin estructura no es delegación. Es abandono disfrazado de confianza. Y los dueños que intentan delegar sin haberle dado a su equipo el marco, las herramientas y la autoridad para decidir, terminan con empleados que hacen mal lo que hacían bien ellos. Y con la creencia de que "mi equipo no está listo para más".</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Trabajé con el dueño de una constructora que me dijo que había intentado delegar tres veces y las tres terminó peor que antes. Cuando me explicó cómo delegaba, entendí el problema: le daba la tarea, no el criterio para decidir cuando algo salía distinto. Le daba el qué. Nunca el cómo pensar.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Delegar no es soltar una tarea. Es transferirle la capacidad de decisión dentro de un marco que vos definiste. Si no construiste ese marco, no podés delegar. Solo podés abandonar y esperar que salga bien. Y si no sale bien, el problema no era la delegación. Eras vos, que nunca diste el marco.</div></div>
@@ -278,7 +274,7 @@ Delegar es transferir la capacidad de decidir. No tirar el trabajo y esperar.
   <div class="gcard" id="g04">
     <div class="gcardh"><div class="gnum">G04</div><div><div class="gtitle">La reunión de los lunes</div><div class="gsub">Semana 1 · Jueves 11/6 · Engagement objetivo: comentarios + preguntas</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"La reunión de los lunes que nadie quiere tener pero todos necesitan."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">Seis años sin reunión semanal. Eso explica el 80% de los problemas que tenés.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Tu equipo puede sincronizarse sin que vos estés?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Las empresas sin reunión semanal estructurada tienen un problema de información que se convierte en problema de decisión, que se convierte en problema de resultado. Y el dueño termina siendo el único que lo sabe todo y el único que puede decidir todo. No porque sea el más capaz. Sino porque nadie más tiene la información completa.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un cliente llegó a mí porque "el equipo no se comunicaba". Cuando empezamos a trabajar descubrí que en seis años nunca habían tenido una reunión semanal estructurada. Todo pasaba por WhatsApp o en el pasillo. El dueño era el hub de toda la información. Sin él, nadie sabía lo suficiente para decidir.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">La reunión semanal no es para controlar. Es para que el equipo se sincronice sin necesitarte. Si tu equipo no puede sincronizarse sin tu presencia, el problema no es de comunicación. Es de diseño. La buena noticia: el diseño se puede cambiar.</div></div>
@@ -305,7 +301,7 @@ Si tu equipo no funciona sin tu presencia → no es un problema de comunicación
   <div class="gcard" id="g05">
     <div class="gcardh"><div class="gnum">G05</div><div><div class="gtitle">El límite que nunca pusiste</div><div class="gsub">Semana 1 · Viernes 12/6 · Engagement objetivo: saves + CTA escritura activa</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"El problema no es que tu equipo no tenga límites. Es que vos nunca los pusiste."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">Tu equipo te consulta todo. Nunca les dijiste qué podían decidir solos.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Qué puede decidir cada persona de tu equipo sin pedirte permiso?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Los líderes que se quejan de que "el equipo siempre le carga todo a uno" son exactamente los mismos que nunca definieron qué puede decidir cada persona sin consultar. La ausencia de límites claros no libera al equipo. Lo paraliza. Porque cuando no saben hasta dónde pueden ir, no van a ningún lado.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Trabajé con una directora de una empresa de servicios agotada. Todo llegaba a su escritorio — cotizaciones, problemas de clientes, el tema del microondas. Cuando le pregunté qué había definido explícitamente que su equipo podía decidir sin consultarla, se quedó en silencio. Nunca lo había escrito. Nunca lo había dicho.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">El equipo no te consulta porque no puede solo. Te consulta porque nunca le dijiste que podía. Primera acción concreta: agarrá un papel y escribí qué puede decidir cada persona de tu equipo sin pedirte permiso. Si tardás más de dos minutos, el problema ya lo encontraste.</div></div>
@@ -335,7 +331,7 @@ Si tardás más de 2 minutos → ya encontraste el problema.
   <div class="gcard" id="g06">
     <div class="gcardh"><div class="gnum">G06</div><div><div class="gtitle">El sueldo del dueño</div><div class="gsub">Semana 2 · Lunes 15/6 · Engagement objetivo: saves masivos + comentarios incómodos</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"¿Cuánto te pagás? La respuesta dice todo sobre tu empresa."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">¿Cuánto te pagás? La respuesta dice todo sobre tu empresa.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">4 años sin sueldo fijo. "Todo va al negocio."</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Los dueños de PyME son los peores pagados de su propia empresa. Trabajan más que nadie, cobran menos de lo que deberían, y encima ponen el capital. Y lo justifican con "es para el negocio". Eso no es sacrificio empresarial. Es una señal de que el negocio no está diseñado para sostenerse sin que vos te sacrifiques.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un cliente llevaba cuatro años sin pagarse un sueldo fijo. Reinvertía todo. Cuando hicimos los números, descubrimos que si contratara a alguien que hiciera lo que él hacía, le costaría el doble de lo que él se pagaba. Su empresa era rentable porque él se pagaba mal.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Si tu empresa no puede pagarte lo que vale tu trabajo, no es una empresa rentable. Es una empresa que te usa. La pregunta no es si lo sabés. La pregunta es cuándo vas a dejar de aceptar ese trato.</div></div>
@@ -364,7 +360,7 @@ Escribime SUELDO si querés hablarlo.
   <div class="gcard" id="g07">
     <div class="gcardh"><div class="gnum">G07</div><div><div class="gtitle">El que apaga el incendio</div><div class="gsub">Semana 2 · Martes 16/6 · Engagement objetivo: identificación masiva</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Si vos sos el que apaga todos los incendios en tu empresa, vos sos también el que los enciende."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">Si vos sos el que apaga todos los incendios, vos sos también el que los enciende.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Cuántas urgencias de hoy podría haber resuelto tu equipo solo?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">El dueño siempre disponible para resolver los problemas de su equipo no es un buen líder. Es un líder que, sin darse cuenta, enseñó a su equipo a no resolver solos. La cultura de la urgencia permanente la construyó él, un problema resuelto a la vez, durante años.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un cliente me decía que no podía desconectarse porque siempre pasaba algo. Cuando empezamos a registrar qué "cosas pasaban", descubrimos que el 80% eran situaciones que cualquier persona de su equipo podía resolver. Pero nadie lo hacía — porque él siempre llegaba primero. En 10 minutos. Siempre.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">La pregunta no es "¿por qué mi equipo no resuelve?" La pregunta es "¿qué hice yo para que mi equipo aprendiera a no resolver?" Son preguntas distintas. La primera culpa al equipo. La segunda te da el control — porque si vos construiste el patrón, vos podés cambiarlo.</div></div>
@@ -393,7 +389,7 @@ Es "¿qué hice YO para que mi equipo aprendiera a no resolver?"
   <div class="gcard" id="g08">
     <div class="gcardh"><div class="gnum">G08</div><div><div class="gtitle">Creciste. Te perdiste.</div><div class="gsub">Semana 2 · Miércoles 17/6 · Engagement objetivo: identificación + shares</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Tu empresa creció. Y en algún momento dejaste de saber cómo funciona."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">Facturación x3 en dos años. Y el dueño no sabe cómo funciona ninguna de sus áreas.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿El crecimiento te liberó — o te enterró más?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Las PyMEs crecen bien en los primeros años porque el dueño lo sabe todo. Los clientes, los procesos, el equipo, los números. Pero llega un punto donde la empresa es demasiado grande para que una persona la conozca completa. Y ahí aparece el caos. No porque el equipo sea malo. Sino porque el dueño siguió operando como si nada hubiera cambiado.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Empresa que triplicó su facturación en dos años. El dueño estaba feliz. Pero cuando me sentaba con el equipo, cada área trabajaba con su propio criterio y su propia versión de "lo que el dueño quiere". No había un sistema. Había improvisación coordinada. Funcionaba hasta que dejó de hacerlo.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">El crecimiento no crea problemas de estructura. Los expone. Si tu empresa creció y ahora está desordenada, el desorden estaba antes. Simplemente era pequeño y pasaba desapercibido. La pregunta es si vas a esperar a que sea un problema grande o lo ordenás ahora.</div></div>
@@ -422,7 +418,7 @@ Si tu empresa creció y ahora está desordenada → el desorden estaba antes.
   <div class="gcard" id="g09">
     <div class="gcardh"><div class="gnum">G09</div><div><div class="gtitle">El empleado que nunca da el paso</div><div class="gsub">Semana 2 · Jueves 18/6 · Engagement objetivo: reflexión profunda + saves</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Tenés un empleado muy bueno que nunca da el paso solo. Antes de culparlo, escuchá esto."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">El empleado sin iniciativa no lo tiene de nacimiento. Se lo sacaste vos.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Cuándo fue la última vez que alguien de tu equipo sorprendió con una decisión propia?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Hay empleados que hacen perfecto lo que se les pide y nunca más. No proponen, no deciden, no se adelantan. Los líderes los catalogan como "sin iniciativa". Pero la mayoría de las veces, ese empleado tuvo iniciativa una vez. Y algo pasó que enseñó que tenerla no era seguro.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">En una empresa que asesoré había una coordinadora que todos reconocían como muy capaz pero "reactiva". Cuando hablé con ella, me contó que dos años antes había tomado una decisión por iniciativa propia y el dueño la había corregido públicamente frente al equipo. Nunca más volvió a decidir sola.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">La iniciativa se construye o se destruye. Cada corrección pública, cada decisión revertida sin explicar por qué, cada "lo hago yo que sale mejor" — le enseña a tu equipo que la iniciativa es peligrosa. Eso no es un problema de ellos. Es el resultado del ambiente que construiste vos.</div></div>
@@ -451,7 +447,7 @@ Cada corrección pública la destruye.
   <div class="gcard" id="g10">
     <div class="gcardh"><div class="gnum">G10</div><div><div class="gtitle">La empresa de una persona</div><div class="gsub">Semana 2 · Viernes 19/6 · Engagement objetivo: alto impacto + CTA directo</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Construiste una empresa. Pero en realidad construiste un trabajo para una sola persona: vos."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">Construiste una empresa. Pero en realidad construiste un trabajo para una sola persona: vos.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Qué pasa en tu empresa si desaparecés 30 días?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Hay una diferencia fundamental entre tener una empresa y tener un trabajo propio con empleados. En una empresa, el sistema funciona sin el dueño. En un trabajo propio, el dueño es el sistema. La mayoría de las PyMEs argentinas son la segunda opción, aunque sus dueños crean que son la primera.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un cliente llegó a mí después de un problema de salud que lo tuvo fuera de la empresa 45 días. Cuando volvió: dos clientes perdidos, un conflicto con proveedor clave, decisiones incorrectas en las tres áreas principales. Todo por la ausencia de una sola persona.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Si tu empresa colapsa cuando vos no estás, construiste algo frágil. Y la fragilidad no es un problema del mercado ni del equipo ni de la economía. Es una decisión de diseño que tomaste sin darte cuenta — y que podés cambiar.</div></div>
@@ -482,7 +478,7 @@ Es una decisión de diseño que tomaste sin darte cuenta.
   <div class="gcard" id="g11">
     <div class="gcardh"><div class="gnum">G11</div><div><div class="gtitle">El equipo que espera</div><div class="gsub">Semana 3 · Lunes 22/6 · Engagement objetivo: identificación inmediata</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Tu equipo te está esperando todos los días para saber qué hacer. Y eso es un problema tuyo, no de ellos."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">Cuatro adultos capaces, esperando afuera de tu oficina para preguntarte qué hacer. Vos los entrenaste para eso.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Tu equipo arranca solo — o espera?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Un equipo que necesita instrucciones diarias no es un equipo. Es un grupo de personas con buenas intenciones pero sin el marco para actuar solas. Y ese marco no lo da el talento del equipo. Lo da el líder que define hasta dónde puede ir cada uno.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">El dueño llegaba a las 8 y ya había cuatro personas esperándolo para preguntarle qué hacer con situaciones del día anterior. Adultos, con experiencia, esperando la instrucción. Cuando construimos los marcos de decisión, en tres semanas llegaba a las 9 y nadie lo esperaba.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">El equipo espera no porque no pueda solo. Espera porque nunca le diste las herramientas para no esperar. Y mientras no las construyas, vas a seguir siendo el primer turno de trabajo de tu empresa — el que abre y el que hace posible que arranque el día.</div></div>
@@ -509,7 +505,7 @@ Mientras no construyas el marco, sos el primer turno de tu propia empresa.
   <div class="gcard" id="g12">
     <div class="gcardh"><div class="gnum">G12</div><div><div class="gtitle">30 años en canchas</div><div class="gsub">Semana 3 · Miércoles 24/6 · Diferenciador único · Historia personal</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"30 años entrenando equipos que tenían que ganar bajo presión. Esto es lo que aprendí sobre liderazgo que ningún libro me enseñó."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">30 años en canchas. El error que siempre cometí — y que veo en el 90% de los líderes.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Resolvés vos cuando la presión sube?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Pasé 30 años en canchas de básquet formando equipos que tomaban decisiones en décimas de segundo, con resultado inmediato y a la vista de todos. Lo que aprendí sobre presión, liderazgo y construcción de equipos en esas canchas no se enseña en ningún MBA. Y lo aplico todos los días en las empresas que acompaño.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Final de una liga provincial. Abajo de seis puntos. Cuatro minutos. Pedí tiempo muerto. El equipo me miraba esperando la solución. Y cometí el error de los líderes: les di la solución. Ganamos el partido. Pero el equipo aprendió que en los momentos difíciles hay que esperar que el líder resuelva. En el siguiente partido difícil, me miraron igual.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">El error más costoso que cometí como entrenador es el mismo que veo en la mayoría de los líderes empresariales: resolver lo que el equipo podría resolver solo. No porque no puedan. Sino porque es más rápido para vos en ese momento. Y esa comodidad tuya tiene un costo enorme a largo plazo.</div></div>
@@ -541,7 +537,7 @@ Porque en ese momento es más rápido para vos. Y esa comodidad tiene un costo e
   <div class="gcard" id="g13">
     <div class="gcardh"><div class="gnum">G13</div><div><div class="gtitle">Modo Líder — lo que aparece</div><div class="gsub">Semana 3 · Viernes 26/6 · Video de lead magnet · Objetivo: link en bio clicks</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Hice un ejercicio de liderazgo con más de 200 directores y dueños. Lo que apareció fue siempre lo mismo."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">Hice este ejercicio con 200 directores. El 73% repite el mismo patrón — el más caro de todos.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Cómo tomás decisiones cuando el tiempo se acaba?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Desarrollé un ejercicio que simula cuatro situaciones de presión real. Cuatro rondas con el tiempo corriendo. No hay respuestas correctas. Hay patrones. Y los patrones revelan cómo tomás las decisiones cuando el tiempo se acaba — no cómo creés que las tomás.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">De los 200+ líderes que lo hicieron, el 73% mostró el mismo patrón: en la ronda 3, cuando la presión aumenta, vuelven a tomar las decisiones solos. Aunque en las rondas anteriores habían empezado a delegar. La presión revierte el comportamiento. Siempre.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">¿Cómo tomás las decisiones cuando el tiempo se acaba? No cómo creés que las tomás. Cómo las tomás de verdad. Hay una distancia enorme entre las dos cosas. Y esa distancia es exactamente donde trabajo.</div></div>
@@ -572,7 +568,7 @@ No cómo creés. Cómo las tomás de verdad.
   <div class="gcard" id="g14">
     <div class="gcardh"><div class="gnum">G14</div><div><div class="gtitle">No te falta liderazgo. Te falta estructura.</div><div class="gsub">Semana 4 · Lunes 29/6 · Postura fuerte · Polarización intencional</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"No te falta liderazgo. Te falta estructura. Son cosas muy distintas."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">No te falta liderazgo. Te falta estructura. Son cosas muy distintas.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">El carisma motiva una semana. La estructura funciona cuando no estás.</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">La industria del coaching vende liderazgo como si fuera un atributo personal: carisma, visión, inspiración. Pero la mayoría de los problemas que veo en PyMEs no son de liderazgo. Son de estructura. Y la estructura se construye, no se inspira. No se consigue en un retiro de dos días.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un cliente llegó convencido de que necesitaba "mejorar como líder". Cuando empezamos a trabajar, descubrí que el problema no era él. Era que la empresa no tenía procesos definidos, roles claros ni criterios de decisión documentados. No era un problema de liderazgo. Era un problema de arquitectura.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">El carisma puede motivar a un equipo por una semana. La estructura hace que ese equipo funcione bien cuando el líder no está. Si querés una empresa que no dependa de tu presencia, necesitás arquitectura. No inspiración. La inspiración es el bonus. La arquitectura es el requisito.</div></div>
@@ -603,7 +599,7 @@ Si querés empresa que no dependa de vos → necesitás arquitectura. No inspira
   <div class="gcard" id="g15">
     <div class="gcardh"><div class="gnum">G15</div><div><div class="gtitle">Lo que el básquet enseñó sobre despedir</div><div class="gsub">Semana 4 · Miércoles 1/7 · Historia personal profunda · Saves + shares</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Despedí a un jugador que amaba. Fue la decisión más difícil y la más correcta que tomé en 30 años."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">Despedí a un jugador que amaba. Fue la decisión más difícil y la más correcta de 30 años.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Tenés esa conversación pendiente?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Las decisiones de equipo más difíciles no involucran al peor. Involucran a los buenos que en algún momento dejaron de ser lo que el equipo necesita. Y la dificultad no es saber que hay que hacer el cambio. Es tener la conversación.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Diez años juntos. Crecimos juntos, ganamos juntos. Llegó un momento donde el juego que necesitaba el equipo no coincidía con lo que él podía dar. Tardé dos años en hacer el cambio porque le debía mucho. Esos dos años le costaron el campeonato a mi equipo.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Hay personas en tu empresa que fueron exactamente lo que necesitabas hace dos años y ya no lo son hoy. No porque sean malas. Sino porque vos cambiaste, la empresa cambió, y el rol cambió. La pregunta no es si lo ves. Es qué vas a hacer con eso hoy.</div></div>
@@ -634,7 +630,7 @@ No porque sean malas. Porque el rol cambió.
   <div class="gcard" id="g16">
     <div class="gcardh"><div class="gnum">G16</div><div><div class="gtitle">Cuando el negocio te satura</div><div class="gsub">Semana 5 · Lunes 6/7 · CTA directo a Espacio de Orden · Conversión</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Hay un momento en que el negocio que construiste empieza a consumirte. Se llama saturación. Y tiene solución."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">El negocio empieza a consumirte justo cuando más creció. A eso se llama saturación.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">"Trabajo más que nunca pero siento que nunca alcanzo."</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">La saturación no aparece cuando el negocio va mal. Aparece cuando va bien. Cuando creció, cuando tiene más clientes, más empleados, más problemas — y vos seguís siendo el único punto de control de todo. Es la trampa del éxito.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">La primera señal de saturación que escucho siempre es la misma: "trabajo más que nunca pero siento que nunca alcanzo". No es falta de productividad. Es el síntoma de una empresa que creció pero cuya estructura no creció con ella.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">La saturación se resuelve con estructura, no con más horas ni más herramientas de productividad. Si estás trabajando 12 horas al día y nada alcanza, no necesitás más tiempo. Necesitás rediseñar cómo funciona lo que ya tenés.</div></div>
@@ -664,7 +660,7 @@ Tengo algo concreto para eso.
   <div class="gcard" id="g17">
     <div class="gcardh"><div class="gnum">G17</div><div><div class="gtitle">El mando medio que no existe</div><div class="gsub">Semana 5 · Miércoles 8/7 · RE-MEDIO angle · Conversión</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"El mando medio de tu empresa no existe. Y eso lo pagás vos todos los días."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">El mando medio de tu empresa no existe. Y eso lo pagás vos todos los días.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Cuántas veces te consultaron algo operativo hoy?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">En la mayoría de las PyMEs argentinas falta un escalón crítico: el líder intermedio que toma decisiones operativas sin escalar al dueño. Sin ese escalón, todo sube. Y el dueño se convierte en el gerente de todas las áreas al mismo tiempo.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Empresa de 25 personas. El dueño respondía consultas de empleados 40 veces al día. Cuando empezamos a contar, descubrimos que el 35% de su tiempo laboral lo pasaba respondiendo preguntas que una segunda línea bien entrenada podría resolver sola. Eran 2,5 horas diarias.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Si no tenés una segunda línea que funcione, tenés dos opciones: seguir siendo el mando medio de tu propia empresa — que es lo que hacés hoy — o construir ese escalón. La segunda requiere 6 meses de trabajo enfocado. La primera requiere tu tiempo para siempre.</div></div>
@@ -694,7 +690,7 @@ O construirlo en 6 meses.
   <div class="gcard" id="g18">
     <div class="gcardh"><div class="gnum">G18</div><div><div class="gtitle">La empresa diseñada para necesitarte</div><div class="gsub">Semana 6 · Martes 14/7 · Máxima conversión · Espacio de Orden CTA directo</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Vos no sos indispensable para tu empresa. Tu empresa fue diseñada para necesitarte. Son cosas distintas."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">Vos no sos indispensable para tu empresa. Tu empresa fue diseñada para necesitarte. Son cosas distintas.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">7 años sin vacaciones reales. "Siempre pasa algo cuando no estoy."</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">No poder tomarse vacaciones no es consecuencia del éxito. Es una señal de diseño. Una empresa bien diseñada puede funcionar sin su dueño dos semanas. Si la tuya no puede, hay algo en el diseño que necesita cambiar. No en tu equipo. En el diseño.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Primer cliente. Empresa de transporte. 7 años sin tomarse más de 3 días seguidos. Cuando empezamos a trabajar el diseño operativo, en 4 meses se tomó 10 días en Mendoza. Sin llamadas de emergencia. Sin el mundo derrumbándose.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">La diferencia entre "soy indispensable" y "mi empresa fue diseñada para necesitarme" es enorme. La primera es un problema sin solución. La segunda es un problema de diseño — y el diseño se puede cambiar. La pregunta es si estás dispuesto a invertir el tiempo en hacerlo.</div></div>
@@ -725,7 +721,7 @@ Escribime si estás listo.
   <div class="gcard" id="g19">
     <div class="gcardh"><div class="gnum">G19</div><div><div class="gtitle">La decisión que estás postergando</div><div class="gsub">Semana 7 · Lunes 20/7 · Engagement profundo · Reflexión incómoda</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"Las decisiones más caras no son las que tomaste mal. Son las que postergaste porque eran incómodas."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">Las decisiones más caras no son las que tomaste mal. Son las que postergaste porque eran incómodas.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Qué decisión sabés que tenés que tomar — y no tomás?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Los líderes tomamos malas decisiones todo el tiempo. El problema no es eso. El problema es no aprender a reconocer cuándo el contexto cambió y la decisión que fue buena ayer ya no lo es hoy. Y quedarnos paralizados por el costo de la conversación que implica el cambio.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Un jugador clave. Tres años juntos. Llegó un momento donde lo que le pedía el juego no coincidía con lo que él podía dar. Tardé en hacer el cambio porque le debía mucho. Porque era incómodo. Porque era conocido. Los equipos que perdí en ese período no vuelven.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Las decisiones más costosas no son las que tomamos rápido y mal. Son las que sabemos que tenemos que tomar y no tomamos. Porque implican una conversación difícil, un cambio incómodo, o reconocer que algo que funcionó dejó de funcionar. ¿Cuál es esa decisión en tu empresa hoy?</div></div>
@@ -757,7 +753,7 @@ Escribime si querés pensar eso juntos.
   <div class="gcard" id="g20">
     <div class="gcardh"><div class="gnum">G20</div><div><div class="gtitle">El resultado final — 60 días</div><div class="gsub">Semana 8 · Viernes 1/8 · Cierre de ciclo · Testimonio + nuevo comienzo</div></div></div>
     <div class="gbody">
-      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">"60 días publicando esto. Lo que cambió no fue solo la audiencia."</div></div>
+      <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">60 días. 5 nuevos clientes. Y lo que nadie me preguntó pero fue lo más importante.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Qué cambió realmente en 60 días?</div></div>
       <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">60 días de contenido consistente, de conversaciones con dueños y directores, de reuniones y de acompañamiento enseñan más sobre el problema real de las PyMEs que cualquier análisis de mercado. Y lo que aprendo en esas conversaciones vuelve a ser contenido.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">El problema que más aparece no es el que los dueños nombran cuando llegan. El que nombran es el síntoma. El que trabajamos juntos es la causa. Y casi siempre, la causa tiene que ver con el diseño de cómo funciona la empresa — no con el talento de la persona que la dirige.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">Si llegaste hasta acá es porque algo de lo que dijiste resonó. Y si resonó, probablemente hay algo en tu empresa que merezca una conversación. No una propuesta. Una conversación.</div></div>
@@ -1265,24 +1261,7 @@ function setDate(){
   const meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   document.getElementById('hoyFecha').innerHTML=`${dias[d.getDay()]}, ${d.getDate()} de <span>${meses[d.getMonth()]}</span>`;
 }
-window.onload=function(){setDate();loadK();loadChks();initBloques();};
-function initBloques(){
-  document.querySelectorAll('.bloque').forEach(function(b,i){
-    const key='blq_'+i;
-    b.setAttribute('data-blq',key);
-    const btn=document.createElement('button');
-    btn.className='btn-done';
-    btn.textContent='Marcar hecho';
-    btn.onclick=function(e){e.stopPropagation();toggleBloque(b,key);};
-    b.appendChild(btn);
-    if(localStorage.getItem(key)==='1'){b.classList.add('done');}
-  });
-}
-function toggleBloque(b,key){
-  const done=b.classList.toggle('done');
-  try{localStorage.setItem(key,done?'1':'0');}catch(e){}
-}
-
+window.onload=function(){setDate();loadK();loadChks();};
 </script>
 </body>
 </html>
