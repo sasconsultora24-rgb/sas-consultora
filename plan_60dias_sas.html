@@ -126,6 +126,14 @@ input.ked:focus{outline:none;}
 .overlay-box{background:rgba(199,166,90,.12);border:1px solid rgba(199,166,90,.4);border-radius:6px;padding:10px 14px;margin-top:8px;}
 .overlay-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#C7A65A;margin-bottom:4px;}
 .overlay-txt{font-size:13px;font-weight:600;color:var(--navy);font-style:italic;}
+
+/* DONE STATE */
+.bloque{position:relative;}
+.bloque.done{opacity:.45;}
+.bloque.done::after{content:'✓ HECHO';position:absolute;top:8px;right:8px;background:#1F5A52;color:#fff;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:3px 8px;border-radius:20px;}
+.btn-done{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.15);border-radius:20px;font-size:9px;font-weight:800;letter-spacing:1px;padding:3px 8px;cursor:pointer;color:inherit;text-transform:uppercase;transition:all .15s;}
+.btn-done:hover{background:var(--green);color:#fff;border-color:var(--green);}
+.bloque.done .btn-done{background:var(--green);color:#fff;border-color:var(--green);}
 </style>
 </head>
 <body>
@@ -302,7 +310,7 @@ Si tu equipo no funciona sin tu presencia → no es un problema de comunicación
     <div class="gcardh"><div class="gnum">G05</div><div><div class="gtitle">El límite que nunca pusiste</div><div class="gsub">Semana 1 · Viernes 12/6 · Engagement objetivo: saves + CTA escritura activa</div></div></div>
     <div class="gbody">
       <div class="hook-box"><div class="hook-lbl">⚡ Hook</div><div class="hook-txt">Tu equipo te consulta todo. Nunca les dijiste qué podían decidir solos.</div></div><div class="overlay-box"><div class="overlay-lbl">📱 Texto overlay TikTok</div><div class="overlay-txt">¿Qué puede decidir cada persona de tu equipo sin pedirte permiso?</div></div>
-      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Los líderes que se quejan de que "el equipo siempre le carga todo a uno" son exactamente los mismos que nunca definieron qué puede decidir cada persona sin consultar. La ausencia de límites claros no libera al equipo. Lo paraliza. Porque cuando no saben hasta dónde pueden ir, no van a ningún lado.</div></div>
+      <div class="gsec"><div class="gsec-lbl">📍 Postura</div><div class="gsec-txt">Los líderes que se quejan de que "el equipo siempre le carga todo a uno" son exactamente los mismos que nunca definieron qué puede decidir cada persona sin consultar. No es un problema de actitud del equipo. Es un problema de diseño tuyo. El equipo no consulta todo porque no puede solo. Consulta todo porque nunca le dijiste que podía.</div></div>
       <div class="gsec"><div class="gsec-lbl">📖 Caso</div><div class="gsec-txt">Trabajé con una directora de una empresa de servicios agotada. Todo llegaba a su escritorio — cotizaciones, problemas de clientes, el tema del microondas. Cuando le pregunté qué había definido explícitamente que su equipo podía decidir sin consultarla, se quedó en silencio. Nunca lo había escrito. Nunca lo había dicho.</div></div>
       <div class="gsec"><div class="gsec-lbl">⚡ Tensión</div><div class="gsec-txt">El equipo no te consulta porque no puede solo. Te consulta porque nunca le dijiste que podía. Primera acción concreta: agarrá un papel y escribí qué puede decidir cada persona de tu equipo sin pedirte permiso. Si tardás más de dos minutos, el problema ya lo encontraste.</div></div>
       <div class="gsec"><div class="gsec-lbl">🎯 CTA</div><div class="gsec-txt">Hacelo ahora. Después contame qué encontraste.</div></div>
@@ -1261,7 +1269,22 @@ function setDate(){
   const meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   document.getElementById('hoyFecha').innerHTML=`${dias[d.getDay()]}, ${d.getDate()} de <span>${meses[d.getMonth()]}</span>`;
 }
-window.onload=function(){setDate();loadK();loadChks();};
+window.onload=function(){setDate();loadK();loadChks();initBloques();};
+function initBloques(){
+  document.querySelectorAll('.bloque').forEach(function(b,i){
+    const key='blq_'+i;
+    b.setAttribute('data-blq',key);
+    const btn=document.createElement('button');
+    btn.className='btn-done';
+    btn.textContent='Marcar hecho';
+    btn.onclick=function(e){e.stopPropagation();toggleBloque(b,key);};
+    b.appendChild(btn);
+    if(localStorage.getItem(key)==='1'){b.classList.add('done');}
+  });
+}
+function toggleBloque(b,key){
+  const done=b.classList.toggle('done');
+  try{localStorage.setItem(key,done?'1':'0');}
 </script>
 </body>
 </html>
