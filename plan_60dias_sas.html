@@ -122,6 +122,14 @@ body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--nav
 .kpi .kl{font-size:9px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
 input.ked{background:transparent;border:none;font-family:'Montserrat',sans-serif;font-weight:900;font-size:24px;color:var(--gold);width:100%;text-align:center;}
 input.ked:focus{outline:none;}
+
+/* DONE STATE */
+.bloque{position:relative;}
+.bloque.done{opacity:.45;}
+.bloque.done::after{content:'✓ HECHO';position:absolute;top:8px;right:8px;background:#1F5A52;color:#fff;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:3px 8px;border-radius:20px;}
+.btn-done{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.15);border-radius:20px;font-size:9px;font-weight:800;letter-spacing:1px;padding:3px 8px;cursor:pointer;color:inherit;text-transform:uppercase;transition:all .15s;}
+.btn-done:hover{background:var(--green);color:#fff;border-color:var(--green);}
+.bloque.done .btn-done{background:var(--green);color:#fff;border-color:var(--green);}
 </style>
 </head>
 <body>
@@ -1257,7 +1265,24 @@ function setDate(){
   const meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   document.getElementById('hoyFecha').innerHTML=`${dias[d.getDay()]}, ${d.getDate()} de <span>${meses[d.getMonth()]}</span>`;
 }
-window.onload=function(){setDate();loadK();loadChks();};
+window.onload=function(){setDate();loadK();loadChks();initBloques();};
+function initBloques(){
+  document.querySelectorAll('.bloque').forEach(function(b,i){
+    const key='blq_'+i;
+    b.setAttribute('data-blq',key);
+    const btn=document.createElement('button');
+    btn.className='btn-done';
+    btn.textContent='Marcar hecho';
+    btn.onclick=function(e){e.stopPropagation();toggleBloque(b,key);};
+    b.appendChild(btn);
+    if(localStorage.getItem(key)==='1'){b.classList.add('done');}
+  });
+}
+function toggleBloque(b,key){
+  const done=b.classList.toggle('done');
+  try{localStorage.setItem(key,done?'1':'0');}catch(e){}
+}
+
 </script>
 </body>
 </html>
