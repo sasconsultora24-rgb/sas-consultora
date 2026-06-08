@@ -1271,10 +1271,11 @@ function setDate(){
 }
 window.onload=function(){setDate();loadK();loadChks();initBloques();};
 function initBloques(){
-  document.querySelectorAll('.bloque').forEach(function(b,i){
-    const key='blq_'+i;
+  var idx=0;
+  document.querySelectorAll('#s1 .bloque,#s2 .bloque,#s3 .bloque,#s4 .bloque,#s5 .bloque,#s6 .bloque,#s7 .bloque,#s8 .bloque').forEach(function(b){
+    var key='blqv2_'+idx; idx++;
     b.setAttribute('data-blq',key);
-    const btn=document.createElement('button');
+    var btn=document.createElement('button');
     btn.className='btn-done';
     btn.textContent='Marcar hecho';
     btn.onclick=function(e){e.stopPropagation();toggleBloque(b,key);};
@@ -1283,8 +1284,9 @@ function initBloques(){
   });
 }
 function toggleBloque(b,key){
-  const done=b.classList.toggle('done');
-  try{localStorage.setItem(key,done?'1':'0');}
+  var done=b.classList.toggle('done');
+  try{localStorage.setItem(key,done?'1':'0');}catch(e){}
+}
 </script>
 </body>
 </html>
