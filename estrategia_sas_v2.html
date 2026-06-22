@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAS Consultora — Estrategia 10 Clientes / 60 Días</title>
+<style>
+:root {
+  --navy: #0f1f3d;
+  --blue: #1a3a6b;
+  --teal: #0e7c7b;
+  --gold: #c9972c;
+  --red: #c0392b;
+  --light: #f5f7fa;
+  --border: #dde3ed;
+  --text: #1a1a2e;
+  --muted: #5a6580;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--light); color: var(--text); line-height: 1.6; }
+
+/* NAV */
+.nav { background: var(--navy); padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,.3); }
+.nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; padding: 0 24px; gap: 0; }
+.nav-brand { color: #fff; font-weight: 800; font-size: 15px; padding: 14px 0; margin-right: 32px; letter-spacing: .5px; }
+.nav-links { display: flex; gap: 0; }
+.nav-links a { color: rgba(255,255,255,.7); text-decoration: none; font-size: 13px; padding: 14px 16px; transition: all .2s; border-bottom: 3px solid transparent; }
+.nav-links a:hover { color: #fff; border-bottom-color: var(--gold); }
+
+/* HERO */
+.hero { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%); color: #fff; padding: 56px 24px 48px; text-align: center; }
+.hero-tag { display: inline-block; background: var(--gold); color: var(--navy); font-weight: 800; font-size: 11px; letter-spacing: 1.5px; padding: 4px 12px; border-radius: 20px; margin-bottom: 20px; text-transform: uppercase; }
+.hero h1 { font-size: clamp(28px, 4vw, 46px); font-weight: 900; line-height: 1.15; margin-bottom: 16px; }
+.hero h1 span { color: var(--gold); }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,.75); max-width: 580px; margin: 0 auto 32px; }
+.hero-stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.hstat { text-align: center; }
+.hstat-n { font-size: 36px; font-weight: 900; color: var(--gold); line-height: 1; }
+.hstat-l { font-size: 12px; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .8px; margin-top: 4px; }
+
+/* SECTIONS */
+.section { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
+.section-title { font-size: 22px; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+.section-sub { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+.section-divider { height: 4px; width: 48px; background: var(--gold); border-radius: 2px; margin-bottom: 8px; }
+
+/* DIAGNOSTIC BOX */
+.diag-box { background: #fff; border: 2px solid var(--border); border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; position: relative; overflow: hidden; }
+.diag-box::before { content: ""; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--red); }
+.diag-box h3 { font-size: 18px; color: var(--red); margin-bottom: 12px; }
+.diag-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; font-size: 14px; }
+.diag-item .icon { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+.icon-x { background: #fde8e8; color: var(--red); }
+.icon-ok { background: #e8fde8; color: #2d8a2d; }
+.diag-insight { background: #fff8e8; border: 1.5px solid var(--gold); border-radius: 8px; padding: 16px 20px; margin-top: 16px; font-size: 14px; }
+.diag-insight strong { color: var(--navy); display: block; margin-bottom: 4px; font-size: 15px; }
+
+/* PILLARS */
+.pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.pillar { background: #fff; border: 2px solid var(--border); border-radius: 12px; padding: 24px; transition: box-shadow .2s; }
+.pillar:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+.pillar-num { width: 36px; height: 36px; border-radius: 8px; background: var(--navy); color: #fff; font-weight: 900; font-size: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.pillar-num.p1 { background: var(--gold); color: var(--navy); }
+.pillar-num.p2 { background: var(--teal); }
+.pillar-num.p3 { background: var(--blue); }
+.pillar-num.p4 { background: #6b3fa0; }
+.pillar-num.p5 { background: var(--red); }
+.pillar h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; color: var(--navy); }
+.pillar-why { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 8px; }
+.pillar p { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+.pillar-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: .5px; }
+.badge-gold { background: #fff3d4; color: #8a6200; }
+.badge-green { background: #e0f5e0; color: #1a6b1a; }
+.badge-blue { background: #e0eaf5; color: #1a3a6b; }
+.badge-purple { background: #efe0f5; color: #5a1a8a; }
+.badge-red { background: #fde8e8; color: #8a1a1a; }
+
+/* SCRIPTS */
+.scripts-grid { display: grid; gap: 20px; }
+.script-card { background: #fff; border: 2px solid var(--border); border-radius: 12px; overflow: hidden; }
+.script-hdr { background: var(--navy); color: #fff; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; }
+.script-hdr h4 { font-size: 14px; font-weight: 700; }
+.script-hdr .uso { font-size: 11px; color: rgba(255,255,255,.6); }
+.script-body { padding: 20px; }
+.script-context { font-size: 12px; color: var(--muted); margin-bottom: 12px; font-style: italic; }
+.script-text { background: #f8f9fb; border: 1.5px solid var(--border); border-radius: 8px; padding: 16px; font-size: 14px; line-height: 1.7; white-space: pre-line; position: relative; }
+.copy-btn { display: inline-block; margin-top: 10px; font-size: 12px; background: var(--navy); color: #fff; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+.copy-btn:hover { background: var(--blue); }
+.copy-btn.copied { background: var(--teal); }
+
+/* DAILY ROUTINE */
+.routine-phases { display: grid; gap: 20px; }
+.routine-phase { background: #fff; border: 2px solid var(--border); border-radius: 12px; overflow: hidden; }
+.rph-hdr { padding: 16px 20px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--border); }
+.rph-hdr .phase-tag { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; padding: 3px 10px; border-radius: 20px; }
+.phase-1 { background: #fff3d4; color: #8a6200; }
+.phase-2 { background: #e0f5e0; color: #1a6b1a; }
+.rph-hdr h4 { font-size: 15px; font-weight: 700; }
+.rph-hdr .time { font-size: 12px; color: var(--muted); margin-left: auto; }
+.rph-body { padding: 20px; }
+.day-block { margin-bottom: 16px; }
+.day-label { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 8px; }
+.task-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-size: 14px; }
+.task-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+.task-dot.teal { background: var(--teal); }
+.task-dot.blue { background: var(--blue); }
+.task-dot.red { background: var(--red); }
+
+/* WEEKLY PLAN */
+.weeks { display: grid; gap: 16px; }
+.week { background: #fff; border: 2px solid var(--border); border-radius: 12px; overflow: hidden; }
+.week-hdr { display: flex; align-items: center; gap: 16px; padding: 16px 20px; cursor: pointer; }
+.week-num { width: 40px; height: 40px; border-radius: 8px; background: var(--navy); color: #fff; font-weight: 900; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.week-info h4 { font-size: 15px; font-weight: 700; }
+.week-info .wdate { font-size: 12px; color: var(--muted); }
+.week-phase { margin-left: auto; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; padding: 4px 12px; border-radius: 20px; }
+.wp-awareness { background: #e0eaf5; color: #1a3a6b; }
+.wp-activation { background: #e0f5e0; color: #1a6b1a; }
+.wp-traction { background: #fff3d4; color: #8a6200; }
+.wp-conversion { background: #fde8e8; color: #8a1a1a; }
+.week-body { padding: 0 20px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.day-card { background: var(--light); border: 1.5px solid var(--border); border-radius: 8px; padding: 12px; }
+.day-card .dc-day { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 6px; }
+.day-card .dc-main { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.day-card .dc-sub { font-size: 12px; color: var(--muted); }
+.day-card .dc-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-top: 6px; }
+
+/* METRICS */
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.metric-card { background: #fff; border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+.metric-card .mc-num { font-size: 32px; font-weight: 900; color: var(--navy); line-height: 1; }
+.metric-card .mc-label { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.metric-card .mc-target { font-size: 11px; font-weight: 700; color: var(--teal); margin-top: 4px; }
+
+/* FUNNEL */
+.funnel { background: #fff; border: 2px solid var(--border); border-radius: 12px; padding: 28px; }
+.funnel-step { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.funnel-step:last-child { margin-bottom: 0; }
+.fs-num { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; color: #fff; flex-shrink: 0; }
+.fs-1 { background: var(--blue); }
+.fs-2 { background: var(--teal); }
+.fs-3 { background: var(--gold); color: var(--navy); }
+.fs-4 { background: var(--red); }
+.fs-info h4 { font-size: 15px; font-weight: 700; }
+.fs-info p { font-size: 13px; color: var(--muted); }
+.fs-arrow { text-align: center; color: var(--muted); font-size: 20px; margin: -8px 0 -8px 20px; }
+
+/* ALLY SECTION */
+.allies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.ally-card { background: #fff; border: 2px solid var(--border); border-radius: 10px; padding: 18px; }
+.ally-icon { font-size: 28px; margin-bottom: 10px; }
+.ally-card h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.ally-card p { font-size: 12px; color: var(--muted); }
+
+/* PROJECTION */
+.projection { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%); border-radius: 12px; padding: 32px; color: #fff; }
+.proj-title { font-size: 20px; font-weight: 800; margin-bottom: 20px; }
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.proj-item { background: rgba(255,255,255,.1); border-radius: 10px; padding: 18px; }
+.proj-item .pi-n { font-size: 28px; font-weight: 900; color: var(--gold); }
+.proj-item .pi-l { font-size: 13px; color: rgba(255,255,255,.7); margin-top: 4px; }
+.proj-note { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,.6); font-style: italic; }
+
+/* ALERTS */
+.alert { border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; font-size: 14px; }
+.alert-gold { background: #fff8e8; border: 1.5px solid var(--gold); color: #5a3e00; }
+.alert-red { background: #fde8e8; border: 1.5px solid var(--red); color: #5a0000; }
+.alert-teal { background: #e8f5f5; border: 1.5px solid var(--teal); color: #004040; }
+.alert strong { display: block; margin-bottom: 4px; }
+
+/* FOOTER */
+.footer { background: var(--navy); color: rgba(255,255,255,.5); text-align: center; padding: 20px; font-size: 12px; margin-top: 48px; }
+
+/* CHECKLIST */
+.checklist { list-style: none; }
+.checklist li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-size: 14px; }
+.checklist li::before { content: "□"; font-size: 16px; color: var(--gold); flex-shrink: 0; margin-top: -1px; }
+
+/* BG ALTERNATES */
+.bg-white { background: #fff; }
+.bg-light { background: var(--light); }
+.section-wrap { padding: 48px 0; border-top: 1px solid var(--border); }
+.section-wrap:first-child { border-top: none; }
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .hero-stats { gap: 24px; }
+  .week-body { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">SAS CONSULTORA</div>
+    <div class="nav-links">
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#pilares">Los 5 Pilares</a>
+      <a href="#scripts">Scripts</a>
+      <a href="#rutina">Rutina Diaria</a>
+      <a href="#semanas">Plan 60 Días</a>
+      <a href="#metricas">Métricas</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Estrategia v2 — desde cero</div>
+  <h1>10 Clientes en <span>60 Días</span></h1>
+  <p class="hero-sub">Construida desde el diagnóstico real. No más de lo mismo. Esto es diferente.</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-n">50%</div><div class="hstat-l">Tasa de cierre en reunión</div></div>
+    <div class="hstat"><div class="hstat-n">5</div><div class="hstat-l">Pilares estratégicos</div></div>
+    <div class="hstat"><div class="hstat-n">60</div><div class="hstat-l">Días para 10 clientes</div></div>
+    <div class="hstat"><div class="hstat-n">1-2hs</div><div class="hstat-l">Por día</div></div>
+  </div>
+</div>
+
+<!-- DIAGNOSTICO -->
+<div class="section-wrap bg-white">
+<div class="section" id="diagnostico">
+  <div class="section-divider"></div>
+  <div class="section-title">El Diagnóstico Real</div>
+  <div class="section-sub">Antes de cualquier plan, hay que entender qué está pasando realmente</div>
+
+  <div class="diag-box">
+    <h3>⚠️ Lo que no funcionó (y por qué)</h3>
+    <div class="diag-item"><div class="icon icon-x">✕</div><div><strong>Contenido orgánico (TikTok/IG):</strong> generó visibilidad, no clientes. La audiencia era fría y pequeña.</div></div>
+    <div class="diag-item"><div class="icon icon-x">✕</div><div><strong>LinkedIn outreach masivo:</strong> mensajes genéricos a extraños. Sin confianza = sin reunión.</div></div>
+    <div class="diag-item"><div class="icon icon-x">✕</div><div><strong>Webinars:</strong> sin seguimiento sistematizado. Interés pero sin conversión.</div></div>
+    <div class="diag-item"><div class="icon icon-x">✕</div><div><strong>Ads pagos:</strong> llevaban tráfico frío a una oferta que requiere confianza previa.</div></div>
+    <div class="diag-item"><div class="icon icon-x">✕</div><div><strong>Landing pages:</strong> sin suficiente prueba social ni tráfico calificado.</div></div>
+    <div class="diag-item"><div class="icon icon-ok">✓</div><div><strong>Contacto personal directo:</strong> el ÚNICO canal que generó clientes. Siempre.</div></div>
+    <div class="diag-insight">
+      <strong>El verdadero problema no es el canal. Es el paso previo a la reunión.</strong>
+      Cerrás al 50% cuando llegás a una reunión — eso es bueno. El problema es que muy pocas personas dicen SÍ a la primera reunión. Una reunión con alguien que no conocen bien es un compromiso de tiempo y exposición personal. Sin confianza previa suficiente, la respuesta por defecto es "no".
+    </div>
+  </div>
+
+  <div class="alert alert-gold">
+    <strong>La pregunta correcta no es "¿cómo llego a más gente?" sino "¿cómo hago que más personas digan SÍ a la primera reunión?"</strong>
+    Todo lo que sigue está construido alrededor de esta respuesta.
+  </div>
+
+  <div class="funnel" style="margin-top: 20px;">
+    <div style="font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 20px;">El embudo real de SAS Consultora</div>
+    <div class="funnel-step"><div class="fs-num fs-1">1</div><div class="fs-info"><h4>Conoce a Seba / SAS Consultora</h4><p>Por referido, LinkedIn, contenido, alianza. <strong style="color:var(--red)">PROBLEMA: pocos llegan a este punto.</strong></p></div></div>
+    <div class="fs-arrow">↓</div>
+    <div class="funnel-step"><div class="fs-num fs-2">2</div><div class="fs-info"><h4>Dice SÍ a la primera reunión</h4><p>El cuello de botella. Requiere confianza que no se ha construido bien. <strong style="color:var(--red)">ACÁ SE ROMPE EL FUNNEL.</strong></p></div></div>
+    <div class="fs-arrow">↓</div>
+    <div class="funnel-step"><div class="fs-num fs-3">3</div><div class="fs-info"><h4>Reunión / Diagnóstico</h4><p>Conversación de 25-30 minutos. <strong style="color:var(--teal)">50% de cierre — ESTO FUNCIONA.</strong></p></div></div>
+    <div class="fs-arrow">↓</div>
+    <div class="funnel-step"><div class="fs-num fs-4">4</div><div class="fs-info"><h4>Cliente SAS Consultora</h4><p>Espacio de Orden / RE-MEDIO / RE-FOCO / Pulso / Selección.</p></div></div>
+  </div>
+</div>
+</div>
+
+<!-- PILARES -->
+<div class="section-wrap bg-light">
+<div class="section" id="pilares">
+  <div class="section-divider"></div>
+  <div class="section-title">Los 5 Pilares de la Estrategia</div>
+  <div class="section-sub">En orden de prioridad. El primero genera más clientes que los cuatro restantes juntos.</div>
+
+  <div class="pillars-grid">
+
+    <div class="pillar">
+      <div class="pillar-num p1">1</div>
+      <div class="pillar-why">Prioridad máxima</div>
+      <h3>El Diagnóstico Gratuito</h3>
+      <p>Reemplazar el "¿nos reunimos?" por una oferta de valor concreta: <strong>"Diagnóstico gratuito de 25 minutos — te digo exactamente en qué etapa está tu empresa y qué es lo primero que necesita."</strong></p>
+      <p>La diferencia es enorme: pasar de pedir tiempo a ofrecer valor. Baja el umbral de entrada de "me está vendiendo" a "esto me sirve".</p>
+      <span class="pillar-badge badge-gold">Cambia el juego</span>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num p2">2</div>
+      <div class="pillar-why">Confianza antes del ask</div>
+      <h3>Testimonios Activados</h3>
+      <p>Tenés 3+ clientes dispuestos a dar testimonios fuertes. Ese material vale más que 100 videos de contenido. Cuando alguien ve que vos resolviste el problema exacto que tiene otra persona similar a él, la confianza se construye en segundos.</p>
+      <p>Formato: video corto (60 seg) + texto. Usar en outreach, LinkedIn y contenido.</p>
+      <span class="pillar-badge badge-green">Construye confianza</span>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num p3">3</div>
+      <div class="pillar-why">Canal multiplicador</div>
+      <h3>Alianzas Estratégicas</h3>
+      <p>Un contador, abogado laboral o consultor de RRHH que trabaja con los mismos dueños puede mandarte más clientes en un mes que 6 meses de contenido. Cuando alguien de confianza los refiere a vos, el SÍ a la reunión ya casi está dado.</p>
+      <p>Target: 5 alianzas activas en Entre Ríos + litoral. Relación de mutuo beneficio.</p>
+      <span class="pillar-badge badge-blue">Confianza transferida</span>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num p4">4</div>
+      <div class="pillar-why">Red existente</div>
+      <h3>Referidos con Sistema</h3>
+      <p>La diferencia con lo que hiciste antes: el pedido es específico, tiene urgencia real y le das las palabras exactas para que te presenten. No "si conocés a alguien" sino "tengo 2 espacios libres en julio, ¿conocés a un dueño que esté lidiando con X?"</p>
+      <p>Activar los 13 clientes pasados/actuales con este sistema.</p>
+      <span class="pillar-badge badge-purple">Red activada</span>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num p5">5</div>
+      <div class="pillar-why">Prueba social constante</div>
+      <h3>Contenido Rediseñado</h3>
+      <p>Menos volumen, distinto objetivo. 3 videos/semana: 1 testimonio/caso, 1 insight de autoridad, 1 servicio específico. El contenido no trae clientes directamente — hace que la reunión sea más fácil de cerrar cuando alguien llega por otro canal y te googlea.</p>
+      <p>LinkedIn: 2 posts/semana + 5 comentarios diarios en cuentas target.</p>
+      <span class="pillar-badge badge-red">Soporte de autoridad</span>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 28px;">
+    <div class="section-title" style="font-size:18px; margin-bottom: 16px;">Alianzas Target — Entre Ríos + Litoral</div>
+    <div class="allies-grid">
+      <div class="ally-card"><div class="ally-icon">📊</div><h4>Estudios Contables</h4><p>Asesoran PyMEs en finanzas. Ven los problemas de gestión desde adentro.</p></div>
+      <div class="ally-card"><div class="ally-icon">⚖️</div><h4>Abogados Laborales</h4><p>Manejan conflictos de equipo. Cuando hay un problema de personal, hay un problema de liderazgo.</p></div>
+      <div class="ally-card"><div class="ally-icon">👥</div><h4>Consultoras RRHH</h4><p>Selección y compensaciones. Trabajan con los mismos decisores.</p></div>
+      <div class="ally-card"><div class="ally-icon">🏦</div><h4>Asesores Financieros PyME</h4><p>Bancos y fintech que trabajan con dueños. Acceso privilegiado a decisores.</p></div>
+      <div class="ally-card"><div class="ally-icon">🎯</div><h4>Consultores de Marketing</h4><p>Trabajan con la misma audiencia. Complementarios, no competidores.</p></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SCRIPTS -->
+<div class="section-wrap bg-white">
+<div class="section" id="scripts">
+  <div class="section-divider"></div>
+  <div class="section-title">Scripts — Las Palabras Exactas</div>
+  <div class="section-sub">Copiar, adaptar mínimamente con el nombre/contexto, enviar. No improvisar.</div>
+
+  <div class="scripts-grid">
+
+    <div class="script-card">
+      <div class="script-hdr" style="background: #1a3a6b;">
+        <h4>📋 Script 1 — El Diagnóstico Gratuito (DM/WhatsApp)</h4>
+        <span class="uso">Para LinkedIn DM y WhatsApp a contactos tibios</span>
+      </div>
+      <div class="script-body">
+        <div class="script-context">Usar con: conexiones de LinkedIn que vieron tu perfil, gente que comentó en algún video, contactos tibios que no avanzaron antes.</div>
+        <div class="script-text" id="s1">Hola [NOMBRE], ¿cómo estás?
+
+Te escribo porque trabajo con dueños, líderes y equipos de PyMEs en todo lo que es liderazgo, funcionamiento del equipo y estructura organizacional.
+
+Estoy haciendo diagnósticos gratuitos de 25 minutos para [dueños / líderes / directivos] en la región. En esa charla te digo exactamente en qué etapa está tu empresa y qué es lo primero que hay que resolver. Sin compromiso, sin venta.
+
+¿Te sirve? Si es así, te mando dos opciones de horario esta semana.</div>
+        <button class="copy-btn" onclick="copiarScript('s1', this)">COPIAR</button>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-hdr" style="background: var(--teal);">
+        <h4>🤝 Script 2 — Pedido de Referido a Cliente Pasado</h4>
+        <span class="uso">Para los 13 clientes pasados/actuales</span>
+      </div>
+      <div class="script-body">
+        <div class="script-context">Personalizar con el problema específico que tuvo ese cliente. Enviar por WhatsApp, no email.</div>
+        <div class="script-text" id="s2">Hola [NOMBRE], ¿cómo van las cosas?
+
+Quería pedirte algo concreto: estoy abriendo 3 espacios de diagnóstico gratuito para [julio]. En esa charla de 25 minutos le digo a un dueño o líder exactamente qué está fallando y por dónde empezar.
+
+Pensé en vos porque probablemente conocés a alguien que esté lidiando con algo parecido a lo que vos tenías cuando empezamos a trabajar juntos.
+
+¿Se te viene alguien a la mente? Si es así, con que me digas el nombre y me des el OK, yo me encargo del resto.</div>
+        <button class="copy-btn" onclick="copiarScript('s2', this)">COPIAR</button>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-hdr" style="background: #6b3fa0;">
+        <h4>🏢 Script 3 — Alianza Estratégica (primer contacto)</h4>
+        <span class="uso">Para contadores, abogados laborales, consultoras RRHH</span>
+      </div>
+      <div class="script-body">
+        <div class="script-context">Enviar por LinkedIn DM o WhatsApp si tienen contacto en común. No por email.</div>
+        <div class="script-text" id="s3">Hola [NOMBRE], soy Seba Svetliza de SAS Consultora.
+
+Trabajo con dueños, líderes y equipos de PyMEs en Entre Ríos en todo lo que es liderazgo, funcionamiento del equipo y estructura organizacional.
+
+Me parece que compartimos clientes — las mismas empresas que vos asesorás en [contabilidad / lo laboral / RRHH], las trabajo yo en lo organizacional. Son áreas que se complementan y casi nunca compiten.
+
+¿Tenés 20 minutos para conocernos esta semana? Creo que podemos mandarnos trabajo mutuamente.</div>
+        <button class="copy-btn" onclick="copiarScript('s3', this)">COPIAR</button>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-hdr" style="background: var(--gold); color: var(--navy);">
+        <h4>💼 Script 4 — LinkedIn Calificado (después de engagement)</h4>
+        <span class="uso">Solo después de 2+ semanas comentando en su contenido</span>
+      </div>
+      <div class="script-body">
+        <div class="script-context">NO usar en frío. Solo si ya existe un mínimo de interacción. El contexto lo hace todo.</div>
+        <div class="script-text" id="s4">Hola [NOMBRE], vengo siguiendo tu contenido y [algo específico que dijo o publicó recientemente].
+
+Trabajo con [dueños / directivos / líderes] de empresas similares a la tuya en liderazgo y equipos, y lo que describís en [el post / la publicación] es exactamente lo que más aparece.
+
+Tengo algo concreto que podría ser de valor para tu situación. ¿Charlamos 25 minutos?</div>
+        <button class="copy-btn" onclick="copiarScript('s4', this)">COPIAR</button>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-hdr" style="background: var(--red);">
+        <h4>📱 Script 5 — CTA del Diagnóstico (cierre de la reunión)</h4>
+        <span class="uso">Al final del diagnóstico gratuito de 25 minutos</span>
+      </div>
+      <div class="script-body">
+        <div class="script-context">Decirlo después de haber mapeado el problema. No antes.</div>
+        <div class="script-text" id="s5">Bueno, lo que te acabo de describir es exactamente la etapa en la que está tu empresa ahora.
+
+Tenemos dos caminos para trabajarlo: [Espacio de Orden si es saturación / RE-MEDIO si es desorden / RE-FOCO si necesita dirección estratégica].
+
+Te explico brevemente en qué consiste cada uno — y vos me decís si alguno tiene sentido para donde estás parado hoy.
+
+[Explicar el servicio correspondiente. Precio al final, no al principio.]</div>
+        <button class="copy-btn" onclick="copiarScript('s5', this)">COPIAR</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- RUTINA DIARIA -->
+<div class="section-wrap bg-light">
+<div class="section" id="rutina">
+  <div class="section-divider"></div>
+  <div class="section-title">La Rutina Diaria</div>
+  <div class="section-sub">1 hora y 15 minutos por día. Divididos en tres momentos.</div>
+
+  <div class="alert alert-teal">
+    <strong>Principio: las primeras 2 semanas son de inversión, no de contenido.</strong>
+    Antes de grabar un video más, hay que activar los testimonios y las alianzas. El contenido sin prueba social no convierte. Los testimonios y las alianzas sí.
+  </div>
+
+  <div class="routine-phases">
+
+    <div class="routine-phase">
+      <div class="rph-hdr">
+        <span class="phase-tag phase-1">Semana 1-2 · Fundación</span>
+        <h4>Activar la base antes de cualquier contenido</h4>
+        <span class="time">~1.5 hs/día</span>
+      </div>
+      <div class="rph-body">
+        <div class="day-block">
+          <div class="day-label">☀️ Mañana (30 min)</div>
+          <div class="task-item"><div class="task-dot"></div><div>Contactar 2 clientes pasados por WhatsApp: pedir testimonio o referido con Script 2. Meta: 1 llamada acordada.</div></div>
+          <div class="task-item"><div class="task-dot"></div><div>Identificar y contactar 1 alianza estratégica (contador, abogado laboral, RRHH). Meta: 1 reunión acordada por semana.</div></div>
+        </div>
+        <div class="day-block">
+          <div class="day-label">🌤️ Tarde (30 min)</div>
+          <div class="task-item"><div class="task-dot teal"></div><div>LinkedIn: 5 comentarios de valor en cuentas target (dueños y líderes Entre Ríos + nacionales). Construir presencia antes del outreach.</div></div>
+          <div class="task-item"><div class="task-dot teal"></div><div>Seguimiento de conversaciones activas (responder rápido = confianza).</div></div>
+        </div>
+        <div class="day-block">
+          <div class="day-label">🌙 Noche (15 min)</div>
+          <div class="task-item"><div class="task-dot blue"></div><div>Revisar qué respuestas llegaron. Mover conversaciones al siguiente paso (ofrecer el Diagnóstico).</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="routine-phase">
+      <div class="rph-hdr">
+        <span class="phase-tag phase-2">Semana 3+ · Operación Normal</span>
+        <h4>Sistema activo + contenido + conversiones</h4>
+        <span class="time">~1.25 hs/día</span>
+      </div>
+      <div class="rph-body">
+        <div class="day-block">
+          <div class="day-label">☀️ Mañana (30 min)</div>
+          <div class="task-item"><div class="task-dot"></div><div>Seguimiento de Diagnósticos agendados: confirmar, preparar brevemente.</div></div>
+          <div class="task-item"><div class="task-dot"></div><div>1 DM nuevo con Script 1 o Script 4 según el caso. Meta: 1 nuevo Diagnóstico agendado por día.</div></div>
+        </div>
+        <div class="day-block">
+          <div class="day-label">🌤️ Tarde (30 min)</div>
+          <div class="task-item"><div class="task-dot teal"></div><div>LinkedIn: 5 comentarios en cuentas target + publicar post (lunes y jueves).</div></div>
+          <div class="task-item"><div class="task-dot teal"></div><div>Lunes y miércoles: grabar el video de la semana (en un bloque de 45 min — grabar 2-3 juntos).</div></div>
+        </div>
+        <div class="day-block">
+          <div class="day-label">🌙 Noche (15 min)</div>
+          <div class="task-item"><div class="task-dot blue"></div><div>Revisar métricas semanales (viernes): Diagnósticos ofrecidos / aceptados / cerrados. Ajustar si hace falta.</div></div>
+        </div>
+        <div class="day-block">
+          <div class="day-label">📹 Videos — bloque semanal (45 min, 1 vez/semana)</div>
+          <div class="task-item"><div class="task-dot red"></div><div>Grabar 3 videos juntos: 1 testimonio/caso, 1 insight, 1 servicio específico. Publicar lunes, miércoles y viernes.</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- PLAN 60 DÍAS -->
+<div class="section-wrap bg-white">
+<div class="section" id="semanas">
+  <div class="section-divider"></div>
+  <div class="section-title">Plan Semana a Semana</div>
+  <div class="section-sub">60 días. 4 fases. Cada semana tiene un objetivo claro y no negociable.</div>
+
+  <div class="weeks">
+
+    <div class="week">
+      <div class="week-hdr">
+        <div class="week-num" style="background:#1a3a6b;">1-2</div>
+        <div class="week-info">
+          <h4>Semana 1-2 — Fundación</h4>
+          <div class="wdate">23 jun – 4 jul · Objetivo: activar base, conseguir primeros 3 diagnósticos</div>
+        </div>
+        <span class="week-phase wp-awareness">Fundación</span>
+      </div>
+      <div class="week-body">
+        <div class="day-card">
+          <div class="dc-day">Prioridad 1</div>
+          <div class="dc-main">Testimonios</div>
+          <div class="dc-sub">Contactar los 3 mejores clientes pasados. Acordar grabación de testimonio de 60 segundos. Meta: 2 testimonios grabados para el fin de la semana 2.</div>
+          <span class="dc-badge" style="background:#fff3d4;color:#8a6200;">No negociable</span>
+        </div>
+        <div class="day-card">
+          <div class="dc-day">Prioridad 2</div>
+          <div class="dc-main">5 Alianzas</div>
+          <div class="dc-sub">Identificar 5 profesionales complementarios en Entre Ríos. Contactar con Script 3. Meta: 3 reuniones acordadas esta semana.</div>
+          <span class="dc-badge" style="background:#e0f5e0;color:#1a6b1a;">Alta prioridad</span>
+        </div>
+        <div class="day-card">
+          <div class="dc-day">Prioridad 3</div>
+          <div class="dc-main">Referidos Sistema</div>
+          <div class="dc-sub">Contactar los 13 clientes pasados/actuales con Script 2. No todos a la vez — 2 por día. Meta: 5+ conversaciones abiertas.</div>
+          <span class="dc-badge" style="background:#e0eaf5;color:#1a3a6b;">Importante</span>
+        </div>
+        <div class="day-card">
+          <div class="dc-day">Prioridad 4</div>
+          <div class="dc-main">LinkedIn Base</div>
+          <div class="dc-sub">5 comentarios/día en cuentas target. No outreach todavía — primero construir presencia. Publicar 1 post de autoridad.</div>
+          <span class="dc-badge" style="background:#f5f0ff;color:#5a1a8a;">Soporte</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hdr">
+        <div class="week-num" style="background:var(--teal);">3-4</div>
+        <div class="week-info">
+          <h4>Semana 3-4 — Activación</h4>
+          <div class="wdate">7 jul – 18 jul · Objetivo: primeros testimonios publicados, alianzas activas, 8+ diagnósticos agendados</div>
+        </div>
+        <span class="week-phase wp-activation">Activación</span>
+      </div>
+      <div class="week-body">
+        <div class="day-card">
+          <div class="dc-day">Contenido</div>
+          <div class="dc-main">Publicar testimonios</div>
+          <div class="dc-sub">Los 2 testimonios grabados salen esta semana. Video en IG/TikTok + LinkedIn. Este es el contenido más valioso que podés publicar.</div>
+          <span class="dc-badge" style="background:#fff3d4;color:#8a6200;">Máximo impacto</span>
+        </div>
+        <div class="day-card">
+          <div class="dc-day">Alianzas</div>
+          <div class="dc-main">Reuniones de alianza</div>
+          <div class="dc-sub">Tener las 3 reuniones de alianza esta semana. Proponer un sistema claro de referidos mutuos. Dejar materiales (brief de servicios).</div>
+          <span class="dc-badge" style="background:#e0f5e0;color:#1a6b1a;">Canal nuevo</span>
+        </div>
+        <div class="day-card">
+          <div class="dc-day">Diagnósticos</div>
+          <div class="dc-main">Primeros 8 diagnósticos</div>
+          <div class="dc-sub">Meta acumulada: 8 diagnósticos realizados. Algunos serán de referidos semana 1-2, otros de LinkedIn warm.</div>
+          <span class="dc-badge" style="background:#e0eaf5;color:#1a3a6b;">Conversión</span>
+        </div>
+        <div class="day-card">
+          <div class="dc-day">LinkedIn</div>
+          <div class="dc-main">Outreach calificado</div>
+          <div class="dc-sub">Empezar outreach 1:1 con Script 4 a los perfiles que venís engageando. 3-5 DMs por semana. Solo a quienes tienen 2+ semanas de interacción.</div>
+          <span class="dc-badge" style="background:#f5f0ff;color:#5a1a8a;">Calificado</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hdr">
+        <div class="week-num" style="background:var(--gold);color:var(--navy);">5-6</div>
+        <div class="week-info">
+          <h4>Semana 5-6 — Tracción</h4>
+          <div class="wdate">21 jul – 1 ago · Objetivo: 5 clientes cerrados, alianzas generando referidos, sistema rodando</div>
+        </div>
+        <span class="week-phase wp-traction">Tracción</span>
+      </div>
+      <div class="week-body">
+        <div class="day-card">
+          <div class="dc-day">Clientes</div>
+          <div class="dc-main">Cerrar 5 primeros</div>
+          <div class="dc-sub">Con 50% de cierre sobre los primeros 10 diagnósticos: 5 clientes. Algunos Espacio de Orden, algunos RE-MEDIO. El primer ingreso real del plan.</div>
+          <span class="dc-badge" style="background:#fff3d4;color:#8a6200;">Meta intermedia</span>
+        </div>
+        <div class="day-card">
+          <div class="dc-day">Ads $100 USD</div>
+          <div class="dc-main">Boostear testimonios</div>
+          <div class="dc-sub">Los $100 USD van acá: boostear los 2 videos de testimonio a audiencias lookalike en Meta (IG + Facebook). Dueños/directivos Entre Ríos y litoral. No contenido frío.</div>
+          <span class="dc-badge" style="background:#e0f5e0;color:#1a6b1a;">Amplificación</span>
+        </div>
+        <div class="day-card">
+          <div class="dc-day">Alianzas</div>
+          <div class="dc-main">Primeros referidos de alianzas</div>
+          <div class="dc-sub">Si las alianzas están bien trabajadas, esta semana deberían llegar los primeros referidos de ese canal. Medir cuál aliado genera más volumen.</div>
+          <span class="dc-badge" style="background:#e0eaf5;color:#1a3a6b;">Canal activo</span>
+        </div>
+        <div class="day-card">
+          <div class="dc-day">Contenido</div>
+          <div class="dc-main">Caso de éxito</div>
+          <div class="dc-sub">Si ya tenés un cliente nuevo, contar el caso (anónimo). "Un dueño llegó con X problema, hoy Y". Este contenido tiene un retorno enorme en credibilidad.</div>
+          <span class="dc-badge" style="background:#f5f0ff;color:#5a1a8a;">Prueba social</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hdr">
+        <div class="week-num" style="background:var(--red);">7-8</div>
+        <div class="week-info">
+          <h4>Semana 7-8 — Conversión + Escala</h4>
+          <div class="wdate">4 ago – 22 ago · Objetivo: 10 clientes, sistema estable, expandir a Argentina</div>
+        </div>
+        <span class="week-phase wp-conversion">Conversión</span>
+      </div>
+      <div class="week-body">
+        <div class="day-card">
+          <div class="dc-day">Meta total</div>
+          <div class="dc-main">10 clientes cerrados</div>
+          <div class="dc-sub">Cerrar los últimos 5 clientes. Vienen de: alianzas activas, LinkedIn calificado, referidos de los nuevos clientes, y contenido amplificado.</div>
+          <span class="dc-badge" style="background:#fde8e8;color:#8a1a1a;">Meta final</span>
+        </div>
+        <div class="day-card">
+          <div class="dc-day">Escala</div>
+          <div class="dc-main">Expandir a Argentina</div>
+          <div class="dc-sub">Con el sistema probado en Entre Ríos, replicar en Buenos Aires, Córdoba y Rosario vía LinkedIn. El mismo script, nueva audiencia.</div>
+          <span class="dc-badge" style="background:#e0f5e0;color:#1a6b1a;">Expansión</span>
+        </div>
+        <div class="day-card">
+          <div class="dc-day">Revisión</div>
+          <div class="dc-main">Qué funcionó / qué no</div>
+          <div class="dc-sub">Revisar cada canal: ¿cuántos diagnósticos vino de cada fuente? Doble down en lo que generó más. Eliminar lo que no generó nada.</div>
+          <span class="dc-badge" style="background:#e0eaf5;color:#1a3a6b;">Data-driven</span>
+        </div>
+        <div class="day-card">
+          <div class="dc-day">Siguientes 60 días</div>
+          <div class="dc-main">Plan mes 3</div>
+          <div class="dc-sub">Con clientes activos + sistema funcionando: diseñar el siguiente ciclo con más volumen y mayor ticket promedio.</div>
+          <span class="dc-badge" style="background:#f5f0ff;color:#5a1a8a;">Continuidad</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- METRICAS -->
+<div class="section-wrap bg-light">
+<div class="section" id="metricas">
+  <div class="section-divider"></div>
+  <div class="section-title">Métricas Semanales</div>
+  <div class="section-sub">Un número no negociable por semana. El resto es contexto.</div>
+
+  <div class="metrics-grid" style="margin-bottom: 28px;">
+    <div class="metric-card">
+      <div class="mc-num">20</div>
+      <div class="mc-label">Diagnósticos totales necesarios</div>
+      <div class="mc-target">Al 50% → 10 clientes</div>
+    </div>
+    <div class="metric-card">
+      <div class="mc-num">2-3</div>
+      <div class="mc-label">Diagnósticos por semana</div>
+      <div class="mc-target">Meta semanal no negociable</div>
+    </div>
+    <div class="metric-card">
+      <div class="mc-num">5</div>
+      <div class="mc-label">Alianzas activas</div>
+      <div class="mc-target">Al menos 2 generando referidos</div>
+    </div>
+    <div class="metric-card">
+      <div class="mc-num">3</div>
+      <div class="mc-label">Videos por semana</div>
+      <div class="mc-target">Calidad &gt; cantidad</div>
+    </div>
+  </div>
+
+  <div class="alert alert-gold">
+    <strong>El único KPI que importa cada semana: ¿cuántos diagnósticos gratuitos hiciste?</strong>
+    Todo lo demás (contenido, LinkedIn, alianzas) son actividades que llevan a ese número. Si esa semana hiciste 2-3 diagnósticos, el resto está funcionando. Si hiciste 0, algo hay que ajustar.
+  </div>
+
+  <div class="projection">
+    <div class="proj-title">Proyección Realista — 60 Días</div>
+    <div class="proj-grid">
+      <div class="proj-item"><div class="pi-n">5-8</div><div class="pi-l">Diagnósticos de referidos (13 clientes × ask específico)</div></div>
+      <div class="proj-item"><div class="pi-n">6-10</div><div class="pi-l">Diagnósticos de alianzas (5 aliados × 1-2 referidos c/u)</div></div>
+      <div class="proj-item"><div class="pi-n">5-8</div><div class="pi-l">Diagnósticos de LinkedIn calificado (8 semanas × engagement)</div></div>
+      <div class="proj-item"><div class="pi-n">3-5</div><div class="pi-l">Diagnósticos de contenido + ads (efecto acumulado)</div></div>
+      <div class="proj-item"><div class="pi-n">19-31</div><div class="pi-l"><strong>Total diagnósticos posibles</strong></div></div>
+      <div class="proj-item"><div class="pi-n">10-15</div><div class="pi-l"><strong>Clientes cerrados al 50%</strong></div></div>
+    </div>
+    <div class="proj-note">* La proyección conservadora da 10 clientes. La optimista da 15. Todo depende de qué tan bien se ejecute la activación de alianzas y referidos en las primeras 2 semanas.</div>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  SAS Consultora · Estrategia v2 · Construida el 22/06/2026 · Confidencial
+</div>
+
+<script>
+function copiarScript(id, btn) {
+  const el = document.getElementById(id);
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ COPIADO';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'COPIAR'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
