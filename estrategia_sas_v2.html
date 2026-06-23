@@ -708,284 +708,654 @@ Te explico brevemente en qué consiste cada uno — y vos me decís si alguno ti
 </div>
 </div>
 
-<!-- CONTENIDO -->
-<div class="section-wrap bg-white">
+<!-- CONTENIDO DETALLADO -->
+<!-- CONTENIDO DETALLADO -->
+<div class="section-wrap bg-light">
 <div class="section" id="contenido">
   <div class="section-divider"></div>
-  <div class="section-title">Sistema de Contenido</div>
-  <div class="section-sub">Carruseles, historias, WhatsApp Status, LinkedIn — qué publicar, cuándo y para qué</div>
+  <div class="section-title">Contenido Día a Día — Plan Completo</div>
+  <div class="section-sub">Todo lo que tenés que publicar, exactamente cómo. Semanas 1-8.</div>
 
-  <div class="alert alert-teal">
-    <strong>El contenido no adquiere clientes directamente. Su trabajo es hacer que el SÍ al Diagnóstico sea más fácil.</strong>
-    Cuando alguien recibe un mensaje de Seba o lo refieren, lo primero que hace es buscar en Instagram y LinkedIn. Si lo que encuentran genera confianza, el SÍ es mucho más probable. Ese es el único objetivo.
+  <div class="alert alert-gold">
+    <strong>Cómo usar esta sección:</strong> Cada día tiene el contenido listo para ejecutar. Los guiones están completos — solo grabás. Los carruseles tienen cada slide. Los posts de LinkedIn están escritos. Copiás, ajustás el nombre si hay uno, y publicás.
   </div>
 
-  <!-- GRILLA POR FORMATO -->
-  <div style="display:grid; gap:20px; margin-bottom:32px;">
+  <style>
+  .week-tab{background:#fff;border:2px solid var(--border);border-radius:12px;margin-bottom:20px;overflow:hidden;}
+  .week-tab-hdr{background:var(--navy);color:#fff;padding:18px 24px;display:flex;align-items:center;gap:16px;}
+  .week-tab-hdr .wt-num{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0;}
+  .week-tab-hdr h3{font-size:17px;font-weight:800;margin:0;}
+  .week-tab-hdr .wt-dates{font-size:12px;color:rgba(255,255,255,.55);margin-top:2px;}
+  .week-tab-hdr .wt-tema{margin-left:auto;font-size:12px;font-weight:700;color:var(--gold);text-align:right;}
+  .week-tab-body{padding:0;}
+  .day-section{border-top:1px solid var(--border);padding:24px;}
+  .day-section:first-child{border-top:none;}
+  .day-title{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .day-title .dn{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;}
+  .day-title h4{font-size:16px;font-weight:800;color:var(--navy);margin:0;}
+  .day-title .dt-sub{font-size:12px;color:var(--muted);margin-top:1px;}
+  .content-block{background:var(--light);border:1.5px solid var(--border);border-radius:10px;margin-bottom:14px;overflow:hidden;}
+  .cb-hdr{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);background:#fff;}
+  .cb-hdr .platform-tag{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;}
+  .pt-ig{background:#fce4ec;color:#880e4f;}
+  .pt-li{background:#e3f2fd;color:#0d47a1;}
+  .pt-wa{background:#e8f5e9;color:#1b5e20;}
+  .pt-video{background:#fff3e0;color:#e65100;}
+  .pt-carrusel{background:#f3e5f5;color:#4a148c;}
+  .pt-story{background:#fce4ec;color:#880e4f;}
+  .cb-hdr .cb-title{font-size:13px;font-weight:700;color:var(--navy);}
+  .cb-body{padding:16px;}
+  .cb-body .guion-hook{background:var(--navy);color:var(--gold);padding:12px 16px;border-radius:8px;font-size:14px;font-weight:700;margin-bottom:10px;line-height:1.4;}
+  .cb-body .slide{background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin-bottom:6px;font-size:13px;}
+  .cb-body .slide .sn{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;}
+  .cb-body .guion-body{font-size:14px;line-height:1.7;white-space:pre-line;color:var(--text);}
+  .cb-body .guion-cta{background:#e8f5f5;border:1.5px solid var(--teal);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:13px;color:#004040;}
+  .cb-body .overlay-txt{background:rgba(0,0,0,.8);color:#fff;padding:10px 14px;border-radius:8px;font-size:14px;font-weight:700;margin-bottom:10px;text-align:center;}
+  .cb-body .li-post{font-size:14px;line-height:1.7;white-space:pre-line;}
+  .cb-body .li-comment{background:#e3f2fd;border:1.5px solid #90caf9;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:13px;color:#0d47a1;}
+  .cb-body .wa-text{font-size:14px;line-height:1.6;font-style:italic;}
+  .cb-body .story-txt{font-size:14px;line-height:1.6;}
+  .outreach-day{background:var(--light);border:1.5px dashed var(--border);border-radius:10px;padding:16px;font-size:14px;}
+  .od-title{font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .od-item{display:flex;gap:10px;margin-bottom:6px;font-size:13px;}
+  .od-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px;}
+  </style>
 
-    <!-- CARRUSELES -->
-    <div class="script-card">
-      <div class="script-hdr" style="background:#1a3a6b;">
-        <h4>📑 Carruseles — Instagram + LinkedIn</h4>
-        <span class="uso">2 por semana · Lunes y jueves</span>
-      </div>
-      <div class="script-body">
-        <div class="script-context">El formato más efectivo para autoridad. Enseña algo útil Y muestra que Seba sabe de lo que habla. No explicar los servicios — mostrar el problema que resuelven.</div>
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:12px; margin-bottom:16px;">
-          <div style="background:#f8f9fb;border:1.5px solid var(--border);border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Tipo 1 · Diagnóstico de problema</div>
-            <div style="font-size:13px;color:var(--text);">"Los 3 síntomas de un equipo que no funciona sin el dueño" → lleva a Espacio de Orden</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px;">Slide 1: problema. Slides 2-4: síntomas. Slide 5: qué hacer. Slide 6: CTA al Diagnóstico.</div>
-          </div>
-          <div style="background:#f8f9fb;border:1.5px solid var(--border);border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Tipo 2 · Caso real (anónimo)</div>
-            <div style="font-size:13px;color:var(--text);">"Una empresa llegó con X. Hoy tiene Y. Esto es lo que cambió." → prueba social directa</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px;">Slide 1: situación inicial. Slides 2-3: proceso. Slide 4: resultado. Slide 5: CTA.</div>
-          </div>
-          <div style="background:#f8f9fb;border:1.5px solid var(--border);border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Tipo 3 · Test / Autodiagnóstico</div>
-            <div style="font-size:13px;color:var(--text);">"¿Tu empresa está en Etapa 1, 2 o 3? Respondé estas 4 preguntas." → alta interacción + leads</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px;">Guarda + comparte alto. Usar 1 por mes. Termina con: "¿Etapa 1 o 2? Diagnóstico gratuito."</div>
-          </div>
-          <div style="background:#f8f9fb;border:1.5px solid var(--border);border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:#6b3fa0;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Tipo 4 · Insight de liderazgo</div>
-            <div style="font-size:13px;color:var(--text);">"Por qué tu equipo no toma decisiones sin vos (y qué hay detrás de eso)" → autoridad pura</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px;">Reflexión de 5-7 slides. Sin CTA de venta. Construye perfil de experto.</div>
+  <div class="week-tab">
+    <div class="week-tab-hdr">
+      <div class="wt-num" style="background:var(--gold);color:var(--navy);">S1</div>
+      <div><h3>Semana 1 — Fundación y Primera Presencia</h3><div class="wt-dates">Lunes 23/6 → Domingo 29/6</div></div>
+      <div class="wt-tema">Tema: "La empresa que depende de una sola persona"<br>Servicio foco: Espacio de Orden</div>
+    </div>
+    <div class="week-tab-body">
+      <div class="day-section">
+        <div class="day-title"><div class="dn" style="background:#1a3a6b;color:#fff;">L</div><div><h4>Lunes 23/6</h4><div class="dt-sub">Carrusel + LinkedIn + Story + WA</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-carrusel">📑 Carrusel</span><span class="cb-title">IG + LinkedIn · "3 señales de que tu empresa depende demasiado de vos"</span></div>
+          <div class="cb-body">
+            <div class="slide"><div class="sn">Slide 1 — Cover</div>"¿Tu empresa funciona sin vos o funciona a pesar de vos?" · Logo SAS</div>
+            <div class="slide"><div class="sn">Slide 2</div>"Señal 1: Sos el primer problema que aparece cuando algo sale mal. No porque seas el responsable — sino porque nadie más sabe qué hacer."</div>
+            <div class="slide"><div class="sn">Slide 3</div>"Señal 2: Delegás, pero después revisás todo. No porque no confíes — sino porque el resultado nunca es lo que esperabas. Entonces mejor lo hacés vos."</div>
+            <div class="slide"><div class="sn">Slide 4</div>"Señal 3: Cuando te vas unos días, la empresa se frena. Todos esperan que vuelvas para seguir. Eso no es liderazgo — es dependencia."</div>
+            <div class="slide"><div class="sn">Slide 5</div>"Estas tres señales no son un problema tuyo. Son el síntoma de una estructura que todavía no existe. Y tiene solución."</div>
+            <div class="slide"><div class="sn">Slide 6 — CTA</div>"Si las 3 te identifican, tengo diagnósticos gratuitos disponibles esta semana. 25 minutos, sin compromiso. Escribime directo." · Logo + @sas.consultora</div>
           </div>
         </div>
-        <div class="alert alert-gold" style="margin:0;">
-          <strong>Diseño de carrusel:</strong> Fondo oscuro (azul navy o negro) · Tipografía blanca grande · Logo SAS en slide 1 y último · Máximo 7 slides · El primer slide tiene que parar el scroll.
-        </div>
-      </div>
-    </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-li">💼 LinkedIn</span><span class="cb-title">Post de autoridad</span></div>
+          <div class="cb-body">
+            <div class="li-post">Hay una frase que escucho seguido en las primeras reuniones con dueños:
 
-    <!-- STORIES / HISTORIAS -->
-    <div class="script-card">
-      <div class="script-hdr" style="background:var(--teal);">
-        <h4>📱 Historias / Stories — Instagram</h4>
-        <span class="uso">Diarias o día por medio · Bajo esfuerzo</span>
-      </div>
-      <div class="script-body">
-        <div class="script-context">Las stories mantienen presencia sin saturar el feed. Son el lugar donde la gente ve el "detrás de escena" y siente que conoce a Seba. Eso construye confianza más que cualquier post.</div>
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:12px; margin-bottom:16px;">
-          <div style="background:#f8f9fb;border:1.5px solid var(--border);border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:var(--teal);text-transform:uppercase;margin-bottom:6px;">Lunes</div>
-            <div style="font-size:13px;">Compartir el carrusel de la semana con "¿A vos te pasó esto?" como texto encima.</div>
-          </div>
-          <div style="background:#f8f9fb;border:1.5px solid var(--border);border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;margin-bottom:6px;">Miércoles</div>
-            <div style="font-size:13px;">"Hoy tuve una sesión con un líder que…" — algo concreto que pasó (anónimo). Sin texto largo. Solo el hecho.</div>
-          </div>
-          <div style="background:#f8f9fb;border:1.5px solid var(--border);border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;margin-bottom:6px;">Viernes</div>
-            <div style="font-size:13px;">Pregunta interactiva o encuesta. "¿Cuál es tu mayor problema hoy como líder?" → dato + engagement + leads.</div>
-          </div>
-          <div style="background:#f8f9fb;border:1.5px solid var(--border);border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;margin-bottom:6px;">Cuando haya cupos</div>
-            <div style="font-size:13px;">"Tengo 2 cupos para diagnóstico gratuito esta semana. Si estás pensando en ordenar tu empresa, escribime." — directo, sin rodeos.</div>
+"Yo lo hago todo porque nadie lo hace como yo."
+
+Suena a exigencia. En realidad, es una trampa.
+
+No una trampa que armaron los demás — una trampa que armó el propio dueño sin darse cuenta.
+
+Cuando alguien hace todo, el equipo aprende que no hay que hacer nada. No porque sean vagos. Porque aprendieron que si esperan, él resuelve.
+
+El resultado: una empresa que funciona perfectamente cuando el dueño está. Y se cae cuando no está.
+
+Eso no es una empresa — es un trabajo disfrazado de empresa.
+
+La buena noticia: tiene solución. Y no empieza por el equipo. Empieza por la estructura que le falta.
+
+¿Te suena conocido?</div>
+            <div class="li-comment">💬 Primer comentario: "Si esto describe tu situación actual, estoy haciendo diagnósticos gratuitos de 25 minutos para dueños y líderes esta semana. En esa charla te digo exactamente qué está faltando y por dónde empezar. Escribime por acá o por DM."</div>
           </div>
         </div>
-        <div class="script-text" id="cta-story" style="margin-top:8px;">📌 CTA story para Diagnóstico Gratuito:
-
-"¿Sentís que tu empresa o equipo depende demasiado de vos?
-
-Estoy haciendo diagnósticos gratuitos de 25 minutos para dueños y líderes.
-Te digo exactamente en qué etapa está tu empresa.
-
-2 cupos esta semana → escribime por acá 👇"</div>
-        <button class="copy-btn" onclick="copiarScript('cta-story', this)">COPIAR</button>
-      </div>
-    </div>
-
-    <!-- WHATSAPP STATUS -->
-    <div class="script-card">
-      <div class="script-hdr" style="background:#128C7E;">
-        <h4>💬 WhatsApp Status</h4>
-        <span class="uso">3-4 veces por semana · El canal más subestimado</span>
-      </div>
-      <div class="script-body">
-        <div class="script-context">El WhatsApp Status llega directo a la red personal de Seba — personas que ya lo conocen, que ya tienen algo de confianza. Es el canal más corto al SÍ para una reunión. Se usa poco y es oro.</div>
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:12px; margin-bottom:16px;">
-          <div style="background:#f0faf8;border:1.5px solid #b2dfdb;border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:#128C7E;text-transform:uppercase;margin-bottom:6px;">Tipo A · Insight corto</div>
-            <div style="font-size:13px;">Una observación de 2-3 líneas sobre liderazgo o equipos. Sin imagen si no hace falta. El texto solo basta.</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:4px;">Ej: "Un líder me dijo hoy: 'yo hago todo porque nadie lo hace como yo'. Ese es exactamente el problema."</div>
-          </div>
-          <div style="background:#f0faf8;border:1.5px solid #b2dfdb;border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:#128C7E;text-transform:uppercase;margin-bottom:6px;">Tipo B · Compartir carrusel</div>
-            <div style="font-size:13px;">Imagen del carrusel de la semana con el texto: "Por si te sirve —" + link al post de IG.</div>
-          </div>
-          <div style="background:#f0faf8;border:1.5px solid #b2dfdb;border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:#128C7E;text-transform:uppercase;margin-bottom:6px;">Tipo C · CTA al Diagnóstico</div>
-            <div style="font-size:13px;">1 vez por semana cuando haya cupos: "Tengo 2 diagnósticos gratuitos disponibles. Si conocés a alguien que lo necesite, pasame el dato."</div>
-          </div>
-          <div style="background:#f0faf8;border:1.5px solid #b2dfdb;border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:#128C7E;text-transform:uppercase;margin-bottom:6px;">Tipo D · Testimonio corto</div>
-            <div style="font-size:13px;">Captura del mensaje de un cliente (con permiso y nombre ocultado) o una cita de 1 línea de su testimonio.</div>
-          </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-story">📱 Story IG</span><span class="cb-title">Compartir carrusel + encuesta</span></div>
+          <div class="cb-body"><div class="story-txt">Compartir la primera imagen del carrusel.<br>Texto encima: "¿Cuántas de estas 3 te identifican? 👆"<br>Sticker: encuesta "1-2" / "las 3"</div></div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-wa">💬 WhatsApp Status</span><span class="cb-title">Insight</span></div>
+          <div class="cb-body"><div class="wa-text">"Una empresa que depende de una sola persona no es una empresa — es un trabajo disfrazado. Hay algo que construir antes de que se note de verdad."</div></div>
         </div>
       </div>
-    </div>
-
-    <!-- LINKEDIN -->
-    <div class="script-card">
-      <div class="script-hdr" style="background:#0077B5;">
-        <h4>💼 LinkedIn — Posts y Estrategia</h4>
-        <span class="uso">2 posts/semana + 5 comentarios/día</span>
-      </div>
-      <div class="script-body">
-        <div class="script-context">LinkedIn es donde está la audiencia de mayor ticket: dueños, directores, mandos medios. El objetivo es aparecer como referente antes de hacer el pitch. Los comentarios diarios construyen esto más rápido que los posts.</div>
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:12px; margin-bottom:16px;">
-          <div style="background:#f8f9fb;border:1.5px solid var(--border);border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:#0077B5;text-transform:uppercase;margin-bottom:6px;">Lunes · Post de Autoridad</div>
-            <div style="font-size:13px;color:var(--text);">Texto largo (800-1200 caracteres). Reflexión desde la experiencia real. Sin listas ni bullets. Empieza con una línea que para el scroll.</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px;">Ej: "Hay un tipo de reunión que destruye equipos sin que nadie lo note. La llamo la reunión de acuerdo falso."</div>
-          </div>
-          <div style="background:#f8f9fb;border:1.5px solid var(--border);border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:#0077B5;text-transform:uppercase;margin-bottom:6px;">Jueves · Post de Caso</div>
-            <div style="font-size:13px;color:var(--text);">Historia de un cliente (anónimo). Problema → proceso → resultado. Termina con una pregunta abierta que invita a comentar.</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px;">Ej: "Una empresa llegó con un problema de 'comunicación'. Al tercer mes nos dimos cuenta de que el problema era otro."</div>
-          </div>
-          <div style="background:#f8f9fb;border:1.5px solid var(--border);border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:#0077B5;text-transform:uppercase;margin-bottom:6px;">Diario · 5 Comentarios</div>
-            <div style="font-size:13px;color:var(--text);">En posts de dueños y líderes de Entre Ríos + Argentina. Comentar desde la experiencia, no solo "buen post". 2-3 líneas mínimo.</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px;">Esto construye presencia más rápido que cualquier post propio. Es clave para el outreach posterior.</div>
-          </div>
-          <div style="background:#f8f9fb;border:1.5px solid var(--border);border-radius:8px;padding:14px;">
-            <div style="font-size:11px;font-weight:700;color:#0077B5;text-transform:uppercase;margin-bottom:6px;">Primer Comentario Propio</div>
-            <div style="font-size:13px;color:var(--text);">En cada post de Seba, el primer comentario es la expansión clave o el CTA directo. El algoritmo lo muestra primero.</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px;">Ej: "Si esto resuena con lo que estás viviendo, tengo 2 diagnósticos gratuitos disponibles esta semana. Escribime."</div>
-          </div>
-        </div>
-        <div class="alert alert-gold" style="margin:0;">
-          <strong>Regla LinkedIn:</strong> No vender en el post. Vender en el primer comentario propio o en el DM. El post construye autoridad. El comentario convierte.
+      <div class="day-section" style="background:#fafbfc;">
+        <div class="day-title"><div class="dn" style="background:var(--muted);color:#fff;">M</div><div><h4>Martes 24/6</h4><div class="dt-sub">Outreach — Sin publicar nada</div></div></div>
+        <div class="outreach-day">
+          <div class="od-title">🎯 Acciones del día</div>
+          <div class="od-item"><div class="od-dot"></div><div>Contactar al mejor cliente pasado por WhatsApp — pedir testimonio con Script 2. Objetivo: acordar grabación esta semana.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>Identificar 2 contadores/estudios contables en Paraná que trabajen con PyMEs. Guardar perfiles en LinkedIn.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>LinkedIn: 5 comentarios en posts de dueños/líderes de Entre Ríos. Comentario de 2-3 líneas desde experiencia propia.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>Responder todos los mensajes que llegaron desde el carrusel y el post de ayer.</div></div>
         </div>
       </div>
-    </div>
+      <div class="day-section">
+        <div class="day-title"><div class="dn" style="background:var(--teal);color:#fff;">M</div><div><h4>Miércoles 25/6</h4><div class="dt-sub">Video/Reel + Story</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-video">🎬 Video/Reel</span><span class="cb-title">IG + TikTok · "La trampa de hacerlo todo vos"</span></div>
+          <div class="cb-body">
+            <div class="overlay-txt">📱 Texto overlay: "Cuando el dueño lo hace todo, el equipo aprende que no hace falta hacer nada"</div>
+            <div class="guion-hook">Hook: "Hay una frase que me dice casi todo dueño en la primera reunión."</div>
+            <div class="guion-body">Pausa. Mirás a cámara.
 
-  </div>
+"'Yo lo hago todo porque nadie lo hace como yo.'"
 
-  <!-- CÓMO PRESENTAR LOS SERVICIOS -->
-  <div class="section-divider" style="margin-top:32px;"></div>
-  <div class="section-title" style="font-size:18px; margin-bottom:6px;">Cómo Presentar los Servicios — Sin que Parezca Publicidad</div>
-  <div class="section-sub">Nunca nombrar el servicio primero. Siempre el problema → luego la solución.</div>
+Otra pausa.
 
-  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:16px;">
+"Esa frase suena a un problema del equipo. No lo es."
 
-    <div style="background:#fff;border:2px solid var(--border);border-radius:12px;overflow:hidden;">
-      <div style="background:var(--navy);padding:14px 18px;color:#fff;">
-        <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:2px;">Para dueños y líderes saturados</div>
-        <div style="font-size:16px;font-weight:800;">Espacio de Orden</div>
-      </div>
-      <div style="padding:16px;">
-        <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Síntoma que hay que nombrar</div>
-        <div style="font-size:14px;margin-bottom:10px;">"Todo pasa por mí. No puedo delegar nada sin que salga mal. Trabajo más horas que nadie y la empresa no avanza sin mí."</div>
-        <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Cómo nombrarlo en contenido</div>
-        <div style="font-size:13px;color:var(--muted);">Hablar del síntoma. Dejarlo al borde de la solución. CTA: "¿Es tu caso? Diagnóstico gratuito esta semana."</div>
-      </div>
-    </div>
+"Cuando un dueño hace todo, su equipo aprende algo muy rápido: no hace falta hacer nada. Porque si esperan, él resuelve."
 
-    <div style="background:#fff;border:2px solid var(--border);border-radius:12px;overflow:hidden;">
-      <div style="background:var(--teal);padding:14px 18px;color:#fff;">
-        <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:2px;">Para líderes con equipos que no rinden</div>
-        <div style="font-size:16px;font-weight:800;">RE-MEDIO</div>
-      </div>
-      <div style="padding:16px;">
-        <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Síntoma que hay que nombrar</div>
-        <div style="font-size:14px;margin-bottom:10px;">"Mi equipo está bien pero no rinden lo que deberían. Hay conflictos que nunca se resuelven del todo. Falta algo que no sé nombrar."</div>
-        <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Cómo nombrarlo en contenido</div>
-        <div style="font-size:13px;color:var(--muted);">Hablar de dinámicas de equipo invisibles. Los patrones que se repiten. El líder que pone el cuerpo por todos.</div>
-      </div>
-    </div>
+"No porque sean vagos. Porque aprendieron que ese es el sistema."
 
-    <div style="background:#fff;border:2px solid var(--border);border-radius:12px;overflow:hidden;">
-      <div style="background:#6b3fa0;padding:14px 18px;color:#fff;">
-        <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:2px;">Para dueños de PyME con dudas de dirección</div>
-        <div style="font-size:16px;font-weight:800;">RE-FOCO / Mentoría</div>
-      </div>
-      <div style="padding:16px;">
-        <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Síntoma que hay que nombrar</div>
-        <div style="font-size:14px;margin-bottom:10px;">"La empresa anda, pero no sé si voy en la dirección correcta. Tomo muchas decisiones solo. Me falta alguien con quien pensar."</div>
-        <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Cómo nombrarlo en contenido</div>
-        <div style="font-size:13px;color:var(--muted);">La soledad del dueño. Las decisiones sin caja de resonancia. Claridad estratégica vs. urgencia operativa.</div>
-      </div>
-    </div>
+"¿Y cuál es la salida? No es motivar al equipo. No es cambiar personas."
 
-    <div style="background:#fff;border:2px solid var(--border);border-radius:12px;overflow:hidden;">
-      <div style="background:var(--gold);padding:14px 18px;color:var(--navy);">
-        <div style="font-size:12px;color:rgba(0,0,0,.4);margin-bottom:2px;">Para seguimiento y cultura</div>
-        <div style="font-size:16px;font-weight:800;">Pulso</div>
-      </div>
-      <div style="padding:16px;">
-        <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Síntoma que hay que nombrar</div>
-        <div style="font-size:14px;margin-bottom:10px;">"Nunca sé realmente cómo está el clima del equipo. Me entero de los problemas cuando ya son grandes. La gente no me dice la verdad."</div>
-        <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Cómo nombrarlo en contenido</div>
-        <div style="font-size:13px;color:var(--muted);">El líder que no sabe qué piensa realmente su equipo. La cultura que se instala sola si no la diseñás vos.</div>
-      </div>
-    </div>
+"Es construir la estructura que todavía no existe. Definir quién decide qué. Qué requiere tu aprobación y qué no."
 
-  </div>
+"Cuando eso está claro, los equipos empiezan a funcionar solos."
 
-  <!-- CALENDARIO SEMANAL DE CONTENIDO -->
-  <div style="margin-top:32px;">
-  <div class="section-title" style="font-size:18px; margin-bottom:16px;">Calendario Semanal de Contenido</div>
-  <div style="background:#fff;border:2px solid var(--border);border-radius:12px;overflow:hidden;">
-    <div style="display:grid;grid-template-columns:repeat(7,1fr);background:var(--navy);">
-      <div style="padding:10px;text-align:center;font-size:12px;font-weight:700;color:rgba(255,255,255,.7);">Lunes</div>
-      <div style="padding:10px;text-align:center;font-size:12px;font-weight:700;color:rgba(255,255,255,.7);">Martes</div>
-      <div style="padding:10px;text-align:center;font-size:12px;font-weight:700;color:rgba(255,255,255,.7);">Miércoles</div>
-      <div style="padding:10px;text-align:center;font-size:12px;font-weight:700;color:rgba(255,255,255,.7);">Jueves</div>
-      <div style="padding:10px;text-align:center;font-size:12px;font-weight:700;color:rgba(255,255,255,.7);">Viernes</div>
-      <div style="padding:10px;text-align:center;font-size:12px;font-weight:700;color:rgba(255,255,255,.7);">Sábado</div>
-      <div style="padding:10px;text-align:center;font-size:12px;font-weight:700;color:rgba(255,255,255,.7);">Domingo</div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(7,1fr);">
-      <div style="padding:12px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
-        <div style="font-size:11px;font-weight:700;color:#1a3a6b;margin-bottom:4px;">IG + LI</div>
-        <div style="font-size:12px;">Carrusel nuevo</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:4px;">Story: compartir carrusel</div>
-        <div style="font-size:11px;color:#128C7E;margin-top:2px;">WA: insight corto</div>
+Mirás a cámara. "¿Cuánto tiempo llevás siendo el único que resuelve?"</div>
+            <div class="guion-cta">🎯 CTA final: "Si esto describe tu empresa, escribime. Tengo diagnósticos gratuitos disponibles." · @sas.consultora</div>
+          </div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-story">📱 Story IG</span><span class="cb-title">Detrás de escena</span></div>
+          <div class="cb-body"><div class="story-txt">Imagen o video corto en el lugar donde grabás.<br>Texto: "Grabando el contenido de la semana 📹 Si tenés algún tema sobre liderazgo o equipos que querés que toque, mandame mensaje."</div></div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-wa">💬 WhatsApp Status</span><span class="cb-title">Compartir reel</span></div>
+          <div class="cb-body"><div class="wa-text">Captura del reel. Texto: "Para los que me preguntaron esta semana sobre la dependencia del dueño — esto."</div></div>
+        </div>
       </div>
-      <div style="padding:12px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
-        <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:4px;">Outreach</div>
-        <div style="font-size:12px;">2 DMs Diagnóstico</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:4px;">LinkedIn: 5 comentarios</div>
+      <div class="day-section" style="background:#fafbfc;">
+        <div class="day-title"><div class="dn" style="background:#0077B5;color:#fff;">J</div><div><h4>Jueves 26/6</h4><div class="dt-sub">LinkedIn caso real + outreach</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-li">💼 LinkedIn</span><span class="cb-title">Post caso real — "No era comunicación"</span></div>
+          <div class="cb-body">
+            <div class="li-post">Una empresa llegó a mí con un problema de "comunicación".
+
+Eso dijeron al principio: "hay mala comunicación entre los sectores".
+
+Estuvimos tres sesiones mapeando el problema real.
+
+No era comunicación.
+
+Era que nadie sabía quién decidía qué. Cada área esperaba que otra tomara la iniciativa. Y cuando algo salía mal, todos señalaban a otro sector.
+
+Eso no es un problema de comunicación — es un problema de estructura.
+
+Cuando definimos roles claros, responsabilidades específicas y un criterio de escalamiento para las decisiones, la "mala comunicación" desapareció sola.
+
+No cambiamos personas. No hicimos talleres. Construimos la estructura que faltaba.
+
+Cuatro meses después, el dueño me dijo: "por primera vez en diez años me fui de vacaciones una semana sin que me llamaran".</div>
+            <div class="li-comment">💬 Primer comentario: "Si tu empresa tiene problemas que llevan tiempo sin resolverse, muchas veces la causa no es la que parece. Tengo diagnósticos gratuitos de 25 min disponibles. Escribime."</div>
+          </div>
+        </div>
+        <div class="outreach-day">
+          <div class="od-title">🎯 Outreach del día</div>
+          <div class="od-item"><div class="od-dot"></div><div>Contactar segundo cliente pasado para testimonio. Seguimiento al primero si no respondió.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>Contactar primera alianza estratégica con Script 3. Objetivo: reunión esta semana o la próxima.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>LinkedIn: 5 comentarios en cuentas target.</div></div>
+        </div>
       </div>
-      <div style="padding:12px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
-        <div style="font-size:11px;font-weight:700;color:var(--teal);margin-bottom:4px;">Video / IG</div>
-        <div style="font-size:12px;">Reel o video corto</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:4px;">Story: detrás de escena</div>
-        <div style="font-size:11px;color:#128C7E;margin-top:2px;">WA: compartir reel</div>
+      <div class="day-section">
+        <div class="day-title"><div class="dn" style="background:var(--gold);color:var(--navy);">V</div><div><h4>Viernes 27/6</h4><div class="dt-sub">Story CTA al Diagnóstico + WA</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-story">📱 Story IG</span><span class="cb-title">CTA directo — cupos disponibles</span></div>
+          <div class="cb-body"><div class="story-txt">Fondo oscuro, texto blanco grande:<br><br>"Tengo 2 diagnósticos gratuitos disponibles para la semana que viene.<br><br>25 minutos. Te digo exactamente en qué etapa está tu empresa y qué es lo primero que hay que resolver. Sin compromiso.<br><br>Si te interesa → respondé esta story o mandame mensaje directo."</div></div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-wa">💬 WhatsApp Status</span><span class="cb-title">Cupos disponibles</span></div>
+          <div class="cb-body"><div class="wa-text">"Tengo 2 diagnósticos gratuitos para la semana que viene — para dueños o líderes que quieran saber exactamente en qué etapa está su empresa. Si es para vos o para alguien que conocés, avisame."</div></div>
+        </div>
       </div>
-      <div style="padding:12px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
-        <div style="font-size:11px;font-weight:700;color:#0077B5;margin-bottom:4px;">LinkedIn</div>
-        <div style="font-size:12px;">Post texto largo</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:4px;">Primer comentario: CTA</div>
-        <div style="font-size:11px;color:#128C7E;margin-top:2px;">WA: compartir post</div>
-      </div>
-      <div style="padding:12px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
-        <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:4px;">IG Stories</div>
-        <div style="font-size:12px;">Encuesta interactiva</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:4px;">LinkedIn: 5 comentarios</div>
-        <div style="font-size:11px;color:#128C7E;margin-top:2px;">WA: cupos Diagnóstico</div>
-      </div>
-      <div style="padding:12px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
-        <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:4px;">Opcional</div>
-        <div style="font-size:12px;">Carrusel 2 de la semana</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:4px;">o repurpose de video</div>
-      </div>
-      <div style="padding:12px;border-bottom:1px solid var(--border);">
-        <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:4px;">Descanso</div>
-        <div style="font-size:12px;">WA status opcional</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:4px;">Solo si hay algo puntual</div>
-      </div>
-    </div>
-    <div style="padding:12px 16px;background:var(--light);font-size:12px;color:var(--muted);">
-      ⏱ Tiempo total estimado: 45 min grabación (1×/semana) + 15 min diseño carrusel + 10 min posts = ~70 min/semana de contenido. El resto del tiempo va a outreach y diagnósticos.
     </div>
   </div>
-  </div>
+  <div class="week-tab">
+    <div class="week-tab-hdr">
+      <div class="wt-num" style="background:var(--teal);">S2</div>
+      <div><h3>Semana 2 — Equipos y Clima Organizacional</h3><div class="wt-dates">Lunes 30/6 → Domingo 6/7</div></div>
+      <div class="wt-tema">Tema: "El equipo que no funciona aunque la gente sea buena"<br>Servicio foco: RE-MEDIO</div>
+    </div>
+    <div class="week-tab-body">
+      <div class="day-section">
+        <div class="day-title"><div class="dn" style="background:#1a3a6b;color:#fff;">L</div><div><h4>Lunes 30/6</h4><div class="dt-sub">Carrusel + LinkedIn + Story + WA</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-carrusel">📑 Carrusel</span><span class="cb-title">IG + LinkedIn · "Tu equipo tiene un código. Nadie te lo dijo."</span></div>
+          <div class="cb-body">
+            <div class="slide"><div class="sn">Slide 1 — Cover</div>"¿Por qué tu equipo funciona de cierta manera y nadie sabe por qué?" · Logo SAS</div>
+            <div class="slide"><div class="sn">Slide 2</div>"Todo equipo tiene un código no escrito: las reglas reales de cómo funciona. No las del manual. Las que aprendieron observando al líder."</div>
+            <div class="slide"><div class="sn">Slide 3</div>"Si el líder evita el conflicto, el equipo aprende que los problemas no se dicen. Si el líder cambia de decisión cuando hay presión, el equipo aprende que todo es negociable."</div>
+            <div class="slide"><div class="sn">Slide 4</div>"El código se instala solo. Nadie lo diseñó. Pero está ahí y explica el 80% de lo que pasa en el equipo."</div>
+            <div class="slide"><div class="sn">Slide 5</div>"La pregunta no es '¿qué le pasa a mi equipo?' sino '¿qué código estoy instalando sin darme cuenta?'"</div>
+            <div class="slide"><div class="sn">Slide 6 — CTA</div>"Trabajamos esto en RE-MEDIO. ¿Querés saber cuál es el código de tu equipo? Diagnóstico gratuito 25 min → escribime." · @sas.consultora</div>
+          </div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-li">💼 LinkedIn</span><span class="cb-title">Post autoridad — El código invisible del equipo</span></div>
+          <div class="cb-body">
+            <div class="li-post">Hay algo que todo equipo tiene y casi nadie nombra: un código no escrito.
 
+No está en el manual. No lo votaron. Se fue instalando solo.
+
+Ejemplo: si el líder nunca dice "no sé", el equipo aprende que la incertidumbre es señal de incompetencia.
+
+Si el líder cambia de decisión cuando alguien insiste, el equipo aprende que todo es negociable.
+
+Si el líder celebra los resultados pero no el proceso, el equipo aprende a presentar buenas noticias y esconder los problemas.
+
+El código no se cambia con una charla motivacional. Se cambia cuando el líder cambia su propio comportamiento de manera consistente.
+
+Eso es lo más difícil del liderazgo: que el equipo siempre está mirando.
+
+¿Qué código estás instalando hoy?</div>
+            <div class="li-comment">💬 Primer comentario: "Este es exactamente el trabajo que hacemos en RE-MEDIO: leer el código actual del equipo y reconstruirlo desde el liderazgo. Si querés saber cuál es el código de tu equipo, tengo diagnósticos gratuitos esta semana. DM abierto."</div>
+          </div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-story">📱 Story IG</span><span class="cb-title">Encuesta interactiva</span></div>
+          <div class="cb-body"><div class="story-txt">Fondo azul navy. Texto: "El problema de tu equipo es más de..."<br>Sticker encuesta: "Actitud / motivación" vs "Estructura / claridad"<br>(Las respuestas son leads — responder a quienes elijan "Estructura/claridad" con el Script 1)</div></div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-wa">💬 WhatsApp Status</span><span class="cb-title">Insight del equipo</span></div>
+          <div class="cb-body"><div class="wa-text">"Tu equipo aprendió a funcionar observándote a vos. Lo que te molesta de ellos probablemente lo instalaste vos sin darte cuenta. No es crítica — es el punto de partida para cambiar algo."</div></div>
+        </div>
+      </div>
+      <div class="day-section" style="background:#fafbfc;">
+        <div class="day-title"><div class="dn" style="background:var(--muted);color:#fff;">M</div><div><h4>Martes 1/7</h4><div class="dt-sub">Outreach puro</div></div></div>
+        <div class="outreach-day">
+          <div class="od-title">🎯 Acciones del día</div>
+          <div class="od-item"><div class="od-dot"></div><div>Seguimiento a clientes de testimonios — confirmar fecha de grabación esta semana.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>Contactar segunda alianza estratégica (abogado laboral o consultor RRHH) con Script 3.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>Responder a todos los que respondieron la encuesta de stories. Los que eligieron "Estructura/claridad" → Script 1.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>LinkedIn: 5 comentarios en cuentas target.</div></div>
+        </div>
+      </div>
+      <div class="day-section">
+        <div class="day-title"><div class="dn" style="background:var(--teal);color:#fff;">M</div><div><h4>Miércoles 2/7</h4><div class="dt-sub">Video + Story</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-video">🎬 Video/Reel</span><span class="cb-title">IG + TikTok · "Por qué tu equipo no te dice la verdad"</span></div>
+          <div class="cb-body">
+            <div class="overlay-txt">📱 Texto overlay: "El equipo no miente — aprendió que la verdad no es bienvenida"</div>
+            <div class="guion-hook">Hook: "¿Alguna vez te enteraste de un problema en tu empresa cuando ya era grande?"</div>
+            <div class="guion-body">Pausa.
+
+"Si la respuesta es sí, no es que tu equipo sea deshonesto."
+
+"Es que aprendieron que traer malas noticias tiene un costo."
+
+"Tal vez alguien que trajo un problema tuvo una mala reacción. Tal vez te cansás de escuchar 'hay un problema' sin soluciones."
+
+"Sea lo que sea, el equipo lo registró. Y aprendió a filtrar lo que te dice."
+
+"Eso se llama clima organizacional. Y cuando está roto, el líder siempre es el último en enterarse de lo que pasa."
+
+Pausa. Mirás directo.
+
+"La buena noticia es que se puede trabajar. Pero primero hay que entender qué está pasando exactamente."
+
+"Si querés saberlo — diagnóstico gratuito, 25 minutos. Te muestro el estado real de tu equipo."</div>
+            <div class="guion-cta">CTA: "Escribime por Instagram o LinkedIn. Tengo cupos disponibles."</div>
+          </div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-story">📱 Story IG</span><span class="cb-title">Detrás de escena sesión</span></div>
+          <div class="cb-body"><div class="story-txt">Imagen de notebook/mesa de trabajo (sin revelar cliente).<br>Texto: "Hoy trabajamos con un equipo algo que nadie había nombrado en años. Eso siempre es el comienzo de algo."</div></div>
+        </div>
+      </div>
+      <div class="day-section" style="background:#fafbfc;">
+        <div class="day-title"><div class="dn" style="background:#0077B5;color:#fff;">J</div><div><h4>Jueves 3/7</h4><div class="dt-sub">LinkedIn caso + outreach</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-li">💼 LinkedIn</span><span class="cb-title">Post de caso — El equipo que parecía funcionar</span></div>
+          <div class="cb-body">
+            <div class="li-post">Un líder me llamó diciendo que su equipo "funcionaba bien pero no rendía".
+
+Cuando profundizamos, aparecieron tres cosas:
+
+Primero: nadie hacía preguntas en las reuniones. Todos asentían.
+
+Segundo: los errores se reportaban días después de ocurrir, no en el momento.
+
+Tercero: los proyectos llegaban "casi terminados" pero con detalles que siempre requerían retrabajo.
+
+El diagnóstico no era falta de capacidad. Era falta de seguridad psicológica.
+
+El equipo había aprendido que equivocarse tenía un costo alto. Entonces evitaban los riesgos. Entregaban lo seguro.
+
+Trabajamos cuatro meses. No cambiamos personas. Cambiamos las normas no escritas del equipo.
+
+Al quinto mes, el líder me dijo: "es el mismo equipo pero parece otro".</div>
+            <div class="li-comment">💬 Primer comentario: "Si reconocés algo de esto en tu equipo, tengo diagnósticos gratuitos de 25 min disponibles esta semana. Escribime."</div>
+          </div>
+        </div>
+        <div class="outreach-day">
+          <div class="od-title">🎯 Outreach del día</div>
+          <div class="od-item"><div class="od-dot"></div><div>Contactar clientes 3, 4 y 5 de la lista de referidos con Script 2 personalizado.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>LinkedIn: 5 comentarios + responder comentarios del post de hoy.</div></div>
+        </div>
+      </div>
+      <div class="day-section">
+        <div class="day-title"><div class="dn" style="background:var(--gold);color:var(--navy);">V</div><div><h4>Viernes 4/7</h4><div class="dt-sub">Story pregunta abierta + WA cupos</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-story">📱 Story IG</span><span class="cb-title">Pregunta directa al seguidor</span></div>
+          <div class="cb-body"><div class="story-txt">Sticker de pregunta abierta.<br>Texto: "¿Cuál es el problema más grande que tenés con tu equipo ahora mismo?"<br>(Las respuestas son leads directos — responderles con Script 1 o proponiéndoles el Diagnóstico)</div></div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-wa">💬 WhatsApp Status</span><span class="cb-title">Cupos semana próxima</span></div>
+          <div class="cb-body"><div class="wa-text">"La semana que viene tengo 2 diagnósticos gratuitos disponibles para líderes o dueños. 25 minutos, sin compromiso. Si te interesa o conocés a alguien que lo necesite — respondé esto o escribime directo."</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="week-tab">
+    <div class="week-tab-hdr">
+      <div class="wt-num" style="background:#6b3fa0;">S3</div>
+      <div><h3>Semana 3 — Primeros Testimonios + Activación</h3><div class="wt-dates">Lunes 7/7 → Domingo 13/7</div></div>
+      <div class="wt-tema">Tema: Prueba social — resultados reales<br>Foco: Publicar testimonios, primer CTA agresivo</div>
+    </div>
+    <div class="week-tab-body">
+      <div class="day-section">
+        <div class="day-title"><div class="dn" style="background:#1a3a6b;color:#fff;">L</div><div><h4>Lunes 7/7</h4><div class="dt-sub">PRIMER TESTIMONIO + Carrusel Autodiagnóstico + LinkedIn</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-video">🎬 Testimonio en Video</span><span class="cb-title">IG + LinkedIn · Cliente hablando (60-90 seg)</span></div>
+          <div class="cb-body">
+            <div class="guion-body">Pedirle al cliente que grabe respondiendo estas 3 preguntas (celular está bien, la autenticidad vale más que la producción):
+
+1. "¿Cuál era el problema principal que tenías cuando empezamos a trabajar juntos?"
+2. "¿Qué cambió después de trabajar con SAS Consultora?"
+3. "¿A quién le recomendarías este trabajo?"
+
+Caption IG/LinkedIn: "[Cliente/empresa] llegó con [problema]. Hoy [resultado concreto]. Esto es lo que se puede lograr cuando una organización tiene la estructura correcta. ¿Tu empresa tiene el mismo problema? Diagnóstico gratuito disponible esta semana. Escribime."</div>
+          </div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-carrusel">📑 Carrusel</span><span class="cb-title">IG · "¿En qué etapa está tu empresa?" — Test de 4 preguntas</span></div>
+          <div class="cb-body">
+            <div class="slide"><div class="sn">Slide 1 — Cover</div>"¿En qué etapa está tu empresa? Respondé estas 4 preguntas." · Logo SAS</div>
+            <div class="slide"><div class="sn">Slide 2</div>"¿Podés irte una semana sin que nada se frene? → Sí = vas bien / No = Etapa 1"</div>
+            <div class="slide"><div class="sn">Slide 3</div>"¿Tu equipo toma decisiones sin consultarte? → Siempre = vas bien / A veces = Etapa 1-2 / Nunca = Etapa 1"</div>
+            <div class="slide"><div class="sn">Slide 4</div>"¿Sabés exactamente cuánto tiempo libre tenés esta semana? → Sí = vas bien / No = Etapa 1-2"</div>
+            <div class="slide"><div class="sn">Slide 5</div>"¿Tu empresa creció en los últimos 12 meses sin que vos trabajaras más horas? → Sí = vas bien / No = hay algo que construir"</div>
+            <div class="slide"><div class="sn">Slide 6 — CTA</div>"Si respondiste 2 o más 'No' → estás en la etapa donde tiene sentido el Diagnóstico Gratuito. 25 minutos, te digo exactamente qué falta. Escribime directo." · @sas.consultora</div>
+          </div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-li">💼 LinkedIn</span><span class="cb-title">Post — publicar testimonio con contexto</span></div>
+          <div class="cb-body">
+            <div class="li-post">Hace [X meses], un [dueño / líder] llegó a mí con este problema:
+
+"[Problema exacto que describió el cliente, adaptado para proteger identidad]"
+
+Hoy, después de trabajar juntos, me dijo:
+
+"[Resultado clave que mencionó el cliente]"
+
+No fue magia. Fue un proceso concreto de [breve descripción del trabajo].
+
+Comparto esto no para vender — sino porque si alguien está en la situación inicial que describí, hay salida y hay un camino claro.
+
+¿Estás en esa situación? Escribime. Tengo diagnósticos gratuitos disponibles.</div>
+            <div class="li-comment">💬 Primer comentario: "El testimonio completo en video en mi Instagram @sas.consultora. Si querés hablar, DM abierto."</div>
+          </div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-story">📱 Story IG</span><span class="cb-title">Compartir testimonio</span></div>
+          <div class="cb-body"><div class="story-txt">Compartir el video testimonio a stories.<br>Texto encima: "Esto me lo dijo esta semana. No hay nada más gratificante que esto." 🙌</div></div>
+        </div>
+      </div>
+      <div class="day-section" style="background:#fafbfc;">
+        <div class="day-title"><div class="dn" style="background:var(--muted);color:#fff;">M</div><div><h4>Martes 8/7</h4><div class="dt-sub">Outreach + seguimiento</div></div></div>
+        <div class="outreach-day">
+          <div class="od-title">🎯 Acciones del día</div>
+          <div class="od-item"><div class="od-dot"></div><div>Seguimiento a todas las alianzas — ¿cuáles respondieron? Acordar reunión con las que no respondieron aún.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>Contactar clientes 6-8 de la lista de referidos con Script 2 personalizado.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>LinkedIn: 5 comentarios en cuentas target nuevas (buscar #liderazgo #pymes #argentina #entrerrios).</div></div>
+        </div>
+      </div>
+      <div class="day-section">
+        <div class="day-title"><div class="dn" style="background:var(--teal);color:#fff;">M</div><div><h4>Miércoles 9/7</h4><div class="dt-sub">Video — La decisión que nadie toma</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-video">🎬 Video/Reel</span><span class="cb-title">IG + TikTok · "La decisión que cambia todo"</span></div>
+          <div class="cb-body">
+            <div class="overlay-txt">📱 Texto overlay: "Hay un momento en que un líder decide dejar de ser imprescindible"</div>
+            <div class="guion-hook">Hook: "Hay una decisión que casi ningún dueño toma aunque sea la más importante."</div>
+            <div class="guion-body">Pausa corta.
+
+"La decisión de dejar de ser imprescindible."
+
+"No porque sea difícil de entender. Sino porque implica soltar algo."
+
+"Implica confiar en que tu equipo puede, aunque todavía no lo demuestre."
+
+"Implica aceptar que mientras seguís siendo el que resuelve todo, tu equipo nunca va a tener que desarrollarse."
+
+"El día que un dueño toma esa decisión — que no es de un solo día, sino de muchos — empieza a construirse algo diferente."
+
+"Un negocio que funciona sin depender de una sola persona."
+
+Mirás a cámara. "¿Estás en ese punto o todavía falta?"</div>
+            <div class="guion-cta">CTA: "Si estás pensando en este tema, escribime. El diagnóstico gratuito parte justamente de acá."</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-section" style="background:#fafbfc;">
+        <div class="day-title"><div class="dn" style="background:#0077B5;color:#fff;">J</div><div><h4>Jueves 10/7</h4><div class="dt-sub">LinkedIn + Story encuesta + WA</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-li">💼 LinkedIn</span><span class="cb-title">Post — La soledad del dueño</span></div>
+          <div class="cb-body">
+            <div class="li-post">Nadie habla de esto: la soledad del dueño.
+
+Tenés gente alrededor. Un equipo. Quizás socios.
+
+Pero cuando hay que tomar la decisión que importa — la que tiene consecuencias reales para la empresa y para las personas — esa decisión es tuya.
+
+Y muchas veces no hay nadie con quien pensarla de verdad.
+
+No porque no tengas personas valiosas cerca. Sino porque el rol del dueño crea una distancia particular. La gente te dice lo que cree que querés escuchar.
+
+Esa soledad tiene un costo. Decisiones tardías. Decisiones sin perspectiva. Decisiones que después de tomarlas, no sabés si eran las correctas.
+
+Eso es lo que trabajo en la mentoría: ser la caja de resonancia que no tenés. Alguien que puede pensar con claridad porque no tiene nada que ganar o perder con tu decisión.
+
+¿Cuánto tiempo llevás tomando decisiones solo?</div>
+            <div class="li-comment">💬 Primer comentario: "Trabajo esto en RE-FOCO: mentoría para dueños que necesitan claridad estratégica. Si te identifica, hablemos. Diagnóstico gratuito disponible."</div>
+          </div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-story">📱 Story IG</span><span class="cb-title">Pregunta abierta</span></div>
+          <div class="cb-body"><div class="story-txt">Sticker pregunta abierta: "¿Cuál es la decisión que más te cuesta tomar en tu empresa?"<br>(Cada respuesta es una conversación potencial — responder con interés genuino y proponer el Diagnóstico)</div></div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-wa">💬 WhatsApp Status</span><span class="cb-title">Testimonio en texto</span></div>
+          <div class="cb-body"><div class="wa-text">"'Por primera vez en 10 años me fui de vacaciones sin que me llamaran.' — esto me dijo un cliente la semana pasada. Construir eso lleva tiempo, pero empieza por entender qué está faltando."</div></div>
+        </div>
+      </div>
+      <div class="day-section">
+        <div class="day-title"><div class="dn" style="background:var(--gold);color:var(--navy);">V</div><div><h4>Viernes 11/7</h4><div class="dt-sub">Story CTA urgente</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-story">📱 Story IG</span><span class="cb-title">CTA con prueba social</span></div>
+          <div class="cb-body"><div class="story-txt">Fondo oscuro, texto blanco.<br>"Esta semana hice 3 diagnósticos gratuitos. Uno ya está arrancando un proceso de trabajo.<br><br>Tengo 2 cupos disponibles para la semana que viene.<br><br>Si tu empresa o equipo está en un momento de ruido sin solución clara — esto es para vos.<br><br>Mandame un mensaje."</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="week-tab">
+    <div class="week-tab-hdr">
+      <div class="wt-num" style="background:var(--red);">S4</div>
+      <div><h3>Semana 4 — Tracción Real</h3><div class="wt-dates">Lunes 14/7 → Domingo 20/7</div></div>
+      <div class="wt-tema">Tema: Resultados + etapas de empresa<br>Foco: Cierres, segundo testimonio, alianzas activas</div>
+    </div>
+    <div class="week-tab-body">
+      <div class="day-section">
+        <div class="day-title"><div class="dn" style="background:#1a3a6b;color:#fff;">L</div><div><h4>Lunes 14/7</h4><div class="dt-sub">Segundo testimonio + Carrusel Etapas + LinkedIn</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-video">🎬 Testimonio 2</span><span class="cb-title">IG + LinkedIn · Segundo cliente</span></div>
+          <div class="cb-body">
+            <div class="guion-body">Publicar el segundo testimonio grabado con el mismo formato que el primero.
+
+Si todavía no está listo, reemplazar con un post de caso anónimo:
+"Segundo mes de trabajo con [empresa/líder] y ya hay algo que cambió: [resultado concreto y visible]. Esto siempre empieza igual: por entender qué está pasando realmente. ¿Querés saber qué está pasando en tu empresa? Diagnóstico gratuito esta semana — escribime."
+
+El objetivo es que cualquiera que visite el perfil vea dos testimonios en el mismo mes. Eso dice más que cualquier descripción de servicios.</div>
+          </div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-carrusel">📑 Carrusel</span><span class="cb-title">IG · "Las 4 etapas de una empresa — ¿en cuál estás vos?"</span></div>
+          <div class="cb-body">
+            <div class="slide"><div class="sn">Slide 1 — Cover</div>"Hay 4 etapas en una empresa. ¿En cuál estás vos?" · Logo SAS</div>
+            <div class="slide"><div class="sn">Slide 2 · Etapa 1</div>"TODO PASA POR EL DUEÑO. Él decide, resuelve, apaga incendios. La empresa crece solo si él trabaja más. Señal: vacaciones imposibles."</div>
+            <div class="slide"><div class="sn">Slide 3 · Etapa 2</div>"EL EQUIPO EXISTE PERO NO FUNCIONA SOLO. Hay personas capaces pero sin estructura clara. Los proyectos avanzan... más o menos. Señal: mucho retrabajo."</div>
+            <div class="slide"><div class="sn">Slide 4 · Etapa 3</div>"LA ESTRUCTURA ESTÁ. Los equipos funcionan. El dueño puede elegir en qué invierte su tiempo. Señal: la empresa crece sin más horas."</div>
+            <div class="slide"><div class="sn">Slide 5 · Etapa 4</div>"ESCALA. La empresa funciona con sistemas y liderazgos distribuidos. El dueño trabaja EN la empresa, no PARA la empresa."</div>
+            <div class="slide"><div class="sn">Slide 6 — CTA</div>"La mayoría de las PyMEs están en Etapa 1 o 2. El camino a Etapa 3 empieza por un diagnóstico. Gratis, 25 minutos. Escribime." · @sas.consultora</div>
+          </div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-li">💼 LinkedIn</span><span class="cb-title">Post — Lo que nadie te dice sobre crecer como empresa</span></div>
+          <div class="cb-body">
+            <div class="li-post">Hay algo que pasa cuando una empresa crece rápido y nadie lo prepara:
+
+El dueño empieza a trabajar más.
+
+No menos — más. Paradójicamente.
+
+Porque más clientes, más empleados, más problemas. Y sin estructura, todos esos problemas llegan al mismo lugar: él.
+
+El crecimiento sin estructura no es crecimiento — es complejidad sin solución.
+
+La empresa que quiere pasar de Etapa 1 a Etapa 3 no necesita más marketing ni más ventas.
+
+Necesita que el liderazgo deje de ser el cuello de botella.
+
+Eso implica tres cosas concretas:
+→ Definir qué decisiones requieren del dueño y cuáles no.
+→ Construir un equipo que pueda ejecutar sin supervisión constante.
+→ Crear los mecanismos para que los problemas suban solo cuando es necesario.
+
+¿En qué etapa estás vos?</div>
+            <div class="li-comment">💬 Primer comentario: "Trabajamos esto en Espacio de Orden. Si estás en Etapa 1 o 2 y querés saber qué falta para avanzar, diagnóstico gratuito disponible esta semana."</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-section" style="background:#fafbfc;">
+        <div class="day-title"><div class="dn" style="background:var(--muted);color:#fff;">M</div><div><h4>Martes 15/7</h4><div class="dt-sub">Outreach + alianzas</div></div></div>
+        <div class="outreach-day">
+          <div class="od-title">🎯 Acciones del día</div>
+          <div class="od-item"><div class="od-dot"></div><div>Reuniones de alianza si están agendadas — proponer sistema concreto de referidos mutuos. Dejar brief de servicios.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>Contactar clientes 9-13 (últimos de la lista) con Script 2 personalizado.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>LinkedIn: 5 comentarios + DM a quienes interactuaron mucho con los posts anteriores (Script 4).</div></div>
+        </div>
+      </div>
+      <div class="day-section">
+        <div class="day-title"><div class="dn" style="background:var(--teal);color:#fff;">M</div><div><h4>Miércoles 16/7</h4><div class="dt-sub">Video — El error más caro del líder</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-video">🎬 Video/Reel</span><span class="cb-title">IG + TikTok · "El error más caro que comete un líder"</span></div>
+          <div class="cb-body">
+            <div class="overlay-txt">📱 Texto overlay: "El líder que no da feedback claro lo paga caro — pero no es el que más lo paga"</div>
+            <div class="guion-hook">Hook: "El error más caro que comete un líder no es equivocarse en una decisión grande."</div>
+            <div class="guion-body">Pausa.
+
+"Es no dar feedback claro y a tiempo."
+
+"Un líder que evita la conversación difícil cree que está siendo considerado. Empático. Cuidando la relación."
+
+"Lo que en realidad está haciendo es acumular un problema."
+
+"Porque mientras él no dice lo que ve, el colaborador sigue haciendo lo mismo. Y lo sigue haciendo. Y lo sigue haciendo."
+
+"Hasta que el líder explota, o el vínculo se rompe, o la persona se va sin entender por qué."
+
+"El feedback no es atacar. Es construir. Es decirle a alguien lo que ves con claridad y con respeto, para que pueda mejorar."
+
+"Cuando un líder aprende a dar feedback de esa manera, su equipo empieza a funcionar diferente."
+
+Mirás a cámara.
+
+"¿Tenés conversaciones pendientes que venís postergando?"</div>
+            <div class="guion-cta">CTA: "Escribime. El diagnóstico gratuito muchas veces empieza por acá."</div>
+          </div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-story">📱 Story IG</span><span class="cb-title">Encuesta post-reel</span></div>
+          <div class="cb-body"><div class="story-txt">Compartir el reel a stories.<br>Sticker encuesta: "¿Tenés conversaciones pendientes con tu equipo?" → "Sí, varias" / "Una o dos"<br>(Responder a los "Sí, varias" con el Script 1)</div></div>
+        </div>
+      </div>
+      <div class="day-section" style="background:#fafbfc;">
+        <div class="day-title"><div class="dn" style="background:#0077B5;color:#fff;">J</div><div><h4>Jueves 17/7</h4><div class="dt-sub">LinkedIn + WA + Outreach final</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-li">💼 LinkedIn</span><span class="cb-title">Post — ¿Qué hace exactamente un consultor de liderazgo?</span></div>
+          <div class="cb-body">
+            <div class="li-post">Me preguntan seguido: ¿qué hacés exactamente?
+
+La respuesta corta:
+
+Ayudo a líderes y organizaciones a funcionar sin depender de una sola persona.
+
+En la práctica, eso puede verse así:
+
+→ Un dueño que trabaja 60 horas semanales y aprende a bajar a 35 sin que la empresa se caiga.
+→ Un equipo que tenía conflictos crónicos y empieza a tomar decisiones solo.
+→ Un líder que no sabía cómo dar feedback y construye conversaciones que antes evitaba.
+→ Una empresa que creció desordenada y necesita estructura para seguir creciendo.
+
+No es coaching. No es management consulting tradicional.
+
+Es el trabajo específico de construir la capacidad organizacional que todavía no existe.
+
+¿Estás necesitando algo de esto?</div>
+            <div class="li-comment">💬 Primer comentario: "Los servicios concretos los describí en mi Instagram @sas.consultora. Si querés saber cuál aplica a tu situación — 25 minutos de diagnóstico gratuito y lo resolvemos. Escribime."</div>
+          </div>
+        </div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-wa">💬 WhatsApp Status</span><span class="cb-title">Reflexión + cupo</span></div>
+          <div class="cb-body"><div class="wa-text">"¿Cuántas horas trabajaste esta semana? Si la respuesta te generó algo — podemos hablar. Diagnóstico gratuito de 25 min para dueños y líderes. Esta semana tengo un cupo disponible."</div></div>
+        </div>
+        <div class="outreach-day">
+          <div class="od-title">🎯 Outreach del día</div>
+          <div class="od-item"><div class="od-dot"></div><div>Seguimiento a todas las conversaciones abiertas — proponer horario concreto para diagnósticos que no agendaron aún.</div></div>
+          <div class="od-item"><div class="od-dot"></div><div>LinkedIn: 5 comentarios + revisar quiénes interactuaron con los posts. Enviar DM a los más activos con Script 4.</div></div>
+        </div>
+      </div>
+      <div class="day-section">
+        <div class="day-title"><div class="dn" style="background:var(--gold);color:var(--navy);">V</div><div><h4>Viernes 18/7</h4><div class="dt-sub">Story balance + CTA final semana 4</div></div></div>
+        <div class="content-block">
+          <div class="cb-hdr"><span class="platform-tag pt-story">📱 Story IG</span><span class="cb-title">Balance + CTA</span></div>
+          <div class="cb-body"><div class="story-txt">Fondo oscuro, texto claro.<br>"Esta semana hice [X] diagnósticos. Cada uno abrió algo diferente. Un par ya están avanzando hacia un proceso de trabajo.<br><br>Si estás pensando en ordenar tu empresa, mejorar tu equipo, o tener más claridad sobre hacia dónde vas — la semana que viene tengo 2 cupos disponibles.<br><br>Escribime hoy o el lunes a primera hora."</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="week-tab">
+    <div class="week-tab-hdr">
+      <div class="wt-num" style="background:var(--navy);">5-8</div>
+      <div><h3>Semanas 5-8 — Temas por Semana</h3><div class="wt-dates">21/7 → 22/8 · Contenido completo generado al cierre de la semana 4</div></div>
+      <div class="wt-tema">Misma estructura. Nuevos temas y servicios.</div>
+    </div>
+    <div class="week-tab-body">
+      <div class="day-section">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
+          <div style="background:#fff;border:2px solid var(--border);border-radius:10px;padding:18px;">
+            <div style="font-size:11px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;">Semana 5 · 21-27/7</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px;">Selección de personas — contratar bien</div>
+            <div style="font-size:13px;color:var(--muted);">Video: "El error más caro de una PyME es contratar mal". Carrusel: "5 preguntas que hay que hacer en una entrevista". LinkedIn: caso de contratación fallida y su costo real. Servicio: Selección SAS.</div>
+          </div>
+          <div style="background:#fff;border:2px solid var(--border);border-radius:10px;padding:18px;">
+            <div style="font-size:11px;font-weight:800;color:var(--teal);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;">Semana 6 · 28/7-3/8</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px;">Cultura — la que se instala sola</div>
+            <div style="font-size:13px;color:var(--muted);">Video: "Tu empresa tiene cultura aunque nunca la hayas diseñado". Carrusel: "¿Cómo saber realmente qué piensa tu equipo?". LinkedIn: reflexión sobre clima organizacional invisible. Servicio: Pulso.</div>
+          </div>
+          <div style="background:#fff;border:2px solid var(--border);border-radius:10px;padding:18px;">
+            <div style="font-size:11px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;">Semana 7 · 4-10/8</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px;">Liderazgo en momentos de cambio</div>
+            <div style="font-size:13px;color:var(--muted);">Video: "Cómo liderar cuando no tenés certezas". Carrusel: "3 conversaciones que un líder tiene que tener antes de un cambio grande". LinkedIn: caso de cambio organizacional bien gestionado. Servicio: todos.</div>
+          </div>
+          <div style="background:#fff;border:2px solid var(--border);border-radius:10px;padding:18px;">
+            <div style="font-size:11px;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;">Semana 8 · 11-22/8</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px;">Cierre del ciclo + expansión</div>
+            <div style="font-size:13px;color:var(--muted);">Tercer testimonio. Carrusel cierre: "60 días, X resultados". LinkedIn: reflexión del proceso. CTA final agresivo para últimos cupos. Expandir outreach a Buenos Aires, Córdoba y Rosario en LinkedIn.</div>
+          </div>
+        </div>
+        <div class="alert alert-gold" style="margin-top:16px;margin-bottom:0;">
+          <strong>Al cierre del viernes 18/7:</strong> El contenido día a día completo para las semanas 5-8 estará generado con el mismo nivel de detalle de estas primeras cuatro semanas.
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 
