@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAS Consultora — Ejecución Diaria</title>
+<style>
+:root{--navy:#0f1f3d;--blue:#1a3a6b;--teal:#0e7c7b;--gold:#c9972c;--red:#c0392b;--light:#f5f7fa;--border:#dde3ed;--text:#1a1a2e;--muted:#5a6580;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--light);color:var(--text);line-height:1.5;}
+.nav{background:var(--navy);padding:12px 24px;display:flex;align-items:center;gap:24px;position:sticky;top:0;z-index:100;}
+.nav-brand{color:#fff;font-weight:800;font-size:15px;}
+.nav a{color:rgba(255,255,255,.65);text-decoration:none;font-size:13px;}
+.nav a:hover{color:#fff;}
+.wrap{max-width:960px;margin:0 auto;padding:32px 20px;}
+/* TODAY BANNER */
+.today-banner{background:var(--navy);border-radius:12px;padding:24px 28px;margin-bottom:28px;color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.today-banner .tb-left h2{font-size:22px;font-weight:900;margin-bottom:4px;}
+.today-banner .tb-left p{font-size:14px;color:rgba(255,255,255,.6);}
+.today-banner .tb-right{text-align:right;}
+.today-banner .tb-right .phase{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:4px;}
+.today-banner .tb-right .semana{font-size:14px;color:rgba(255,255,255,.7);}
+/* SPLIT COLUMNS */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;}
+@media(max-width:600px){.split{grid-template-columns:1fr;}}
+.col-card{background:#fff;border-radius:12px;border:2px solid var(--border);overflow:hidden;}
+.col-card.seba{border-top:4px solid var(--gold);}
+.col-card.claude{border-top:4px solid var(--teal);}
+.col-hdr{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.col-hdr .who{font-size:14px;font-weight:800;}
+.col-hdr .role{font-size:12px;color:var(--muted);}
+.col-body{padding:16px;}
+.task{display:flex;gap:10px;margin-bottom:12px;font-size:14px;align-items:flex-start;}
+.task:last-child{margin-bottom:0;}
+.task .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.dot-gold{background:var(--gold);}
+.dot-teal{background:var(--teal);}
+.dot-blue{background:var(--blue);}
+.dot-red{background:var(--red);}
+.task .tm{flex:1;}
+.task .tm strong{display:block;color:var(--navy);}
+.task .tm span{color:var(--muted);font-size:13px;}
+/* CONTENT BLOCK */
+.content-card{background:#fff;border-radius:12px;border:2px solid var(--border);margin-bottom:28px;overflow:hidden;}
+.cc-hdr{background:var(--teal);color:#fff;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
+.cc-hdr h3{font-size:15px;font-weight:800;}
+.cc-hdr .format{font-size:12px;color:rgba(255,255,255,.7);}
+.cc-body{padding:20px;}
+.guion-block{background:var(--light);border-radius:8px;padding:16px;margin-bottom:12px;}
+.guion-block .gl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:6px;}
+.guion-block .gt{font-size:14px;line-height:1.7;white-space:pre-line;}
+.hook-box{background:var(--navy);color:var(--gold);padding:12px 16px;border-radius:8px;font-size:14px;font-weight:700;margin-bottom:10px;}
+.overlay-box{background:#111;color:#fff;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:700;margin-bottom:10px;text-align:center;}
+.cta-box{background:#e8f5f5;border:1.5px solid var(--teal);border-radius:8px;padding:10px 16px;font-size:13px;color:#004040;margin-top:10px;}
+/* WEEK CALENDAR */
+.week-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;border:2px solid var(--border);margin-bottom:28px;}
+.week-table th{background:var(--navy);color:rgba(255,255,255,.8);font-size:12px;font-weight:700;padding:10px 14px;text-align:left;}
+.week-table td{padding:10px 14px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:top;}
+.week-table tr:last-child td{border-bottom:none;}
+.week-table tr.today-row td{background:#fffbf0;}
+.week-table tr.today-row td:first-child{border-left:4px solid var(--gold);}
+.day-badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:4px;}
+.db-content{background:#e0f5f5;color:#004040;}
+.db-outreach{background:#fff3d4;color:#6b4a00;}
+.db-descanso{background:var(--light);color:var(--muted);}
+.seba-col{color:var(--navy);}
+.claude-col{color:var(--teal);}
+/* SECTION TITLES */
+.section-title{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:4px;}
+.section-sub{font-size:13px;color:var(--muted);margin-bottom:16px;}
+.section-divider{height:4px;width:40px;background:var(--gold);border-radius:2px;margin-bottom:8px;}
+/* ALERT */
+.alert{border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:14px;}
+.alert-teal{background:#e8f5f5;border:1.5px solid var(--teal);color:#004040;}
+.alert-gold{background:#fff8e8;border:1.5px solid var(--gold);color:#5a3e00;}
+/* WEEK HEADERS */
+.week-hdr{background:#fff;border-radius:12px;border:2px solid var(--border);padding:16px 20px;margin-bottom:12px;display:flex;align-items:center;gap:16px;}
+.week-hdr .wn{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;color:#fff;flex-shrink:0;}
+.week-hdr h3{font-size:15px;font-weight:800;color:var(--navy);margin:0;}
+.week-hdr .wd{font-size:12px;color:var(--muted);}
+.week-hdr .tema{margin-left:auto;font-size:12px;font-weight:700;color:var(--gold);}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">SAS CONSULTORA</div>
+  <a href="#hoy">Hoy</a>
+  <a href="#semanas">Plan completo</a>
+  <a href="estrategia_sas_v2.html">Estrategia completa →</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- TODAY -->
+  <div class="today-banner" id="hoy">
+    <div class="tb-left">
+      <h2>Miércoles 24 de junio</h2>
+      <p>Día de contenido · Video + Story + WhatsApp Status</p>
+    </div>
+    <div class="tb-right">
+      <div class="phase">Semana 1 · Fase Fundación</div>
+      <div class="semana">Tema: La empresa que depende de una persona</div>
+    </div>
+  </div>
+
+  <!-- SPLIT SEBA / CLAUDE -->
+  <div class="section-divider"></div>
+  <div class="section-title">Tareas de hoy</div>
+  <div class="section-sub">Qué hace cada uno. Sin superposición.</div>
+
+  <div class="split">
+    <div class="col-card seba">
+      <div class="col-hdr">
+        <div>
+          <div class="who">Seba hace</div>
+          <div class="role">Grabar · Publicar · WhatsApp</div>
+        </div>
+      </div>
+      <div class="col-body">
+        <div class="task">
+          <div class="dot dot-gold"></div>
+          <div class="tm"><strong>Grabar el reel</strong><span>Guion completo abajo. Grabás con el celular, mirando a cámara. 60-90 segundos.</span></div>
+        </div>
+        <div class="task">
+          <div class="dot dot-gold"></div>
+          <div class="tm"><strong>Publicar en IG y TikTok</strong><span>Con el overlay de texto y el CTA final. Caption: el texto del guion resumido + "Diagnóstico gratuito → escribime".</span></div>
+        </div>
+        <div class="task">
+          <div class="dot dot-gold"></div>
+          <div class="tm"><strong>Story IG</strong><span>Imagen del making-of + texto: "Grabando el contenido de la semana 📹 Si tenés algún tema sobre liderazgo o equipos que querés que toque, mandame mensaje."</span></div>
+        </div>
+        <div class="task">
+          <div class="dot dot-gold"></div>
+          <div class="tm"><strong>WhatsApp Status</strong><span>Captura del reel publicado + texto: "Para los que me preguntaron esta semana sobre la dependencia del dueño — esto."</span></div>
+        </div>
+        <div class="task">
+          <div class="dot dot-gold"></div>
+          <div class="tm"><strong>Responder mensajes entrantes</strong><span>Si alguien respondió el carrusel del lunes o la story — responder con Script 1 del Diagnóstico.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-card claude">
+      <div class="col-hdr">
+        <div>
+          <div class="who">Claude hace</div>
+          <div class="role">LinkedIn engagement · Alianzas · Seguimiento</div>
+        </div>
+      </div>
+      <div class="col-body">
+        <div class="task">
+          <div class="dot dot-teal"></div>
+          <div class="tm"><strong>5 comentarios en LinkedIn</strong><span>En posts de dueños y líderes de Entre Ríos. 2-3 líneas desde experiencia real. Claude los ejecuta ahora.</span></div>
+        </div>
+        <div class="task">
+          <div class="dot dot-teal"></div>
+          <div class="tm"><strong>Identificar alianzas estratégicas</strong><span>Buscar 2 contadores/estudios contables en Paraná que trabajen con PyMEs. Preparar el contacto para mañana.</span></div>
+        </div>
+        <div class="task">
+          <div class="dot dot-teal"></div>
+          <div class="tm"><strong>Seguimiento cliente testimonio</strong><span>Si el cliente del martes respondió → confirmar fecha de grabación esta semana.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUION DEL DÍA -->
+  <div class="content-card">
+    <div class="cc-hdr">
+      <h3>Guion de hoy — Video/Reel</h3>
+      <span class="format">IG + TikTok · 60-90 seg · Mirando a cámara</span>
+    </div>
+    <div class="cc-body">
+      <div class="overlay-box">📱 Texto overlay: "Cuando el dueño lo hace todo, el equipo aprende que no hace falta hacer nada"</div>
+      <div class="hook-box">Hook — primeras palabras:<br>"Hay una frase que me dice casi todo dueño en la primera reunión."</div>
+      <div class="guion-block">
+        <div class="gl">Guion completo</div>
+        <div class="gt">Pausa. Mirás a cámara.
+
+"'Yo lo hago todo porque nadie lo hace como yo.'"
+
+Otra pausa.
+
+"Esa frase suena a un problema del equipo. No lo es."
+
+"Cuando un dueño hace todo, su equipo aprende algo muy rápido: no hace falta hacer nada. Porque si esperan, él resuelve."
+
+"No porque sean vagos. Porque aprendieron que ese es el sistema."
+
+"¿Y cuál es la salida? No es motivar al equipo. No es cambiar personas."
+
+"Es construir la estructura que todavía no existe. Definir quién decide qué. Qué requiere tu aprobación y qué no."
+
+"Cuando eso está claro, los equipos empiezan a funcionar solos."
+
+Mirás a cámara directo.
+
+"¿Cuánto tiempo llevás siendo el único que resuelve?"</div>
+      </div>
+      <div class="cta-box">🎯 CTA final (en voz): "Si esto describe tu empresa, escribime. Tengo diagnósticos gratuitos disponibles." · Texto en pantalla: @sas.consultora · Diagnóstico gratuito</div>
+    </div>
+  </div>
+
+  <!-- PLAN COMPLETO -->
+  <div id="semanas" style="margin-top:8px;">
+  <div class="section-divider"></div>
+  <div class="section-title">Plan completo — 8 semanas</div>
+  <div class="section-sub">Vista rápida. El contenido detallado de cada día está en la <a href="estrategia_sas_v2.html" style="color:var(--teal);">Estrategia completa</a>.</div>
+
+  <div class="alert alert-teal"><strong>Regla fija:</strong> LinkedIn engagement (comentarios, DMs, búsqueda de alianzas) → Claude. Publicar contenido, grabar, WhatsApp → Seba.</div>
+
+  <table class="week-table">
+    <thead>
+      <tr>
+        <th style="width:110px;">Fecha</th>
+        <th>Tipo de día</th>
+        <th>Seba</th>
+        <th>Claude</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="4" style="background:var(--light);font-size:12px;font-weight:700;color:var(--muted);padding:8px 14px;text-transform:uppercase;letter-spacing:.8px;">Semana 1 · La empresa que depende de una sola persona · EO</td></tr>
+      <tr><td><strong>Lun 22/6</strong></td><td><span class="day-badge db-content">Contenido</span></td><td class="seba-col">Carrusel "3 señales" · LinkedIn post · Story · WA status</td><td class="claude-col">5 comentarios LinkedIn · Identificar alianzas</td></tr>
+      <tr><td><strong>Mar 23/6</strong></td><td><span class="day-badge db-outreach">Outreach</span></td><td class="seba-col">Contactar 1er cliente para testimonio (WhatsApp)</td><td class="claude-col">5 comentarios LinkedIn · Preparar lista alianzas Paraná</td></tr>
+      <tr class="today-row"><td><strong>Mié 24/6</strong> ◀ HOY</td><td><span class="day-badge db-content">Contenido</span></td><td class="seba-col">Grabar y publicar reel "La trampa de hacerlo todo" · Story · WA</td><td class="claude-col">5 comentarios LinkedIn · Seguimiento cliente testimonio</td></tr>
+      <tr><td><strong>Jue 25/6</strong></td><td><span class="day-badge db-outreach">Outreach</span></td><td class="seba-col">Contactar 2do cliente para testimonio · Contactar 1ra alianza (Script 3)</td><td class="claude-col">5 comentarios LinkedIn · LinkedIn post "caso no era comunicación" + 1er comentario</td></tr>
+      <tr><td><strong>Vie 26/6</strong></td><td><span class="day-badge db-content">Contenido</span></td><td class="seba-col">Story CTA Diagnóstico · WA cupos disponibles</td><td class="claude-col">5 comentarios LinkedIn · Seguimiento respuestas semana</td></tr>
+
+      <tr><td colspan="4" style="background:var(--light);font-size:12px;font-weight:700;color:var(--muted);padding:8px 14px;text-transform:uppercase;letter-spacing:.8px;">Semana 2 · El equipo que no funciona aunque la gente sea buena · RE-MEDIO</td></tr>
+      <tr><td><strong>Lun 29/6</strong></td><td><span class="day-badge db-content">Contenido</span></td><td class="seba-col">Carrusel "Tu equipo tiene un código" · LinkedIn post · Story encuesta · WA</td><td class="claude-col">5 comentarios LinkedIn · Responder encuesta stories</td></tr>
+      <tr><td><strong>Mar 30/6</strong></td><td><span class="day-badge db-outreach">Outreach</span></td><td class="seba-col">Contactar 2da alianza estratégica</td><td class="claude-col">5 comentarios LinkedIn · Preparar DMs para contactos de alianzas</td></tr>
+      <tr><td><strong>Mié 1/7</strong></td><td><span class="day-badge db-content">Contenido</span></td><td class="seba-col">Grabar y publicar reel "Por qué tu equipo no te dice la verdad" · Story · WA</td><td class="claude-col">5 comentarios LinkedIn · Seguimiento clientes referidos</td></tr>
+      <tr><td><strong>Jue 2/7</strong></td><td><span class="day-badge db-outreach">Outreach</span></td><td class="seba-col">Contactar clientes 3-5 para referidos (Script 2)</td><td class="claude-col">5 comentarios LinkedIn · LinkedIn post "El equipo que parecía funcionar" + 1er comentario</td></tr>
+      <tr><td><strong>Vie 3/7</strong></td><td><span class="day-badge db-content">Contenido</span></td><td class="seba-col">Story pregunta abierta · WA cupos</td><td class="claude-col">5 comentarios LinkedIn · Responder preguntas de stories con Script 1</td></tr>
+
+      <tr><td colspan="4" style="background:var(--light);font-size:12px;font-weight:700;color:var(--muted);padding:8px 14px;text-transform:uppercase;letter-spacing:.8px;">Semana 3 · Primeros testimonios — prueba social real</td></tr>
+      <tr><td><strong>Lun 6/7</strong></td><td><span class="day-badge db-content">Contenido</span></td><td class="seba-col">Publicar TESTIMONIO 1 (video) · Carrusel autodiagnóstico · LinkedIn + Story</td><td class="claude-col">5 comentarios LinkedIn · DM a perfiles que más engagearon en 2 semanas</td></tr>
+      <tr><td><strong>Mar 7/7</strong></td><td><span class="day-badge db-outreach">Outreach</span></td><td class="seba-col">Seguimiento alianzas · Contactar clientes 6-8 (Script 2)</td><td class="claude-col">5 comentarios LinkedIn · Preparar Script 4 para los targets calificados</td></tr>
+      <tr><td><strong>Mié 8/7</strong></td><td><span class="day-badge db-content">Contenido</span></td><td class="seba-col">Grabar reel "La decisión que nadie toma" · Story · WA testimonio texto</td><td class="claude-col">5 comentarios LinkedIn · Seguimiento reuniones de alianza</td></tr>
+      <tr><td><strong>Jue 9/7</strong></td><td><span class="day-badge db-outreach">Outreach</span></td><td class="seba-col">Confirmar 2do testimonio grabado</td><td class="claude-col">5 comentarios LinkedIn · LinkedIn post "La soledad del dueño" + 1er comentario · Story encuesta</td></tr>
+      <tr><td><strong>Vie 10/7</strong></td><td><span class="day-badge db-content">Contenido</span></td><td class="seba-col">Story CTA con prueba social ("esta semana hice 3 diagnósticos…")</td><td class="claude-col">5 comentarios LinkedIn · Contactar clientes 9-13 (Script 2)</td></tr>
+
+      <tr><td colspan="4" style="background:var(--light);font-size:12px;font-weight:700;color:var(--muted);padding:8px 14px;text-transform:uppercase;letter-spacing:.8px;">Semana 4 · Tracción real — cierres + etapas de empresa</td></tr>
+      <tr><td><strong>Lun 13/7</strong></td><td><span class="day-badge db-content">Contenido</span></td><td class="seba-col">Publicar TESTIMONIO 2 · Carrusel "4 etapas de empresa" · LinkedIn + Story</td><td class="claude-col">5 comentarios LinkedIn · DM Script 4 a los más activos</td></tr>
+      <tr><td><strong>Mar 14/7</strong></td><td><span class="day-badge db-outreach">Outreach</span></td><td class="seba-col">Reuniones de alianza — proponer referidos mutuos</td><td class="claude-col">5 comentarios LinkedIn · Preparar brief alianzas + analizar qué canal trajo más diagnósticos</td></tr>
+      <tr><td><strong>Mié 15/7</strong></td><td><span class="day-badge db-content">Contenido</span></td><td class="seba-col">Grabar reel "El error más caro del líder" · Story encuesta · WA</td><td class="claude-col">5 comentarios LinkedIn · Seguimiento conversaciones activas</td></tr>
+      <tr><td><strong>Jue 16/7</strong></td><td><span class="day-badge db-outreach">Outreach</span></td><td class="seba-col">Seguimiento a todos los diagnósticos sin agendar — proponer horario concreto</td><td class="claude-col">5 comentarios LinkedIn · LinkedIn post "¿Qué hace exactamente un consultor de liderazgo?" + 1er comentario</td></tr>
+      <tr><td><strong>Vie 17/7</strong></td><td><span class="day-badge db-content">Contenido</span></td><td class="seba-col">Story balance de semana + CTA final · WA cupo</td><td class="claude-col">5 comentarios LinkedIn · Generar contenido detallado semanas 5-8</td></tr>
+    </tbody>
+  </table>
+
+  <div class="alert alert-gold" style="margin-top:4px;">
+    <strong>Meta al 17/7:</strong> 8-12 diagnósticos realizados · 5 alianzas contactadas · 3 alianzas activas · 2 testimonios publicados · 3-5 clientes cerrados.
+  </div>
+  </div>
+
+</div>
+
+</body>
+</html>
