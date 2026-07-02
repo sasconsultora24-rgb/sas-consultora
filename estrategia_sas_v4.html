@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAS Consultora — Estrategia 60 Días · Arranca 1/7</title>
+<style>
+  :root {
+    --navy:#0D1B2A; --green:#1F5A52; --gold:#C7A65A;
+    --cream:#F5F2EB; --white:#fff; --gray:#888;
+    --lgray:#E8E8E8; --dgray:#333; --red:#8B2020;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#EDEBE5;color:var(--dgray);}
+
+  /* ── NAV ── */
+  nav{background:var(--navy);position:sticky;top:0;z-index:100;display:flex;align-items:stretch;border-bottom:3px solid var(--gold);}
+  .nav-logo{background:var(--green);color:#fff;font-weight:700;font-size:13px;padding:12px 18px;letter-spacing:1px;display:flex;align-items:center;white-space:nowrap;}
+  .nav-tabs{display:flex;overflow-x:auto;}
+  .nav-tab{color:#aaa;font-size:12px;font-weight:600;padding:14px 16px;cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;text-transform:uppercase;letter-spacing:.4px;}
+  .nav-tab:hover{color:var(--gold);}
+  .nav-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+  .nav-right{margin-left:auto;color:var(--gold);font-size:11px;font-weight:600;padding:0 16px;display:flex;align-items:center;white-space:nowrap;}
+
+  /* ── SECTIONS ── */
+  .section{display:none;padding:22px;max-width:1080px;margin:0 auto;}
+  .section.active{display:block;}
+
+  /* ── CARDS ── */
+  .card{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:16px;overflow:hidden;}
+  .ch{background:var(--navy);color:#fff;padding:13px 18px;display:flex;align-items:center;justify-content:space-between;}
+  .ch h2{font-size:14px;font-weight:700;letter-spacing:.3px;}
+  .ch .badge{background:var(--gold);color:var(--navy);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;}
+  .cb{padding:16px 18px;}
+  .ch-green{background:var(--green);}
+  .ch-gold{background:var(--gold);}
+  .ch-gold h2{color:var(--navy);}
+
+  /* ── CHECKLIST ── */
+  .ci{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--lgray);cursor:pointer;}
+  .ci:last-child{border-bottom:none;}
+  .ci input[type=checkbox]{width:17px;height:17px;cursor:pointer;accent-color:var(--green);flex-shrink:0;margin-top:2px;}
+  .ci label{cursor:pointer;font-size:13px;line-height:1.5;flex:1;}
+  .ci.done label{text-decoration:line-through;color:var(--gray);}
+  .ci-meta{font-size:11px;color:var(--gray);margin-top:2px;}
+  .who{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;flex-shrink:0;margin-top:2px;}
+  .wc{background:#e8f4ea;color:var(--green);}
+  .ws{background:#fff3e0;color:#b35c00;}
+
+  /* ── PROGRESS ── */
+  .prog-wrap{margin:10px 0 4px;}
+  .prog-lbl{font-size:11px;color:var(--gray);margin-bottom:4px;display:flex;justify-content:space-between;}
+  .prog-bar{height:8px;background:var(--lgray);border-radius:4px;overflow:hidden;}
+  .prog-fill{height:100%;background:var(--green);border-radius:4px;transition:width .4s;}
+
+  /* ── PALANCA ── */
+  .palanca{background:#fff;border-radius:10px;overflow:hidden;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+  .ph{background:var(--navy);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:12px;}
+  .ph-num{background:var(--gold);color:var(--navy);font-size:17px;font-weight:700;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .ph-title{font-size:13px;font-weight:700;}
+  .ph-sub{font-size:11px;color:var(--gold);margin-top:2px;}
+  .pb{padding:14px 16px;}
+  .pstep{display:flex;gap:9px;margin-bottom:9px;font-size:13px;line-height:1.5;}
+  .psn{background:var(--green);color:#fff;font-size:10px;font-weight:700;width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+  .res-box{background:var(--cream);border-left:4px solid var(--green);padding:9px 13px;margin-top:10px;border-radius:0 6px 6px 0;font-size:12px;color:var(--navy);}
+  .res-box strong{color:var(--green);}
+
+  /* ── SERVICIO ── */
+  .srv{background:#fff;border-radius:10px;overflow:hidden;margin-bottom:13px;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+  .srv-h{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;background:var(--navy);}
+  .srv-name{color:#fff;font-size:15px;font-weight:700;}
+  .srv-price{color:var(--gold);font-size:17px;font-weight:700;}
+  .srv-b{padding:14px 18px;}
+  .heridas{list-style:none;margin:7px 0;}
+  .heridas li{padding:6px 0 6px 18px;font-size:13px;border-bottom:1px solid var(--lgray);position:relative;line-height:1.5;}
+  .heridas li:before{content:"—";position:absolute;left:0;color:var(--red);font-weight:700;}
+  .heridas li:last-child{border-bottom:none;}
+  .srv-res{background:var(--cream);border-left:4px solid var(--gold);padding:9px 13px;margin-top:11px;border-radius:0 6px 6px 0;font-size:12px;font-style:italic;color:var(--navy);}
+  .eco-arrow{text-align:center;color:var(--green);font-size:18px;margin:4px 0;}
+
+  /* ── CONTENIDO ── */
+  .cont-item{background:#fff;border-radius:8px;padding:15px 17px;margin-bottom:11px;box-shadow:0 1px 6px rgba(0,0,0,.06);border-left:4px solid var(--green);}
+  .cont-meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:7px;}
+  .tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.3px;}
+  .t-tk{background:#000;color:#fff;}
+  .t-ig{background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);color:#fff;}
+  .t-li{background:#0077b5;color:#fff;}
+  .t-wk{background:var(--cream);color:var(--navy);border:1px solid var(--gold);}
+  .cont-hook{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:7px;}
+  .cont-script{font-size:12px;line-height:1.75;color:var(--dgray);background:var(--cream);padding:10px 13px;border-radius:6px;white-space:pre-line;}
+  .cont-nota{margin-top:7px;font-size:11px;color:var(--gray);font-style:italic;}
+
+  /* ── CALENDARIO ── */
+  .sem{background:#fff;border-radius:10px;overflow:hidden;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+  .sem-h{background:var(--green);color:#fff;padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:space-between;}
+  .sem-h.navy{background:var(--navy);}
+  .dia{display:flex;border-bottom:1px solid var(--lgray);}
+  .dia:last-child{border-bottom:none;}
+  .dia-lbl{width:105px;flex-shrink:0;background:var(--cream);padding:11px 12px;font-size:12px;font-weight:700;color:var(--navy);}
+  .dia-date{font-size:10px;color:var(--gray);font-weight:400;margin-top:2px;}
+  .dia-tasks{flex:1;padding:9px 13px;}
+  .dt{display:flex;align-items:flex-start;gap:8px;margin-bottom:5px;font-size:12px;line-height:1.5;}
+  .dt input{accent-color:var(--green);margin-top:2px;flex-shrink:0;}
+
+  /* ── MÉTRICAS ── */
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:11px;margin-bottom:14px;}
+  .mcard{background:#fff;border-radius:8px;padding:14px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.06);}
+  .mval{font-size:26px;font-weight:700;color:var(--navy);}
+  .mlbl{font-size:11px;color:var(--gray);margin-top:3px;}
+  .mtgt{font-size:10px;color:var(--green);font-weight:700;margin-top:2px;}
+
+  /* ── HOY BOX ── */
+  .hoy-box{background:linear-gradient(135deg,var(--navy),var(--green));color:#fff;border-radius:12px;padding:18px 22px;margin-bottom:18px;}
+  .hoy-tag{font-size:11px;font-weight:700;opacity:.7;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
+  .hoy-fecha{font-size:21px;font-weight:700;margin-bottom:10px;}
+  .hoy-foco{font-size:13px;opacity:.9;}
+  .hoy-foco strong{color:var(--gold);}
+
+  /* ── SUB-TABS ── */
+  .stabs{display:flex;gap:0;margin-bottom:14px;border-bottom:2px solid var(--lgray);}
+  .stab{padding:9px 18px;font-size:12px;font-weight:600;cursor:pointer;background:none;border:none;color:var(--gray);border-bottom:2px solid transparent;margin-bottom:-2px;text-transform:uppercase;letter-spacing:.3px;}
+  .stab.active{color:var(--green);border-bottom-color:var(--green);}
+  .ssec{display:none;}
+  .ssec.active{display:block;}
+
+  /* ── MENSAJE BOX ── */
+  .msg{background:var(--navy);color:#d9ede5;border-radius:12px 12px 12px 0;padding:13px 16px;font-size:13px;line-height:1.75;margin-bottom:11px;white-space:pre-line;}
+  .msg-lbl{font-size:10px;color:var(--gold);font-weight:700;margin-bottom:5px;}
+
+  /* ── NOTA ── */
+  .nota{background:var(--cream);border-left:4px solid var(--gold);padding:11px 15px;border-radius:0 8px 8px 0;font-size:13px;color:var(--navy);margin-bottom:14px;line-height:1.6;}
+
+  /* ── TABLA ── */
+  table{width:100%;border-collapse:collapse;font-size:12px;}
+  th{background:var(--navy);color:#fff;padding:9px 11px;text-align:left;}
+  td{padding:9px 11px;border-bottom:1px solid var(--lgray);}
+  tr:nth-child(even) td{background:var(--cream);}
+  tr.total td{background:var(--green);color:#fff;font-weight:700;}
+
+  /* ── UTILS ── */
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+  @media(max-width:680px){.g2,.g3{grid-template-columns:1fr;}}
+  h3{font-size:14px;color:var(--navy);margin:14px 0 9px;font-weight:700;}
+  p{font-size:13px;line-height:1.6;margin-bottom:7px;color:var(--dgray);}
+  .sep{height:1px;background:var(--lgray);margin:14px 0;}
+  .small{font-size:11px;color:var(--gray);}
+  .bold{font-weight:700;}
+  .gold{color:var(--gold);}
+  .green{color:var(--green);}
+
+  /* ── LISTAS EXCEL ── */
+  .lista-stats{display:flex;gap:10px;flex-wrap:wrap;padding:14px 0 12px;}
+  .stat-chip{background:#fff;border:1px solid var(--lgray);border-radius:6px;padding:7px 16px;font-size:12px;color:var(--gray);}
+  .stat-chip b{font-size:16px;margin-left:4px;color:var(--navy);display:block;}
+  .stat-chip.sc-cerrado b{color:var(--green);}
+  .stat-chip.sc-reunion b{color:#E65100;}
+  .lista-wrap{overflow-x:auto;border:1px solid var(--lgray);border-radius:8px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+  .lista-table{width:100%;border-collapse:collapse;min-width:700px;}
+  .lista-table thead tr{background:var(--navy);}
+  .lista-table th{color:var(--gold);font-size:11px;font-weight:700;padding:10px 8px;text-align:left;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;}
+  .lista-table th:last-child{width:36px;}
+  .lista-table tbody tr{border-bottom:1px solid #eee;transition:filter .15s;}
+  .lista-table tbody tr:hover{filter:brightness(.96);}
+  .lista-table td{padding:2px 4px;vertical-align:middle;}
+  .linput{border:none;background:transparent;font-size:13px;padding:7px 6px;width:100%;font-family:'Segoe UI',Arial,sans-serif;color:var(--dgray);outline:none;}
+  .linput:focus{background:rgba(199,166,90,.10);border-radius:4px;}
+  .lselect{border:none;background:transparent;font-size:12px;padding:7px 4px;font-family:'Segoe UI',Arial,sans-serif;color:var(--dgray);cursor:pointer;outline:none;width:100%;}
+  .lselect:focus{background:rgba(199,166,90,.10);}
+  .del-row-btn{background:transparent;border:none;color:#ddd;font-size:18px;cursor:pointer;padding:4px 8px;line-height:1;display:block;width:100%;text-align:center;}
+  .del-row-btn:hover{color:var(--red);}
+  .add-row-btn{margin-top:12px;background:var(--navy);color:var(--gold);border:none;padding:9px 22px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.3px;transition:background .2s;}
+  .add-row-btn:hover{background:var(--green);}
+  .lista-label{font-size:11px;color:var(--gray);margin-bottom:6px;text-transform:uppercase;letter-spacing:.6px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">SAS CONSULTORA</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showSec('hoy',this)">🎯 HOY</button>
+    <button class="nav-tab" onclick="showSec('plan',this)">📅 PLAN</button>
+    <button class="nav-tab" onclick="showSec('palancas',this)">🔑 PALANCAS</button>
+    <button class="nav-tab" onclick="showSec('servicios',this)">💼 SERVICIOS</button>
+    <button class="nav-tab" onclick="showSec('contenidos',this)">📱 CONTENIDOS</button>
+    <button class="nav-tab" onclick="showSec('numeros',this)">📊 NÚMEROS</button>
+    <button class="nav-tab" onclick="showSec('mensajes',this)">💬 MENSAJES</button>
+    <button class="nav-tab" onclick="showSec('listas',this)">📋 LISTAS</button>
+  </div>
+  <div class="nav-right" id="navDate"></div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════
+     HOY
+══════════════════════════════════════════════════════ -->
+<div class="section active" id="sec-hoy">
+
+  <div class="hoy-box">
+    <div class="hoy-tag">📅 Hoy es</div>
+    <div class="hoy-fecha" id="hoyFecha">Jueves 2 de julio 2026</div>
+    <div class="hoy-foco">Semana 1 · <strong>Día 2 — Jueves 2/7</strong> · Publicar contenido #2 + activar lista básquet + WhatsApps Palanca 1</div>
+    <div style="font-size:12px;opacity:.65;margin-top:5px;">Meta julio mínima: $1.200 USD · 5 DESTRABAR + 5 FORMACIÓN</div>
+  </div>
+
+  <!-- PENDIENTES DE AYER -->
+  <div class="card" style="border-left:4px solid var(--red);margin-bottom:14px;">
+    <div class="ch" style="background:#fff5f5;"><h2 style="color:var(--red)">⚠️ PENDIENTES DE AYER — 1/7</h2><span class="badge" style="background:var(--red)">ARRASTRAR</span></div>
+    <div class="cb">
+      <div class="ci" id="p1"><input type="checkbox"><div style="flex:1"><label>SEBA · Enviar 3 WhatsApps Palanca 1 (red existente) — textos en MENSAJES</label><div class="ci-meta">Personas que te conocen · si no se hizo ayer, hoy es el momento</div></div><span class="who ws">SEBA</span></div>
+      <div class="ci" id="p2"><input type="checkbox"><div style="flex:1"><label>SEBA · Convocar Desayuno de Líderes — 8 personas, fecha semana que viene</label><div class="ci-meta">Texto en MENSAJES → Desayuno de Líderes</div></div><span class="who ws">SEBA</span></div>
+      <div class="ci" id="p3"><input type="checkbox"><div style="flex:1"><label>SEBA · Continuar lista básquet en Excel (quedan al menos 9 nombres)</label><div class="ci-meta">Archivo listas_prospectos_sas.xlsx → hoja Red Basquet</div></div><span class="who ws">SEBA</span></div>
+      <div class="ci" id="p4"><input type="checkbox"><div style="flex:1"><label>CLAUDE · Chequear TikTok @pymesalhorno: métricas del video #1, comentarios</label><div class="ci-meta">Quedó sin hacer ayer — lo primero de hoy</div></div><span class="who wc">CLAUDE</span></div>
+      <div class="ci" id="p5"><input type="checkbox"><div style="flex:1"><label>CLAUDE · Chequear IG @sas.consultora: métricas del post #1, comentarios, DMs</label><div class="ci-meta">Quedó sin hacer ayer — lo primero de hoy</div></div><span class="who wc">CLAUDE</span></div>
+      <div class="ci" id="p6"><input type="checkbox"><div style="flex:1"><label>CLAUDE · Investigar perfil de Lorena Bazan (Ejecutiva CACHAFAZ) — prospecto detectado en red de Fellay</label><div class="ci-meta">Comentó en post WCM · revisar si aplica al perfil de SAS</div></div><span class="who wc">CLAUDE</span></div>
+    </div>
+  </div>
+
+  <!-- REPORTE REDES 2/7 -->
+  <div class="card" style="border-left:4px solid var(--green);margin-bottom:14px;">
+    <div class="ch" style="background:#f0f7f0;"><h2 style="color:var(--green)">📊 REPORTE REDES — 2/7 (HECHO POR CLAUDE)</h2><span class="badge" style="background:var(--green)">✓ LISTO</span></div>
+    <div class="cb" style="font-size:12px;line-height:1.9;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:10px;">
+        <div style="background:#f9f9f9;border-radius:8px;padding:11px;border-top:3px solid #000;">
+          <div style="font-weight:700;font-size:11px;letter-spacing:.5px;margin-bottom:6px;">🎵 TIKTOK</div>
+          <div style="font-size:10px;color:var(--gray);margin-bottom:6px;">@pymesalhorno · 225 seg. <span style="color:var(--green)">+1</span></div>
+          <div><strong>Post 1/7 — "Tu empresa tiene el tamaño"</strong></div>
+          <div>👁 <strong>568</strong> vistas · ❤️ <strong>14</strong> · 💬 0 · 🔖 2</div>
+          <div>⏱ Promedio: <strong>8s</strong> · Completaron: <span style="color:var(--red);font-weight:700;">2.4%</span> ⚠️</div>
+          <div>📡 Tráfico: 99.5% "Para Ti"</div>
+          <div style="margin-top:5px;padding:5px 8px;background:#fff8e1;border-radius:4px;font-size:11px;">⚠️ <strong>Hook débil</strong> — la gente se va en el primer segundo</div>
+        </div>
+        <div style="background:#f9f9f9;border-radius:8px;padding:11px;border-top:3px solid #e91e63;">
+          <div style="font-weight:700;font-size:11px;letter-spacing:.5px;margin-bottom:6px;">📸 INSTAGRAM</div>
+          <div style="font-size:10px;color:var(--gray);margin-bottom:6px;">@sas.consultora · 1055 seg.</div>
+          <div><strong>Reel 1/7 — mismo video</strong></div>
+          <div>👁 <strong>156</strong> vis. · 🎯 133 cuentas · ❤️ <strong>2</strong> · 💬 0</div>
+          <div>📡 77.1% <strong>no seguidores</strong> (alcance externo OK)</div>
+          <div style="margin-top:5px;padding:5px 8px;background:#f8f0ff;border-radius:4px;font-size:11px;">DMs salientes 30/6: ~15 enviados · 0 respuestas reales</div>
+        </div>
+        <div style="background:#f9f9f9;border-radius:8px;padding:11px;border-top:3px solid #0077b5;">
+          <div style="font-weight:700;font-size:11px;letter-spacing:.5px;margin-bottom:6px;">💼 LINKEDIN</div>
+          <div style="font-size:10px;color:var(--gray);margin-bottom:6px;">234 seguidores</div>
+          <div><strong>Post 1/7 — texto</strong></div>
+          <div>📊 <strong>15</strong> impresiones · ❤️ 0 · 💬 0</div>
+          <div style="margin-top:5px;padding:5px 8px;background:#e8f4fb;border-radius:4px;font-size:11px;">⚡ LinkedIn = mínimo alcance · el contenido textual no llega</div>
+        </div>
+      </div>
+      <div style="background:var(--cream);border-left:3px solid var(--gold);padding:9px 12px;border-radius:0 6px 6px 0;font-size:12px;">
+        <strong>Conclusión Día 1:</strong> TikTok es la plataforma más efectiva (568 vs 156 IG vs 15 LI). El problema principal es la <strong>retención: 2.4% completan el video</strong>. El hook del primer segundo hay que reforzarlo en el video #2. Las vistas están bien para el tamaño de la cuenta — falta que la gente se quede.
+      </div>
+    </div>
+  </div>
+
+  <div class="g2">
+
+    <!-- SEBA -->
+    <div>
+      <div class="card">
+        <div class="ch ch-green"><h2>⚡ HACÉS VOS — SEBA · 2/7</h2><span class="badge">PRIORIDAD 1</span></div>
+        <div class="cb">
+          <div class="ci" id="s1"><input type="checkbox"><div style="flex:1"><label>Publicar Contenido #2 en TikTok (@pymesalhorno) — guion Semana 1 · Video 2 en CONTENIDOS</label><div class="ci-meta">Perfil: líder con equipo · mismo formato que ayer</div></div><span class="who ws">SEBA</span></div>
+          <div class="ci" id="s2"><input type="checkbox"><div style="flex:1"><label>Publicar Post #2 en LinkedIn — texto en pestaña CONTENIDOS</label><div class="ci-meta">Publicar entre 8-10 AM para mayor alcance</div></div><span class="who ws">SEBA</span></div>
+          <div class="ci" id="s3"><input type="checkbox"><div style="flex:1"><label>Ver métricas del post #1 de ayer (TikTok, IG, LinkedIn) y reportarme los números</label><div class="ci-meta">Vistas, likes, comentarios, alcance — 2 minutos</div></div><span class="who ws">SEBA</span></div>
+          <div class="ci" id="s4"><input type="checkbox"><div style="flex:1"><label>Check 19hs: anotar quién respondió a los WhatsApps, qué dijeron, próximo paso</label><div class="ci-meta">3 minutos · campo Observaciones abajo</div></div><span class="who ws">SEBA</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ch"><h2>🤖 HACE CLAUDE · 2/7</h2><span class="badge">AUTOMÁTICO</span></div>
+        <div class="cb">
+          <div class="ci" id="c1"><input type="checkbox"><div style="flex:1"><label>TikTok @pymesalhorno: métricas del video #1 + comentarios (pendiente de ayer)</label><div class="ci-meta">9 AM · ahora mismo</div></div><span class="who wc">CLAUDE</span></div>
+          <div class="ci" id="c2"><input type="checkbox"><div style="flex:1"><label>IG @sas.consultora: métricas del post #1 + comentarios (pendiente de ayer)</label><div class="ci-meta">9 AM · ahora mismo</div></div><span class="who wc">CLAUDE</span></div>
+          <div class="ci" id="c3"><input type="checkbox"><div style="flex:1"><label>LinkedIn: revisar notificaciones, comentar en 1 prospecto nuevo del pipeline</label><div class="ci-meta">9 AM · buscar prospectos nuevos en red de Fellay</div></div><span class="who wc">CLAUDE</span></div>
+          <div class="ci" id="c4"><input type="checkbox"><div style="flex:1"><label>Investigar Lorena Bazan (CACHAFAZ) — ¿es prospecto viable para SAS?</label><div class="ci-meta">Revisar perfil LinkedIn + cargo + empresa</div></div><span class="who wc">CLAUDE</span></div>
+          <div class="ci" id="c5"><input type="checkbox"><div style="flex:1"><label>Check 19hs: reporte del día, métricas, novedades, actualizar pipeline</label><div class="ci-meta">19 hs · report corto a Seba</div></div><span class="who wc">CLAUDE</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PIPELINE + MÉTRICAS -->
+    <div>
+      <div class="card">
+        <div class="ch ch-gold"><h2 style="color:var(--navy)">📈 PIPELINE — JULIO</h2></div>
+        <div class="cb">
+          <div class="mgrid" style="grid-template-columns:1fr 1fr;">
+            <div class="mcard"><div class="mval" id="m1">0</div><div class="mlbl">DESTRABAR cerrados</div><div class="mtgt">Meta: 5/mes</div></div>
+            <div class="mcard"><div class="mval" id="m2">0</div><div class="mlbl">FORMACIÓN cerrados</div><div class="mtgt">Meta: 5/mes</div></div>
+            <div class="mcard"><div class="mval" id="m3">0</div><div class="mlbl">Cámara confirmados</div><div class="mtgt">6 para agosto</div></div>
+            <div class="mcard"><div class="mval" id="m4">3</div><div class="mlbl">RE-MEDIO activos</div><div class="mtgt">Mantener</div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-lbl"><span>Progreso julio</span><span id="pct">0%</span></div>
+            <div class="prog-bar"><div class="prog-fill" id="pfill" style="width:0%"></div></div>
+          </div>
+          <div class="sep"></div>
+          <h3>🔥 PROSPECTOS CALIENTES</h3>
+          <div style="font-size:12px;line-height:1.8;">
+            <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--lgray);"><span><strong>Lorena Bazan</strong> · CACHAFAZ</span><span style="color:var(--gold);font-weight:700;">NUEVO 🎯</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--lgray);"><span><strong>Mariano Cerini</strong> · Coop. León Sola</span><span style="color:orange;font-weight:700;">TIBIO</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--lgray);"><span><strong>Emanuel Fellay</strong> · EntreNuts</span><span style="color:var(--gray);font-weight:700;">VISIBILIDAD</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 0;"><span><strong>+ red básquet</strong> · 6 cargados</span><span style="color:var(--gray);font-weight:700;">EN PROCESO</span></div>
+          </div>
+          <div class="sep"></div>
+          <h3>📝 OBSERVACIONES DEL DÍA</h3>
+          <textarea id="obs" style="width:100%;height:75px;border:1px solid var(--lgray);border-radius:6px;padding:8px;font-size:12px;resize:vertical;font-family:inherit;" placeholder="¿Quién respondió? ¿Qué dijeron? ¿Qué cambia?"></textarea>
+          <button onclick="saveObs()" style="margin-top:5px;background:var(--green);color:#fff;border:none;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:12px;">Guardar ✓</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ch"><h2>💰 INGRESOS JULIO</h2></div>
+        <div class="cb">
+          <div style="font-size:26px;font-weight:700;color:var(--green);margin-bottom:4px;">$0 USD</div>
+          <div style="font-size:11px;color:var(--gray);margin-bottom:12px;">Meta mínima: $1.200 USD</div>
+          <div style="font-size:12px;line-height:2;">
+            <div style="display:flex;justify-content:space-between;"><span>5 DESTRABAR × $250</span><span class="bold">$1.250</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>5 FORMACIÓN × $450</span><span class="bold">$2.250</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Cámara (arranca agosto)</span><span class="bold">$1.200+</span></div>
+            <div style="display:flex;justify-content:space-between;border-top:2px solid var(--navy);margin-top:5px;padding-top:5px;font-weight:700;color:var(--navy);"><span>META MES PLENO</span><span>$9.800</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /g2 -->
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PLAN
+══════════════════════════════════════════════════════ -->
+<div class="section" id="sec-plan">
+
+  <div class="stabs">
+    <button class="stab active" onclick="showSub('plan','mes',this)">MES</button>
+    <button class="stab" onclick="showSub('plan','s1',this)">SEMANA 1</button>
+    <button class="stab" onclick="showSub('plan','s2',this)">SEMANA 2</button>
+    <button class="stab" onclick="showSub('plan','s3',this)">SEMANA 3</button>
+    <button class="stab" onclick="showSub('plan','s4',this)">SEMANA 4</button>
+    <button class="stab" onclick="showSub('plan','agosto',this)">AGOSTO</button>
+  </div>
+
+  <!-- MES -->
+  <div class="ssec active" id="plan-mes">
+    <div class="nota"><strong>Julio 2026 — Arranca el 1/7.</strong> El mes que define si esto funciona. Meta mínima $1.200 USD. Meta real: base sólida para que agosto sea $4.000+.</div>
+    <div class="sem"><div class="sem-h"><span>SEMANA 1 · 1–4 julio · Activar red + lista básquet + Desayuno de Líderes</span><span class="badge" style="background:var(--gold);color:var(--navy);">AHORA</span></div>
+    <div style="padding:13px 17px;font-size:13px;line-height:1.9;color:var(--dgray);">
+      <strong class="green">Foco:</strong> Activar las personas que ya conocen a Seba. Red del básquet + clientes anteriores + conocidos. Contacto proactivo, no esperar que lleguen.<br>
+      <strong class="green">Meta:</strong> 15 WhatsApps enviados · 5 respuestas · Desayuno convocado · 1-2 reuniones agendadas
+    </div></div>
+    <div class="sem"><div class="sem-h navy"><span>SEMANA 2 · 7–11 julio · Desayuno + seguimiento + primeras reuniones</span></div>
+    <div style="padding:13px 17px;font-size:13px;line-height:1.9;">
+      <strong class="green">Foco:</strong> Desayuno de Líderes (8 personas, Paraná). Seguimiento de todos los contactos de semana 1. Primeras reuniones DESTRABAR.<br>
+      <strong class="green">Meta:</strong> 1 Desayuno ejecutado · 2 reuniones DESTRABAR agendadas · 2-3 Cámara identificados
+    </div></div>
+    <div class="sem"><div class="sem-h"><span>SEMANA 3 · 14–18 julio · Primeros cierres + escala red</span></div>
+    <div style="padding:13px 17px;font-size:13px;line-height:1.9;">
+      <strong class="green">Foco:</strong> Cerrar DESTRABAR de reuniones semana 2. Activar segundo grado de la red. Candidatos Cámara de Vestuario.<br>
+      <strong class="green">Meta:</strong> 2-3 DESTRABAR cerrados · 1 FORMACIÓN cerrado · 4-5 Cámara confirmados
+    </div></div>
+    <div class="sem"><div class="sem-h navy"><span>SEMANA 4 · 21–25 julio · Consolidar + proyectar agosto</span></div>
+    <div style="padding:13px 17px;font-size:13px;line-height:1.9;">
+      <strong class="green">Foco:</strong> Cerrar julio. Confirmar 6 miembros Cámara para agosto. Identificar primeros RE-MEDIO.<br>
+      <strong class="green">Meta julio final:</strong> 5 DESTRABAR · 2-3 FORMACIÓN · 6 Cámara confirmados · 1 RE-MEDIO en conversación
+    </div></div>
+  </div>
+
+  <!-- SEMANA 1 -->
+  <div class="ssec" id="plan-s1">
+    <div class="nota"><strong>Semana 1 · 1–4 julio.</strong> La más importante de las 60 días. Lo que hagamos esta semana determina julio entero.</div>
+
+    <div class="sem"><div class="sem-h"><span>MIÉRCOLES 1 JULIO — DÍA 1</span></div>
+      <div class="dia"><div class="dia-lbl">SEBA<div class="dia-date">Mañana</div></div>
+      <div class="dia-tasks">
+        <div class="dt"><input type="checkbox"><span><strong>Escribir lista de la red del básquet</strong> — nombre, empresa/cargo, canal preferido (WA/call/LinkedIn)</span></div>
+        <div class="dt"><input type="checkbox"><span>Enviar 3 WhatsApps de activación de red (textos en MENSAJES → Red existente)</span></div>
+        <div class="dt"><input type="checkbox"><span>Publicar Video TikTok #1 (@pymesalhorno) — guion en CONTENIDOS</span></div>
+        <div class="dt"><input type="checkbox"><span>Publicar Post LinkedIn #1 — texto en CONTENIDOS</span></div>
+      </div></div>
+      <div class="dia"><div class="dia-lbl">CLAUDE<div class="dia-date">9 AM</div></div>
+      <div class="dia-tasks">
+        <div class="dt"><input type="checkbox"><span>Revisar LinkedIn: comentar en posts de Fellay, Cerini + 1 prospecto activo</span></div>
+        <div class="dt"><input type="checkbox"><span>Chequear TikTok @pymesalhorno y IG @sas.consultora — métricas, comentarios, responder</span></div>
+      </div></div>
+      <div class="dia"><div class="dia-lbl">AMBOS<div class="dia-date">19 hs</div></div>
+      <div class="dia-tasks">
+        <div class="dt"><input type="checkbox"><span>Claude revisa redes y reporta novedades · Seba anota quién respondió los WA</span></div>
+      </div></div>
+    </div>
+
+    <div class="sem"><div class="sem-h navy"><span>JUEVES 3 JULIO</span></div>
+      <div class="dia"><div class="dia-lbl">SEBA<div class="dia-date">Mañana</div></div>
+      <div class="dia-tasks">
+        <div class="dt"><input type="checkbox"><span>Enviar 3 WhatsApps nuevos de activación (red básquet o clientes anteriores)</span></div>
+        <div class="dt"><input type="checkbox"><span>Responder los WA de ayer — usar textos de MENSAJES para continuar conversación</span></div>
+        <div class="dt"><input type="checkbox"><span>Convocar Desayuno de Líderes para la semana que viene — 8 invitaciones personales por WA</span></div>
+      </div></div>
+      <div class="dia"><div class="dia-lbl">CLAUDE<div class="dia-date">9 AM</div></div>
+      <div class="dia-tasks">
+        <div class="dt"><input type="checkbox"><span>Seguimiento LinkedIn: si Fellay o Cerini interactuaron con comentario → DM (texto en MENSAJES)</span></div>
+        <div class="dt"><input type="checkbox"><span>Chequear TikTok/IG · actuar sobre comentarios con señal de dolor</span></div>
+      </div></div>
+    </div>
+
+    <div class="sem"><div class="sem-h"><span>VIERNES 4 JULIO</span></div>
+      <div class="dia"><div class="dia-lbl">SEBA<div class="dia-date">Mañana</div></div>
+      <div class="dia-tasks">
+        <div class="dt"><input type="checkbox"><span>Enviar 3 WhatsApps nuevos (completar 9 de la semana)</span></div>
+        <div class="dt"><input type="checkbox"><span>Publicar Story IG @sas.consultora (texto en CONTENIDOS)</span></div>
+        <div class="dt"><input type="checkbox"><span>Review semana 1: ¿cuántos respondieron? ¿cuántas reuniones agendadas? Anotar en obs.</span></div>
+      </div></div>
+      <div class="dia"><div class="dia-lbl">CLAUDE<div class="dia-date">9 AM</div></div>
+      <div class="dia-tasks">
+        <div class="dt"><input type="checkbox"><span>Review semanal de redes · Identificar candidatos Cámara de Vestuario entre los que respondieron</span></div>
+        <div class="dt"><input type="checkbox"><span>Preparar mensajes de seguimiento para semana 2 según lo que respondió cada uno</span></div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- SEMANAS 2-4 -->
+  <div class="ssec" id="plan-s2">
+    <div class="nota"><strong>Semana 2 · 7–11 julio.</strong> El Desayuno de Líderes. Primeras reuniones reales. Seguimiento de toda la semana 1.</div>
+    <div class="sem"><div class="sem-h"><span>LUNES 7 — Inicio semana 2</span></div>
+    <div style="padding:12px 16px;">
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span><strong>SEBA · Desayuno de Líderes:</strong> confirmar asistentes y lugar (café en Paraná, 90 min, 8 personas)</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span><strong>SEBA:</strong> seguimiento de WA sin respuesta de semana 1 — mensaje diferente, texto en MENSAJES</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span><strong>SEBA:</strong> Publicar Video TikTok #3 + Post LinkedIn #3</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span><strong>CLAUDE · 9AM:</strong> LinkedIn — nuevos comentarios en prospectos + seguimiento DMs activos</span></div>
+    </div></div>
+    <div class="sem"><div class="sem-h navy"><span>MID SEMANA 2 · Desayuno de Líderes</span></div>
+    <div style="padding:12px 16px;">
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span><strong>SEBA ejecuta</strong> el Desayuno de Líderes — 8 personas, pregunta disparadora, facilitar sin vender</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span><strong>Post-desayuno:</strong> escribir a los 2-3 que mostraron un problema concreto — proponer reunión DESTRABAR</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span><strong>META SEMANA:</strong> 2 reuniones DESTRABAR agendadas · 2-3 Cámara de Vestuario identificados</span></div>
+    </div></div>
+  </div>
+
+  <div class="ssec" id="plan-s3">
+    <div class="nota"><strong>Semana 3 · 14–18 julio.</strong> Cierres. El que llegó a reunión tiene 50% de probabilidad de cerrar.</div>
+    <div class="sem"><div class="sem-h"><span>SEMANA 3 — Ejecutar y cerrar</span></div>
+    <div style="padding:12px 16px;">
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>Ejecutar reuniones DESTRABAR agendadas en semana 2</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>Seguimiento post-reunión a las 48hs (texto en MENSAJES)</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>Contactar 3 candidatos Cámara de Vestuario con mensaje de selección</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>CLAUDE: buscar en LinkedIn nuevos prospectos que publicaron sobre problemas de equipo esta semana</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>Segundo Desayuno de Líderes: convocar para semana 4 con 4 caras nuevas</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span><strong>META:</strong> 2-3 DESTRABAR cerrados · 1 FORMACIÓN · 4-5 Cámara confirmados</span></div>
+    </div></div>
+  </div>
+
+  <div class="ssec" id="plan-s4">
+    <div class="nota"><strong>Semana 4 · 21–25 julio.</strong> Consolidar. Proyectar agosto. Confirmar el grupo de la Cámara.</div>
+    <div class="sem"><div class="sem-h"><span>SEMANA 4 — Consolidar julio</span></div>
+    <div style="padding:12px 16px;">
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>Ejecutar últimas reuniones DESTRABAR del mes</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>Confirmar 6 miembros para primer encuentro Cámara de Vestuario en agosto</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>Evaluar pipeline: ¿quiénes de DESTRABAR van a RE-MEDIO en agosto?</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>Planificar agosto: primer encuentro Cámara + 5 DESTRABAR + 5 FORMACIÓN</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>Segundo Desayuno de Líderes con caras nuevas</span></div>
+    </div></div>
+  </div>
+
+  <div class="ssec" id="plan-agosto">
+    <div class="nota"><strong>Agosto 2026 — El mes recurrente.</strong> Cámara arranca. RE-MEDIO en conversación. Meta: $4.000+ USD.</div>
+    <div class="sem"><div class="sem-h"><span>AGOSTO — OBJETIVOS</span></div>
+    <div style="padding:12px 16px;">
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>Primer encuentro Cámara de Vestuario — pago, 6 miembros mínimo</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>5 DESTRABAR activos (2 de upsell Cámara + 3 nuevos)</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>5 FORMACIÓN (2 upsell DESTRABAR + 3 de redes/desayuno)</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>1-2 RE-MEDIO en conversación activa</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>Desayuno de Líderes: 3er encuentro con mix de caras conocidas y nuevas</span></div>
+      <div class="dt" style="margin-bottom:8px;"><input type="checkbox"><span>Diagnóstico en vivo: 1 sesión pública de 30 min por Zoom (ver estrategia en PALANCAS)</span></div>
+    </div></div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PALANCAS
+══════════════════════════════════════════════════════ -->
+<div class="section" id="sec-palancas">
+
+  <div class="nota"><strong>5 palancas + 1 bonus.</strong> Todos los canales. La que más peso tiene: conversación directa con personas que ya conocen a Seba. El medio es secundario — WhatsApp, llamada, presencial, LinkedIn, IG según quién es la persona.</div>
+
+  <!-- P1 -->
+  <div class="palanca">
+    <div class="ph"><div class="ph-num">1</div>
+    <div><div class="ph-title">ACTIVAR RED EXISTENTE — CONVERSACIÓN PROACTIVA</div>
+    <div class="ph-sub">WhatsApp · Llamada · LinkedIn · Presencial · La de mayor conversión posible</div></div></div>
+    <div class="pb">
+      <p>No solo clientes anteriores. <strong>Cualquier persona que te conoce, te respeta y tiene red de líderes o dueños.</strong> Amigos del básquet que hoy tienen empresa. Conocidos de Entre Ríos con equipo a cargo. No se espera que mencionen un problema — Seba inicia la conversación y pregunta.</p>
+      <div class="pstep"><div class="psn">1</div><div>Hacer lista de 20-30 personas: 10 clientes anteriores + 3 actuales + red del básquet + conocidos con empresa o equipo. Anotar canal preferido de cada uno.</div></div>
+      <div class="pstep"><div class="psn">2</div><div>Primer mensaje: humano, no de consultor. <em>"[Nombre], ¿cómo va [empresa/trabajo]? Hace tiempo no hablamos."</em> Nada más. Esperar respuesta.</div></div>
+      <div class="pstep"><div class="psn">3</div><div>Cuando responde, preguntar sobre su realidad: <em>"¿Cómo está el equipo? ¿Pudieron sostener el crecimiento?"</em> o <em>"¿Cómo venís con la gestión?"</em> — el trigger es que Seba preguntó, no que ellos mencionaron algo.</div></div>
+      <div class="pstep"><div class="psn">4</div><div>Cuando surge algo complicado (pasa en el 70% de los casos), entran <strong>Las 3 Preguntas</strong>: ① ¿Cuánto tiempo llevan con este problema? ② ¿Qué intentaron hacer para resolverlo? ③ ¿Qué pasa si en 6 meses está igual? → Seba responde con diagnóstico corto y preciso. Si da en el blanco, la persona pregunta cómo seguir → DESTRABAR.</div></div>
+      <div class="pstep"><div class="psn">5</div><div>Para pedir presentación a alguien específico: entrar al LinkedIn del contacto, identificar 1-2 personas en su red con perfil correcto, preguntar: <em>"¿Conocés bien a [Nombre] de [Empresa]? Quiero llegar bien, no en frío."</em></div></div>
+      <div class="res-box"><strong>Resultado esperado:</strong> 20 contactos → 8-10 respuestas → 4-5 conversaciones con problema → 2-3 reuniones → 1-2 cierres. + candidatos para Cámara de Vestuario.</div>
+    </div>
+  </div>
+
+  <!-- P2 -->
+  <div class="palanca">
+    <div class="ph"><div class="ph-num">2</div>
+    <div><div class="ph-title">RED DEL BÁSQUET — LA RED NO EXPLOTADA</div>
+    <div class="ph-sub">WhatsApp · Llamada directa · Contacto personal</div></div></div>
+    <div class="pb">
+      <p>30 años entrenando equipos en Paraná y Entre Ríos. Hay docenas de personas que conocen a Seba como coach deportivo — no como consultor. Muchas hoy dirigen empresas o equipos. Ya confían. La transición es natural y creíble.</p>
+      <div class="pstep"><div class="psn">1</div><div>Hacer lista específica: ex-jugadores, colegas entrenadores, personas del mundo del básquet que hoy tienen empresa o gerencian equipos en Entre Ríos.</div></div>
+      <div class="pstep"><div class="psn">2</div><div>Mensaje desde la relación que existe, no desde la consultoría: <em>"[Nombre], ¿cómo estás? ¿Cómo va [empresa]? Empecé a trabajar con líderes y empresas en algo concreto — cuando el equipo o la gestión no están funcionando como deberían. Pensé en vos. ¿Estás pasando por algo así o conocés a alguien que sí?"</em></div></div>
+      <div class="pstep"><div class="psn">3</div><div>Esta red tiene ventaja única: no hace falta construir confianza. Ya existe. El trabajo es activarla.</div></div>
+      <div class="res-box"><strong>Resultado esperado:</strong> 15 mensajes → 10 respuestas (conocidos responden más) → 3-4 conversaciones con problema → 2 reuniones → 1 cliente.</div>
+    </div>
+  </div>
+
+  <!-- P3 -->
+  <div class="palanca">
+    <div class="ph"><div class="ph-num">3</div>
+    <div><div class="ph-title">DESAYUNO DE LÍDERES — EVENTO PROPIO MENSUAL</div>
+    <div class="ph-sub">Presencial Paraná · 8 personas · 90 min · 1 vez/mes · sin costo</div></div></div>
+    <div class="pb">
+      <p>Seba convoca. No va a hablar a ningún lado. Él es el anfitrión. Un café en Paraná, 8 personas, 90 minutos. Seba invita personalmente a cada uno. No hay agenda formal. Hay una pregunta que dispara todo.</p>
+      <div class="pstep"><div class="psn">1</div><div>Convocatoria por WhatsApp personal. Mezcla de: 2-3 conocidos de confianza + 3-4 personas que quiere conocer mejor + 1-2 de la red básquet. Nunca todos del mismo sector para que haya diversidad de perspectivas.</div></div>
+      <div class="pstep"><div class="psn">2</div><div>Al arrancar: <em>"¿Cuál es el problema que más te está costando resolver en tu empresa o equipo ahora mismo?"</em> Cada uno habla. Seba facilita. No vende nada.</div></div>
+      <div class="pstep"><div class="psn">3</div><div>Al terminar: Seba toma nota mental de quién mencionó un problema concreto. Les escribe por WA ese mismo día o al día siguiente con las 3 Preguntas.</div></div>
+      <div class="pstep"><div class="psn">4</div><div>Segunda vuelta: cada asistente refiere a alguien para el próximo desayuno. El grupo crece solo. Seba siempre mantiene el control de quién entra.</div></div>
+      <div class="res-box"><strong>Resultado esperado:</strong> 1 desayuno/mes con 8 personas → 2-3 conversaciones post-desayuno → 1-2 DESTRABAR cerrados por desayuno. Más candidatos naturales para Cámara de Vestuario.</div>
+    </div>
+  </div>
+
+  <!-- P4 -->
+  <div class="palanca">
+    <div class="ph"><div class="ph-num">4</div>
+    <div><div class="ph-title">CÁMARA DE VESTUARIO — MOTOR RECURRENTE</div>
+    <div class="ph-sub">$200 USD/mes · 6-8 líderes · Presencial Paraná · 1 vez/mes</div></div></div>
+    <div class="pb">
+      <p>No es solo un servicio. Es la palanca que alimenta todos los demás. Cada miembro es fuente de referidos. Es el único ingreso que escala sin agregar horas.</p>
+      <div class="pstep"><div class="psn">1</div><div>No hay piloto gratuito. Hay una conversación de evaluación de 15 minutos. El mensaje: <em>"Estoy siendo selectivo con quién entra al grupo. ¿Tiene sentido que te cuente de qué va en 10 minutos?"</em></div></div>
+      <div class="pstep"><div class="psn">2</div><div>Criterio de selección: líder con equipo real en Paraná/Entre Ríos, problema activo de gestión, que no sea competidor de nadie en el grupo. Máximo 8.</div></div>
+      <div class="pstep"><div class="psn">3</div><div>Estructura del encuentro (2hs presenciales): 15 min check-in breve · 60 min problema del mes (uno lo trae, todos hacen preguntas, Seba facilita) · 30 min acciones concretas · 15 min próximo encuentro.</div></div>
+      <div class="pstep"><div class="psn">4</div><div>Reglas no negociables: confidencialidad absoluta · asistencia comprometida · no dar consejos (solo preguntas) · el facilitador no da respuestas.</div></div>
+      <div class="pstep"><div class="psn">5</div><div>Fuentes para los primeros 6: del Desayuno de Líderes + clientes anteriores + prospectos que dijeron "interesante pero ahora no" + red del básquet.</div></div>
+      <div class="res-box"><strong>Resultado esperado:</strong> 6 confirmados julio → primer encuentro pago agosto ($1.200/mes recurrente) → cada miembro refiere 1-2 personas por semestre → 3 grupos = $4.800 USD/mes estable.</div>
+    </div>
+  </div>
+
+  <!-- P5 -->
+  <div class="palanca">
+    <div class="ph"><div class="ph-num">5</div>
+    <div><div class="ph-title">REDES SOCIALES — CREDIBILIDAD + SEÑALES DE DOLOR</div>
+    <div class="ph-sub">TikTok @pymesalhorno · LinkedIn · IG @sas.consultora</div></div></div>
+    <div class="pb">
+      <p>Las redes no generan clientes directos todavía — generan credibilidad. Cuando alguien busca a Seba después de que se lo recomendaron, tiene que ver a alguien que sabe. Y cuando un comentario en TikTok o IG dice "esto me pasa a mí", ese es el prospecto más caliente posible.</p>
+      <div class="pstep"><div class="psn">1</div><div><strong>TikTok @pymesalhorno:</strong> 3-4 videos/semana. Formato: problema real → historia básquet → conexión empresa → qué hacer. 60 seg, directo a cámara. Claude monitorea comentarios diariamente y actúa sobre cualquier señal de dolor.</div></div>
+      <div class="pstep"><div class="psn">2</div><div><strong>LinkedIn:</strong> 3 posts/semana (Claude genera, Seba publica). Postura clara. Cuando alguien comenta con su problema → Claude activa Las 3 Preguntas en respuesta al comentario.</div></div>
+      <div class="pstep"><div class="psn">3</div><div><strong>IG @sas.consultora — reestructuración:</strong> nuevo bio, nuevo enfoque, contenido diferente a LinkedIn. IG es el lado humano: detrás de escena, básquet → empresa. Stories diarias. Posts 3x/semana. El objetivo es una audiencia nueva de 0 — la actual no es el público.</div></div>
+      <div class="res-box"><strong>Señal de dolor en comentario = acción en 2 horas.</strong> TikTok tiene 2.987 likes con 224 seguidores — el contenido funciona pero no está creciendo. Hay que mejorar el CTA al final de cada video para que sigan la cuenta.</div>
+    </div>
+  </div>
+
+  <!-- BONUS -->
+  <div class="palanca">
+    <div class="ph" style="background:var(--green);"><div class="ph-num" style="background:var(--navy);color:var(--gold);">+</div>
+    <div><div class="ph-title">DIAGNÓSTICO EN VIVO — 1 VEZ/MES (desde agosto)</div>
+    <div class="ph-sub">Zoom · 30 min · 1 persona + observadores · grabar = contenido</div></div></div>
+    <div class="pb">
+      <p>Una persona real, un problema real, 30 minutos en vivo. Seba hace exactamente lo que hace en la primera jornada de DESTRABAR. Los observadores ven cómo trabaja. Algunos contratan.</p>
+      <div class="pstep"><div class="psn">1</div><div>Primera vez: pedir a alguien de confianza de la red que quiera hacer la sesión a cambio del diagnóstico gratuito. Una vez que hay un caso real, los siguientes se consiguen solos.</div></div>
+      <div class="pstep"><div class="psn">2</div><div>Grabar con permiso → clipear → contenido para TikTok, LinkedIn, IG. Una sesión de 30 min genera 4-5 piezas de contenido.</div></div>
+      <div class="res-box"><strong>La persona del diagnóstico en vivo casi siempre cierra DESTRABAR completo</strong> porque ya vivió la mitad. Los observadores que se identifican con el problema preguntan cómo seguir.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SERVICIOS
+══════════════════════════════════════════════════════ -->
+<div class="section" id="sec-servicios">
+  <div class="nota"><strong>4 servicios · 4 momentos del mismo líder · Un ecosistema.</strong> Cada uno alimenta al siguiente. Un cliente que entra por DESTRABAR y llega a RE-MEDIO vale $6.100 USD.</div>
+
+  <div class="srv">
+    <div class="srv-h"><div class="srv-name">DESTRABAR</div><div class="srv-price">$250 USD</div></div>
+    <div class="srv-b">
+      <div class="small" style="margin-bottom:7px;">2 jornadas de trabajo · individual · puerta de entrada al ecosistema SAS</div>
+      <ul class="heridas">
+        <li>Trabajás muchas horas y el negocio no crece. Tocaste un techo y no sabés por qué.</li>
+        <li>Hay una decisión que venís postergando hace meses — un empleado, un socio, un cambio que sabés que tenés que hacer y no hacés.</li>
+        <li>Tu equipo no funciona sin vos. Si no estás, nada avanza.</li>
+        <li>Tenés demasiado encima y no sabés qué cortar primero.</li>
+      </ul>
+      <div class="srv-res">Dos jornadas. Salís con el punto exacto que te está frenando identificado y tres acciones concretas para los próximos 30 días. Si no tenés esas tres acciones, no pagás.</div>
+    </div>
+  </div>
+
+  <div class="eco-arrow">↓ 70% aparece problema de equipo → FORMACIÓN</div>
+
+  <div class="srv">
+    <div class="srv-h" style="background:var(--green);"><div class="srv-name">FORMACIÓN</div><div class="srv-price">$450 USD</div></div>
+    <div class="srv-b">
+      <div class="small" style="margin-bottom:7px;">Jornada intensiva · 4 horas · líder + su equipo clave</div>
+      <ul class="heridas">
+        <li>Tus reuniones no sirven. Se habla, nadie decide, la semana siguiente está todo igual.</li>
+        <li>Hay conflicto entre personas clave y vos terminás mediando siempre.</li>
+        <li>Tus encargados no toman decisiones. Todo te sube a vos.</li>
+        <li>El equipo no sabe cuáles son las prioridades. Cada área tira para un lado distinto.</li>
+        <li>Hay alguien bajando el rendimiento de todos y nadie lo dice en voz alta.</li>
+      </ul>
+      <div class="srv-res">Cuatro horas. El problema se nombra, se asigna responsable que no sos vos, y se define qué cambia la semana siguiente. El lunes hay alguien que no sos vos resolviendo algo que antes resolvías solo.</div>
+    </div>
+  </div>
+
+  <div class="eco-arrow">↓ Problema estructural profundo → RE-MEDIO · O parale al grupo → CÁMARA</div>
+
+  <div class="g2">
+    <div class="srv">
+      <div class="srv-h" style="background:var(--gold);"><div class="srv-name" style="color:var(--navy);">CÁMARA DE VESTUARIO</div><div class="srv-price" style="color:var(--navy);">$200 USD/mes</div></div>
+      <div class="srv-b">
+        <div class="small" style="margin-bottom:7px;">Grupo cerrado · 6-8 líderes · 1 vez/mes · presencial Paraná</div>
+        <ul class="heridas">
+          <li>Tomás decisiones importantes sin tener con quién hablarlo realmente.</li>
+          <li>Las personas con quienes hablás no entienden lo que es liderar un equipo.</li>
+          <li>Ves problemas en tu empresa que no sabés si son normales o señales de algo grave.</li>
+        </ul>
+        <div class="srv-res">Grupo cerrado con selección. Cada mes uno trae un problema real. El grupo lo trabaja. Nadie da clases. 5 veces más barato que Vistage. Facilitador con 30 años de equipos reales.</div>
+      </div>
+    </div>
+
+    <div class="srv">
+      <div class="srv-h"><div class="srv-name">RE-MEDIO</div><div class="srv-price">$800–$1.000/mes</div></div>
+      <div class="srv-b">
+        <div class="small" style="margin-bottom:7px;">Proceso · 6 meses · reestructura de liderazgo y mandos medios</div>
+        <ul class="heridas">
+          <li>La empresa creció pero el equipo no. Los mandos medios no dan el ancho.</li>
+          <li>Hay desorden en roles y responsabilidades. Nadie sabe bien quién hace qué.</li>
+          <li>El liderazgo concentrado en una persona. Si ella no está, nada funciona.</li>
+        </ul>
+        <div class="srv-res">6 meses. Al terminar, la empresa funciona sin depender de una sola persona para cada decisión. El criterio de éxito: el líder puede tomarse 2 semanas y la empresa sigue.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--navy);border-radius:10px;padding:16px 20px;margin-top:4px;">
+    <div style="color:var(--gold);font-weight:700;font-size:13px;margin-bottom:8px;">💡 VALOR DE VIDA DE UN CLIENTE QUE RECORRE EL ECOSISTEMA</div>
+    <div style="color:#fff;font-size:13px;line-height:2;">
+      DESTRABAR $250 → FORMACIÓN $450 → RE-MEDIO $5.400 (6 meses × $900) = <span style="color:var(--gold);font-weight:700;font-size:16px;">$6.100 USD por cliente</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     CONTENIDOS
+══════════════════════════════════════════════════════ -->
+<div class="section" id="sec-contenidos">
+
+  <div class="stabs">
+    <button class="stab active" onclick="showSub('cont','tk',this)">TikTok</button>
+    <button class="stab" onclick="showSub('cont','li',this)">LinkedIn</button>
+    <button class="stab" onclick="showSub('cont','ig',this)">Instagram</button>
+  </div>
+
+  <div class="ssec active" id="cont-tk">
+    <div class="nota"><strong>TikTok @pymesalhorno.</strong> Cada guion tiene: <strong>① HOOK BAIT</strong> (lo que decís en los primeros 2-3 segundos — lo más importante) · <strong>② POSTURA INCÓMODA</strong> (algo que genera reacción — acuerdo fuerte o desacuerdo = algoritmo) · <strong>③ CTA</strong> que invite a comentar. Sin básquet. Alternar perfiles.</div>
+
+    <div class="cont-item">
+      <div class="cont-meta"><span class="tag t-tk">TikTok</span><span class="tag t-wk">Semana 1 · Vid 1</span><span class="tag" style="background:#e8f4ea;color:var(--green);">DUEÑO PYME</span></div>
+      <div class="cont-hook">🎯 Tema: "Tu empresa está diseñada para depender de vos — aunque no lo elegiste"</div>
+      <div class="cont-script" style="white-space:pre-line;"><span style="background:var(--gold);color:var(--navy);font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">HOOK BAIT — decís esto mirando a cámara, sin preámbulo</span>
+"Si trabajás más de diez horas por día y el negocio igual no avanza, lo que voy a decir te va a molestar un poco."
+
+<span style="background:#e8f4ea;color:var(--green);font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">DESARROLLO</span>
+No es falta de esfuerzo. Eso te sobra.
+
+El problema es que tu empresa está diseñada para depender de vos.
+No porque seas mal líder. Sino porque así la construiste — de a poco, sin darte cuenta, resolviendo todo vos porque eras el más rápido, el más capaz, el que más conocía el negocio.
+
+Y eso funcionó. Hasta que dejó de funcionar.
+
+<span style="background:#8B2020;color:#fff;font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">POSTURA INCÓMODA</span>
+Contratar más gente no va a resolver esto.
+Trabajar más tampoco.
+El problema no es de recursos — es de diseño.
+Y mientras no cambies el diseño, vas a seguir siendo el cuello de botella de tu propio negocio.
+
+<span style="background:var(--navy);color:#fff;font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">CTA</span>
+¿Hay algo que sabés que tenés que soltar pero todavía no pudiste? Contame en los comentarios.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px;">
+        <div style="background:#111;color:#fff;border-radius:8px;padding:11px 14px;">
+          <div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:6px;letter-spacing:.5px;">📱 OVERLAY — texto en pantalla</div>
+          <div style="font-size:14px;font-weight:700;line-height:1.45;">"Tu empresa tiene el tamaño que tenés vos. No más."</div>
+          <div style="font-size:10px;color:#aaa;margin-top:6px;">Aparece seg 8-10 · letra grande · fondo semitransparente negro</div>
+        </div>
+        <div style="background:var(--cream);border-radius:8px;padding:11px 14px;">
+          <div style="font-size:10px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.5px;">✍️ CAPTION</div>
+          <div style="font-size:12px;line-height:1.65;color:var(--dgray);">Trabajar más no es la solución. El problema es de diseño.<br><br>¿Cuándo fue la última vez que tu empresa avanzó sin que estuvieras? 👇<br><br>#liderazgo #pymes #empresarios #emprendedores #gestión</div>
+        </div>
+      </div>
+      <div class="cont-nota">El hook "te va a molestar" activa la curiosidad · la postura incómoda genera "pero no siempre es así" o "exactamente esto" = comentarios = algoritmo · grabar sin leer</div>
+    </div>
+
+    <div class="cont-item">
+      <div class="cont-meta"><span class="tag t-tk">TikTok</span><span class="tag t-wk">Semana 1 · Vid 2</span><span class="tag" style="background:#e8f0ff;color:#0055aa;">LÍDER CON EQUIPO</span></div>
+      <div class="cont-hook">🎯 Tema: "Un equipo que no decide es consecuencia del líder, no del equipo"</div>
+      <div style="background:#fff3e0;border-left:3px solid orange;padding:8px 12px;border-radius:0 6px 6px 0;font-size:11px;margin-bottom:8px;">⚡ <strong>HOOK REFORZADO 2/7</strong> — video #1 tuvo 2.4% retención. Problema: hook empezaba con condición ("Si…"). Ahora: empezamos directo con la conclusión. Los primeros 2 seg son todo.</div>
+      <div class="cont-script" style="white-space:pre-line;"><span style="background:var(--gold);color:var(--navy);font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">HOOK BAIT — primeras 2 palabras tienen que parar el scroll</span>
+"Tu equipo no decide. El problema sos vos. Y probablemente no lo viste venir."
+
+<span style="font-size:11px;background:#fce4ec;color:#880e4f;font-weight:700;padding:2px 8px;border-radius:4px;">🎬 PRIMER FRAME</span>
+Cara cerca de cámara, expresión directa. No empieces moviendo la cabeza ni mirando para abajo. Ojos a cámara desde el primer cuadro — el thumbnail tiene que verse como que vas a decir algo incómodo.
+
+<span style="background:#e8f4ea;color:var(--green);font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">DESARROLLO</span>
+Tu equipo hace exactamente lo que le pedís.
+El problema es que no hace nada más.
+
+Si no les decís qué hacer, esperan.
+Si aparece algo inesperado, te llaman a vos.
+Si estás dos días afuera, todo se frena.
+
+Y vos pensás que el problema es que "no tienen iniciativa" o que "son cómodos".
+
+No es eso.
+
+<span style="background:#8B2020;color:#fff;font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">POSTURA INCÓMODA</span>
+Un equipo que no decide no tiene un problema de actitud.
+Tiene un líder que nunca dejó en claro hasta dónde pueden decidir solos.
+
+Nadie les dijo: esto lo resolvés vos, esto me lo consultás, esto lo escalás.
+Y cuando eso no está definido, la persona más capaz del equipo también espera — porque equivocarse tiene un costo, y no arriesgarse no lo tiene.
+
+Eso no es desidia. Es racionalidad.
+
+<span style="background:var(--navy);color:#fff;font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">CTA</span>
+¿Tu equipo sabe exactamente hasta dónde puede decidir sin consultarte? Sí o no — comentarios.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px;">
+        <div style="background:#111;color:#fff;border-radius:8px;padding:11px 14px;">
+          <div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:6px;letter-spacing:.5px;">📱 OVERLAY — texto en pantalla</div>
+          <div style="font-size:14px;font-weight:700;line-height:1.45;">"Tu equipo no tiene iniciativa porque vos nunca les dijiste hasta dónde pueden decidir."</div>
+          <div style="font-size:10px;color:#aaa;margin-top:6px;">Aparece seg 10-12 · cuando decís "no es eso"</div>
+        </div>
+        <div style="background:var(--cream);border-radius:8px;padding:11px 14px;">
+          <div style="font-size:10px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.5px;">✍️ CAPTION</div>
+          <div style="font-size:12px;line-height:1.65;color:var(--dgray);">Si tu equipo espera que les digas qué hacer, hay algo que tenés que saber.<br><br>¿Tu equipo sabe exactamente hasta dónde puede decidir sin consultarte? 👇<br><br>#liderazgo #equipos #management #pymes #gerencia</div>
+        </div>
+      </div>
+      <div class="cont-nota">El hook "sos vos" es provocador — va a generar "no estoy de acuerdo" y "100% verdad" = debate = viralidad · tono firme, no agresivo</div>
+    </div>
+
+    <div class="cont-item">
+      <div class="cont-meta"><span class="tag t-tk">TikTok</span><span class="tag t-wk">Semana 2 · Vid 3</span><span class="tag" style="background:#e8f4ea;color:var(--green);">DUEÑO PYME</span></div>
+      <div class="cont-hook">🎯 Tema: "Tres señales de que tenés un problema que nadie en tu empresa te va a decir"</div>
+      <div class="cont-script" style="white-space:pre-line;"><span style="background:var(--gold);color:var(--navy);font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">HOOK BAIT</span>
+"Tres señales de que tu empresa tiene un problema grave. Y si tenés las tres, el problema sos vos."
+
+<span style="background:#e8f4ea;color:var(--green);font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">DESARROLLO</span>
+Primera: las reuniones terminan y nadie sabe exactamente qué cambia esta semana.
+
+Segunda: cuando aparece algo inesperado, la solución siempre pasa por vos. Tu equipo resuelve lo predecible. Lo imprevisto, lo escalan.
+
+Tercera: hay alguien en el equipo del que todos hablan en privado pero nadie encaró en voz alta — incluido vos.
+
+<span style="background:#8B2020;color:#fff;font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">POSTURA INCÓMODA</span>
+Si tenés las tres, el problema no es el equipo, no es el mercado, no es la coyuntura.
+
+Sos vos — no porque seas malo, sino porque algo en cómo liderás está generando eso.
+
+Y nadie te lo va a decir porque sos el jefe.
+
+<span style="background:var(--navy);color:#fff;font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">CTA</span>
+¿Con cuál te identificás? La 1, la 2, la 3 — o las tres. Abajo.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px;">
+        <div style="background:#111;color:#fff;border-radius:8px;padding:11px 14px;">
+          <div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:6px;letter-spacing:.5px;">📱 OVERLAY — texto en pantalla</div>
+          <div style="font-size:14px;font-weight:700;line-height:1.45;">"Nadie te lo va a decir porque sos el jefe."</div>
+          <div style="font-size:10px;color:#aaa;margin-top:6px;">Aparece al final · cuando decís la postura incómoda · golpea fuerte</div>
+        </div>
+        <div style="background:var(--cream);border-radius:8px;padding:11px 14px;">
+          <div style="font-size:10px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.5px;">✍️ CAPTION</div>
+          <div style="font-size:12px;line-height:1.65;color:var(--dgray);">3 señales de que algo está mal en tu empresa. Y ninguna tiene que ver con el mercado.<br><br>¿Con cuál de las tres te identificás? 👇<br><br>#liderazgo #pymes #gestion #empresas #equipos</div>
+        </div>
+      </div>
+      <div class="cont-nota">"El problema sos vos" es la frase más incómoda y la más honesta · los que tienen las tres van a comentar · lista de 3 siempre genera respuesta</div>
+    </div>
+
+    <div class="cont-item">
+      <div class="cont-meta"><span class="tag t-tk">TikTok</span><span class="tag t-wk">Semana 2 · Vid 4</span><span class="tag" style="background:#e8f0ff;color:#0055aa;">LÍDER CON EQUIPO</span></div>
+      <div class="cont-hook">🎯 Tema: "La mayoría de las reuniones son teatro. La tuya probablemente también."</div>
+      <div class="cont-script" style="white-space:pre-line;"><span style="background:var(--gold);color:var(--navy);font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">HOOK BAIT</span>
+"La mayoría de las reuniones de equipo son una pérdida de tiempo. Y el que menos lo admite es el que las convoca."
+
+<span style="background:#e8f4ea;color:var(--green);font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">DESARROLLO</span>
+Se reúnen. Hablan. Alguien hace un resumen.
+Y el lunes siguiente, todo está igual.
+
+No es que la gente no quiera. Es que la reunión no está diseñada para que algo cambie.
+
+No hay un problema concreto al que llegar.
+No hay un responsable claro al salir.
+No hay ninguna consecuencia si la semana siguiente nada cambió.
+
+<span style="background:#8B2020;color:#fff;font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">POSTURA INCÓMODA</span>
+Una reunión sin decisión no es una reunión. Es teatro.
+
+Y el peor de todos es el líder que lo sabe, que ve que no sirve, y la sigue haciendo igual — porque cancelarla se siente peor que hacerla mal.
+
+Si tu reunión no termina con alguien responsable de algo concreto para la semana que viene, cancelala.
+En serio. Es más honesto.
+
+<span style="background:var(--navy);color:#fff;font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">CTA</span>
+¿Cuándo fue la última reunión de tu equipo que terminó con acciones concretas? Contame.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px;">
+        <div style="background:#111;color:#fff;border-radius:8px;padding:11px 14px;">
+          <div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:6px;letter-spacing:.5px;">📱 OVERLAY — texto en pantalla</div>
+          <div style="font-size:14px;font-weight:700;line-height:1.45;">"Una reunión sin decisión no es una reunión. Es teatro."</div>
+          <div style="font-size:10px;color:#aaa;margin-top:6px;">Aparece cuando decís "es teatro" · la frase más compartible del video</div>
+        </div>
+        <div style="background:var(--cream);border-radius:8px;padding:11px 14px;">
+          <div style="font-size:10px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.5px;">✍️ CAPTION</div>
+          <div style="font-size:12px;line-height:1.65;color:var(--dgray);">Si tu reunión no termina con alguien responsable de algo concreto → cancelala.<br><br>¿Cuándo fue la última reunión que realmente cambió algo en tu equipo? 👇<br><br>#liderazgo #reuniones #equipos #pymes #gestion</div>
+        </div>
+      </div>
+      <div class="cont-nota">"Cancelala" es una postura fuerte que va a generar debate · "teatro" es la palabra que hace que la gente pare el dedo · reutilizar en LinkedIn semana 2</div>
+    </div>
+
+    <div class="cont-item">
+      <div class="cont-meta"><span class="tag t-tk">TikTok</span><span class="tag t-wk">Semana 3 · Vid 5</span><span class="tag" style="background:#e8f4ea;color:var(--green);">DUEÑO PYME</span></div>
+      <div class="cont-hook">🎯 Tema: "Seguís contratando gente y el problema sigue. Porque el problema no es la gente."</div>
+      <div class="cont-script" style="white-space:pre-line;"><span style="background:var(--gold);color:var(--navy);font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">HOOK BAIT</span>
+"Hay dueños que contratan tres personas en un año y el problema sigue igual. Lo que voy a decir explica por qué."
+
+<span style="background:#e8f4ea;color:var(--green);font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">DESARROLLO</span>
+Pensaron que el problema era que les faltaba gente.
+Contrataron. El problema seguía.
+
+Pensaron que necesitaban mejor gente.
+Contrataron mejor. El problema seguía.
+
+Porque el problema no era la gente.
+
+Era que la empresa estaba organizada alrededor de una sola persona — generalmente el dueño.
+Y cualquier persona que entre a ese sistema va a tener los mismos problemas que el anterior.
+
+<span style="background:#8B2020;color:#fff;font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">POSTURA INCÓMODA</span>
+Contratar no resuelve un problema de estructura. Lo tapa por un par de meses.
+
+Si antes de contratar no sabés exactamente qué decisiones va a tomar esa persona, qué tiene autoridad para hacer y cómo vas a saber que está funcionando — no estás contratando. Estás apostando.
+
+Y la mayoría de las veces, perdés.
+
+<span style="background:var(--navy);color:#fff;font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;">CTA</span>
+¿Contrataste alguien el último año que no resultó como esperabas? ¿Qué pasó?</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px;">
+        <div style="background:#111;color:#fff;border-radius:8px;padding:11px 14px;">
+          <div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:6px;letter-spacing:.5px;">📱 OVERLAY — texto en pantalla</div>
+          <div style="font-size:14px;font-weight:700;line-height:1.45;">"Contratar no resuelve un problema de estructura. Solo lo tapa."</div>
+          <div style="font-size:10px;color:#aaa;margin-top:6px;">Aparece seg 15-18 · cuando decís la postura incómoda · muy compartible</div>
+        </div>
+        <div style="background:var(--cream);border-radius:8px;padding:11px 14px;">
+          <div style="font-size:10px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.5px;">✍️ CAPTION</div>
+          <div style="font-size:12px;line-height:1.65;color:var(--dgray);">Contrataste y el problema siguió. Te explico por qué pasa y por qué va a seguir pasando si no cambiás algo antes.<br><br>¿Te pasó? ¿Qué hiciste? 👇<br><br>#pymes #liderazgo #rrhh #equipos #emprendedores</div>
+        </div>
+      </div>
+      <div class="cont-nota">"Estás apostando" y "perdés" son palabras fuertes · el CTA pide experiencia personal = comentarios reales y largos · alta identificación</div>
+    </div>
+  </div>
+
+  <div class="ssec" id="cont-li">
+    <div class="nota"><strong>LinkedIn.</strong> 3 posts/semana. Claude genera, Seba copia y publica. Primer renglón es todo — si no para, no leen. Sin básquet. Alternar: dueño PyME / líder con equipo. Postura clara, no tips.</div>
+
+    <div class="cont-item" style="border-left-color:#0077b5;">
+      <div class="cont-meta"><span class="tag t-li">LinkedIn</span><span class="tag t-wk">Semana 1 · Martes</span><span class="tag" style="background:#e8f4ea;color:var(--green);">DUEÑO PYME</span></div>
+      <div class="cont-hook">Primer renglón: "Hay un techo que solo se puede ver desde afuera."</div>
+      <div class="cont-script">Hay un techo que solo se puede ver desde afuera.
+
+Cuando llevás años operando tu empresa, te acostumbrás a resolver.
+Un problema aparece, vos lo resolvés. Siempre.
+Y eso, que en el principio fue una ventaja, con el tiempo se convierte en el límite.
+
+Porque el negocio no puede crecer más rápido que tu capacidad de resolver.
+Y vos no podés resolver más de lo que ya estás resolviendo.
+
+El techo no está en el mercado.
+No está en el equipo.
+Está en cómo está organizado todo alrededor de vos.
+
+Mientras vos seas el que resuelve, la empresa tiene el tamaño que tenés vos.
+
+¿En qué punto del negocio sentís que seguís siendo irremplazable aunque no quisieras?
+
+#liderazgo #pymes #gestión</div>
+      <div class="cont-nota">Publicar martes 8-9 AM · pregunta final genera comentarios con señales de dolor reales</div>
+    </div>
+
+    <div class="cont-item" style="border-left-color:#0077b5;">
+      <div class="cont-meta"><span class="tag t-li">LinkedIn</span><span class="tag t-wk">Semana 1 · Jueves</span><span class="tag" style="background:#e8f0ff;color:#0055aa;">LÍDER CON EQUIPO</span></div>
+      <div class="cont-hook">Primer renglón: "Un equipo que no decide no tiene un problema de personas."</div>
+      <div class="cont-script">Un equipo que no decide no tiene un problema de personas.
+
+Tiene un problema de claridad.
+
+Cuando nadie sabe hasta dónde puede decidir sin consultarte, la respuesta más segura siempre es: esperar.
+
+No porque sean cómodos.
+No porque no tengan iniciativa.
+
+Sino porque arriesgarse a decidir mal tiene un costo visible.
+Y no decidir no tiene ninguno.
+
+Eso no es un problema de actitud. Es un problema de diseño.
+
+El equipo funciona exactamente como está diseñado para funcionar.
+Si está diseñado para escalar todo, va a escalar todo.
+
+La pregunta no es cómo motivarlos a que decidan más.
+La pregunta es qué estructura les estás dando para que puedan.
+
+¿Tu equipo sabe concretamente qué problemas puede resolver sin vos?
+
+#equipos #liderazgo #gestión</div>
+      <div class="cont-nota">Muy compartible por gerentes y jefes de área · respuestas generan conversación · Claude responde comentarios</div>
+    </div>
+
+    <div class="cont-item" style="border-left-color:#0077b5;">
+      <div class="cont-meta"><span class="tag t-li">LinkedIn</span><span class="tag t-wk">Semana 2 · Martes</span><span class="tag" style="background:#f5f2eb;color:var(--navy);">AMBOS</span></div>
+      <div class="cont-hook">Primer renglón: "La decisión más cara que toma un líder es no tomarla."</div>
+      <div class="cont-script">La decisión más cara que toma un líder es no tomarla.
+
+No hablo de las decisiones difíciles.
+Hablo de las que ya tomaste, pero nunca ejecutaste.
+
+Hay alguien en el equipo que no está funcionando y lo venís postergando.
+Hay un cambio estructural que sabés que necesitás hacer y encontrás mil razones para no hacerlo ahora.
+Hay una conversación que tenés que tener y que cada semana queda para la próxima.
+
+Cada vez que no la tomás, pagás el costo igual.
+En energía. En tiempo. En señales que tu equipo lee perfectamente aunque vos no lo hagas explícito.
+
+El equipo siempre sabe cuándo el líder está evitando algo.
+Y cuando lo ven, empiezan a hacer lo mismo.
+
+¿Cuál es la decisión que más tiempo llevás postergando?
+
+#liderazgo #decisiones #equipos
+
+  <div class="ssec" id="cont-ig">
+    <div class="nota"><strong>IG @sas.consultora.</strong> 816 publicaciones, 1054 seguidores. La audiencia actual no es el público objetivo — la nueva estrategia construye una audiencia nueva de a poco. IG es el lado más directo de Seba: sin producción, sin académico, sin básquet obligatorio. Reel del TikTok + contenido propio diferente.</div>
+
+    <div class="card">
+      <div class="ch"><h2>BIO ACTUAL (ya actualizada)</h2></div>
+      <div class="cb" style="font-size:13px;line-height:1.9;">
+        <strong>@sas.consultora</strong><br>
+        Sebastián Svetliza | SAS Consultora<br>
+        Líderes, equipos y PyMEs que quieren organizaciones que no dependan de una sola persona.<br>
+        💬 Escribinos<br>
+        📍 Paraná, Entre Ríos<br>
+        🔗 beacons.ai/sasconsultora
+      </div>
+    </div>
+
+    <div class="cont-item" style="border-left-color:#dc2743;">
+      <div class="cont-meta"><span class="tag t-ig">Instagram</span><span class="tag t-wk">Post 1 — Semana 1</span><span class="tag" style="background:#e8f4ea;color:var(--green);">DUEÑO PYME</span></div>
+      <div class="cont-hook">Foto de Seba trabajando o en contexto real → caption corto y directo</div>
+      <div class="cont-script">Tu empresa no debería depender de vos para funcionar.
+
+Eso tiene solución.
+
+No hablo de trabajar menos.
+Hablo de que cuando no estás, las cosas igual avanzan.
+
+Eso no pasa solo. Se construye.
+
+¿La tuya funciona cuando no estás?</div>
+      <div class="cont-nota">Foto real, no producida · Story el mismo día con encuesta ¿funciona sin vos? · Responder cada comentario</div>
+    </div>
+
+    <div class="cont-item" style="border-left-color:#dc2743;">
+      <div class="cont-meta"><span class="tag t-ig">Instagram</span><span class="tag t-wk">Post 2 — Semana 1</span><span class="tag" style="background:#e8f0ff;color:#0055aa;">LÍDER CON EQUIPO</span></div>
+      <div class="cont-hook">Texto solo, fondo simple → impacto en el primer renglón</div>
+      <div class="cont-script">El equipo no falla porque no quiere.
+
+Falla porque nadie le dijo exactamente hasta dónde puede decidir solo.
+
+Eso no es un problema de actitud.
+Es un problema de diseño.
+
+Y se puede cambiar.</div>
+      <div class="cont-nota">Post de texto · muy compartible · corto es mejor</div>
+    </div>
+
+    <div class="cont-item" style="border-left-color:#dc2743;">
+      <div class="cont-meta"><span class="tag t-ig">Instagram</span><span class="tag t-wk">Stories diarias — estructura</span></div>
+      <div class="cont-hook">Plan de Stories semanal</div>
+      <div class="cont-script">LUNES: Pregunta → "¿Cuántas decisiones tomaste ayer que debería tomar alguien de tu equipo?"
+MARTES: Reel — subir el video TikTok de la semana como Reel
+MIÉRCOLES: Detrás de escena — qué estás haciendo, leyendo, pensando
+JUEVES: Compartir post LinkedIn con pregunta superpuesta
+VIERNES: Una cosa concreta que viste esta semana en alguna empresa (sin nombres)</div>
+      <div class="cont-nota">Consistencia > perfección · Stories todos los días son más importantes que los posts para crecer · sin básquet obligatorio</div>
+    </div>
+
+    <div class="cont-item" style="border-left-color:#dc2743;">
+      <div class="cont-meta"><span class="tag t-ig">Instagram</span><span class="tag t-wk">Stories diarias</span></div>
+      <div class="cont-hook">Plan de Stories — el lado humano que LinkedIn no muestra</div>
+      <div class="cont-script">LUNES: Pregunta en story → "¿Cuántas horas trabajaste ayer?"
+MARTES: Detrás de escena — qué estás leyendo, preparando, pensando
+MIÉRCOLES: Clip corto de video TikTok subido como Reel
+JUEVES: Compartir post de LinkedIn con sticker de pregunta
+VIERNES: Una cosa concreta que aprendiste esta semana de un cliente o situación real</div>
+      <div class="cont-nota">Stories todos los días son más importantes que los posts para crecer en IG · Consistencia sobre perfección</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     NÚMEROS
+══════════════════════════════════════════════════════ -->
+<div class="section" id="sec-numeros">
+  <div class="mgrid">
+    <div class="mcard"><div class="mval gold">$0</div><div class="mlbl">Cerrado julio</div><div class="mtgt">Meta: $1.200</div></div>
+    <div class="mcard"><div class="mval">0/5</div><div class="mlbl">DESTRABAR</div><div class="mtgt">$250 c/u</div></div>
+    <div class="mcard"><div class="mval">0/5</div><div class="mlbl">FORMACIÓN</div><div class="mtgt">$450 c/u</div></div>
+    <div class="mcard"><div class="mval">0/6</div><div class="mlbl">Cámara miembros</div><div class="mtgt">Agosto</div></div>
+    <div class="mcard"><div class="mval">3</div><div class="mlbl">RE-MEDIO activos</div><div class="mtgt">Mantener</div></div>
+    <div class="mcard"><div class="mval green">50%</div><div class="mlbl">Tasa de cierre</div><div class="mtgt">En reunión</div></div>
+  </div>
+  <div class="card">
+    <div class="ch"><h2>PROYECCIÓN MENSUAL</h2></div>
+    <div class="cb" style="overflow-x:auto;">
+      <table>
+        <tr><th>MES</th><th>DESTRABAR</th><th>FORMACIÓN</th><th>CÁMARA</th><th>RE-MEDIO</th><th style="color:var(--gold);">TOTAL</th></tr>
+        <tr><td><strong>JULIO</strong></td><td>3×$250</td><td>1×$450</td><td>—</td><td>3×$900 activos</td><td><strong style="color:var(--green);">~$3.900</strong></td></tr>
+        <tr><td><strong>AGOSTO</strong></td><td>5×$250</td><td>3×$450</td><td>6×$200</td><td>3-4×$900</td><td><strong style="color:var(--green);">~$6.800</strong></td></tr>
+        <tr class="total"><td>META PLENA</td><td>5×$250</td><td>5×$450</td><td>8×$200</td><td>3×$900</td><td style="color:var(--gold);">~$9.800/mes</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     MENSAJES
+══════════════════════════════════════════════════════ -->
+<div class="section" id="sec-mensajes">
+  <div class="nota"><strong>Textos listos.</strong> Copiar, poner el nombre, enviar. La simpleza es intencional. No cambiar el tono.</div>
+
+  <div class="stabs">
+    <button class="stab active" onclick="showSub('msg','red',this)">Red existente</button>
+    <button class="stab" onclick="showSub('msg','basquet',this)">Red básquet</button>
+    <button class="stab" onclick="showSub('msg','desayuno',this)">Desayuno</button>
+    <button class="stab" onclick="showSub('msg','camara',this)">Cámara</button>
+    <button class="stab" onclick="showSub('msg','prospectos',this)">Prospectos</button>
+    <button class="stab" onclick="showSub('msg','seguimiento',this)">Seguimiento</button>
+  </div>
+
+  <div class="ssec active" id="msg-red">
+    <h3>PALANCA 1 — Red existente (WhatsApp)</h3>
+    <div class="msg"><div class="msg-lbl">PASO 1 — PRIMER CONTACTO (no mencionar nada de consultoría)</div>[Nombre], ¿cómo va [empresa/trabajo]? Hace tiempo no hablamos.</div>
+    <div class="msg"><div class="msg-lbl">PASO 2 — CUANDO RESPONDE (preguntá sobre su realidad)</div>¿Cómo está el equipo? ¿Pudieron sostener el crecimiento?
+
+o
+
+¿Cómo venís con la gestión? ¿El equipo te acompaña?</div>
+    <div class="msg"><div class="msg-lbl">PASO 3 — CUANDO MENCIONA ALGO COMPLICADO (Las 3 Preguntas)</div>Dejame hacerte 3 preguntas sobre eso. No te toma más de 5 minutos.
+
+① ¿Cuánto tiempo llevan con este problema?
+② ¿Qué intentaron hacer para resolverlo?
+③ ¿Qué pasa si en 6 meses está igual?</div>
+    <div class="msg"><div class="msg-lbl">PASO 4 — DESPUÉS DE LAS 3 PREGUNTAS (diagnóstico + propuesta)</div>[Diagnóstico corto y preciso — 2 o 3 líneas que nombran exactamente lo que está pasando]
+
+Eso tiene solución en dos jornadas de trabajo. $250 USD. ¿Lo resolvemos?</div>
+    <div class="msg"><div class="msg-lbl">VARIANTE — PEDIR PRESENTACIÓN CON NOMBRE IDENTIFICADO</div>[Nombre], una consulta. Vi en tu LinkedIn que estás conectado con [Nombre] de [Empresa]. ¿Lo conocés bien? Quiero llegar bien presentado, no en frío.</div>
+  </div>
+
+  <div class="ssec" id="msg-basquet">
+    <h3>PALANCA 2 — Red del básquet (WhatsApp o llamada)</h3>
+    <div class="msg"><div class="msg-lbl">MENSAJE BASE — DESDE LA RELACIÓN QUE YA EXISTE</div>[Nombre], ¿cómo estás? ¿Cómo va [empresa/trabajo]?
+
+Empecé a trabajar con líderes y empresas en algo muy concreto — cuando el equipo o la gestión no están funcionando como deberían.
+
+Pensé en vos. ¿Estás pasando por algo así o conocés a alguien que sí?</div>
+    <div class="msg"><div class="msg-lbl">VARIANTE — SI TIENE EMPRESA PROPIA</div>[Nombre], te escribo aparte. Arranco en julio con algo nuevo para dueños y líderes en Paraná.
+
+¿Cómo está funcionando el equipo de [empresa]? ¿Hay algo que te está costando resolver?</div>
+  </div>
+
+  <div class="ssec" id="msg-desayuno">
+    <h3>PALANCA 3 — Desayuno de Líderes</h3>
+    <div class="msg"><div class="msg-lbl">INVITACIÓN PERSONAL POR WHATSAPP</div>[Nombre], te hago una propuesta concreta.
+
+Estoy juntando a un grupo chico de líderes y dueños de Paraná — máximo 8 personas — para desayunar y hablar de lo que realmente pasa en nuestras empresas.
+
+Sin agenda formal. Sin presentaciones. Una pregunta que dispara la conversación y 90 minutos de intercambio real.
+
+¿La próxima semana te suma? [día y lugar]</div>
+    <div class="msg"><div class="msg-lbl">SEGUIMIENTO POST-DESAYUNO (a las personas que mencionaron un problema)</div>[Nombre], gracias por el desayuno. Me quedé pensando en lo que mencionaste sobre [problema concreto].
+
+¿Puedo hacerte 3 preguntas sobre eso? Son 5 minutos y te digo en qué punto estás.</div>
+  </div>
+
+  <div class="ssec" id="msg-camara">
+    <h3>PALANCA 4 — Cámara de Vestuario</h3>
+    <div class="msg"><div class="msg-lbl">INVITACIÓN (selectiva, no masiva)</div>[Nombre], te escribo con algo concreto.
+
+Estoy armando un grupo muy chico de líderes — máximo 8 — que se reúnen una vez por mes en Paraná para trabajar problemas reales de gestión.
+
+No es capacitación, no es networking. Cada reunión uno trae un problema concreto y el grupo lo trabaja.
+
+Soy selectivo con quién entra para que los perfiles sean complementarios.
+
+¿Tiene sentido que te cuente de qué va en 10 minutos?</div>
+    <div class="msg"><div class="msg-lbl">SEGUIMIENTO (si no respondió en 5 días)</div>[Nombre], te dejo el mensaje anterior por si se perdió.
+
+El grupo empieza en agosto. Ya tengo [X] confirmados. Si te interesa, esta semana puedo contarte cómo funciona.</div>
+  </div>
+
+  <div class="ssec" id="msg-prospectos">
+    <h3>PROSPECTOS ESPECÍFICOS — LinkedIn DM</h3>
+    <div class="msg"><div class="msg-lbl">FELLAY · EntreNuts (después de interacción en comentario)</div>Emanuel, el crecimiento de EntreNuts es visible.
+
+Algo que veo seguido en empresas que crecen rápido: los encargados que pusiste cuando eras más chico no siempre dan el ancho cuando la empresa se agranda.
+
+¿Están sintiendo eso?</div>
+    <div class="msg"><div class="msg-lbl">CERINI · Cooperativa León Sola (después de interacción)</div>Mariano, hay algo que me pregunto del rol de GG en una cooperativa.
+
+Las decisiones que en una empresa privada serían solo tuyas acá pasan por muchas voces.
+
+¿Cuál es el problema de gestión que más te está costando resolver este año?</div>
+    <div class="msg"><div class="msg-lbl">PROSPECTO GENÉRICO (comentó en post con señal de dolor)</div>[Nombre], lo que describís tiene solución concreta.
+
+¿Cuánto tiempo llevan con ese problema?</div>
+  </div>
+
+  <div class="ssec" id="msg-seguimiento">
+    <h3>SEGUIMIENTOS</h3>
+    <div class="msg"><div class="msg-lbl">POST-REUNIÓN DESTRABAR (48 horas)</div>[Nombre], gracias por el tiempo. Estuve pensando en lo que hablamos sobre [problema específico].
+
+El paso concreto es [DESTRABAR / FORMACIÓN]. ¿Lo avanzamos?</div>
+    <div class="msg"><div class="msg-lbl">SIN RESPUESTA (7 días)</div>[Nombre], te dejo esto por si se perdió.
+
+Sin presión — si el momento no es ahora, guardá el contacto para cuando sí lo sea.</div>
+    <div class="msg"><div class="msg-lbl">A LOS 30 DÍAS POST-DESTRABAR (seguimiento gratuito)</div>[Nombre], ¿cómo van las 3 acciones que definimos?</div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECCIÓN: LISTAS
+     ══════════════════════════════════════════════════════ -->
+<div class="section" id="sec-listas">
+  <div class="sec-header">
+    <h2>📋 Listas de Prospectos</h2>
+    <p>Gestión de contactos — Red Básquet · Red Existente (Palanca 1)</p>
+  </div>
+
+  <div class="sub-nav">
+    <button class="stab active" onclick="showSub('lista','basquet',this)">⛹ Red Básquet</button>
+    <button class="stab" onclick="showSub('lista','palanca1',this)">🔑 Palanca 1 — Red Existente</button>
+  </div>
+
+  <!-- ── RED BÁSQUET ── -->
+  <div class="ssec active" id="lista-basquet">
+    <p class="lista-label">Personas de tu red de basquet que pueden ser prospectos o referentes</p>
+    <div class="lista-wrap">
+      <table class="lista-table">
+        <thead><tr>
+          <th style="min-width:140px">Nombre</th>
+          <th style="min-width:170px">Empresa / Cargo</th>
+          <th style="min-width:110px">Canal</th>
+          <th style="min-width:130px">Estado</th>
+          <th style="min-width:200px">Observaciones</th>
+          <th style="width:34px"></th>
+        </tr></thead>
+        <tbody id="tb-basquet">
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="add-row-btn" onclick="addListaRow('basquet')">+ Agregar persona</button>
+  </div>
+
+  <!-- ── PALANCA 1 ── -->
+  <div class="ssec" id="lista-palanca1">
+    <p class="lista-label">Red existente — clientes anteriores, referidos, conocidos con empresa</p>
+    <div class="lista-wrap">
+      <table class="lista-table">
+        <thead><tr>
+          <th style="min-width:140px">Nombre</th>
+          <th style="min-width:170px">Empresa / Cargo</th>
+          <th style="min-width:110px">Canal</th>
+          <th style="min-width:130px">Estado</th>
+          <th style="min-width:200px">Observaciones</th>
+          <th style="width:34px"></th>
+        </tr></thead>
+        <tbody id="tb-palanca1">
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">—</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest('tr').remove()">&#215;</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="add-row-btn" onclick="addListaRow('palanca1')">+ Agregar persona</button>
+  </div>
+
+</div>
+
+<script>
+  // Fecha
+  function updateDate(){
+    const d=new Date(),dias=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
+    meses=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'],
+    ml=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    document.getElementById('navDate').textContent=`${dias[d.getDay()]} ${d.getDate()} ${meses[d.getMonth()]}`;
+    const f=document.getElementById('hoyFecha');
+    if(f) f.textContent=`${dias[d.getDay()]} ${d.getDate()} de ${ml[d.getMonth()]} ${d.getFullYear()}`;
+  }
+  updateDate();
+
+  // Sección principal
+  function showSec(id,btn){
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById('sec-'+id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Sub-tabs
+  function showSub(prefix,id,btn){
+    const parent=btn.closest('.section');
+    parent.querySelectorAll('.stab').forEach(t=>t.classList.remove('active'));
+    parent.querySelectorAll('.ssec').forEach(s=>s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(prefix+'-'+id).classList.add('active');
+  }
+
+  // Checkboxes persist
+  function saveState(){
+    const s={};
+    document.querySelectorAll('input[type=checkbox]').forEach((cb,i)=>{s['cb'+i]=cb.checked;});
+    try{localStorage.setItem('sas_v4',JSON.stringify(s));}catch(e){}
+  }
+  function loadState(){
+    try{
+      const s=JSON.parse(localStorage.getItem('sas_v4')||'{}');
+      document.querySelectorAll('input[type=checkbox]').forEach((cb,i)=>{
+        if(s['cb'+i]){cb.checked=true;cb.closest('.ci,.dt')?.classList.add('done');}
+      });
+    }catch(e){}
+  }
+  document.addEventListener('change',e=>{
+    if(e.target.type==='checkbox'){
+      e.target.closest('.ci,.dt')?.classList.toggle('done',e.target.checked);
+      saveState();
+    }
+  });
+
+  function saveObs(){
+    const obs=document.getElementById('obs').value;
+    try{
+      const d=new Date().toDateString(),all=JSON.parse(localStorage.getItem('sas_obs')||'{}');
+      all[d]=obs;localStorage.setItem('sas_obs',JSON.stringify(all));
+    }catch(e){}
+    alert('✓ Guardado');
+  }
+
+  loadState();
+
+  // ── LISTAS ──
+  var LCOLORS={'Sin contactar':'','Contactado':'#FFF8E7','Respondio':'#E3F2FD','Reunion':'#FFF3E0','Cerrado':'#E8F5E9','Descartado':'#FFEBEE'};
+  function lcolor(sel){sel.closest('tr').style.background=LCOLORS[sel.value]||'';}
+  var LROW='<tr><td><input class="linput" placeholder="Nombre"></td><td><input class="linput" placeholder="Empresa / Cargo"></td><td><select class="lselect"><option value="">&#8212;</option><option>WhatsApp</option><option>LinkedIn</option><option>Call</option><option>Presencial</option><option>Email</option></select></td><td><select class="lselect lestado" onchange="lcolor(this)"><option>Sin contactar</option><option>Contactado</option><option>Respondio</option><option>Reunion</option><option>Cerrado</option><option>Descartado</option></select></td><td><input class="linput" placeholder="Observaciones"></td><td><button class="del-row-btn" onclick="this.closest(\'tr\').remove()">&#215;</button></td></tr>';
+  function addListaRow(id){var tb=document.getElementById('tb-'+id);if(tb){tb.insertAdjacentHTML('beforeend',LROW);tb.lastElementChild.querySelector('input').focus();}}
+</script>
+</body>
+</html>
