@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAS Consultora — Panel Operativo</title>
+<style>
+:root {
+  --navy:#0D1B2A; --green:#1F5A52; --gold:#C7A65A;
+  --cream:#F5F2EB; --red:#8B2020; --gray:#888;
+  --lgray:#E8E8E8; --dgray:#2a2a2a; --white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#EDEBE5;color:var(--dgray);font-size:14px;}
+nav{background:var(--navy);position:sticky;top:0;z-index:100;display:flex;align-items:stretch;border-bottom:3px solid var(--gold);}
+.logo{background:var(--green);color:#fff;font-weight:700;font-size:12px;padding:14px 16px;letter-spacing:1px;white-space:nowrap;display:flex;align-items:center;}
+.tabs{display:flex;flex:1;}
+.tab{color:#888;font-size:12px;font-weight:700;padding:16px 18px;cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;text-transform:uppercase;letter-spacing:.5px;}
+.tab:hover{color:var(--gold);}
+.tab.on{color:var(--gold);border-bottom-color:var(--gold);}
+.nav-date{margin-left:auto;color:var(--gold);font-size:11px;font-weight:600;padding:0 16px;display:flex;align-items:center;white-space:nowrap;}
+.sec{display:none;padding:20px;max-width:960px;margin:0 auto;}
+.sec.on{display:block;}
+.hoy-header{background:var(--navy);color:#fff;border-radius:10px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.hoy-fecha{font-size:22px;font-weight:700;}
+.hoy-meta{font-size:11px;color:var(--gold);letter-spacing:.5px;margin-top:2px;}
+.hoy-prog .num{font-size:28px;font-weight:700;color:var(--gold);}
+.hoy-prog .lbl{font-size:10px;color:#888;margin-top:2px;}
+.bloque{background:#fff;border-radius:10px;margin-bottom:14px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+.bloque-h{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;}
+.bloque-h h3{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
+.bloque-h .badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.bloque-b{padding:4px 0 8px;}
+.tarea{display:flex;align-items:flex-start;gap:10px;padding:10px 16px;border-bottom:1px solid var(--lgray);cursor:pointer;}
+.tarea:last-child{border-bottom:none;}
+.tarea input[type=checkbox]{width:17px;height:17px;cursor:pointer;accent-color:var(--green);flex-shrink:0;margin-top:1px;}
+.tarea label{cursor:pointer;line-height:1.5;flex:1;}
+.tarea.done label{text-decoration:line-through;color:var(--gray);}
+.quien{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;flex-shrink:0;}
+.q-seba{background:#fff3e0;color:#b35c00;}
+.q-claude{background:#e8f4ea;color:var(--green);}
+.linkedin-box{margin:12px 16px 8px;background:var(--cream);border-radius:8px;padding:14px;border-left:4px solid #0077b5;}
+.linkedin-box .lbl{font-size:10px;font-weight:700;color:#0077b5;letter-spacing:.5px;margin-bottom:8px;}
+.linkedin-box .texto{font-size:13px;line-height:1.8;white-space:pre-line;color:var(--dgray);}
+.copy-btn{margin-top:10px;background:#0077b5;color:#fff;border:none;padding:7px 16px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;}
+.copy-btn.ok{background:var(--green);}
+.msg-sec{background:#fff;border-radius:10px;margin-bottom:14px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+.msg-sec-h{background:var(--navy);color:#fff;padding:12px 18px;display:flex;align-items:center;gap:10px;}
+.msg-sec-h .num{background:var(--gold);color:var(--navy);font-size:13px;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.msg-sec-h .titulo{font-size:13px;font-weight:700;}
+.msg-sec-h .sub{font-size:11px;color:rgba(255,255,255,.6);margin-top:1px;}
+.msg-item{padding:14px 18px;border-bottom:1px solid var(--lgray);}
+.msg-item:last-child{border-bottom:none;}
+.msg-lbl{font-size:10px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.msg-texto{background:var(--cream);border-radius:6px;padding:12px 14px;font-size:13px;line-height:1.9;white-space:pre-line;color:var(--dgray);}
+.msg-copy{margin-top:8px;background:var(--navy);color:var(--gold);border:none;padding:6px 14px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:.3px;}
+.msg-copy.ok{background:var(--green);color:#fff;}
+.msg-nota{font-size:11px;color:var(--gray);font-style:italic;margin-top:6px;}
+.camara-meta{background:var(--navy);color:#fff;border-radius:10px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.camara-meta .titulo{font-size:16px;font-weight:700;}
+.camara-meta .sub{font-size:11px;color:rgba(255,255,255,.6);margin-top:3px;}
+.prog{font-size:32px;font-weight:700;color:var(--gold);}
+.prog-lbl{font-size:10px;color:var(--gold);opacity:.7;}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+@media(max-width:600px){.slots{grid-template-columns:1fr 1fr;}}
+.slot{background:#fff;border-radius:10px;padding:14px;box-shadow:0 2px 6px rgba(0,0,0,.07);border-top:3px solid var(--lgray);}
+.slot.invitado{border-top-color:var(--gold);}
+.slot.interesado{border-top-color:#3d6bcf;}
+.slot.confirmado{border-top-color:var(--green);}
+.slot-num{font-size:10px;font-weight:700;color:var(--gray);letter-spacing:.5px;margin-bottom:8px;}
+.slot input[type=text]{border:none;background:var(--cream);border-radius:4px;padding:7px 10px;width:100%;font-size:13px;font-weight:700;font-family:inherit;color:var(--dgray);outline:none;margin-bottom:7px;}
+.slot input[type=text]:focus{background:#e8f4ea;}
+.slot select{border:none;background:var(--lgray);border-radius:4px;padding:6px 8px;width:100%;font-size:12px;font-family:inherit;color:var(--dgray);outline:none;cursor:pointer;}
+.slot select.est-invitado{background:#fff8e1;color:#b35c00;}
+.slot select.est-interesado{background:#e8eeff;color:#3d6bcf;}
+.slot select.est-confirmado{background:#e8f4ea;color:var(--green);}
+.camara-pasos{background:#fff;border-radius:10px;padding:16px 18px;margin-bottom:16px;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+.camara-pasos h3{font-size:12px;font-weight:700;letter-spacing:.5px;color:var(--gray);text-transform:uppercase;margin-bottom:12px;}
+.paso{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;}
+.paso:last-child{margin-bottom:0;}
+.paso-n{background:var(--gold);color:var(--navy);font-size:12px;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.paso-txt{font-size:13px;line-height:1.6;}
+.guion{background:#fff;border-radius:10px;margin-bottom:14px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+.guion-h{background:var(--navy);color:#fff;padding:13px 18px;display:flex;align-items:center;justify-content:space-between;}
+.guion-h .titulo{font-size:14px;font-weight:700;}
+.guion-h .sem{font-size:11px;color:var(--gold);}
+.guion-estado{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;cursor:pointer;border:none;}
+.est-pendiente{background:#444;color:#ccc;}
+.est-grabado{background:var(--green);color:#fff;}
+.guion-b{padding:16px 18px;}
+.guion-hook{background:var(--navy);color:#fff;border-radius:6px;padding:11px 14px;font-size:14px;font-weight:700;line-height:1.4;margin-bottom:12px;}
+.guion-hook .lbl{font-size:9px;font-weight:700;color:var(--gold);letter-spacing:.8px;margin-bottom:4px;}
+.guion-script{background:var(--cream);border-radius:6px;padding:12px 14px;font-size:12px;line-height:1.9;white-space:pre-line;color:var(--dgray);}
+.guion-script .lbl{font-size:9px;font-weight:700;color:var(--gray);letter-spacing:.8px;margin-bottom:6px;}
+.guion-nota{margin-top:9px;font-size:11px;color:var(--gray);font-style:italic;}
+.nota{background:var(--cream);border-left:4px solid var(--gold);padding:10px 14px;border-radius:0 8px 8px 0;font-size:12px;color:var(--navy);margin-bottom:16px;line-height:1.6;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">SAS</div>
+  <div class="tabs">
+    <button class="tab on" onclick="show('hoy',this)">🎯 HOY</button>
+    <button class="tab" onclick="show('mensajes',this)">💬 MENSAJES</button>
+    <button class="tab" onclick="show('camara',this)">🏆 CÁMARA</button>
+    <button class="tab" onclick="show('guiones',this)">🎬 GUIONES</button>
+  </div>
+  <div class="nav-date" id="navDate"></div>
+</nav>
+
+<!-- HOY -->
+<div class="sec on" id="sec-hoy">
+  <div class="hoy-header">
+    <div>
+      <div class="hoy-fecha" id="hoyFecha">—</div>
+      <div class="hoy-meta">META JULIO: $1.200 USD · 3 DESTRABAR + 1 TIEMPO TÉCNICO · 6 CONFIRMADOS CÁMARA</div>
+    </div>
+    <div class="hoy-prog">
+      <div class="num">$0</div>
+      <div class="lbl">cobrado julio</div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-h" style="background:#fff8e1;">
+      <h3 style="color:#b35c00;">📱 SEBA HACE HOY</h3>
+      <span class="badge" style="background:#b35c00;color:#fff;">vos ejecutás</span>
+    </div>
+    <div class="bloque-b">
+      <div class="tarea" onclick="toggle(this)"><input type="checkbox"><label>Enviar 5 WhatsApps a la red del básquet · usar MENSAJES → mensaje 1 "con observación específica"</label><span class="quien q-seba">SEBA</span></div>
+      <div class="tarea" onclick="toggle(this)"><input type="checkbox"><label>Responder los WA de ayer · si mencionan un problema → enviar Las 3 Preguntas (MENSAJES → 2)</label><span class="quien q-seba">SEBA</span></div>
+      <div class="tarea" onclick="toggle(this)"><input type="checkbox"><label>Escuchar señal Cámara en cada conversación · "decido solo / no tengo con quién hablarlo" → anotar en CÁMARA</label><span class="quien q-seba">SEBA</span></div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-h" style="background:#e8f4ea;">
+      <h3 style="color:var(--green);">🤖 CLAUDE HACE HOY</h3>
+      <span class="badge" style="background:var(--green);color:#fff;">automático</span>
+    </div>
+    <div class="bloque-b">
+      <div class="tarea" onclick="toggle(this)"><input type="checkbox"><label>Publicar post LinkedIn · Claude lo publica directamente, texto abajo ↓</label><span class="quien q-claude">CLAUDE</span></div>
+      <div class="tarea" onclick="toggle(this)"><input type="checkbox"><label>Revisar comentarios TikTok + IG · alertar si hay señal de dolor</label><span class="quien q-claude">CLAUDE</span></div>
+      <div class="tarea" onclick="toggle(this)"><input type="checkbox"><label>Revisar LinkedIn · alertar si alguien interactuó o mencionó un problema</label><span class="quien q-claude">CLAUDE</span></div>
+    </div>
+    <div class="linkedin-box">
+      <div class="lbl">💼 POST LINKEDIN DE HOY — Claude publica esto</div>
+      <div class="texto" id="liPost">Hay una reunión que todos conocen.
+
+Duró una hora. Participaron cinco personas. Hubo debate.
+
+Y terminó con los mismos dos problemas sin resolver que tenían antes de empezar.
+
+No porque la gente no sepa. Sino porque no estaba claro quién decidía.
+
+Cuando el equipo sabe que el líder va a revisar todo igual, nadie decide. Esperan. Y la empresa funciona a la velocidad del cuello de botella que sos vos.
+
+¿En tu empresa las reuniones terminan con decisiones — o con resúmenes de lo que ya sabían?
+
+#pymes #liderazgo #equipos</div>
+      <button class="copy-btn" onclick="copiar('liPost',this)">Copiar texto</button>
+    </div>
+  </div>
+
+  <div class="nota"><strong>El plan:</strong> Mandás WhatsApps a tu red · en la conversación escuchás si tienen problema urgente (→ DESTRABAR $250) o si están solos en sus decisiones (→ CÁMARA $200/mes) · los videos de TikTok/IG son credibilidad cuando alguien te busca después de tu WA · LinkedIn lo publica Claude.</div>
+</div>
+
+<!-- MENSAJES -->
+<div class="sec" id="sec-mensajes">
+  <div class="nota"><strong>Copiar, poner el nombre, enviar.</strong> No cambiar el tono.</div>
+
+  <div class="msg-sec">
+    <div class="msg-sec-h">
+      <div class="num">1</div>
+      <div><div class="titulo">PRIMER CONTACTO — Red básquet</div><div class="sub">Antes de hablar de cualquier servicio</div></div>
+    </div>
+    <div class="msg-item">
+      <div class="msg-lbl">✅ CON OBSERVACIÓN ESPECÍFICA — usá esta</div>
+      <div class="msg-texto" id="m1a">[Nombre], ¿cómo estás? Hace tiempo que no hablamos.
+
+[UNA frase de lo que sabés de su situación real:]
+— "Me enteré que la empresa está creciendo / tomaron más gente"
+— "Vi que te estás encargando de [área nueva]"
+— "Sé que vienen pasando un momento de cambio"
+
+¿Cómo está el equipo con todo eso? ¿Están acompañando o hay algo que no funciona como debería?</div>
+      <button class="msg-copy" onclick="copiar('m1a',this)">Copiar</button>
+      <div class="msg-nota">Cuando responde y menciona algo complicado → ir al mensaje 2</div>
+    </div>
+    <div class="msg-item">
+      <div class="msg-lbl">VERSIÓN GENÉRICA — si no sabés nada de su situación</div>
+      <div class="msg-texto" id="m1b">[Nombre], ¿cómo estás? ¿Cómo va [empresa/trabajo]?
+
+Empecé a trabajar con líderes y dueños en algo concreto — cuando el equipo o la gestión no están funcionando como deberían.
+
+¿Estás pasando por algo así o conocés a alguien que sí?</div>
+      <button class="msg-copy" onclick="copiar('m1b',this)">Copiar</button>
+    </div>
+    <div class="msg-item">
+      <div class="msg-lbl">VERSIÓN DIRECTA — si tenés confianza alta</div>
+      <div class="msg-texto" id="m1c">[Nombre], pregunta directa: ¿cómo está el equipo de [empresa]?
+
+Estoy trabajando con líderes de Paraná en algo muy específico. Viendo lo que hacés, me pregunto si el tema de [gestión / delegación / crecimiento] es algo que te está costando.
+
+¿Tenés 5 minutos esta semana para hablar?</div>
+      <button class="msg-copy" onclick="copiar('m1c',this)">Copiar</button>
+    </div>
+  </div>
+
+  <div class="msg-sec">
+    <div class="msg-sec-h">
+      <div class="num">2</div>
+      <div><div class="titulo">LAS 3 PREGUNTAS</div><div class="sub">Cuando menciona algo complicado</div></div>
+    </div>
+    <div class="msg-item">
+      <div class="msg-lbl">ENVIÁS ESTO CUANDO APARECE UN PROBLEMA</div>
+      <div class="msg-texto" id="m2">Dejame hacerte 3 preguntas sobre eso. No te toma más de 5 minutos.
+
+① ¿Cuánto tiempo llevan con este problema?
+② ¿Qué intentaron hacer para resolverlo?
+③ ¿Qué pasa si en 6 meses está igual?</div>
+      <button class="msg-copy" onclick="copiar('m2',this)">Copiar</button>
+      <div class="msg-nota">Cuando responde → dar diagnóstico corto y preciso → ir al mensaje 3</div>
+    </div>
+  </div>
+
+  <div class="msg-sec">
+    <div class="msg-sec-h">
+      <div class="num">3</div>
+      <div><div class="titulo">PROPUESTA DESTRABAR</div><div class="sub">$250 USD · 2 jornadas · después de las 3 preguntas</div></div>
+    </div>
+    <div class="msg-item">
+      <div class="msg-lbl">DIAGNÓSTICO + PROPUESTA</div>
+      <div class="msg-texto" id="m3">[2-3 líneas que nombran exactamente lo que está pasando]
+
+Eso tiene solución en dos jornadas de trabajo. $250 USD.
+
+¿Lo resolvemos?</div>
+      <button class="msg-copy" onclick="copiar('m3',this)">Copiar</button>
+      <div class="msg-nota">El diagnóstico es lo más importante — tiene que nombrar el problema específico, no uno genérico.</div>
+    </div>
+    <div class="msg-item">
+      <div class="msg-lbl">SEGUIMIENTO SIN RESPUESTA (7 días)</div>
+      <div class="msg-texto" id="m3b">[Nombre], te dejo esto por si se perdió.
+
+Sin presión — si el momento no es ahora, guardá el contacto para cuando sí lo sea.</div>
+      <button class="msg-copy" onclick="copiar('m3b',this)">Copiar</button>
+    </div>
+  </div>
+
+  <div class="msg-sec">
+    <div class="msg-sec-h" style="background:var(--gold);">
+      <div class="num" style="background:var(--navy);color:var(--gold);">4</div>
+      <div><div class="titulo" style="color:var(--navy);">INVITACIÓN CÁMARA DE VESTUARIO</div><div class="sub" style="color:rgba(0,0,0,.5);">Cuando alguien dice "decido solo / no tengo con quién"</div></div>
+    </div>
+    <div class="msg-item">
+      <div class="msg-lbl">INVITACIÓN INICIAL</div>
+      <div class="msg-texto" id="m4a">[Nombre], te escribo con algo concreto.
+
+Estoy armando un grupo muy chico de líderes — máximo 8 — que se reúnen una vez por mes en Paraná para trabajar problemas reales de gestión.
+
+No es capacitación, no es networking. Cada reunión uno trae un problema concreto y el grupo lo trabaja.
+
+Soy selectivo con quién entra.
+
+¿Tiene sentido que te cuente de qué va en 10 minutos?</div>
+      <button class="msg-copy" onclick="copiar('m4a',this)">Copiar</button>
+    </div>
+    <div class="msg-item">
+      <div class="msg-lbl">QUÉ DECÍS EN LA LLAMADA DE 10 MIN</div>
+      <div class="msg-texto" id="m4b">Un grupo de 6 líderes en Paraná. Se reúnen una vez por mes, 2 horas.
+
+Cada encuentro uno trae un problema real de su empresa. El grupo hace preguntas. Yo facilito. No hay respuestas de manual — hay pensamiento colectivo.
+
+No estás pagando a un experto solo. Estás pensando con otras personas en la misma situación.
+
+$200 USD por mes. Primer encuentro agosto.
+
+¿Encaja con lo que describiste?</div>
+      <button class="msg-copy" onclick="copiar('m4b',this)">Copiar</button>
+    </div>
+    <div class="msg-item">
+      <div class="msg-lbl">SEGUIMIENTO (5 días sin respuesta)</div>
+      <div class="msg-texto" id="m4c">[Nombre], te dejo el mensaje anterior por si se perdió.
+
+El grupo empieza en agosto. Ya tengo [X] confirmados. Si te interesa, esta semana puedo contarte cómo funciona.</div>
+      <button class="msg-copy" onclick="copiar('m4c',this)">Copiar</button>
+    </div>
+  </div>
+
+  <div class="msg-sec">
+    <div class="msg-sec-h">
+      <div class="num">5</div>
+      <div><div class="titulo">ENCUENTRO DE LÍDERES — cuando lo organices</div><div class="sub">Opcional · 8 personas · 90 min · sala prestada · acelerador para Cámara</div></div>
+    </div>
+    <div class="msg-item">
+      <div class="msg-lbl">INVITACIÓN</div>
+      <div class="msg-texto" id="m5a">[Nombre], te hago una propuesta concreta.
+
+Estoy juntando a un grupo chico de líderes y dueños de Paraná — máximo 8 — para hablar de lo que realmente pasa en nuestras empresas.
+
+Sin agenda. Sin presentaciones. Una pregunta que dispara la conversación y 90 minutos de intercambio real.
+
+[Día y hora], [lugar]. ¿Te suma?</div>
+      <button class="msg-copy" onclick="copiar('m5a',this)">Copiar</button>
+    </div>
+    <div class="msg-item">
+      <div class="msg-lbl">POST-ENCUENTRO → candidato DESTRABAR</div>
+      <div class="msg-texto" id="m5b">[Nombre], gracias por el Encuentro. Me quedé pensando en lo que mencionaste sobre [problema].
+
+¿Puedo hacerte 3 preguntas sobre eso? Son 5 minutos.</div>
+      <button class="msg-copy" onclick="copiar('m5b',this)">Copiar</button>
+    </div>
+    <div class="msg-item">
+      <div class="msg-lbl">POST-ENCUENTRO → candidato CÁMARA</div>
+      <div class="msg-texto" id="m5c">[Nombre], lo que dijiste sobre [decidir solo / no tener con quién hablarlo] me quedó dando vueltas.
+
+Estoy armando algo concreto exactamente para eso. ¿Tiene sentido que te cuente en 10 minutos?</div>
+      <button class="msg-copy" onclick="copiar('m5c',this)">Copiar</button>
+    </div>
+  </div>
+</div>
+
+<!-- CÁMARA -->
+<div class="sec" id="sec-camara">
+  <div class="camara-meta">
+    <div>
+      <div class="titulo">🏆 CÁMARA DE VESTUARIO</div>
+      <div class="sub">6 líderes · Paraná · 1 vez/mes · $200 USD/mes · Primer encuentro agosto</div>
+    </div>
+    <div>
+      <div class="prog" id="progNum">0/6</div>
+      <div class="prog-lbl">confirmados</div>
+    </div>
+  </div>
+
+  <div class="nota"><strong>Qué es:</strong> Grupo cerrado donde cada mes uno trae un problema real y el grupo lo trabaja. No es capacitación. Los candidatos aparecen en las mismas conversaciones del básquet — escuchás quién dice "decido todo solo" o "no tengo con quién hablarlo". Esa es la señal. Mensaje de invitación en MENSAJES → 4.</div>
+
+  <div class="slots">
+    <div class="slot" id="slot1"><div class="slot-num">SLOT 1</div><input type="text" placeholder="Nombre" oninput="saveSlot()" id="s1n"><select onchange="updateSlot(this,'slot1');saveSlot();" id="s1e"><option value="libre">Libre</option><option value="invitado">Invitado</option><option value="interesado">Interesado</option><option value="confirmado">Confirmado ✓</option></select></div>
+    <div class="slot" id="slot2"><div class="slot-num">SLOT 2</div><input type="text" placeholder="Nombre" oninput="saveSlot()" id="s2n"><select onchange="updateSlot(this,'slot2');saveSlot();" id="s2e"><option value="libre">Libre</option><option value="invitado">Invitado</option><option value="interesado">Interesado</option><option value="confirmado">Confirmado ✓</option></select></div>
+    <div class="slot" id="slot3"><div class="slot-num">SLOT 3</div><input type="text" placeholder="Nombre" oninput="saveSlot()" id="s3n"><select onchange="updateSlot(this,'slot3');saveSlot();" id="s3e"><option value="libre">Libre</option><option value="invitado">Invitado</option><option value="interesado">Interesado</option><option value="confirmado">Confirmado ✓</option></select></div>
+    <div class="slot" id="slot4"><div class="slot-num">SLOT 4</div><input type="text" placeholder="Nombre" oninput="saveSlot()" id="s4n"><select onchange="updateSlot(this,'slot4');saveSlot();" id="s4e"><option value="libre">Libre</option><option value="invitado">Invitado</option><option value="interesado">Interesado</option><option value="confirmado">Confirmado ✓</option></select></div>
+    <div class="slot" id="slot5"><div class="slot-num">SLOT 5</div><input type="text" placeholder="Nombre" oninput="saveSlot()" id="s5n"><select onchange="updateSlot(this,'slot5');saveSlot();" id="s5e"><option value="libre">Libre</option><option value="invitado">Invitado</option><option value="interesado">Interesado</option><option value="confirmado">Confirmado ✓</option></select></div>
+    <div class="slot" id="slot6"><div class="slot-num">SLOT 6 · MÍNIMO</div><input type="text" placeholder="Nombre" oninput="saveSlot()" id="s6n"><select onchange="updateSlot(this,'slot6');saveSlot();" id="s6e"><option value="libre">Libre</option><option value="invitado">Invitado</option><option value="interesado">Interesado</option><option value="confirmado">Confirmado ✓</option></select></div>
+  </div>
+
+  <div class="camara-pasos">
+    <h3>CÓMO SE LLENAN LOS 6 LUGARES EN JULIO</h3>
+    <div class="paso"><div class="paso-n">1</div><div class="paso-txt"><strong>Semana 1-2 (6-18 jul):</strong> En los WhatsApps del básquet, escuchás quién dice "decido todo solo" o "no tengo con quién hablarlo" → lo anotás arriba.</div></div>
+    <div class="paso"><div class="paso-n">2</div><div class="paso-txt"><strong>Cuando identificás un candidato:</strong> Enviás el mensaje 4 de MENSAJES → "¿Tiene sentido que te cuente en 10 minutos?"</div></div>
+    <div class="paso"><div class="paso-n">3</div><div class="paso-txt"><strong>Semana 3 (21-25 jul):</strong> Llamada de 10 min con cada interesado. Contás el formato (MENSAJES → 4b). Si encaja → Confirmado.</div></div>
+    <div class="paso"><div class="paso-n">4</div><div class="paso-txt"><strong>Semana 4 (28-31 jul):</strong> 6 confirmados → bienvenida → fecha agosto. <strong>$1.200/mes recurrente sin buscar clientes nuevos.</strong></div></div>
+  </div>
+</div>
+
+<!-- GUIONES -->
+<div class="sec" id="sec-guiones">
+  <div class="nota"><strong>TikTok — Seba graba, Claude escribe.</strong> Cara cerca de la cámara desde el primer cuadro. Arrancar con la conclusión, no con una condición. 60 segundos máximo.</div>
+
+  <div class="guion">
+    <div class="guion-h">
+      <div><div class="titulo">G01 · Tu equipo no decide. El problema sos vos.</div><div class="sem">Semana 1 · DESTRABAR</div></div>
+      <button class="guion-estado est-pendiente" onclick="toggleEst(this)">PENDIENTE</button>
+    </div>
+    <div class="guion-b">
+      <div class="guion-hook"><div class="lbl">HOOK — primeros 2 segundos</div>Tu equipo no decide. Y el problema no es el equipo.</div>
+      <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Cuando el líder revisa todo, el equipo deja de decidir. No porque sean incapaces — sino porque aprendieron que vos vas a volver a mirar igual.
+
+Entonces esperan. Y la empresa funciona a la velocidad que vos podés atender.
+
+No es un problema de tu equipo. Es un problema de cómo está diseñado el trabajo alrededor tuyo.
+
+Eso tiene solución. No en seis meses. En dos jornadas de trabajo.
+
+Si esto te describe, escribime "equipo" en los comentarios.</div>
+      <div class="guion-nota">CTA: comentario "equipo" → señal de dolor → Claude alerta → DM</div>
+    </div>
+  </div>
+
+  <div class="guion">
+    <div class="guion-h">
+      <div><div class="titulo">G02 · Tu empresa tiene el tamaño que tenés vos.</div><div class="sem">Semana 1 · DESTRABAR / RE-MEDIO</div></div>
+      <button class="guion-estado est-pendiente" onclick="toggleEst(this)">PENDIENTE</button>
+    </div>
+    <div class="guion-b">
+      <div class="guion-hook"><div class="lbl">HOOK — primeros 2 segundos</div>Tu empresa tiene el tamaño que tenés vos. Hasta que deje de serlo.</div>
+      <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Hay un momento en que el negocio deja de crecer. No porque el mercado no esté. Sino porque todo pasa por una sola persona.
+
+Cada decisión. Cada aprobación. Cada problema. Todo, por vos.
+
+Eso que en el principio era ventaja — se convirtió en el techo.
+
+La empresa no puede ser más grande que tu capacidad de estar en todo.
+
+Si estás en ese punto, escribime. Con 3 preguntas te digo exactamente dónde está el nudo.</div>
+      <div class="guion-nota">CTA: "escribime" → DM → Las 3 Preguntas</div>
+    </div>
+  </div>
+
+  <div class="guion">
+    <div class="guion-h" style="background:var(--gold);">
+      <div><div class="titulo" style="color:var(--navy);">G03 · La soledad del líder — CLAVE CÁMARA</div><div class="sem" style="color:rgba(0,0,0,.5);">Semana 1 · atrae candidatos Cámara directamente</div></div>
+      <button class="guion-estado est-pendiente" onclick="toggleEst(this)" style="background:var(--navy);color:var(--gold);">PENDIENTE</button>
+    </div>
+    <div class="guion-b">
+      <div class="guion-hook" style="background:var(--gold);color:var(--navy);"><div class="lbl" style="color:var(--navy);opacity:.6;">HOOK — primeros 2 segundos</div>Estás rodeado de gente. Y tomás todas las decisiones importantes solo.</div>
+      <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Estás rodeado de gente. Tenés equipo. Tenés socios, quizás.
+
+Y sin embargo, cuando llegás a la decisión que de verdad importa — la tomás solo.
+
+Porque no hay nadie en tu empresa que entienda lo que implica esa decisión. Nadie con quien pensar en voz alta sin que después eso cambie las relaciones.
+
+Eso tiene nombre. Es la soledad del líder.
+
+Y no es debilidad. Es el precio de estar donde estás.
+
+La pregunta es si tiene que seguir siendo así.
+
+Si esto te suena, escribime. Estoy armando algo concreto para exactamente eso.</div>
+      <div class="guion-nota">CTA: "escribime" → DM → invitación Cámara. Este es el video más importante para llenar los 6 lugares.</div>
+    </div>
+  </div>
+
+  <div class="guion">
+    <div class="guion-h">
+      <div><div class="titulo">G04 · La reunión que termina igual que empezó</div><div class="sem">Semana 2 · DESTRABAR / TIEMPO TÉCNICO</div></div>
+      <button class="guion-estado est-pendiente" onclick="toggleEst(this)">PENDIENTE</button>
+    </div>
+    <div class="guion-b">
+      <div class="guion-hook"><div class="lbl">HOOK — primeros 2 segundos</div>Terminaste la reunión. Y el problema sigue igual.</div>
+      <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Reunión de una hora. Cinco personas. Debate.
+
+Terminaron con los mismos dos problemas que tenían antes de empezar.
+
+No porque no sepan. Sino porque no estaba claro quién decidía.
+
+Cuando el equipo sabe que el líder va a revisar todo igual, nadie se hace cargo. El problema queda flotando hasta la próxima reunión.
+
+Eso no es un problema de tu equipo. Es un problema de diseño.
+
+¿Tus reuniones terminan con decisiones — o con resúmenes de lo que ya sabían?
+
+Escribí "reunión" y te cuento qué está pasando.</div>
+      <div class="guion-nota">CTA: comentario "reunión" → Claude alerta → DM → diagnóstico</div>
+    </div>
+  </div>
+
+  <div class="guion">
+    <div class="guion-h">
+      <div><div class="titulo">G05 · Contrataste a alguien y el problema no se fue</div><div class="sem">Semana 2 · DESTRABAR</div></div>
+      <button class="guion-estado est-pendiente" onclick="toggleEst(this)">PENDIENTE</button>
+    </div>
+    <div class="guion-b">
+      <div class="guion-hook"><div class="lbl">HOOK — primeros 2 segundos</div>Contrataste a alguien para resolver el problema. Y el problema sigue.</div>
+      <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Tomaste a alguien nuevo. Con experiencia. Con ganas.
+
+Pasaron tres meses. Y el problema que querías resolver sigue ahí.
+
+No es que la persona no sirva. Es que el problema no era la persona.
+
+El problema es cómo está organizado el trabajo. Los procesos que nadie tiene claros. Las decisiones que siguen cayendo siempre en el mismo lugar.
+
+Agregar gente a una estructura que no funciona no arregla la estructura.
+
+¿Cuándo fue la última vez que trabajaste sobre cómo funciona el equipo — no sobre quién lo compone?
+
+Escribime si esto te suena.</div>
+      <div class="guion-nota">CTA: "escribime" → Las 3 Preguntas → diagnóstico</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(id,btn){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));document.getElementById('sec-'+id).classList.add('on');btn.classList.add('on');}
+function setFecha(){const d=new Date();const dias=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];const meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];document.getElementById('hoyFecha').textContent=dias[d.getDay()]+' '+d.getDate()+' de '+meses[d.getMonth()];document.getElementById('navDate').textContent=d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();}
+setFecha();
+function toggle(el){const cb=el.querySelector('input[type=checkbox]');cb.checked=!cb.checked;el.classList.toggle('done',cb.checked);}
+function copiar(id,btn){const txt=document.getElementById(id).innerText;navigator.clipboard.writeText(txt).then(()=>{const o=btn.textContent;btn.textContent='✓ Copiado';btn.classList.add('ok');setTimeout(()=>{btn.textContent=o;btn.classList.remove('ok');},2000);});}
+function updateSlot(sel,slotId){const slot=document.getElementById(slotId);slot.className='slot';const val=sel.value;if(val!=='libre')slot.classList.add(val);sel.className='est-'+val;updateProg();}
+function updateProg(){let c=0;for(let i=1;i<=6;i++){const s=document.getElementById('s'+i+'e');if(s&&s.value==='confirmado')c++;}document.getElementById('progNum').textContent=c+'/6';}
+function saveSlot(){const d={};for(let i=1;i<=6;i++){const n=document.getElementById('s'+i+'n');const e=document.getElementById('s'+i+'e');if(n&&e)d['slot'+i]={nombre:n.value,estado:e.value};}try{localStorage.setItem('camara_slots',JSON.stringify(d));}catch(e){}}
+function loadSlots(){try{const d=JSON.parse(localStorage.getItem('camara_slots')||'{}');for(let i=1;i<=6;i++){const s=d['slot'+i];if(!s)continue;const n=document.getElementById('s'+i+'n');const e=document.getElementById('s'+i+'e');if(n)n.value=s.nombre||'';if(e){e.value=s.estado||'libre';updateSlot(e,'slot'+i);}}}catch(e){}}
+loadSlots();
+function toggleEst(btn){const g=btn.classList.contains('est-grabado');btn.classList.toggle('est-grabado',!g);btn.classList.toggle('est-pendiente',g);btn.textContent=g?'PENDIENTE':'GRABADO ✓';}
+</script>
+</body>
+</html>
