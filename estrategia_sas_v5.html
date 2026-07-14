@@ -94,6 +94,28 @@ nav{background:var(--navy);position:sticky;top:0;z-index:100;display:flex;align-
 .guion-script .lbl{font-size:9px;font-weight:700;color:var(--gray);letter-spacing:.8px;margin-bottom:6px;}
 .guion-nota{margin-top:9px;font-size:11px;color:var(--gray);font-style:italic;}
 .nota{background:var(--cream);border-left:4px solid var(--gold);padding:10px 14px;border-radius:0 8px 8px 0;font-size:12px;color:var(--navy);margin-bottom:16px;line-height:1.6;}
+.cal-semana{margin-bottom:20px;}
+.cal-semana-h{background:var(--navy);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:10px 16px;border-radius:8px 8px 0 0;}
+.cal-dia{background:#fff;border-bottom:1px solid var(--lgray);padding:14px 16px;display:grid;grid-template-columns:90px 1fr 1fr 1fr;gap:12px;align-items:start;}
+.cal-dia:last-child{border-bottom:none;border-radius:0 0 8px 8px;}
+.cal-fecha{font-size:12px;font-weight:700;color:var(--navy);}
+.cal-fecha .dia{font-size:10px;color:var(--gray);font-weight:400;}
+.cal-col h4{font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:5px;}
+.cal-col .tt{color:#000;}
+.cal-col .ig{color:#C13584;}
+.cal-col .li{color:#0077b5;}
+.cal-item{font-size:12px;line-height:1.5;color:var(--dgray);margin-bottom:4px;}
+.cal-item .tag{display:inline-block;font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;margin-bottom:3px;}
+.tt-tag{background:#f0f0f0;color:#333;}
+.li-tag{background:#e8f0fb;color:#0077b5;}
+.cal-item .formato{font-size:10px;color:var(--gray);font-style:italic;}
+.cal-item .contenido{font-size:12px;color:var(--dgray);line-height:1.5;}
+.li-post-box{background:var(--cream);border-radius:6px;padding:12px 14px;margin-top:6px;font-size:12px;line-height:1.8;white-space:pre-line;border-left:3px solid #0077b5;}
+.li-copy{margin-top:6px;background:#0077b5;color:#fff;border:none;padding:5px 12px;border-radius:5px;font-size:11px;font-weight:700;cursor:pointer;}
+.li-copy.ok{background:var(--green);}
+.cal-hecho{opacity:.5;}
+.badge-hecho{background:var(--green);color:#fff;font-size:9px;padding:1px 7px;border-radius:10px;font-weight:700;}
+@media(max-width:700px){.cal-dia{grid-template-columns:1fr;}.cal-fecha{border-bottom:1px solid var(--lgray);padding-bottom:8px;margin-bottom:4px;}}
 </style>
 </head>
 <body>
@@ -104,6 +126,7 @@ nav{background:var(--navy);position:sticky;top:0;z-index:100;display:flex;align-
     <button class="tab" onclick="show('mensajes',this)">💬 MENSAJES</button>
     <button class="tab" onclick="show('camara',this)">🏆 CÁMARA</button>
     <button class="tab" onclick="show('guiones',this)">🎬 GUIONES</button>
+    <button class="tab" onclick="show('calendario',this)">📅 CALENDARIO</button>
   </div>
   <div class="nav-date" id="navDate"></div>
 </nav>
@@ -467,6 +490,329 @@ Agregar gente a una estructura que no funciona no arregla la estructura.
 
 Escribime si esto te suena.</div>
       <div class="guion-nota">CTA: "escribime" → Las 3 Preguntas → diagnóstico</div>
+    </div>
+  </div>
+
+  <div class="guion">
+    <div class="guion-h">
+      <div><div class="titulo">G06 · No podés irte de vacaciones</div><div class="sem">Semana 3 · DESTRABAR / RE-MEDIO</div></div>
+      <button class="guion-estado est-pendiente" onclick="toggleEst(this)">PENDIENTE</button>
+    </div>
+    <div class="guion-b">
+      <div class="guion-hook"><div class="lbl">HOOK — primeros 2 segundos</div>Si te vas una semana, ¿tu empresa sigue — o todo se para?</div>
+      <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Hay un test muy simple para saber si tu empresa es un negocio o un trabajo disfrazado de negocio.
+
+Andate una semana.
+
+Si cuando volvés todo está bien — tenés un negocio.
+
+Si cuando volvés hay incendios, decisiones sin tomar y gente esperando que llegues — tenés un trabajo donde sos el único empleado que importa.
+
+No lo digo para criticarte. Lo digo porque el problema no es que seas imprescindible. El problema es que nadie más sabe qué hacer cuando vos no estás.
+
+Y eso tiene solución.
+
+Si esto te describe, escribime. Con dos preguntas te digo exactamente dónde está el nudo.</div>
+      <div class="guion-nota">CTA: "escribime" → DM → Las 3 Preguntas → DESTRABAR</div>
+    </div>
+  </div>
+
+  <div class="guion">
+    <div class="guion-h">
+      <div><div class="titulo">G07 · En tu reunión nadie propone nada</div><div class="sem">Semana 3 · DESTRABAR</div></div>
+      <button class="guion-estado est-pendiente" onclick="toggleEst(this)">PENDIENTE</button>
+    </div>
+    <div class="guion-b">
+      <div class="guion-hook"><div class="lbl">HOOK — primeros 2 segundos</div>En tu equipo nadie propone nada. Y la culpa no es del equipo.</div>
+      <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Hacés una reunión. Preguntás qué ideas tienen.
+
+Silencio.
+
+O peor — todos dicen que está bien, que van bien, que no hay problema.
+
+Y vos sabés que hay problemas.
+
+Eso no es un equipo sin ideas. Es un equipo que aprendió que sus ideas no cambian nada. Porque al final del día, el que decide sos vos.
+
+Cuando el líder toma todas las decisiones, el equipo deja de pensar. No por flojo — por racional. ¿Para qué proponer si igual lo van a revisar?
+
+El silencio en tus reuniones no es un problema de comunicación. Es la consecuencia lógica de cómo está diseñado el liderazgo.
+
+¿Qué tan seguido pasa esto en tu empresa?</div>
+      <div class="guion-nota">CTA: pregunta en comentarios → Claude monitorea → DM</div>
+    </div>
+  </div>
+
+  <div class="guion">
+    <div class="guion-h">
+      <div><div class="titulo">G08 · Delegaste el problema. Y volvió.</div><div class="sem">Semana 4 · DESTRABAR</div></div>
+      <button class="guion-estado est-pendiente" onclick="toggleEst(this)">PENDIENTE</button>
+    </div>
+    <div class="guion-b">
+      <div class="guion-hook"><div class="lbl">HOOK — primeros 2 segundos</div>Le diste el problema a alguien. Y el problema volvió a tu escritorio.</div>
+      <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Delegaste.
+
+Pusiste a alguien a cargo. Le explicaste. Le diste recursos.
+
+Y a las dos semanas el problema estaba de vuelta en tu escritorio, con más complicaciones.
+
+Eso tiene un nombre: delegación inversa. Y le pasa a casi todos los líderes.
+
+Pasa porque delegar una tarea no es lo mismo que delegar la responsabilidad. Si la persona sabe que puede volver a vos cuando hay un problema — va a volver a vos cuando hay un problema.
+
+No es su culpa. Es el sistema que construiste.
+
+La buena noticia es que tiene solución — y no es contratar a alguien más.
+
+Si esto te suena, escribime.</div>
+      <div class="guion-nota">CTA: "escribime" → DM → Las 3 Preguntas → DESTRABAR</div>
+    </div>
+  </div>
+</div>
+
+<!-- CALENDARIO -->
+<div class="sec" id="sec-calendario">
+  <div class="nota"><strong>Plan 14–31 julio.</strong> TikTok e IG: Seba graba, Claude escribe. LinkedIn: Claude publica. 3 veces por semana cada plataforma.</div>
+
+  <div class="cal-semana">
+    <div class="cal-semana-h">SEMANA 1 — 14 al 18 de julio</div>
+
+    <div class="cal-dia cal-hecho">
+      <div class="cal-fecha">Lun 14<div class="dia">hoy</div></div>
+      <div class="cal-col">
+        <h4 class="tt">🎵 TikTok</h4>
+        <div class="cal-item"><span class="tag tt-tag">G01</span><div class="contenido">Tu equipo no decide. El problema sos vos.</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="ig">📸 IG</h4>
+        <div class="cal-item"><span class="tag tt-tag">mismo video</span><div class="contenido">Subís el mismo video de TikTok como Reel</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="li">💼 LinkedIn</h4>
+        <div class="cal-item"><span class="badge-hecho">✓ PUBLICADO</span><div class="contenido">La reunión que todos conocen...</div></div>
+      </div>
+    </div>
+
+    <div class="cal-dia">
+      <div class="cal-fecha">Mié 16<div class="dia">julio</div></div>
+      <div class="cal-col">
+        <h4 class="tt">🎵 TikTok</h4>
+        <div class="cal-item"><span class="tag tt-tag">G02</span><div class="contenido">Tu empresa tiene el tamaño que tenés vos.</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="ig">📸 IG</h4>
+        <div class="cal-item"><span class="tag tt-tag">mismo video</span><div class="contenido">Subís el mismo video de TikTok como Reel</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="li">💼 LinkedIn</h4>
+        <div class="cal-item"><span class="tag li-tag">📊 ENCUESTA</span>
+        <div class="li-post-box" id="li16">Las decisiones en tu empresa, ¿quién las toma?
+
+→ Siempre vuelven a mí
+→ Mi equipo decide solo
+→ Depende del tema
+→ Todavía lo estamos resolviendo
+
+(Si marcás la primera opción, escribime. Tengo algo concreto para eso.)</div>
+        <button class="li-copy" onclick="copiar('li16',this)">Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="cal-dia">
+      <div class="cal-fecha">Vie 18<div class="dia">julio</div></div>
+      <div class="cal-col">
+        <h4 class="tt">🎵 TikTok</h4>
+        <div class="cal-item"><span class="tag tt-tag">G03</span><div class="contenido">La soledad del líder ← más importante para Cámara</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="ig">📸 IG</h4>
+        <div class="cal-item"><span class="tag tt-tag">mismo video</span><div class="contenido">Subís el mismo video de TikTok como Reel</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="li">💼 LinkedIn</h4>
+        <div class="cal-item"><span class="tag li-tag">📖 HISTORIA</span>
+        <div class="li-post-box" id="li18">Hace unos meses me escribió el dueño de una empresa de Paraná.
+
+"Tengo 15 personas. Y me siento más solo que nunca."
+
+Le pregunté con quién hablaba cuando tenía que tomar una decisión difícil.
+
+Silencio.
+
+"Con nadie. No puedo hablar de esto con mi equipo porque cambia cómo me ven. No puedo hablar con mi socio porque tenemos visiones distintas. Y en casa no quiero traer el trabajo."
+
+Eso no es un problema de comunicación. Es la soledad estructural del liderazgo.
+
+Y tiene más de una solución.
+
+¿Te identificás?
+
+#liderazgo #pymes #equipos</div>
+        <button class="li-copy" onclick="copiar('li18',this)">Copiar</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cal-semana">
+    <div class="cal-semana-h">SEMANA 2 — 21 al 25 de julio</div>
+
+    <div class="cal-dia">
+      <div class="cal-fecha">Lun 21<div class="dia">julio</div></div>
+      <div class="cal-col">
+        <h4 class="tt">🎵 TikTok</h4>
+        <div class="cal-item"><span class="tag tt-tag">G04</span><div class="contenido">La reunión que termina igual que empezó</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="ig">📸 IG</h4>
+        <div class="cal-item"><span class="tag tt-tag">mismo video</span><div class="contenido">Subís el mismo video de TikTok como Reel</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="li">💼 LinkedIn</h4>
+        <div class="cal-item"><span class="tag li-tag">📋 LISTA</span>
+        <div class="li-post-box" id="li21">5 señales de que tu empresa depende demasiado de vos:
+
+① Cuando no estás, las decisiones se acumulan
+
+② Tu equipo te consulta cosas que debería resolver solo
+
+③ No podés irte de vacaciones sin ansiedad
+
+④ Los problemas siempre terminan en tu escritorio, aunque los hayas delegado
+
+⑤ Si te preguntás "¿qué pasaría si yo no estoy?" — y la respuesta te da miedo
+
+Ninguna de estas es un problema de tu equipo. Son síntomas de cómo está diseñado el trabajo alrededor tuyo.
+
+Y tienen solución.
+
+¿Cuántas de estas te aplican?
+
+#pymes #liderazgo #organizacion</div>
+        <button class="li-copy" onclick="copiar('li21',this)">Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="cal-dia">
+      <div class="cal-fecha">Mié 23<div class="dia">julio</div></div>
+      <div class="cal-col">
+        <h4 class="tt">🎵 TikTok</h4>
+        <div class="cal-item"><span class="tag tt-tag">G05</span><div class="contenido">Contrataste a alguien y el problema sigue</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="ig">📸 IG</h4>
+        <div class="cal-item"><span class="tag tt-tag">mismo video</span><div class="contenido">Subís el mismo video de TikTok como Reel</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="li">💼 LinkedIn</h4>
+        <div class="cal-item"><span class="tag li-tag">📹 VIDEO</span><div class="contenido">Subir el video de G03 (La soledad del líder) directo a LinkedIn. Claude lo publica con este texto:</div>
+        <div class="li-post-box" id="li23">Esto lo grabé para TikTok. Pero creo que acá también tiene sentido.
+
+Porque LinkedIn está lleno de líderes que toman decisiones solos.
+
+(video adjunto)
+
+Si te resuena, escribime.
+
+#liderazgo #pymes</div>
+        <button class="li-copy" onclick="copiar('li23',this)">Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="cal-dia">
+      <div class="cal-fecha">Vie 25<div class="dia">julio</div></div>
+      <div class="cal-col">
+        <h4 class="tt">🎵 TikTok</h4>
+        <div class="cal-item"><span class="tag tt-tag">G06</span><div class="contenido">Si te vas una semana, ¿tu empresa sigue — o todo se para?</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="ig">📸 IG</h4>
+        <div class="cal-item"><span class="tag tt-tag">mismo video</span><div class="contenido">Subís el mismo video de TikTok como Reel</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="li">💼 LinkedIn</h4>
+        <div class="cal-item"><span class="tag li-tag">📖 HISTORIA</span>
+        <div class="li-post-box" id="li25">Un cliente me dijo algo que no me salió de la cabeza:
+
+"Yo sé exactamente cuál es el problema. Lo que no sé es cómo salir sin romper todo."
+
+Conoce el diagnóstico. Sabe que el cuello de botella es él. Sabe que su equipo no decide.
+
+Pero cambiar eso implica soltar el control. Y soltar el control da miedo cuando hace años que todo pasa por vos.
+
+El problema no es la falta de información. Es el costo de la transición.
+
+Si estás en ese punto — eso también tiene solución.
+
+¿Qué es lo que más frena el cambio en tu empresa?
+
+#liderazgo #gestion #pymes</div>
+        <button class="li-copy" onclick="copiar('li25',this)">Copiar</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cal-semana">
+    <div class="cal-semana-h">SEMANA 3 — 28 al 31 de julio</div>
+
+    <div class="cal-dia">
+      <div class="cal-fecha">Lun 28<div class="dia">julio</div></div>
+      <div class="cal-col">
+        <h4 class="tt">🎵 TikTok</h4>
+        <div class="cal-item"><span class="tag tt-tag">G07</span><div class="contenido">En tu reunión nadie propone nada</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="ig">📸 IG</h4>
+        <div class="cal-item"><span class="tag tt-tag">mismo video</span><div class="contenido">Subís el mismo video de TikTok como Reel</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="li">💼 LinkedIn</h4>
+        <div class="cal-item"><span class="tag li-tag">📊 ENCUESTA</span>
+        <div class="li-post-box" id="li28">Pregunta directa para líderes y dueños de empresa:
+
+¿Cuánto tiempo por semana perdés en decisiones que tu equipo debería tomar solo?
+
+→ Menos de 2 horas
+→ Entre 2 y 5 horas
+→ Más de 5 horas
+→ No lo sé, pero es demasiado
+
+(Si marcás las últimas dos, algo está mal en el diseño — no en las personas.)
+
+#pymes #liderazgo #productividad</div>
+        <button class="li-copy" onclick="copiar('li28',this)">Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="cal-dia">
+      <div class="cal-fecha">Mié 30<div class="dia">julio</div></div>
+      <div class="cal-col">
+        <h4 class="tt">🎵 TikTok</h4>
+        <div class="cal-item"><span class="tag tt-tag">G08</span><div class="contenido">Delegaste el problema. Y volvió.</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="ig">📸 IG</h4>
+        <div class="cal-item"><span class="tag tt-tag">mismo video</span><div class="contenido">Subís el mismo video de TikTok como Reel</div></div>
+      </div>
+      <div class="cal-col">
+        <h4 class="li">💼 LinkedIn</h4>
+        <div class="cal-item"><span class="tag li-tag">📖 CIERRE DEL MES</span>
+        <div class="li-post-box" id="li30">En julio hablé con varios líderes de Paraná y la región.
+
+Distintos rubros. Distintos tamaños de empresa.
+
+El mismo problema en todos:
+
+No es falta de talento. No es el mercado. No es el equipo.
+
+Es que la empresa creció alrededor de una sola persona — y esa persona ya no puede seguir siendo el centro de todo.
+
+El mes que viene empieza algo concreto para trabajar esto en grupo.
+
+Si te interesa saber de qué se trata, escribime "agosto".
+
+#liderazgo #pymes #paraná</div>
+        <button class="li-copy" onclick="copiar('li30',this)">Copiar</button></div>
+      </div>
     </div>
   </div>
 </div>
