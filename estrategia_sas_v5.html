@@ -93,6 +93,17 @@ nav{background:var(--navy);position:sticky;top:0;z-index:100;display:flex;align-
 .guion-script{background:var(--cream);border-radius:6px;padding:12px 14px;font-size:12px;line-height:1.9;white-space:pre-line;color:var(--dgray);}
 .guion-script .lbl{font-size:9px;font-weight:700;color:var(--gray);letter-spacing:.8px;margin-bottom:6px;}
 .guion-nota{margin-top:9px;font-size:11px;color:var(--gray);font-style:italic;}
+.guion-titulo-vid{background:var(--dgray);color:var(--gold);border-radius:6px;padding:9px 14px;font-size:13px;font-weight:700;margin-bottom:8px;}
+.guion-titulo-vid .lbl{font-size:9px;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.8px;margin-bottom:3px;}
+.guion-overlay{background:#1a0a2e;border:2px solid var(--gold);color:#fff;border-radius:6px;padding:11px 14px;font-size:15px;font-weight:900;line-height:1.3;margin-bottom:12px;letter-spacing:-.2px;}
+.guion-overlay .lbl{font-size:9px;font-weight:700;color:var(--gold);letter-spacing:.8px;margin-bottom:4px;}
+.guion-caption{background:#f0f4ff;border-left:3px solid #0a66c2;border-radius:0 6px 6px 0;padding:12px 14px;font-size:12px;line-height:1.8;white-space:pre-line;color:var(--dgray);margin-top:12px;}
+.guion-caption .lbl{font-size:9px;font-weight:700;color:#0a66c2;letter-spacing:.8px;margin-bottom:6px;}
+.guion-caption-actions{display:flex;gap:8px;margin-top:8px;}
+.btn-cap{font-size:10px;padding:5px 12px;border-radius:12px;border:none;cursor:pointer;font-weight:700;}
+.btn-cap-tt{background:#000;color:#fff;}
+.btn-cap-ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;}
+.btn-cap-li{background:#0a66c2;color:#fff;}
 .nota{background:var(--cream);border-left:4px solid var(--gold);padding:10px 14px;border-radius:0 8px 8px 0;font-size:12px;color:var(--navy);margin-bottom:16px;line-height:1.6;}
 .cal-semana{margin-bottom:20px;}
 .cal-semana-h{background:var(--navy);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:10px 16px;border-radius:8px 8px 0 0;}
@@ -407,6 +418,33 @@ Si la respuesta es no — el problema no es el equipo. Es el diseño.
 
 → Eso es lo que trabajo en Espacio de Orden: diseñar la empresa para que funcione sin que estés en todo. Si querés saber cómo, escribime.</div>
       <div class="guion-nota">Servicio → <strong>Espacio de Orden</strong> · CTA: "escribime"</div>
+      <div class="guion-caption" id="cap01-tt"><div class="lbl">📱 CAPTION TikTok / IG</div>¿Tenés una empresa — o un trabajo muy grande?
+
+La diferencia es una sola cosa:
+si el negocio puede funcionar cuando vos no estás.
+
+Si la respuesta es no → el problema no es el equipo. Es el diseño.
+
+¿Te resuena? Escribime.
+
+#pymes #liderazgo #empresarios #dueños</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-tt" onclick="copiarCap('cap01-tt',this)">TikTok</button><button class="btn-cap btn-cap-ig" onclick="copiarCap('cap01-tt',this)">IG</button></div>
+      <div class="guion-caption" id="cap01-li"><div class="lbl">💼 CAPTION LinkedIn</div>Hace años trabajo con dueños de PyME y casi siempre encuentro lo mismo.
+
+La persona que más horas trabaja en la empresa... es el dueño.
+
+Eso no es ser empresario.
+Es ser el empleado más ocupado de tu propio negocio.
+
+La diferencia entre tener una empresa y tener un trabajo muy grande es una sola cosa:
+si el negocio puede funcionar cuando vos no estás.
+
+¿La respuesta te da miedo?
+
+El problema no es el equipo. Es el diseño.
+
+#pymes #liderazgo #organizacion</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-li" onclick="copiarCap('cap01-li',this)">LinkedIn</button></div>
     </div>
   </div>
 
@@ -417,6 +455,8 @@ Si la respuesta es no — el problema no es el equipo. Es el diseño.
       <button class="guion-estado est-pendiente" onclick="this.className='guion-estado '+(this.className.includes('pendiente')?'est-grabado':'est-pendiente');this.textContent=this.textContent.includes('Pendiente')?'✓ Grabado':'Pendiente'">Pendiente</button>
     </div>
     <div class="guion-b">
+      <div class="guion-titulo-vid"><div class="lbl">🎬 TÍTULO DEL VIDEO</div>Tu equipo no falla. Tu sistema sí.</div>
+      <div class="guion-overlay"><div class="lbl">📺 OVERLAY — texto en pantalla (hook bait)</div>Antes de cambiar el equipo, mirá el sistema</div>
       <div class="guion-hook"><div class="lbl">HOOK — primeros 2 segundos</div>Antes de culpar al equipo — mirá el sistema.</div>
       <div class="guion-script"><div class="lbl">GUION COMPLETO</div>El error más frecuente que veo en PyMEs:
 creer que el problema son las personas.
@@ -441,6 +481,33 @@ No va a proponer, porque cuando propuso nadie lo tomó en serio.
 
 → Si no lo tiene, eso es exactamente lo que construyo en Espacio de Orden.</div>
       <div class="guion-nota">Servicio → <strong>Espacio de Orden</strong> · CTA: "escribime si tu empresa no tiene ese sistema"</div>
+      <div class="guion-caption" id="cap02-tt"><div class="lbl">📱 CAPTION TikTok / IG</div>Antes de culpar al equipo — mirá el sistema.
+
+El problema casi nunca son las personas.
+Es que no existe un sistema claro de quién decide qué y qué pasa cuando algo sale mal.
+
+Sin eso, el mejor equipo funciona igual.
+
+¿Tu empresa tiene ese sistema?
+
+#pymes #liderazgo #gestion #equipos</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-tt" onclick="copiarCap('cap02-tt',this)">TikTok</button><button class="btn-cap btn-cap-ig" onclick="copiarCap('cap02-tt',this)">IG</button></div>
+      <div class="guion-caption" id="cap02-li"><div class="lbl">💼 CAPTION LinkedIn</div>El error más frecuente en PyMEs:
+creer que el problema son las personas.
+
+"No tengo con quién delegar."
+"Mi equipo no toma iniciativa."
+"Siempre tengo que estar encima."
+
+El problema casi nunca son las personas.
+Es que no existe un sistema claro de qué hace cada uno y quién decide qué.
+
+Sin eso, el mejor equipo del mundo funciona igual.
+
+¿Tu empresa tiene ese sistema?
+
+#pymes #liderazgo #gestion #organizacion</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-li" onclick="copiarCap('cap02-li',this)">LinkedIn</button></div>
     </div>
   </div>
 
@@ -451,6 +518,8 @@ No va a proponer, porque cuando propuso nadie lo tomó en serio.
       <button class="guion-estado est-pendiente" onclick="this.className='guion-estado '+(this.className.includes('pendiente')?'est-grabado':'est-pendiente');this.textContent=this.textContent.includes('Pendiente')?'✓ Grabado':'Pendiente'">Pendiente</button>
     </div>
     <div class="guion-b">
+      <div class="guion-titulo-vid"><div class="lbl">🎬 TÍTULO DEL VIDEO</div>La soledad estructural del líder</div>
+      <div class="guion-overlay"><div class="lbl">📺 OVERLAY — texto en pantalla (hook bait)</div>Rodeado de gente. Tomando todo solo.</div>
       <div class="guion-hook" style="background:var(--gold);color:var(--navy);"><div class="lbl" style="color:var(--navy);opacity:.6;">HOOK — primeros 2 segundos</div>Estás rodeado de gente. Y tomás todas las decisiones importantes solo.</div>
       <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Estás rodeado de gente.
 Tenés equipo. Tenés socios, quizás.
@@ -469,6 +538,39 @@ Sino para tener un lugar donde pensar con claridad, con otros que entienden lo m
 
 Si eso resuena — escribime. Tengo algo concreto para agosto.</div>
       <div class="guion-nota">Servicio → <strong>Cámara / Encuentro</strong> · CTA: "escribime, tengo algo para agosto"</div>
+      <div class="guion-caption" id="cap03-tt"><div class="lbl">📱 CAPTION TikTok / IG</div>Estás rodeado de gente.
+
+Y tomás todas las decisiones importantes solo.
+
+No podés hablar con el equipo — cambia cómo te ven.
+No podés hablar con el socio — visiones distintas.
+En casa no querés traer el trabajo.
+
+Eso no es un problema de comunicación.
+Es la soledad estructural del liderazgo.
+
+Si eso resuena — escribime.
+
+#liderazgo #pymes #empresarios</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-tt" onclick="copiarCap('cap03-tt',this)">TikTok</button><button class="btn-cap btn-cap-ig" onclick="copiarCap('cap03-tt',this)">IG</button></div>
+      <div class="guion-caption" id="cap03-li"><div class="lbl">💼 CAPTION LinkedIn</div>Estás rodeado de gente.
+
+Y tomás todas las decisiones importantes solo.
+
+No podés hablar de ciertas cosas con tu equipo — cambia cómo te ven.
+No podés hablar con tu socio — tienen visiones distintas.
+En casa no querés traer el trabajo.
+
+Eso no es un problema de comunicación.
+Es la soledad estructural del liderazgo.
+
+Facilito un espacio para líderes que quieren salir de eso.
+Próxima edición: agosto.
+
+Escribime si querés saber de qué se trata.
+
+#liderazgo #pymes #empresarios #camara</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-li" onclick="copiarCap('cap03-li',this)">LinkedIn</button></div>
     </div>
   </div>
 
@@ -479,6 +581,8 @@ Si eso resuena — escribime. Tengo algo concreto para agosto.</div>
       <button class="guion-estado est-pendiente" onclick="this.className='guion-estado '+(this.className.includes('pendiente')?'est-grabado':'est-pendiente');this.textContent=this.textContent.includes('Pendiente')?'✓ Grabado':'Pendiente'">Pendiente</button>
     </div>
     <div class="guion-b">
+      <div class="guion-titulo-vid"><div class="lbl">🎬 TÍTULO DEL VIDEO</div>El costo real de no delegar</div>
+      <div class="guion-overlay"><div class="lbl">📺 OVERLAY — texto en pantalla (hook bait)</div>Calculé cuánto te cuesta no delegar</div>
       <div class="guion-hook"><div class="lbl">HOOK — primeros 2 segundos</div>No delegar no es un problema de confianza. Es un problema de costo.</div>
       <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Calculé algo una vez con un cliente.
 
@@ -503,6 +607,37 @@ Cuando eso está claro — soltar deja de dar miedo.
 
 → Eso es lo que trabajamos en RE-MEDIO: qué te frena y cómo construir la salida.</div>
       <div class="guion-nota">Servicio → <strong>RE-MEDIO</strong> · CTA: "escribime para saber cómo funciona"</div>
+      <div class="guion-caption" id="cap04-tt"><div class="lbl">📱 CAPTION TikTok / IG</div>No delegar no es un problema de confianza.
+Es un problema de costo.
+
+Calculé algo con un cliente:
+→ 3 horas/día revisando cosas que "su equipo no hacía bien"
+→ Al valor de su hora como consultor
+→ Era lo mismo que contratar a una persona más
+
+Solo que esa persona era él. Y no le pagaban.
+
+¿Cuánto te está costando a vos?
+
+#pymes #delegacion #liderazgo #gestion</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-tt" onclick="copiarCap('cap04-tt',this)">TikTok</button><button class="btn-cap btn-cap-ig" onclick="copiarCap('cap04-tt',this)">IG</button></div>
+      <div class="guion-caption" id="cap04-li"><div class="lbl">💼 CAPTION LinkedIn</div>No delegar no es un problema de confianza.
+Es un problema de costo.
+
+Calculé algo con un cliente:
+→ 3 horas/día revisando lo que su equipo "no hacía bien"
+→ Al valor de su hora como consultor
+→ Era lo mismo que contratar a una persona más
+
+Solo que esa persona era él.
+Y no estaba siendo pagado por eso.
+
+Cuando entendió cuánto le costaba — empezó a delegar de otra manera.
+
+Lo que trabajo en RE-MEDIO es exactamente eso.
+
+#pymes #delegacion #liderazgo #coaching</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-li" onclick="copiarCap('cap04-li',this)">LinkedIn</button></div>
     </div>
   </div>
 
@@ -513,6 +648,8 @@ Cuando eso está claro — soltar deja de dar miedo.
       <button class="guion-estado est-pendiente" onclick="this.className='guion-estado '+(this.className.includes('pendiente')?'est-grabado':'est-pendiente');this.textContent=this.textContent.includes('Pendiente')?'✓ Grabado':'Pendiente'">Pendiente</button>
     </div>
     <div class="guion-b">
+      <div class="guion-titulo-vid"><div class="lbl">🎬 TÍTULO DEL VIDEO</div>Así se ve una empresa ordenada</div>
+      <div class="guion-overlay"><div class="lbl">📺 OVERLAY — texto en pantalla (hook bait)</div>Una empresa ordenada no es perfecta</div>
       <div class="guion-hook"><div class="lbl">HOOK — primeros 2 segundos</div>¿Cómo se ve una empresa ordenada? Te lo cuento en 30 segundos.</div>
       <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Una empresa ordenada no es una empresa perfecta.
 
@@ -534,6 +671,33 @@ En tres meses.
 
 Si estás en el punto donde ya no da para más — escribime "ORDEN" y te cuento cómo funciona.</div>
       <div class="guion-nota">Servicio → <strong>Espacio de Orden</strong> · CTA: escribime "ORDEN"</div>
+      <div class="guion-caption" id="cap05-tt"><div class="lbl">📱 CAPTION TikTok / IG</div>¿Cómo se ve una empresa ordenada? En 30 segundos:
+
+→ Cada persona sabe qué se espera sin preguntar
+→ Las decisiones del día no pasan por el dueño
+→ El dueño puede trabajar en crecer — no en apagar incendios
+
+¿Se parece a la tuya?
+
+Escribime "ORDEN" si querés llegar ahí.
+
+#pymes #organizacion #liderazgo #empresarios</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-tt" onclick="copiarCap('cap05-tt',this)">TikTok</button><button class="btn-cap btn-cap-ig" onclick="copiarCap('cap05-tt',this)">IG</button></div>
+      <div class="guion-caption" id="cap05-li"><div class="lbl">💼 CAPTION LinkedIn</div>Una empresa ordenada no es una empresa perfecta.
+
+Es una empresa donde cada persona sabe qué se espera de ella sin preguntar.
+Donde las decisiones del día a día no pasan por el dueño.
+Donde el dueño puede dedicar su tiempo a crecer — no a apagar incendios.
+
+Eso no se logra con un organigrama.
+Se logra definiendo roles, criterios de decisión y procesos simples.
+
+Eso es lo que construimos en Espacio de Orden. En tres meses.
+
+Escribime "ORDEN" si estás en el punto donde ya no da para más.
+
+#pymes #organizacion #liderazgo #EspacioDeOrden</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-li" onclick="copiarCap('cap05-li',this)">LinkedIn</button></div>
     </div>
   </div>
 
@@ -544,6 +708,8 @@ Si estás en el punto donde ya no da para más — escribime "ORDEN" y te cuento
       <button class="guion-estado est-pendiente" onclick="this.className='guion-estado '+(this.className.includes('pendiente')?'est-grabado':'est-pendiente');this.textContent=this.textContent.includes('Pendiente')?'✓ Grabado':'Pendiente'">Pendiente</button>
     </div>
     <div class="guion-b">
+      <div class="guion-titulo-vid"><div class="lbl">🎬 TÍTULO DEL VIDEO</div>Contrataste más. El problema sigue.</div>
+      <div class="guion-overlay"><div class="lbl">📺 OVERLAY — texto en pantalla (hook bait)</div>Más gente. Más caos. ¿Por qué?</div>
       <div class="guion-hook"><div class="lbl">HOOK — primeros 2 segundos</div>Contrataste más gente para resolver el problema. Y el problema sigue.</div>
       <div class="guion-script"><div class="lbl">GUION COMPLETO</div>El error clásico en PyMEs que crecen:
 
@@ -568,6 +734,39 @@ Sin eso, diez personas hacen el trabajo de cinco — y ninguna lo hace bien.
 
 → Espacio de Orden existe para resolver esto. Tres meses. Resultado concreto. Escribime si querés saber más.</div>
       <div class="guion-nota">Servicio → <strong>Espacio de Orden</strong> · CTA: "escribime para saber más"</div>
+      <div class="guion-caption" id="cap06-tt"><div class="lbl">📱 CAPTION TikTok / IG</div>El error clásico cuando la empresa crece:
+
+→ Hay caos → contratan más gente
+→ El caos crece
+
+Más personas en un sistema desordenado = más desorden.
+
+Lo que tenés que hacer antes de contratar: ordenar.
+
+¿Lo tenés claro en tu empresa?
+
+#pymes #crecimiento #liderazgo #gestion</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-tt" onclick="copiarCap('cap06-tt',this)">TikTok</button><button class="btn-cap btn-cap-ig" onclick="copiarCap('cap06-tt',this)">IG</button></div>
+      <div class="guion-caption" id="cap06-li"><div class="lbl">💼 CAPTION LinkedIn</div>El error clásico en PyMEs que crecen:
+
+Cuando hay caos, se contrata más gente.
+Y el caos crece.
+
+No porque la gente sea mala.
+Sino porque el sistema que generaba el caos sigue intacto.
+
+Más personas en un sistema desordenado = más desorden.
+
+Lo que tenés que hacer antes de contratar: ordenar.
+→ Quién hace qué
+→ Quién decide qué
+→ Qué pasa cuando algo sale mal
+
+Espacio de Orden existe para resolver esto.
+Tres meses. Resultado concreto.
+
+#pymes #crecimiento #liderazgo #organizacion</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-li" onclick="copiarCap('cap06-li',this)">LinkedIn</button></div>
     </div>
   </div>
 
@@ -578,6 +777,8 @@ Sin eso, diez personas hacen el trabajo de cinco — y ninguna lo hace bien.
       <button class="guion-estado est-pendiente" onclick="this.className='guion-estado '+(this.className.includes('pendiente')?'est-grabado':'est-pendiente');this.textContent=this.textContent.includes('Pendiente')?'✓ Grabado':'Pendiente'">Pendiente</button>
     </div>
     <div class="guion-b">
+      <div class="guion-titulo-vid"><div class="lbl">🎬 TÍTULO DEL VIDEO</div>Lo que nadie dice sobre el orden</div>
+      <div class="guion-overlay"><div class="lbl">📺 OVERLAY — texto en pantalla (hook bait)</div>Ordenar la empresa duele al principio</div>
       <div class="guion-hook"><div class="lbl">HOOK — primeros 2 segundos</div>Nadie te dice que ordenar la empresa duele al principio.</div>
       <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Cuando empezamos a ordenar una empresa, pasan cosas raras.
 
@@ -602,6 +803,36 @@ Y vale absolutamente la pena.
 
 → Si estás en ese punto o querés llegar, escribime. Sé cómo acompañarte.</div>
       <div class="guion-nota">Servicio → <strong>Espacio de Orden</strong> · CTA: "escribime"</div>
+      <div class="guion-caption" id="cap07-tt"><div class="lbl">📱 CAPTION TikTok / IG</div>Nadie te dice que ordenar la empresa duele al principio.
+
+El equipo pregunta más. No menos.
+El dueño se siente raro sin el caos.
+Hay un momento donde parece que empeoró.
+
+Ese momento es el más importante.
+
+El orden no llega de golpe.
+Viene después de la incomodidad.
+
+#pymes #liderazgo #organizacion #empresarios</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-tt" onclick="copiarCap('cap07-tt',this)">TikTok</button><button class="btn-cap btn-cap-ig" onclick="copiarCap('cap07-tt',this)">IG</button></div>
+      <div class="guion-caption" id="cap07-li"><div class="lbl">💼 CAPTION LinkedIn</div>Cuando empezamos a ordenar una empresa, pasan cosas raras.
+
+El equipo pregunta más al principio. No menos.
+El dueño se siente raro — sin el caos, no sabe bien qué hacer con su tiempo.
+Y hay un momento, a mitad del proceso, donde parece que empeoró.
+
+Ese es el momento más importante.
+Porque justo ahí, si se sostiene, el sistema empieza a funcionar solo.
+
+Eso no te lo dice nadie.
+Lo cuento porque lo vi en cada empresa que trabajé.
+
+El orden no llega de golpe.
+Viene después de la incomodidad. Y vale la pena.
+
+#pymes #liderazgo #organizacion #EspacioDeOrden</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-li" onclick="copiarCap('cap07-li',this)">LinkedIn</button></div>
     </div>
   </div>
 
@@ -612,6 +843,8 @@ Y vale absolutamente la pena.
       <button class="guion-estado est-pendiente" onclick="this.className='guion-estado '+(this.className.includes('pendiente')?'est-grabado':'est-pendiente');this.textContent=this.textContent.includes('Pendiente')?'✓ Grabado':'Pendiente'">Pendiente</button>
     </div>
     <div class="guion-b">
+      <div class="guion-titulo-vid"><div class="lbl">🎬 TÍTULO DEL VIDEO</div>Un encuentro para líderes</div>
+      <div class="guion-overlay"><div class="lbl">📺 OVERLAY — texto en pantalla (hook bait)</div>Para líderes que piensan solos</div>
       <div class="guion-hook" style="background:var(--gold);color:var(--navy);"><div class="lbl" style="color:var(--navy);opacity:.6;">HOOK — primeros 2 segundos</div>Hay algo que ningún libro de negocios te da.</div>
       <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Hay algo que ningún libro de negocios te da.
 
@@ -640,6 +873,8 @@ Si te interesa, escribime "AGOSTO" y te cuento cómo funciona y si tiene sentido
       <button class="guion-estado est-pendiente" onclick="this.className='guion-estado '+(this.className.includes('pendiente')?'est-grabado':'est-pendiente');this.textContent=this.textContent.includes('Pendiente')?'✓ Grabado':'Pendiente'">Pendiente</button>
     </div>
     <div class="guion-b">
+      <div class="guion-titulo-vid"><div class="lbl">🎬 TÍTULO DEL VIDEO</div>El grupo vale más que el mentor</div>
+      <div class="guion-overlay"><div class="lbl">📺 OVERLAY — texto en pantalla (hook bait)</div>El valor no soy yo</div>
       <div class="guion-hook" style="background:var(--gold);color:var(--navy);"><div class="lbl" style="color:var(--navy);opacity:.6;">HOOK — primeros 2 segundos</div>El valor no soy yo. El valor es el grupo.</div>
       <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Cuando facilito encuentros para líderes, la gente asume que el valor soy yo.
 
@@ -666,6 +901,35 @@ Lo que pasa ahí no pasa en ningún otro lado.
 
 Si querés saber cómo funciona — escribime "CÁMARA".</div>
       <div class="guion-nota">Servicio → <strong>Cámara</strong> · Ángulo: por qué el grupo de pares &gt; mentor individual</div>
+      <div class="guion-caption" id="cap09-tt"><div class="lbl">📱 CAPTION TikTok / IG</div>El valor no soy yo.
+Es el grupo.
+
+Un líder que lleva 5 años tomando todo solo necesita escuchar que otro pasó por lo mismo.
+
+No como anécdota. Como prueba de que tiene solución.
+
+Eso no lo da ningún libro, ni consultor.
+
+Escribime "CÁMARA" si querés saber cómo funciona.
+
+#liderazgo #pymes #camara #empresarios</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-tt" onclick="copiarCap('cap09-tt',this)">TikTok</button><button class="btn-cap btn-cap-ig" onclick="copiarCap('cap09-tt',this)">IG</button></div>
+      <div class="guion-caption" id="cap09-li"><div class="lbl">💼 CAPTION LinkedIn</div>Cuando facilito encuentros para líderes, la gente asume que el valor soy yo.
+El consultor. El coach. El que sabe.
+
+Pero el valor real no soy yo.
+Es el grupo.
+
+Porque un líder que lleva cinco años tomando todo solo necesita escuchar que otro líder pasó exactamente por lo mismo.
+No como anécdota. Como prueba de que tiene solución.
+
+Eso no lo puede dar ningún libro, ni consultor, ni video de YouTube.
+Lo da alguien que estuvo donde vos estás — y salió.
+
+Escribime "CÁMARA" si querés saber cómo funciona.
+
+#liderazgo #pymes #camara #empresarios</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-li" onclick="copiarCap('cap09-li',this)">LinkedIn</button></div>
     </div>
   </div>
 
@@ -676,6 +940,8 @@ Si querés saber cómo funciona — escribime "CÁMARA".</div>
       <button class="guion-estado est-pendiente" onclick="this.className='guion-estado '+(this.className.includes('pendiente')?'est-grabado':'est-pendiente');this.textContent=this.textContent.includes('Pendiente')?'✓ Grabado':'Pendiente'">Pendiente</button>
     </div>
     <div class="guion-b">
+      <div class="guion-titulo-vid"><div class="lbl">🎬 TÍTULO DEL VIDEO</div>Qué pasa adentro de Cámara</div>
+      <div class="guion-overlay"><div class="lbl">📺 OVERLAY — texto en pantalla (hook bait)</div>¿Qué pasa adentro de los encuentros?</div>
       <div class="guion-hook" style="background:var(--gold);color:var(--navy);"><div class="lbl" style="color:var(--navy);opacity:.6;">HOOK — primeros 2 segundos</div>Te voy a contar exactamente qué pasa adentro de los encuentros que facilito.</div>
       <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Te voy a contar exactamente qué pasa adentro.
 
@@ -704,6 +970,40 @@ Son seis lugares.
 
 Si te interesa, escribime. Te cuento si tiene sentido para tu momento.</div>
       <div class="guion-nota">Servicio → <strong>Cámara</strong> · Ángulo: desmitificar el formato, bajar la barrera de entrada</div>
+      <div class="guion-caption" id="cap10-tt"><div class="lbl">📱 CAPTION TikTok / IG</div>Te cuento exactamente qué pasa adentro.
+
+6 personas. Sin presentaciones. Sin diapositivas.
+
+Una sola pregunta para arrancar:
+¿Qué es lo más importante que tenés que resolver ahora?
+
+Y trabajamos eso. En tiempo real. Con el grupo.
+
+Próximo encuentro: agosto. 6 lugares.
+
+Escribime si querés saber si tiene sentido para vos.
+
+#liderazgo #pymes #empresarios</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-tt" onclick="copiarCap('cap10-tt',this)">TikTok</button><button class="btn-cap btn-cap-ig" onclick="copiarCap('cap10-tt',this)">IG</button></div>
+      <div class="guion-caption" id="cap10-li"><div class="lbl">💼 CAPTION LinkedIn</div>Seis personas máximo.
+Todos líderes. Todos con el mismo tipo de problema: mucho para resolver, poco tiempo para pensar.
+
+Sin presentaciones. Sin diapositivas.
+
+Cada encuentro empieza con una sola pregunta:
+¿Qué es lo más importante que tenés que resolver ahora mismo?
+
+Y trabajamos eso. En tiempo real. Con el grupo.
+
+No como terapia. No como clase.
+Como cuando te sentás con alguien que entiende — y en media hora ves el problema diferente.
+
+Próximo encuentro: agosto. 6 lugares.
+
+Escribime. Te cuento si tiene sentido para tu momento.
+
+#liderazgo #pymes #camara #empresarios</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-li" onclick="copiarCap('cap10-li',this)">LinkedIn</button></div>
     </div>
   </div>
 
@@ -714,6 +1014,8 @@ Si te interesa, escribime. Te cuento si tiene sentido para tu momento.</div>
       <button class="guion-estado est-pendiente" onclick="this.className='guion-estado '+(this.className.includes('pendiente')?'est-grabado':'est-pendiente');this.textContent=this.textContent.includes('Pendiente')?'✓ Grabado':'Pendiente'">Pendiente</button>
     </div>
     <div class="guion-b">
+      <div class="guion-titulo-vid"><div class="lbl">🎬 TÍTULO DEL VIDEO</div>Para quién es (y no es) Cámara</div>
+      <div class="guion-overlay"><div class="lbl">📺 OVERLAY — texto en pantalla (hook bait)</div>Esto NO es para todo el mundo</div>
       <div class="guion-hook" style="background:var(--gold);color:var(--navy);"><div class="lbl" style="color:var(--navy);opacity:.6;">HOOK — primeros 2 segundos</div>Esto no es para todo el mundo. Y lo digo en serio.</div>
       <div class="guion-script"><div class="lbl">GUION COMPLETO</div>Esto no es para todo el mundo. Y lo digo en serio.
 
@@ -735,6 +1037,41 @@ Próximo encuentro en agosto. Seis personas.
 
 Escribime "CÁMARA" si querés evaluar si tiene sentido para tu momento.</div>
       <div class="guion-nota">Servicio → <strong>Cámara</strong> · Ángulo: calificación — quién sí / quién no. Genera autoridad y atrae al perfil correcto.</div>
+      <div class="guion-caption" id="cap11-tt"><div class="lbl">📱 CAPTION TikTok / IG</div>Esto no es para todo el mundo.
+
+Cámara NO es para:
+✗ Alguien que recién empieza
+✗ Alguien que busca motivación
+
+Cámara SÍ es para:
+✓ Líderes con empresa y resultados
+✓ Que sienten que el techo está cerca
+✓ Que están cansados de pensar solos
+
+¿Te describís así?
+
+Escribime "CÁMARA". Agosto. 6 personas.
+
+#liderazgo #pymes #empresarios #camara</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-tt" onclick="copiarCap('cap11-tt',this)">TikTok</button><button class="btn-cap btn-cap-ig" onclick="copiarCap('cap11-tt',this)">IG</button></div>
+      <div class="guion-caption" id="cap11-li"><div class="lbl">💼 CAPTION LinkedIn</div>Esto no es para todo el mundo. Y lo digo en serio.
+
+Cámara NO es para alguien que recién está empezando.
+NO es para alguien que necesita que le digan qué hacer.
+NO es para alguien que busca motivación.
+
+Cámara SÍ es para líderes que ya saben cuál es el problema.
+Que tienen equipo, tienen empresa, tienen resultados — pero sienten que el techo está más cerca de lo que debería.
+Que están cansados de pensar solos.
+
+Si te describís así — esto es para vos.
+
+Próximo encuentro en agosto. Seis personas.
+
+Escribime "CÁMARA" si querés evaluar si tiene sentido para tu momento.
+
+#liderazgo #pymes #camara #empresarios</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-li" onclick="copiarCap('cap11-li',this)">LinkedIn</button></div>
     </div>
   </div>
 
@@ -745,6 +1082,8 @@ Escribime "CÁMARA" si querés evaluar si tiene sentido para tu momento.</div>
       <button class="guion-estado est-pendiente" onclick="this.className='guion-estado '+(this.className.includes('pendiente')?'est-grabado':'est-pendiente');this.textContent=this.textContent.includes('Pendiente')?'✓ Grabado':'Pendiente'">Pendiente</button>
     </div>
     <div class="guion-b">
+      <div class="guion-titulo-vid"><div class="lbl">🎬 TÍTULO DEL VIDEO</div>El resultado de parar a pensar</div>
+      <div class="guion-overlay"><div class="lbl">📺 OVERLAY — texto en pantalla (hook bait)</div>¿Cuándo fue la última vez que paraste?</div>
       <div class="guion-hook" style="background:var(--gold);color:var(--navy);"><div class="lbl" style="color:var(--navy);opacity:.6;">HOOK — primeros 2 segundos</div>¿Cuándo fue la última vez que paraste a pensar — de verdad?</div>
       <div class="guion-script"><div class="lbl">GUION COMPLETO</div>¿Cuándo fue la última vez que paraste a pensar?
 
@@ -775,6 +1114,38 @@ Y donde hay otros que entienden eso — porque están en lo mismo.
 La próxima edición es en agosto.
 Si querés un lugar donde pensar en serio — escribime.</div>
       <div class="guion-nota">Servicio → <strong>Cámara</strong> · Ángulo: el resultado emocional (espacio para pensar, sin tener que ser el que sabe)</div>
+      <div class="guion-caption" id="cap12-tt"><div class="lbl">📱 CAPTION TikTok / IG</div>¿Cuándo fue la última vez que paraste a pensar?
+
+No a hacer. No a resolver. No a apagar incendios.
+
+A pensar. Con calma. En lo que realmente importa.
+
+Cámara es un espacio donde podés ser el que no sabe.
+Y hay otros que entienden eso — porque están en lo mismo.
+
+Próxima edición: agosto. Escribime.
+
+#liderazgo #pymes #empresarios</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-tt" onclick="copiarCap('cap12-tt',this)">TikTok</button><button class="btn-cap btn-cap-ig" onclick="copiarCap('cap12-tt',this)">IG</button></div>
+      <div class="guion-caption" id="cap12-li"><div class="lbl">💼 CAPTION LinkedIn</div>¿Cuándo fue la última vez que paraste a pensar?
+
+No a hacer. No a resolver. No a apagar incendios.
+A pensar. Con calma. En lo que realmente importa.
+
+En la empresa siempre tenés que ser algo para alguien.
+Con el equipo: el que sabe.
+Con clientes: el que resuelve.
+Con socios: el que decide.
+
+Cámara es un espacio donde podés ser el que no sabe.
+El que tiene dudas. El que está evaluando.
+
+Y hay otros que entienden eso — porque están en lo mismo.
+
+Próxima edición: agosto. Escribime.
+
+#liderazgo #pymes #camara #empresarios</div>
+      <div class="guion-caption-actions"><button class="btn-cap btn-cap-li" onclick="copiarCap('cap12-li',this)">LinkedIn</button></div>
     </div>
   </div>
 
@@ -1036,6 +1407,8 @@ function show(id,btn){document.querySelectorAll('.sec').forEach(s=>s.classList.r
 function setFecha(){const d=new Date();const dias=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];const meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];document.getElementById('hoyFecha').textContent=dias[d.getDay()]+' '+d.getDate()+' de '+meses[d.getMonth()];document.getElementById('navDate').textContent=d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();}
 setFecha();
 function toggle(el){const cb=el.querySelector('input[type=checkbox]');cb.checked=!cb.checked;el.classList.toggle('done',cb.checked);}
+
+function copiarCap(id,btn){const txt=document.getElementById(id).innerText;navigator.clipboard.writeText(txt).then(()=>{const o=btn.textContent;btn.textContent='✓';setTimeout(()=>{btn.textContent=o;},1800);});}
 function copiar(id,btn){const txt=document.getElementById(id).innerText;navigator.clipboard.writeText(txt).then(()=>{const o=btn.textContent;btn.textContent='✓ Copiado';btn.classList.add('ok');setTimeout(()=>{btn.textContent=o;btn.classList.remove('ok');},2000);});}
 function updateSlot(sel,slotId){const slot=document.getElementById(slotId);slot.className='slot';const val=sel.value;if(val!=='libre')slot.classList.add(val);sel.className='est-'+val;updateProg();}
 function updateProg(){let c=0;for(let i=1;i<=6;i++){const s=document.getElementById('s'+i+'e');if(s&&s.value==='confirmado')c++;}document.getElementById('progNum').textContent=c+'/6';}
