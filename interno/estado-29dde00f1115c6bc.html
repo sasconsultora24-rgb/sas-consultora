@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Estado en vivo &middot; SAS Consultora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde-950:#0B1D17;--verde-900:#122F26;--dorado:#B8972A;--dorado-light:#D9BD6B;
+  --crema:#F3EFE3;--gris:#8A8F8A;--linea:rgba(243,239,227,.16);
+  --ok:#5FA98A;--warn:#D9A441;--mal:#C86B54;
+  --serif:'Fraunces',Georgia,serif;--sans:'Montserrat',-apple-system,sans-serif;
+  --mono:ui-monospace,'SF Mono',Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--verde-950);color:var(--crema);font-family:var(--sans);line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,44px)}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;
+  border-bottom:1px solid var(--linea);padding-bottom:16px;margin-bottom:8px}
+h1{font-family:var(--serif);font-size:clamp(24px,4vw,34px);margin:0}
+.sub{color:var(--gris);font-size:13.5px;margin-top:4px}
+#sello{font-family:var(--mono);font-size:11.5px;color:var(--gris);border:1px solid var(--linea);
+  padding:6px 10px;border-radius:3px;white-space:nowrap}
+h2{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--gris);margin:38px 0 12px;display:flex;align-items:center;gap:10px}
+h2::after{content:"";flex:1;height:1px;background:var(--linea)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;
+  background:var(--linea);border:1px solid var(--linea);margin-top:22px}
+.kpi{background:var(--verde-900);padding:15px 17px}
+.kpi .n{font-family:var(--mono);font-size:26px;font-weight:700;display:block;line-height:1;
+  font-variant-numeric:tabular-nums}
+.kpi .l{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--gris);margin-top:6px;display:block}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.mal{color:var(--mal)}.oro{color:var(--dorado-light)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--linea)}
+th{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--gris)}
+td.m{font-family:var(--mono);font-size:12.5px}
+.tw{border:1px solid var(--linea);background:var(--verde-900);overflow-x:auto}
+.pill{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.p-ok{background:rgba(95,169,138,.16);color:var(--ok)}
+.p-warn{background:rgba(217,164,65,.16);color:var(--warn)}
+.p-mal{background:rgba(200,107,84,.16);color:var(--mal)}
+.nota{font-size:12.5px;color:var(--gris);margin-top:10px}
+#err{background:rgba(200,107,84,.12);border:1px solid var(--mal);color:var(--mal);
+  padding:14px 16px;border-radius:3px;margin-top:22px;font-size:13.5px;display:none}
+.cargando{color:var(--gris);font-size:13.5px;padding:20px 0}
+footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-size:12px;color:var(--gris)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Estado en vivo</h1>
+      <div class="sub">SAS Consultora &middot; se actualiza solo cada minuto</div>
+    </div>
+    <div id="sello">consultando&hellip;</div>
+  </header>
+
+  <div id="err"></div>
+  <div id="cuerpo"><p class="cargando">Cargando el estado real&hellip;</p></div>
+
+  <footer>
+    Esta p&aacute;gina consulta Meta y la base cada vez que se abre. No es una foto.
+  </footer>
+</div>
+
+<script>
+const API = "https://valncabvniutalzhovuc.supabase.co/functions/v1/estado-sas?k=29dde00f1115c6bc";
+const $ = id => document.getElementById(id);
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function hace(iso){
+  const seg = Math.floor((Date.now() - new Date(iso)) / 1000);
+  if (seg < 60) return "reci\u00e9n";
+  if (seg < 3600) return `hace ${Math.floor(seg/60)} min`;
+  if (seg < 86400) return `hace ${Math.floor(seg/3600)} h`;
+  return `hace ${Math.floor(seg/86400)} d\u00edas`;
+}
+
+const clasePlantilla = e => e === "APPROVED" ? "p-ok" : e === "PENDING" ? "p-warn" : "p-mal";
+const textoPlantilla = e => e === "APPROVED" ? "aprobada" : e === "PENDING" ? "en revisi\u00f3n" : String(e).toLowerCase();
+
+function render(d){
+  const p = d.plantillas ?? [];
+  const aprobadas = p.filter(x => x.estado === "APPROVED").length;
+  const n = d.numero ?? {};
+  const w = d.whatsapp ?? {};
+  const t = d.talento ?? {};
+  const ent = w.entregas_7d ?? {};
+
+  const claseCalidad = n.calidad === "GREEN" ? "ok" : n.calidad === "YELLOW" ? "warn" : n.calidad ? "mal" : "";
+  const puedeEnviar = n.puede_enviar === "AVAILABLE" ? ["ok","s\u00ed"]
+                    : n.puede_enviar === "LIMITED" ? ["warn","con l\u00edmite"]
+                    : ["mal","bloqueado"];
+
+  let h = `
+  <div class="kpis">
+    <div class="kpi"><span class="n ${claseCalidad}">${esc(n.calidad ?? "?")}</span><span class="l">Calidad del n&uacute;mero</span></div>
+    <div class="kpi"><span class="n ${puedeEnviar[0]}">${puedeEnviar[1]}</span><span class="l">&iquest;Puede enviar?</span></div>
+    <div class="kpi"><span class="n oro">${aprobadas}/${p.length}</span><span class="l">Plantillas aprobadas</span></div>
+    <div class="kpi"><span class="n ${w.sin_leer ? "warn" : ""}">${w.sin_leer ?? 0}</span><span class="l">Mensajes sin leer</span></div>
+    <div class="kpi"><span class="n">${ent.delivered ?? 0}</span><span class="l">Entregados (7 d&iacute;as)</span></div>
+  </div>
+
+  <h2>Plantillas de WhatsApp</h2>
+  <div class="tw"><table><thead><tr><th>Nombre</th><th>Estado</th><th>Categor&iacute;a</th></tr></thead><tbody>
+  ${p.map(x => `<tr><td class="m">${esc(x.nombre)}</td>
+    <td><span class="pill ${clasePlantilla(x.estado)}">${textoPlantilla(x.estado)}</span></td>
+    <td class="m">${esc(x.categoria ?? "")}</td></tr>`).join("")}
+  </tbody></table></div>`;
+
+  if (w.ultimos?.length){
+    h += `<h2>&Uacute;ltimos mensajes que entraron</h2>
+    <div class="tw"><table><thead><tr><th>De</th><th>Dice</th><th>Cu&aacute;ndo</th></tr></thead><tbody>
+    ${w.ultimos.map(m => `<tr>
+      <td>${esc(m.nombre || "sin nombre")}<br><span class="m" style="color:var(--gris)">+${esc(m.telefono)}</span></td>
+      <td>${esc(m.texto)}</td><td class="m">${esc(hace(m.cuando))}</td></tr>`).join("")}
+    </tbody></table></div>`;
+  } else {
+    h += `<h2>&Uacute;ltimos mensajes que entraron</h2>
+    <p class="nota">Todav&iacute;a no entr&oacute; ning&uacute;n mensaje al n&uacute;mero de la API.</p>`;
+  }
+
+  h += `<h2>Talento &amp; Desarrollo</h2>
+  <div class="kpis">
+    <div class="kpi"><span class="n ${t.empresas < 5 ? "mal" : ""}">${t.empresas ?? 0}</span><span class="l">Empresas</span></div>
+    <div class="kpi"><span class="n">${t.candidatos ?? 0}</span><span class="l">Candidatos</span></div>
+    <div class="kpi"><span class="n ${t.vacantes < 3 ? "mal" : ""}">${t.vacantes ?? 0}</span><span class="l">Vacantes</span></div>
+    <div class="kpi"><span class="n ${!t.postulaciones ? "mal" : ""}">${t.postulaciones ?? 0}</span><span class="l">Postulaciones</span></div>
+    <div class="kpi"><span class="n">${t.capacitacion_inscriptos ?? 0}</span><span class="l">Inscriptos a cursos</span></div>
+  </div>
+  <p class="nota">Sin vacantes reales publicadas, los candidatos no tienen motivo para entrar. Sembrar con 3 o 4 de PyMEs que ya te conocen.</p>`;
+
+  $("cuerpo").innerHTML = h;
+  $("sello").textContent = "actualizado " + hace(d.generado_en);
+}
+
+async function cargar(){
+  try{
+    const r = await fetch(API, {cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    $("err").style.display = "none";
+    render(d);
+    if (d.meta_error) { $("err").style.display="block"; $("err").textContent = "Meta: " + d.meta_error; }
+  }catch(e){
+    $("err").style.display = "block";
+    $("err").textContent = "No se pudo leer el estado: " + e.message + ". Reintento en un minuto.";
+    $("sello").textContent = "sin conexi\u00f3n";
+  }
+}
+cargar();
+setInterval(cargar, 60000);
+document.addEventListener("visibilitychange", () => { if(!document.hidden) cargar(); });
+</script>
+</body>
+</html>
