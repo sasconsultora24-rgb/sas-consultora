@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Estado en vivo &middot; SAS Consultora</title>
+<title>Estado en vivo · SAS Consultora</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -49,7 +49,14 @@ td.m{font-family:var(--mono);font-size:12.5px}
   padding:14px 16px;border-radius:3px;margin-top:22px;font-size:13.5px;display:none}
 .cargando{color:var(--gris);font-size:13.5px;padding:20px 0}
 footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-size:12px;color:var(--gris)}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.tag{display:inline-block;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.04em;
+  padding:2px 7px;border-radius:3px;white-space:nowrap}
+.t-seba{background:rgba(217,164,65,.18);color:var(--warn)}
+.t-sistema{background:rgba(95,169,138,.18);color:var(--ok)}
+.t-claude{background:rgba(217,189,107,.18);color:var(--dorado-light)}
+.done{opacity:.45;text-decoration:line-through}
+.estatico{border:1px solid var(--linea);background:var(--verde-900);padding:4px 12px 14px}
+.plansub{font-size:12px;color:var(--gris);margin:0 0 4px}
 </style>
 </head>
 <body>
@@ -62,11 +69,46 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
     <div id="sello">consultando&hellip;</div>
   </header>
 
+  <h2>Plan de esta semana <span style="font-weight:400;text-transform:none;letter-spacing:0">&middot; est&aacute;tico, lo actualizo yo a mano cuando cambia algo, no cada minuto</span></h2>
+  <div class="estatico">
+    <p class="plansub">Semana 1 &middot; 24 al 30 de agosto &middot; &uacute;ltima edici&oacute;n: 25/08</p>
+    <table>
+      <thead><tr><th>Cu&aacute;ndo</th><th>Qu&eacute;</th><th>Qui&eacute;n</th></tr></thead>
+      <tbody>
+        <tr class="done"><td class="m">Lun 9:10</td><td>3 piezas de contenido, una del aniversario</td><td><span class="tag t-sistema">SISTEMA</span></td></tr>
+        <tr class="done"><td class="m">Lun-Mar</td><td>P&aacute;gina del diagn&oacute;stico + link en los 3 quizzes y Pulso PyME</td><td><span class="tag t-claude">CLAUDE</span></td></tr>
+        <tr><td class="m">Lun</td><td>Llamado a <strong>CeCIP</strong> (0343 4312785) para ofrecer la charla</td><td><span class="tag t-seba">SEBA</span></td></tr>
+        <tr><td class="m">Mar</td><td>Mensaje a <strong>Mart&iacute;n P&eacute;rez</strong> por LinkedIn (C&aacute;mara de Emprendedores)</td><td><span class="tag t-sistema">SISTEMA</span> <span class="tag t-seba">SEBA aprueba</span></td></tr>
+        <tr><td class="m">Mar</td><td>Descongelar los 15 de LinkedIn con la gu&iacute;a de Comunicaci&oacute;n Efectiva</td><td><span class="tag t-sistema">SISTEMA</span></td></tr>
+        <tr><td class="m">Mi&eacute;</td><td>Contacto con <strong>UADER/UTN</strong></td><td><span class="tag t-seba">SEBA</span></td></tr>
+        <tr><td class="m">Jue 10:04</td><td>Tanda 2: 10 personas m&aacute;s reciben su gu&iacute;a</td><td><span class="tag t-sistema">SISTEMA</span> <span class="tag t-seba">SEBA aprueba</span></td></tr>
+        <tr><td class="m">Toda la semana</td><td>Responder todo lo que entre, dentro de 24&nbsp;hs</td><td><span class="tag t-sistema">SISTEMA</span></td></tr>
+        <tr><td class="m"><strong>Esta semana</strong></td><td><strong>Armar la lista de ex clientes</strong></td><td><span class="tag t-seba">SEBA</span></td></tr>
+      </tbody>
+    </table>
+    <p class="nota">Meta de la semana: 20 gu&iacute;as entregadas &middot; 3 conversaciones institucionales abiertas &middot; 2 diagn&oacute;sticos agendados &middot; la lista de ex clientes hecha.</p>
+  </div>
+
+  <h2>Bloqueado &middot; depende de vos</h2>
+  <div class="estatico">
+    <table>
+      <thead><tr><th>Qu&eacute;</th><th>Falta</th></tr></thead>
+      <tbody>
+        <tr><td>Tanda 1 (10 personas)</td><td>tu OK para enviarla</td></tr>
+        <tr><td>Campa&ntilde;a de ex clientes</td><td>la lista</td></tr>
+        <tr><td>Objeciones de <span class="m">negocio.md</span></td><td>confirmarlas o corregirlas</td></tr>
+        <tr><td>Palabras prohibidas en <span class="m">voz.md</span></td><td>la lista</td></tr>
+      </tbody>
+    </table>
+    <p class="nota">El link del diagn&oacute;stico en los 3 quizzes y Pulso PyME ya qued&oacute; resuelto (25/08) &mdash; sali&oacute; de esta lista.</p>
+  </div>
+
   <div id="err"></div>
   <div id="cuerpo"><p class="cargando">Cargando el estado real&hellip;</p></div>
 
   <footer>
-    Esta p&aacute;gina consulta Meta y la base cada vez que se abre. No es una foto.
+    Lo de arriba (Plan de esta semana / Bloqueado) es est&aacute;tico &mdash; lo edito yo cuando algo cambia.<br>
+    Lo de abajo consulta Meta y la base cada vez que abr&iacute;s la p&aacute;gina. No es una foto.
   </footer>
 </div>
 
@@ -78,14 +120,14 @@ const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;
 
 function hace(iso){
   const seg = Math.floor((Date.now() - new Date(iso)) / 1000);
-  if (seg < 60) return "reci\u00e9n";
+  if (seg < 60) return "recién";
   if (seg < 3600) return `hace ${Math.floor(seg/60)} min`;
   if (seg < 86400) return `hace ${Math.floor(seg/3600)} h`;
-  return `hace ${Math.floor(seg/86400)} d\u00edas`;
+  return `hace ${Math.floor(seg/86400)} días`;
 }
 
 const clasePlantilla = e => e === "APPROVED" ? "p-ok" : e === "PENDING" ? "p-warn" : "p-mal";
-const textoPlantilla = e => e === "APPROVED" ? "aprobada" : e === "PENDING" ? "en revisi\u00f3n" : String(e).toLowerCase();
+const textoPlantilla = e => e === "APPROVED" ? "aprobada" : e === "PENDING" ? "en revisión" : String(e).toLowerCase();
 
 function render(d){
   const p = d.plantillas ?? [];
@@ -96,8 +138,8 @@ function render(d){
   const ent = w.entregas_7d ?? {};
 
   const claseCalidad = n.calidad === "GREEN" ? "ok" : n.calidad === "YELLOW" ? "warn" : n.calidad ? "mal" : "";
-  const puedeEnviar = n.puede_enviar === "AVAILABLE" ? ["ok","s\u00ed"]
-                    : n.puede_enviar === "LIMITED" ? ["warn","con l\u00edmite"]
+  const puedeEnviar = n.puede_enviar === "AVAILABLE" ? ["ok","sí"]
+                    : n.puede_enviar === "LIMITED" ? ["warn","con límite"]
                     : ["mal","bloqueado"];
 
   let h = `
@@ -153,7 +195,7 @@ async function cargar(){
   }catch(e){
     $("err").style.display = "block";
     $("err").textContent = "No se pudo leer el estado: " + e.message + ". Reintento en un minuto.";
-    $("sello").textContent = "sin conexi\u00f3n";
+    $("sello").textContent = "sin conexión";
   }
 }
 cargar();
