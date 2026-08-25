@@ -47,6 +47,9 @@ td.m{font-family:var(--mono);font-size:12.5px}
 .nota{font-size:12.5px;color:var(--gris);margin-top:10px}
 #err{background:rgba(200,107,84,.12);border:1px solid var(--mal);color:var(--mal);
   padding:14px 16px;border-radius:3px;margin-top:22px;font-size:13.5px;display:none}
+.alerta-bloqueo{background:rgba(200,107,84,.14);border:1px solid var(--mal);
+  padding:16px 18px;border-radius:4px;margin-top:22px;font-size:14px;line-height:1.55}
+.alerta-bloqueo b{color:var(--mal)}
 .cargando{color:var(--gris);font-size:13.5px;padding:20px 0}
 footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-size:12px;color:var(--gris)}
 .tag{display:inline-block;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.04em;
@@ -89,6 +92,8 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
     </div>
     <div id="sello">consultando&hellip;</div>
   </header>
+
+  <div id="alerta"></div>
 
   <h2>Hoy</h2>
   <div class="hoy">
@@ -139,6 +144,26 @@ function hoyISO(){
   return tz.toISOString().slice(0, 10);
 }
 
+let ULTIMAS_TAREAS = [];
+let ULTIMAS_PLANTILLAS = [];
+
+function chequearBloqueos(){
+  const tandaPendiente = ULTIMAS_TAREAS.some(t => t.estado === "pendiente" && /tanda/i.test(t.texto));
+  if (!tandaPendiente || !ULTIMAS_PLANTILLAS.length) { $("alerta").innerHTML = ""; return; }
+
+  const plantilla = ULTIMAS_PLANTILLAS.find(p => p.nombre === "entrega_guia_diagnostico");
+  if (plantilla && plantilla.estado !== "APPROVED"){
+    $("alerta").innerHTML = `<div class="alerta-bloqueo">
+      <b>Bloqueado:</b> hay una Tanda pendiente en el plan, pero la plantilla
+      <span class="m">entrega_guia_diagnostico</span> sigue <b>${esc(plantilla.estado)}</b> en Meta
+      (categoría ${esc(plantilla.categoria)}). No se puede enviar hasta que Meta la apruebe.
+      Esto se recalcula solo cada vez que abrís esta página &mdash; no hace falta esperar un mail.
+    </div>`;
+  } else {
+    $("alerta").innerHTML = "";
+  }
+}
+
 async function marcar(id, estado, btn){
   btn.disabled = true;
   btn.textContent = "guardando…";
@@ -176,6 +201,8 @@ async function cargarPlan(){
     if(!r.ok) throw new Error("HTTP " + r.status);
     const d = await r.json();
     const tareas = d.tareas ?? [];
+    ULTIMAS_TAREAS = tareas;
+    chequearBloqueos();
     const hoy = hoyISO();
 
     $("hoy-fecha").textContent = fechaLarga(hoy);
@@ -281,6 +308,8 @@ const textoPlantilla = e => e === "APPROVED" ? "aprobada" : e === "PENDING" ? "e
 
 function render(d){
   const p = d.plantillas ?? [];
+  ULTIMAS_PLANTILLAS = p;
+  chequearBloqueos();
   const aprobadas = p.filter(x => x.estado === "APPROVED").length;
   const n = d.numero ?? {};
   const w = d.whatsapp ?? {};
