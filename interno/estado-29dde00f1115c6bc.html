@@ -54,9 +54,30 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
 .t-seba{background:rgba(217,164,65,.18);color:var(--warn)}
 .t-sistema{background:rgba(95,169,138,.18);color:var(--ok)}
 .t-claude{background:rgba(217,189,107,.18);color:var(--dorado-light)}
-.done{opacity:.45;text-decoration:line-through}
-.estatico{border:1px solid var(--linea);background:var(--verde-900);padding:4px 12px 14px}
-.plansub{font-size:12px;color:var(--gris);margin:0 0 4px}
+.t-ok{background:rgba(217,164,65,.28);color:var(--warn)}
+
+/* --- HOY: lo primero, lo grande --- */
+.hoy{border:1px solid var(--dorado);background:var(--verde-900);border-radius:4px;
+  padding:20px 22px 8px;margin-top:22px}
+.hoy-fecha{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--dorado-light);margin-bottom:14px}
+.tarea{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--linea)}
+.tarea:last-child{border-bottom:none}
+.tarea.hecho{opacity:.4}
+.tarea.hecho .tarea-texto{text-decoration:line-through}
+.tarea-texto{flex:1;font-size:15px}
+.tarea-btn{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.03em;
+  background:transparent;border:1px solid var(--dorado);color:var(--dorado-light);
+  padding:7px 13px;border-radius:3px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.tarea-btn:hover{background:var(--dorado);color:var(--verde-950)}
+.tarea-btn:disabled{opacity:.35;cursor:default}
+.tarea.hecho .tarea-btn{border-color:var(--gris);color:var(--gris);background:transparent}
+.vacio-hoy{color:var(--gris);font-size:14px;padding:8px 0 14px}
+.semana-toggle{background:none;border:none;color:var(--gris);font-family:var(--mono);font-size:11px;
+  cursor:pointer;text-decoration:underline;padding:0;margin:18px 0 0}
+.semana{display:none;margin-top:14px}
+.semana.abierta{display:block}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
@@ -69,51 +90,26 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
     <div id="sello">consultando&hellip;</div>
   </header>
 
-  <h2>Plan de esta semana <span style="font-weight:400;text-transform:none;letter-spacing:0">&middot; est&aacute;tico, lo actualizo yo a mano cuando cambia algo, no cada minuto</span></h2>
-  <div class="estatico">
-    <p class="plansub">Semana 1 &middot; 24 al 30 de agosto &middot; &uacute;ltima edici&oacute;n: 25/08</p>
-    <table>
-      <thead><tr><th>Cu&aacute;ndo</th><th>Qu&eacute;</th><th>Qui&eacute;n</th></tr></thead>
-      <tbody>
-        <tr class="done"><td class="m">Lun 9:10</td><td>3 piezas de contenido, una del aniversario</td><td><span class="tag t-sistema">SISTEMA</span></td></tr>
-        <tr class="done"><td class="m">Lun-Mar</td><td>P&aacute;gina del diagn&oacute;stico + link en los 3 quizzes y Pulso PyME</td><td><span class="tag t-claude">CLAUDE</span></td></tr>
-        <tr><td class="m">Lun</td><td>Llamado a <strong>CeCIP</strong> (0343 4312785) para ofrecer la charla</td><td><span class="tag t-seba">SEBA</span></td></tr>
-        <tr><td class="m">Mar</td><td>Mensaje a <strong>Mart&iacute;n P&eacute;rez</strong> por LinkedIn (C&aacute;mara de Emprendedores)</td><td><span class="tag t-sistema">SISTEMA</span> <span class="tag t-seba">SEBA aprueba</span></td></tr>
-        <tr><td class="m">Mar</td><td>Descongelar los 15 de LinkedIn con la gu&iacute;a de Comunicaci&oacute;n Efectiva</td><td><span class="tag t-sistema">SISTEMA</span></td></tr>
-        <tr><td class="m">Mi&eacute;</td><td>Contacto con <strong>UADER/UTN</strong></td><td><span class="tag t-seba">SEBA</span></td></tr>
-        <tr><td class="m">Jue 10:04</td><td>Tanda 2: 10 personas m&aacute;s reciben su gu&iacute;a</td><td><span class="tag t-sistema">SISTEMA</span> <span class="tag t-seba">SEBA aprueba</span></td></tr>
-        <tr><td class="m">Toda la semana</td><td>Responder todo lo que entre, dentro de 24&nbsp;hs</td><td><span class="tag t-sistema">SISTEMA</span></td></tr>
-        <tr><td class="m"><strong>Esta semana</strong></td><td><strong>Armar la lista de ex clientes</strong></td><td><span class="tag t-seba">SEBA</span></td></tr>
-      </tbody>
-    </table>
-    <p class="nota">Meta de la semana: 20 gu&iacute;as entregadas &middot; 3 conversaciones institucionales abiertas &middot; 2 diagn&oacute;sticos agendados &middot; la lista de ex clientes hecha.</p>
+  <h2>Hoy</h2>
+  <div class="hoy">
+    <div class="hoy-fecha" id="hoy-fecha">&nbsp;</div>
+    <div id="hoy-tareas"><p class="vacio-hoy">Cargando el plan&hellip;</p></div>
   </div>
-
-  <h2>Bloqueado &middot; depende de vos</h2>
-  <div class="estatico">
-    <table>
-      <thead><tr><th>Qu&eacute;</th><th>Falta</th></tr></thead>
-      <tbody>
-        <tr><td>Tanda 1 (10 personas)</td><td>tu OK para enviarla</td></tr>
-        <tr><td>Campa&ntilde;a de ex clientes</td><td>la lista</td></tr>
-        <tr><td>Objeciones de <span class="m">negocio.md</span></td><td>confirmarlas o corregirlas</td></tr>
-        <tr><td>Palabras prohibidas en <span class="m">voz.md</span></td><td>la lista</td></tr>
-      </tbody>
-    </table>
-    <p class="nota">El link del diagn&oacute;stico en los 3 quizzes y Pulso PyME ya qued&oacute; resuelto (25/08) &mdash; sali&oacute; de esta lista.</p>
-  </div>
+  <button class="semana-toggle" id="toggle-semana">ver el resto de la semana</button>
+  <div class="semana" id="semana-cuerpo"></div>
 
   <div id="err"></div>
   <div id="cuerpo"><p class="cargando">Cargando el estado real&hellip;</p></div>
 
   <footer>
-    Lo de arriba (Plan de esta semana / Bloqueado) es est&aacute;tico &mdash; lo edito yo cuando algo cambia.<br>
-    Lo de abajo consulta Meta y la base cada vez que abr&iacute;s la p&aacute;gina. No es una foto.
+    "Hoy" y "el resto de la semana" son la tabla real del plan &mdash; marc&aacute;s hecho ac&aacute; y queda guardado, sin que yo edite nada a mano.<br>
+    Lo de m&aacute;s abajo (WhatsApp, Talento) consulta Meta y la base cada vez que abr&iacute;s la p&aacute;gina. No es una foto.
   </footer>
 </div>
 
 <script>
-const API = "https://valncabvniutalzhovuc.supabase.co/functions/v1/estado-sas?k=29dde00f1115c6bc";
+const API_ESTADO = "https://valncabvniutalzhovuc.supabase.co/functions/v1/estado-sas?k=29dde00f1115c6bc";
+const API_PLAN = "https://valncabvniutalzhovuc.supabase.co/functions/v1/plan-sas?k=29dde00f1115c6bc";
 const $ = id => document.getElementById(id);
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -125,6 +121,86 @@ function hace(iso){
   if (seg < 86400) return `hace ${Math.floor(seg/3600)} h`;
   return `hace ${Math.floor(seg/86400)} días`;
 }
+
+function fechaLarga(f){
+  const d = new Date(f + "T12:00:00");
+  return d.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" });
+}
+
+const tagOwner = q => `<span class="tag t-${q === "SEBA" ? "seba" : q === "CLAUDE" ? "claude" : "sistema"}">${esc(q)}</span>`;
+
+function hoyISO(){
+  const d = new Date();
+  const tz = new Date(d.toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" }));
+  return tz.toISOString().slice(0, 10);
+}
+
+async function marcar(id, estado, btn){
+  btn.disabled = true;
+  btn.textContent = "guardando…";
+  try{
+    const r = await fetch(API_PLAN, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id, estado }),
+    });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    await cargarPlan();
+  }catch(e){
+    btn.disabled = false;
+    btn.textContent = "reintentar";
+    alert("No se pudo guardar: " + e.message);
+  }
+}
+
+function filaTarea(t){
+  const hecha = t.estado === "hecho";
+  const bloqueada = t.estado === "bloqueado";
+  const okTag = t.necesita_ok ? ` <span class="tag t-ok">SEBA aprueba</span>` : "";
+  const boton = bloqueada
+    ? `<button class="tarea-btn" disabled>bloqueado</button>`
+    : `<button class="tarea-btn" onclick="marcar(${t.id}, '${hecha ? "pendiente" : "hecho"}', this)">${hecha ? "deshacer" : "marcar hecho"}</button>`;
+  return `<div class="tarea ${hecha ? "hecho" : ""}">
+    <div class="tarea-texto">${esc(t.texto)} ${tagOwner(t.quien)}${okTag}</div>
+    ${boton}
+  </div>`;
+}
+
+async function cargarPlan(){
+  try{
+    const r = await fetch(API_PLAN, { cache: "no-store" });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    const tareas = d.tareas ?? [];
+    const hoy = hoyISO();
+
+    $("hoy-fecha").textContent = fechaLarga(hoy);
+    const deHoy = tareas.filter(t => t.fecha === hoy);
+    $("hoy-tareas").innerHTML = deHoy.length
+      ? deHoy.map(filaTarea).join("")
+      : `<p class="vacio-hoy">Nada con fecha de hoy en el plan.</p>`;
+
+    const resto = tareas.filter(t => t.fecha !== hoy);
+    $("semana-cuerpo").innerHTML = resto.length
+      ? `<div class="tw"><table><thead><tr><th>Fecha</th><th>Qué</th><th>Quién</th><th>Estado</th></tr></thead><tbody>
+        ${resto.map(t => `<tr>
+          <td class="m">${esc(fechaLarga(t.fecha))}</td>
+          <td>${esc(t.texto)}${t.necesita_ok ? ' <span class="tag t-ok">SEBA aprueba</span>' : ""}</td>
+          <td>${tagOwner(t.quien)}</td>
+          <td><span class="pill ${t.estado === "hecho" ? "p-ok" : t.estado === "bloqueado" ? "p-mal" : "p-warn"}">${esc(t.estado)}</span></td>
+        </tr>`).join("")}
+      </tbody></table></div>`
+      : `<p class="nota">No hay más tareas cargadas esta semana.</p>`;
+  }catch(e){
+    $("hoy-tareas").innerHTML = `<p class="vacio-hoy">No se pudo cargar el plan: ${esc(e.message)}</p>`;
+  }
+}
+
+$("toggle-semana").addEventListener("click", () => {
+  const el = $("semana-cuerpo");
+  el.classList.toggle("abierta");
+  $("toggle-semana").textContent = el.classList.contains("abierta") ? "ocultar el resto de la semana" : "ver el resto de la semana";
+});
 
 const clasePlantilla = e => e === "APPROVED" ? "p-ok" : e === "PENDING" ? "p-warn" : "p-mal";
 const textoPlantilla = e => e === "APPROVED" ? "aprobada" : e === "PENDING" ? "en revisión" : String(e).toLowerCase();
@@ -186,7 +262,7 @@ function render(d){
 
 async function cargar(){
   try{
-    const r = await fetch(API, {cache:"no-store"});
+    const r = await fetch(API_ESTADO, {cache:"no-store"});
     if(!r.ok) throw new Error("HTTP " + r.status);
     const d = await r.json();
     $("err").style.display = "none";
@@ -198,9 +274,10 @@ async function cargar(){
     $("sello").textContent = "sin conexión";
   }
 }
+cargarPlan();
 cargar();
-setInterval(cargar, 60000);
-document.addEventListener("visibilitychange", () => { if(!document.hidden) cargar(); });
+setInterval(() => { cargarPlan(); cargar(); }, 60000);
+document.addEventListener("visibilitychange", () => { if(!document.hidden) { cargarPlan(); cargar(); } });
 </script>
 </body>
 </html>
