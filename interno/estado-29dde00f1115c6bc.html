@@ -80,6 +80,36 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
   cursor:pointer;text-decoration:underline;padding:0;margin:18px 0 0}
 .semana{display:none;margin-top:14px}
 .semana.abierta{display:block}
+
+.barra-bg{background:var(--verde-950);border:1px solid var(--linea);border-radius:20px;height:10px;overflow:hidden;margin-top:8px}
+.barra-fill{background:var(--dorado);height:100%;border-radius:20px}
+.form-diag{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:16px;
+  padding:16px;background:var(--verde-950);border:1px solid var(--linea);border-radius:4px}
+.form-diag label{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--gris);display:block;margin-bottom:4px}
+.form-diag input,.form-diag select{width:100%;background:var(--verde-900);border:1px solid var(--linea);color:var(--crema);
+  padding:7px 9px;border-radius:3px;font-family:var(--sans);font-size:13px}
+.form-diag button{grid-column:1/-1;justify-self:start;font-family:var(--mono);font-size:11px;font-weight:700;
+  background:var(--dorado);color:var(--verde-950);border:none;padding:9px 16px;border-radius:3px;cursor:pointer}
+.form-diag button:disabled{opacity:.5;cursor:default}
+.agente-card{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid var(--linea)}
+.agente-card:last-child{border-bottom:none}
+.agente-nombre{font-family:var(--mono);font-size:13px;font-weight:700}
+.agente-detalle{color:var(--gris);font-size:12.5px;margin-top:3px;max-width:60ch}
+
+.fase{border:1px solid var(--linea);background:var(--verde-950);border-radius:6px;padding:18px 20px;margin-bottom:14px}
+.fase.actual{border-color:var(--dorado);background:var(--verde-900)}
+.fase-cab{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.fase-nombre{font-family:var(--serif);font-size:17px;font-weight:600}
+.fase-fechas{font-family:var(--mono);font-size:11px;color:var(--gris)}
+.fase-label{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--gris);margin:10px 0 4px}
+.fase textarea{width:100%;background:var(--verde-950);border:1px solid var(--linea);color:var(--crema);
+  font-family:var(--sans);font-size:13.5px;line-height:1.5;padding:9px 11px;border-radius:3px;resize:vertical;min-height:60px}
+.fase-acciones{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.fase select{background:var(--verde-950);border:1px solid var(--linea);color:var(--crema);
+  font-family:var(--mono);font-size:11px;padding:6px 9px;border-radius:3px}
+.fase-guardar{font-family:var(--mono);font-size:10.5px;font-weight:700;background:var(--dorado);color:var(--verde-950);
+  border:none;padding:7px 14px;border-radius:3px;cursor:pointer}
+.fase-guardar:disabled{opacity:.5}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -103,6 +133,18 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
   <button class="semana-toggle" id="toggle-semana">ver el resto de la semana</button>
   <div class="semana" id="semana-cuerpo"></div>
 
+  <h2>La estrategia &middot; objetivo: USD 2.500/mes para el 20 de noviembre</h2>
+  <div id="estrategia-cuerpo"><p class="cargando">Cargando la estrategia&hellip;</p></div>
+
+  <h2>Objetivo del mes</h2>
+  <div id="negocio-cuerpo"><p class="cargando">Cargando el negocio&hellip;</p></div>
+
+  <h2>Agentes locales &middot; corren en tu Mac</h2>
+  <div id="agentes-cuerpo"><p class="cargando">Cargando agentes&hellip;</p></div>
+
+  <h2>Contenido para aprobar &middot; todos los canales, incluido LinkedIn</h2>
+  <div id="contenido-cuerpo"><p class="cargando">Cargando contenido&hellip;</p></div>
+
   <h2>LinkedIn</h2>
   <div id="li-cuerpo"><p class="cargando">Cargando LinkedIn&hellip;</p></div>
 
@@ -119,6 +161,9 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
 const API_ESTADO = "https://valncabvniutalzhovuc.supabase.co/functions/v1/estado-sas?k=29dde00f1115c6bc";
 const API_PLAN = "https://valncabvniutalzhovuc.supabase.co/functions/v1/plan-sas?k=29dde00f1115c6bc";
 const API_LINKEDIN = "https://valncabvniutalzhovuc.supabase.co/functions/v1/linkedin-sas?k=29dde00f1115c6bc";
+const API_NEGOCIO = "https://valncabvniutalzhovuc.supabase.co/functions/v1/negocio-sas?k=29dde00f1115c6bc";
+const API_CAMPANA = "https://valncabvniutalzhovuc.supabase.co/functions/v1/campana-sas?k=29dde00f1115c6bc";
+const API_CONTENIDO = "https://valncabvniutalzhovuc.supabase.co/functions/v1/contenido-sas?k=29dde00f1115c6bc";
 const $ = id => document.getElementById(id);
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -245,6 +290,51 @@ async function accionLinkedin(id, accion, btn){
   }
 }
 
+async function accionContenido(id, accion, btn){
+  btn.disabled = true; btn.textContent = "guardando…";
+  try{
+    const r = await fetch(API_CONTENIDO, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id, accion }),
+    });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    await cargarContenido();
+  }catch(e){
+    btn.disabled = false; btn.textContent = "reintentar";
+    alert("No se pudo guardar: " + e.message);
+  }
+}
+
+const canalNombre = { linkedin: "LinkedIn", instagram: "Instagram", tiktok: "TikTok", facebook: "Facebook", whatsapp: "WhatsApp", mail: "Mail" };
+
+async function cargarContenido(){
+  try{
+    const r = await fetch(API_CONTENIDO, { cache: "no-store" });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    const piezas = d.piezas ?? [];
+    $("contenido-cuerpo").innerHTML = piezas.length
+      ? piezas.map(p => `<div class="hoy" style="border-color:var(--linea);margin-bottom:12px">
+          <div class="hoy-fecha">${esc(canalNombre[p.canal] ?? p.canal)} &middot; ${esc(p.fecha)}</div>
+          <div class="tarea">
+            <div class="tarea-texto"><strong>${esc(p.titulo)}</strong>
+              <div class="nota" style="white-space:pre-wrap;margin-top:6px">${esc(p.texto)}</div>
+            </div>
+            <div style="display:flex;gap:8px;flex-shrink:0">
+              ${p.estado === "borrador"
+                ? `<button class="tarea-btn" onclick="accionContenido(${p.id}, 'aprobar', this)">aprobar</button>`
+                : `<span class="tag t-ok">aprobado, esperando publicación</span>`}
+              <button class="tarea-btn" onclick="accionContenido(${p.id}, 'descartar', this)">descartar</button>
+            </div>
+          </div>
+        </div>`).join("")
+      : `<p class="nota">No hay piezas esperando revisión.</p>`;
+  }catch(e){
+    $("contenido-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar: ${esc(e.message)}</p>`;
+  }
+}
+
 async function cargarLinkedin(){
   try{
     const r = await fetch(API_LINKEDIN, { cache: "no-store" });
@@ -294,6 +384,182 @@ async function cargarLinkedin(){
     $("li-cuerpo").innerHTML = h;
   }catch(e){
     $("li-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar LinkedIn: ${esc(e.message)}</p>`;
+  }
+}
+
+const moneda = n => "$" + Math.round(n).toLocaleString("es-AR");
+const fechaCorta = f => new Date(f + "T12:00:00").toLocaleDateString("es-AR", { day: "numeric", month: "short" });
+
+async function guardarFase(id, btn){
+  const card = btn.closest(".fase");
+  btn.disabled = true; btn.textContent = "guardando…";
+  try{
+    const r = await fetch(API_CAMPANA, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        accion: "editar", id,
+        acciones: card.querySelector("[data-campo='acciones']").value,
+        meta: card.querySelector("[data-campo='meta']").value,
+        estado: card.querySelector("[data-campo='estado']").value,
+      }),
+    });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    await cargarEstrategia();
+  }catch(e){
+    alert("No se pudo guardar: " + e.message);
+  }finally{
+    btn.disabled = false; btn.textContent = "Guardar";
+  }
+}
+
+async function cargarEstrategia(){
+  try{
+    const r = await fetch(API_CAMPANA, { cache: "no-store" });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    const fases = d.fases ?? [];
+    const hoy = hoyISO();
+
+    $("estrategia-cuerpo").innerHTML = `
+      <p class="lead" style="font-size:14px;color:#D8D2C2;max-width:70ch;margin:0 0 18px">
+        Una sola puerta de entrada (el diagnóstico de 30 minutos), tres caminos de salida
+        (el líder, la organización, el equipo), y una base recurrente — Talento &amp; Desarrollo —
+        que sostiene el negocio mientras la consultoría crece.
+      </p>
+      ${fases.map(f => {
+        const actual = hoy >= f.desde && hoy <= f.hasta;
+        return `<div class="fase ${actual ? "actual" : ""}">
+          <div class="fase-cab">
+            <span class="fase-nombre">${esc(f.nombre)}${actual ? ' <span class="tag t-ok">TRAMO ACTUAL</span>' : ""}</span>
+            <span class="fase-fechas">${fechaCorta(f.desde)} — ${fechaCorta(f.hasta)}</span>
+          </div>
+          <div class="fase-label">Qué se hace</div>
+          <textarea data-campo="acciones">${esc(f.acciones)}</textarea>
+          <div class="fase-label">La meta de este tramo</div>
+          <textarea data-campo="meta" style="min-height:40px">${esc(f.meta)}</textarea>
+          <div class="fase-acciones">
+            <select data-campo="estado">
+              <option value="no_iniciada" ${f.estado === "no_iniciada" ? "selected" : ""}>No iniciada</option>
+              <option value="en_curso" ${f.estado === "en_curso" ? "selected" : ""}>En curso</option>
+              <option value="completa" ${f.estado === "completa" ? "selected" : ""}>Completa</option>
+            </select>
+            <button class="fase-guardar" onclick="guardarFase(${f.id}, this)">Guardar</button>
+          </div>
+        </div>`;
+      }).join("")}
+    `;
+  }catch(e){
+    $("estrategia-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar la estrategia: ${esc(e.message)}</p>`;
+  }
+}
+
+async function cargarAgenteHelp(){}
+
+async function enviarDiagnostico(ev){
+  ev.preventDefault();
+  const f = ev.target;
+  const btn = f.querySelector("button");
+  btn.disabled = true; btn.textContent = "guardando…";
+  try{
+    const r = await fetch(API_NEGOCIO, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        accion: "diagnostico",
+        fecha_agendada: f.fecha.value,
+        contacto: f.contacto.value,
+        telefono: f.telefono.value || null,
+        origen: f.origen.value,
+        estado: f.estado.value,
+        resultado: f.resultado.value,
+        producto: f.producto.value || null,
+        monto: f.monto.value ? Number(f.monto.value) : null,
+      }),
+    });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    f.reset();
+    await cargarNegocio();
+  }catch(e){
+    alert("No se pudo guardar: " + e.message);
+  }finally{
+    btn.disabled = false; btn.textContent = "Guardar diagnóstico";
+  }
+}
+
+async function cargarNegocio(){
+  try{
+    const r = await fetch(API_NEGOCIO, { cache: "no-store" });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    const total = (d.facturado_consultoria ?? 0) + (d.facturado_talento ?? 0);
+    const meta = d.objetivo_mensual_ars ?? 0;
+    const pct = meta ? Math.min(100, (total / meta) * 100) : 0;
+    const e = d.embudo ?? {};
+
+    let h = `
+    <div class="kpis">
+      <div class="kpi"><span class="n oro">${moneda(total)}</span><span class="l">Facturado este mes</span></div>
+      <div class="kpi"><span class="n">${moneda(meta)}</span><span class="l">Objetivo (USD 2.500)</span></div>
+      <div class="kpi"><span class="n">${e.agendados ?? 0}</span><span class="l">Diagnósticos agendados</span></div>
+      <div class="kpi"><span class="n">${e.realizados ?? 0}</span><span class="l">Realizados</span></div>
+      <div class="kpi"><span class="n ${e.ventas ? "ok" : ""}">${e.ventas ?? 0}</span><span class="l">Ventas</span></div>
+    </div>
+    <div class="barra-bg"><div class="barra-fill" style="width:${pct.toFixed(1)}%"></div></div>
+    <p class="nota">${pct.toFixed(0)}% del objetivo del mes. Facturado consultoría: ${moneda(d.facturado_consultoria ?? 0)} · Talento &amp; Desarrollo: ${moneda(d.facturado_talento ?? 0)}.</p>
+
+    <form class="form-diag" onsubmit="enviarDiagnostico(event)">
+      <div><label>Fecha</label><input type="date" name="fecha" required value="${hoyISO()}"></div>
+      <div><label>Contacto</label><input type="text" name="contacto" required placeholder="Nombre"></div>
+      <div><label>Teléfono</label><input type="text" name="telefono" placeholder="opcional"></div>
+      <div><label>Origen</label><select name="origen" required>
+        <option value="linkedin">LinkedIn</option><option value="whatsapp">WhatsApp</option>
+        <option value="stand">Stand</option><option value="instagram">Instagram</option>
+        <option value="referido">Referido</option><option value="institucional">Institucional</option>
+        <option value="otro">Otro</option></select></div>
+      <div><label>Estado</label><select name="estado">
+        <option value="agendado">Agendado</option><option value="realizado">Realizado</option>
+        <option value="no_show">No se presentó</option><option value="cancelado">Cancelado</option></select></div>
+      <div><label>Resultado</label><select name="resultado">
+        <option value="pendiente">Pendiente</option><option value="venta">Venta</option>
+        <option value="no_venta">No venta</option></select></div>
+      <div><label>Producto</label><select name="producto">
+        <option value="">—</option><option value="curso">Curso</option>
+        <option value="sesion_suelta">Sesión suelta</option><option value="espacio_orden">Espacio de Orden</option>
+        <option value="refoco">Refoco</option><option value="cpp">CPP</option><option value="ninguno">Ninguno</option></select></div>
+      <div><label>Monto</label><input type="number" name="monto" placeholder="si hubo venta"></div>
+      <button type="submit">Guardar diagnóstico</button>
+    </form>`;
+
+    const rec = d.diagnosticos_recientes ?? [];
+    if (rec.length){
+      h += `<div class="tw" style="margin-top:16px"><table><thead><tr><th>Fecha</th><th>Contacto</th><th>Origen</th><th>Estado</th><th>Resultado</th></tr></thead><tbody>
+        ${rec.map(x => `<tr>
+          <td class="m">${esc(x.fecha_agendada)}</td>
+          <td>${esc(x.contacto)}</td>
+          <td class="m">${esc(x.origen)}</td>
+          <td><span class="pill ${x.estado === "realizado" ? "p-ok" : x.estado === "cancelado" ? "p-mal" : "p-warn"}">${esc(x.estado)}</span></td>
+          <td><span class="pill ${x.resultado === "venta" ? "p-ok" : x.resultado === "no_venta" ? "p-mal" : "p-warn"}">${esc(x.resultado)}</span></td>
+        </tr>`).join("")}
+      </tbody></table></div>`;
+    }
+
+    $("negocio-cuerpo").innerHTML = h;
+
+    const agentesNombre = { contenido: "Contenido", seguimiento: "Seguimiento", administracion: "Administración", linkedin: "LinkedIn" };
+    $("agentes-cuerpo").innerHTML = (d.agentes ?? []).map(a => {
+      const nunca = !a.ultima_corrida;
+      const clase = nunca ? "p-mal" : a.estado === "error" ? "p-mal" : a.estado === "vacio" ? "p-warn" : "p-ok";
+      const texto = nunca ? "nunca corrió" : `${a.estado} · ${hace(a.ultima_corrida)}`;
+      return `<div class="agente-card">
+        <div><div class="agente-nombre">${esc(agentesNombre[a.agente] ?? a.agente)}</div>
+        ${a.resumen ? `<div class="agente-detalle">${esc(a.resumen)}</div>` : ""}</div>
+        <span class="pill ${clase}">${texto}</span>
+      </div>`;
+    }).join("");
+  }catch(e){
+    $("negocio-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar: ${esc(e.message)}</p>`;
+    $("agentes-cuerpo").innerHTML = "";
   }
 }
 
@@ -377,11 +643,14 @@ async function cargar(){
     $("sello").textContent = "sin conexión";
   }
 }
+cargarEstrategia();
 cargarPlan();
 cargar();
+cargarContenido();
 cargarLinkedin();
-setInterval(() => { cargarPlan(); cargar(); cargarLinkedin(); }, 60000);
-document.addEventListener("visibilitychange", () => { if(!document.hidden) { cargarPlan(); cargar(); cargarLinkedin(); } });
+cargarNegocio();
+setInterval(() => { cargarEstrategia(); cargarPlan(); cargar(); cargarContenido(); cargarLinkedin(); cargarNegocio(); }, 60000);
+document.addEventListener("visibilitychange", () => { if(!document.hidden) { cargarEstrategia(); cargarPlan(); cargar(); cargarContenido(); cargarLinkedin(); cargarNegocio(); } });
 </script>
 </body>
 </html>
