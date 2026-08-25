@@ -7,131 +7,132 @@
 <title>Estado en vivo · SAS Consultora</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --verde-950:#0B1D17;--verde-900:#122F26;--dorado:#B8972A;--dorado-light:#D9BD6B;
-  --crema:#F3EFE3;--gris:#8A8F8A;--linea:rgba(243,239,227,.16);
-  --ok:#5FA98A;--warn:#D9A441;--mal:#C86B54;
+  --verde-950:#101F19;--verde-900:#182A21;--verde-800:#203528;
+  --acento:#A98F52;--acento-suave:#C7B482;
+  --crema:#E7E2D2;--gris:#8B9089;--linea:rgba(231,226,210,.10);
+  --ok:#749C85;--warn:#B99A5C;--mal:#AD7264;
   --serif:'Fraunces',Georgia,serif;--sans:'Montserrat',-apple-system,sans-serif;
   --mono:ui-monospace,'SF Mono',Menlo,monospace;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--verde-950);color:var(--crema);font-family:var(--sans);line-height:1.55}
-.wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,44px)}
+body{margin:0;background:var(--verde-950);color:var(--crema);font-family:var(--sans);line-height:1.55;font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding:clamp(18px,4vw,40px)}
 header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;
-  border-bottom:1px solid var(--linea);padding-bottom:16px;margin-bottom:0}
-h1{font-family:var(--serif);font-size:clamp(24px,4vw,34px);margin:0}
-.sub{color:var(--gris);font-size:13.5px;margin-top:4px}
-#sello{font-family:var(--mono);font-size:11.5px;color:var(--gris);border:1px solid var(--linea);
-  padding:6px 10px;border-radius:3px;white-space:nowrap}
+  border-bottom:1px solid var(--linea);padding-bottom:14px;margin-bottom:0}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(21px,3.4vw,28px);margin:0;color:var(--crema)}
+.sub{color:var(--gris);font-size:12.5px;margin-top:4px}
+#sello{font-family:var(--mono);font-size:10.5px;color:var(--gris);border:1px solid var(--linea);
+  padding:5px 9px;border-radius:3px;white-space:nowrap}
 
 nav.indice{position:sticky;top:0;z-index:10;display:flex;gap:2px;overflow-x:auto;
-  background:var(--verde-950);border-bottom:1px solid var(--linea);padding:10px 0;margin-bottom:8px;
+  background:var(--verde-950);border-bottom:1px solid var(--linea);padding:9px 0;margin-bottom:6px;
   -ms-overflow-style:none;scrollbar-width:none}
 nav.indice::-webkit-scrollbar{display:none}
-nav.indice a{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em;
-  color:var(--gris);text-decoration:none;padding:7px 13px;border-radius:20px;white-space:nowrap;
-  border:1px solid transparent;transition:color .15s,border-color .15s}
+nav.indice a{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;
+  color:var(--gris);text-decoration:none;padding:6px 12px;border-radius:20px;white-space:nowrap;
+  border:1px solid transparent}
 nav.indice a:hover{color:var(--crema);border-color:var(--linea)}
 
-.zona{margin-top:44px;padding-top:6px;scroll-margin-top:56px}
-.zona-titulo{font-family:var(--serif);font-weight:700;font-size:clamp(19px,2.6vw,24px);
-  color:var(--dorado-light);margin:0 0 4px;display:flex;align-items:baseline;gap:12px}
-.zona-titulo .n{font-family:var(--mono);font-size:12px;color:var(--gris);font-weight:400}
-.zona-sub{color:var(--gris);font-size:12.5px;margin:0 0 18px}
+.zona{margin-top:38px;padding-top:4px;scroll-margin-top:50px}
+.zona-titulo{font-family:var(--serif);font-weight:600;font-size:clamp(17px,2.2vw,20px);
+  color:var(--crema);margin:0 0 4px;padding-left:11px;border-left:2px solid var(--acento)}
+.zona-sub{color:var(--gris);font-size:12px;margin:0 0 16px}
 
-h2{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;
-  color:var(--gris);margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+h2{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--gris);margin:26px 0 10px;display:flex;align-items:center;gap:10px;font-weight:500}
 h2:first-of-type{margin-top:0}
 h2::after{content:"";flex:1;height:1px;background:var(--linea)}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;
-  background:var(--linea);border:1px solid var(--linea);margin-top:22px}
-.kpi{background:var(--verde-900);padding:15px 17px}
-.kpi .n{font-family:var(--mono);font-size:26px;font-weight:700;display:block;line-height:1;
-  font-variant-numeric:tabular-nums}
-.kpi .l{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--gris);margin-top:6px;display:block}
-.ok{color:var(--ok)}.warn{color:var(--warn)}.mal{color:var(--mal)}.oro{color:var(--dorado-light)}
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--linea)}
-th{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--gris)}
-td.m{font-family:var(--mono);font-size:12.5px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;
+  background:var(--linea);border:1px solid var(--linea)}
+.kpi{background:var(--verde-900);padding:13px 15px}
+.kpi .n{font-family:var(--mono);font-size:21px;font-weight:600;display:block;line-height:1.1;
+  font-variant-numeric:tabular-nums;color:var(--crema)}
+.kpi .l{font-size:10px;text-transform:uppercase;letter-spacing:.03em;color:var(--gris);margin-top:5px;display:block}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.mal{color:var(--mal)}.oro{color:var(--acento-suave)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{text-align:left;padding:8px 11px;border-bottom:1px solid var(--linea)}
+th{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gris);font-weight:500}
+td.m{font-family:var(--mono);font-size:11.5px}
 .tw{border:1px solid var(--linea);background:var(--verde-900);overflow-x:auto}
-.pill{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:20px;white-space:nowrap}
-.p-ok{background:rgba(95,169,138,.16);color:var(--ok)}
-.p-warn{background:rgba(217,164,65,.16);color:var(--warn)}
-.p-mal{background:rgba(200,107,84,.16);color:var(--mal)}
-.nota{font-size:12.5px;color:var(--gris);margin-top:10px}
-#err{background:rgba(200,107,84,.12);border:1px solid var(--mal);color:var(--mal);
-  padding:14px 16px;border-radius:3px;margin-top:22px;font-size:13.5px;display:none}
-.alerta-bloqueo{background:rgba(200,107,84,.14);border:1px solid var(--mal);
-  padding:16px 18px;border-radius:4px;margin-top:22px;font-size:14px;line-height:1.55}
+.pill{font-family:var(--mono);font-size:9.5px;padding:3px 8px;border-radius:3px;white-space:nowrap;font-weight:500}
+.p-ok{background:rgba(116,156,133,.14);color:var(--ok)}
+.p-warn{background:rgba(185,154,92,.14);color:var(--warn)}
+.p-mal{background:rgba(173,114,100,.14);color:var(--mal)}
+.nota{font-size:11.5px;color:var(--gris);margin-top:9px}
+#err{background:rgba(173,114,100,.10);border:1px solid var(--mal);color:var(--mal);
+  padding:12px 15px;border-radius:3px;margin-top:18px;font-size:12.5px;display:none}
+.alerta-bloqueo{background:rgba(173,114,100,.10);border-left:2px solid var(--mal);
+  padding:14px 16px;border-radius:3px;margin-top:18px;font-size:13px;line-height:1.55}
 .alerta-bloqueo b{color:var(--mal)}
-.cargando{color:var(--gris);font-size:13.5px;padding:20px 0}
-footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-size:12px;color:var(--gris)}
-.tag{display:inline-block;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.04em;
-  padding:2px 7px;border-radius:3px;white-space:nowrap}
-.t-seba{background:rgba(217,164,65,.18);color:var(--warn)}
-.t-sistema{background:rgba(95,169,138,.18);color:var(--ok)}
-.t-claude{background:rgba(217,189,107,.18);color:var(--dorado-light)}
-.t-ok{background:rgba(217,164,65,.28);color:var(--warn)}
+.cargando{color:var(--gris);font-size:12.5px;padding:16px 0}
+footer{border-top:1px solid var(--linea);margin-top:40px;padding-top:14px;font-size:11px;color:var(--gris)}
+.tag{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.02em;
+  padding:2px 6px;border-radius:3px;white-space:nowrap}
+.t-seba{background:rgba(185,154,92,.14);color:var(--warn)}
+.t-sistema{background:rgba(116,156,133,.14);color:var(--ok)}
+.t-claude{background:rgba(199,180,130,.14);color:var(--acento-suave)}
+.t-ok{background:rgba(185,154,92,.20);color:var(--warn)}
 
-/* --- HOY: lo primero, lo grande --- */
-.hoy{border:1px solid var(--dorado);background:var(--verde-900);border-radius:4px;
-  padding:20px 22px 8px;margin-top:22px}
-.hoy-fecha{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;
-  color:var(--dorado-light);margin-bottom:14px}
-.tarea{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--linea)}
+.hoy{border:1px solid var(--linea);background:var(--verde-900);border-radius:4px;padding:16px 18px 6px}
+.hoy-fecha{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--acento-suave);margin-bottom:12px}
+.tarea{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--linea)}
 .tarea:last-child{border-bottom:none}
-.tarea.hecho{opacity:.4}
+.tarea.hecho{opacity:.42}
 .tarea.hecho .tarea-texto{text-decoration:line-through}
-.tarea-texto{flex:1;font-size:15px}
-.tarea-btn{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.03em;
-  background:transparent;border:1px solid var(--dorado);color:var(--dorado-light);
-  padding:7px 13px;border-radius:3px;cursor:pointer;white-space:nowrap;flex-shrink:0}
-.tarea-btn:hover{background:var(--dorado);color:var(--verde-950)}
+.tarea-texto{flex:1;font-size:13.5px}
+.check{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--linea);flex-shrink:0;margin-top:2px}
+.check.si{background:var(--ok);border-color:var(--ok)}
+.vacio-hoy{color:var(--gris);font-size:13px;padding:6px 0 12px}
+
+.tarea-btn{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.02em;
+  background:transparent;border:1px solid var(--acento);color:var(--acento-suave);
+  padding:6px 12px;border-radius:3px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.tarea-btn:hover{background:var(--acento);color:var(--verde-950)}
 .tarea-btn:disabled{opacity:.35;cursor:default}
-.tarea.hecho .tarea-btn{border-color:var(--gris);color:var(--gris);background:transparent}
-.vacio-hoy{color:var(--gris);font-size:14px;padding:8px 0 14px}
-.semana-toggle{background:none;border:none;color:var(--gris);font-family:var(--mono);font-size:11px;
-  cursor:pointer;text-decoration:underline;padding:0;margin:18px 0 0}
-.semana{display:none;margin-top:14px}
-.semana.abierta{display:block}
 
-.barra-bg{background:var(--verde-950);border:1px solid var(--linea);border-radius:20px;height:10px;overflow:hidden;margin-top:8px}
-.barra-fill{background:var(--dorado);height:100%;border-radius:20px}
-.form-diag{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:16px;
-  padding:16px;background:var(--verde-950);border:1px solid var(--linea);border-radius:4px}
-.form-diag label{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--gris);display:block;margin-bottom:4px}
+.barra-bg{background:var(--verde-950);border:1px solid var(--linea);border-radius:20px;height:8px;overflow:hidden;margin-top:8px}
+.barra-fill{background:var(--acento);height:100%;border-radius:20px}
+.form-diag{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;margin-top:14px;
+  padding:14px;background:var(--verde-950);border:1px solid var(--linea);border-radius:4px}
+.form-diag label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.03em;color:var(--gris);display:block;margin-bottom:4px}
 .form-diag input,.form-diag select{width:100%;background:var(--verde-900);border:1px solid var(--linea);color:var(--crema);
-  padding:7px 9px;border-radius:3px;font-family:var(--sans);font-size:13px}
-.form-diag button{grid-column:1/-1;justify-self:start;font-family:var(--mono);font-size:11px;font-weight:700;
-  background:var(--dorado);color:var(--verde-950);border:none;padding:9px 16px;border-radius:3px;cursor:pointer}
+  padding:6px 8px;border-radius:3px;font-family:var(--sans);font-size:12.5px}
+.form-diag button{grid-column:1/-1;justify-self:start;font-family:var(--mono);font-size:10px;font-weight:500;
+  background:var(--acento);color:var(--verde-950);border:none;padding:8px 15px;border-radius:3px;cursor:pointer}
 .form-diag button:disabled{opacity:.5;cursor:default}
-.agente-card{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid var(--linea)}
+.agente-card{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--linea)}
 .agente-card:last-child{border-bottom:none}
-.agente-nombre{font-family:var(--mono);font-size:13px;font-weight:700}
-.agente-detalle{color:var(--gris);font-size:12.5px;margin-top:3px;max-width:60ch}
+.agente-nombre{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--crema)}
+.agente-detalle{color:var(--gris);font-size:11.5px;margin-top:3px;max-width:60ch}
 
-.fase{border:1px solid var(--linea);background:var(--verde-950);border-radius:6px;padding:18px 20px;margin-bottom:14px}
-.fase.actual{border-color:var(--dorado);background:var(--verde-900)}
-.fase-cab{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px}
-.fase-nombre{font-family:var(--serif);font-size:17px;font-weight:600}
-.fase-fechas{font-family:var(--mono);font-size:11px;color:var(--gris)}
-.fase-label{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--gris);margin:10px 0 4px}
+.fase{border:1px solid var(--linea);background:var(--verde-950);border-radius:5px;padding:16px 18px;margin-bottom:12px}
+.fase.actual{border-color:var(--acento)}
+.fase-cab{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:9px}
+.fase-nombre{font-family:var(--serif);font-size:15.5px;font-weight:600;color:var(--crema)}
+.fase-fechas{font-family:var(--mono);font-size:10px;color:var(--gris)}
+.fase-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.03em;color:var(--gris);margin:9px 0 4px}
 .fase textarea{width:100%;background:var(--verde-950);border:1px solid var(--linea);color:var(--crema);
-  font-family:var(--sans);font-size:13.5px;line-height:1.5;padding:9px 11px;border-radius:3px;resize:vertical;min-height:60px}
-.fase-acciones{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
-.fase select{background:var(--verde-950);border:1px solid var(--linea);color:var(--crema);
-  font-family:var(--mono);font-size:11px;padding:6px 9px;border-radius:3px}
-.fase-guardar{font-family:var(--mono);font-size:10.5px;font-weight:700;background:var(--dorado);color:var(--verde-950);
-  border:none;padding:7px 14px;border-radius:3px;cursor:pointer}
+  font-family:var(--sans);font-size:12.5px;line-height:1.5;padding:8px 10px;border-radius:3px;resize:vertical;min-height:56px}
+.fase-acciones{display:flex;gap:8px;align-items:center;margin-top:9px;flex-wrap:wrap}
+.fase-guardar{font-family:var(--mono);font-size:10px;font-weight:500;background:var(--acento);color:var(--verde-950);
+  border:none;padding:6px 13px;border-radius:3px;cursor:pointer}
 .fase-guardar:disabled{opacity:.5}
+.crono{margin-top:8px}
+.crono-item{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--linea);font-size:12.5px;align-items:flex-start}
+.crono-item:last-child{border-bottom:none}
+.crono-fecha{font-family:var(--mono);font-size:10.5px;color:var(--gris);width:70px;flex-shrink:0;padding-top:1px}
+.crono-item.hecho{opacity:.42}
+.crono-item.hecho .crono-texto{text-decoration:line-through}
+
 .unidades{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--linea);border:1px solid var(--linea)}
-.unidad{background:var(--verde-900);padding:16px 18px}
-.unidad h3{font-family:var(--serif);font-size:15px;font-weight:600;margin:0 0 12px}
-.unidad-fila{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid var(--linea)}
+.unidad{background:var(--verde-900);padding:15px 17px}
+.unidad h3{font-family:var(--serif);font-size:14px;font-weight:600;margin:0 0 10px;color:var(--crema)}
+.unidad-fila{display:flex;justify-content:space-between;font-size:12.5px;padding:5px 0;border-bottom:1px solid var(--linea)}
 .unidad-fila:last-child{border-bottom:none}
 .unidad-fila span:last-child{font-family:var(--mono);font-variant-numeric:tabular-nums}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -148,7 +149,8 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
   </header>
 
   <nav class="indice">
-    <a href="#z-hoy">Tu semana</a>
+    <a href="#z-hoy">Hoy</a>
+    <a href="#z-semana">Semana</a>
     <a href="#z-estrategia">Estrategia</a>
     <a href="#z-negocio">Negocio</a>
     <a href="#z-contenido">Contenido</a>
@@ -160,59 +162,64 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
   <div id="alerta"></div>
 
   <section class="zona" id="z-hoy">
-    <h2 class="zona-titulo">Tu semana</h2>
-    <p class="zona-sub">Lo que te toca a vos, al sistema, y lo que espera tu aprobación &mdash; siempre visible, sin botones para desplegar.</p>
+    <h2 class="zona-titulo">Hoy</h2>
+    <p class="zona-sub">Todo lo que pasa hoy, te involucre o no. Lo marco yo a medida que se hace &mdash; vos avisame cuando termines tu parte.</p>
     <div class="hoy">
       <div class="hoy-fecha" id="hoy-fecha">&nbsp;</div>
-      <div id="hoy-tareas"><p class="vacio-hoy">Cargando el plan&hellip;</p></div>
+      <div id="hoy-tareas"><p class="vacio-hoy">Cargando&hellip;</p></div>
     </div>
-    <div id="semana-cuerpo" style="margin-top:14px"></div>
+    <div id="recordatorios-cuerpo" style="margin-top:16px"></div>
+  </section>
+
+  <section class="zona" id="z-semana">
+    <h2 class="zona-titulo">Semana</h2>
+    <p class="zona-sub">Todas las actividades de la semana, no solo las tuyas.</p>
+    <div id="semana-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
   </section>
 
   <section class="zona" id="z-estrategia">
     <h2 class="zona-titulo">La estrategia</h2>
-    <p class="zona-sub">Objetivo: USD 2.500/mes de recurrencia para el 20 de noviembre. Los 3 tramos del camino, editables acá mismo.</p>
-    <div id="estrategia-cuerpo"><p class="cargando">Cargando la estrategia&hellip;</p></div>
+    <p class="zona-sub">Objetivo: USD 2.500/mes de recurrencia para el 20 de noviembre. Los 3 tramos y el cronograma desglosado.</p>
+    <div id="estrategia-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
   </section>
 
   <section class="zona" id="z-negocio">
     <h2 class="zona-titulo">El negocio</h2>
     <p class="zona-sub">Las 3 unidades y en qué está cada una &mdash; para planificar, no solo para mirar plata.</p>
-    <div id="unidades-cuerpo"><p class="cargando">Cargando unidades&hellip;</p></div>
+    <div id="unidades-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
     <h2>Diagnósticos y objetivo del mes</h2>
-    <div id="negocio-cuerpo"><p class="cargando">Cargando el negocio&hellip;</p></div>
+    <div id="negocio-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
   </section>
 
   <section class="zona" id="z-contenido">
     <h2 class="zona-titulo">Contenido</h2>
     <p class="zona-sub">Todos los canales en un solo lugar, incluido LinkedIn. Nada se publica sin tu aprobación acá.</p>
-    <div id="contenido-cuerpo"><p class="cargando">Cargando contenido&hellip;</p></div>
+    <div id="contenido-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
   </section>
 
   <section class="zona" id="z-whatsapp">
     <h2 class="zona-titulo">WhatsApp</h2>
     <p class="zona-sub">Consulta a Meta y a la base cada vez que abrís la página. No es una foto.</p>
     <div id="err"></div>
-    <div id="cuerpo"><p class="cargando">Cargando el estado real&hellip;</p></div>
+    <div id="cuerpo"><p class="cargando">Cargando&hellip;</p></div>
     <h2>Lista de contactos &middot; los 53 del stand</h2>
-    <div id="contactos-cuerpo"><p class="cargando">Cargando la lista&hellip;</p></div>
+    <div id="contactos-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
   </section>
 
   <section class="zona" id="z-linkedin">
     <h2 class="zona-titulo">LinkedIn</h2>
     <p class="zona-sub">Prospección, conexiones y mensajes &mdash; bajo gerencia acá, no en otra app.</p>
-    <div id="li-cuerpo"><p class="cargando">Cargando LinkedIn&hellip;</p></div>
+    <div id="li-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
   </section>
 
   <section class="zona" id="z-agentes">
     <h2 class="zona-titulo">Coordinación</h2>
     <p class="zona-sub">Los agentes que corren en tu Mac &mdash; cuándo corrieron, qué hicieron, cuándo corren de nuevo.</p>
-    <div id="agentes-cuerpo"><p class="cargando">Cargando agentes&hellip;</p></div>
+    <div id="agentes-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
   </section>
 
   <footer>
-    "Tu semana" y "La estrategia" los edit&aacute;s vos ac&aacute; mismo, sin tocar ning&uacute;n archivo.<br>
-    WhatsApp, LinkedIn y Negocio consultan la fuente real cada vez que abr&iacute;s la p&aacute;gina. No es una foto.
+    Las marcaciones (hecho / pendiente) las hace Claude, no botones acá. WhatsApp, LinkedIn, Negocio y Coordinación consultan la fuente real cada vez que abrís la página.
   </footer>
 </div>
 
@@ -240,6 +247,10 @@ function fechaLarga(f){
   const d = new Date(f + "T12:00:00");
   return d.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" });
 }
+function fechaCorta(f){
+  const d = new Date(f + "T12:00:00");
+  return d.toLocaleDateString("es-AR", { day: "numeric", month: "short" });
+}
 
 const tagOwner = q => `<span class="tag t-${q === "SEBA" ? "seba" : q === "CLAUDE" ? "claude" : "sistema"}">${esc(q)}</span>`;
 
@@ -253,50 +264,29 @@ let ULTIMAS_TAREAS = [];
 let ULTIMAS_PLANTILLAS = [];
 
 function chequearBloqueos(){
-  const tandaPendiente = ULTIMAS_TAREAS.some(t => t.estado === "pendiente" && /tanda/i.test(t.texto));
+  const tandaPendiente = ULTIMAS_TAREAS.some(t => (t.estado === "pendiente" || t.estado === "bloqueado") && /tanda/i.test(t.texto));
   if (!tandaPendiente || !ULTIMAS_PLANTILLAS.length) { $("alerta").innerHTML = ""; return; }
 
   const plantilla = ULTIMAS_PLANTILLAS.find(p => p.nombre === "entrega_guia_diagnostico");
   if (plantilla && plantilla.estado !== "APPROVED"){
     $("alerta").innerHTML = `<div class="alerta-bloqueo">
-      <b>Bloqueado:</b> hay una Tanda pendiente en el plan, pero la plantilla
+      <b>Bloqueado:</b> hay una Tanda en el plan, pero la plantilla
       <span class="m">entrega_guia_diagnostico</span> sigue <b>${esc(plantilla.estado)}</b> en Meta
       (categoría ${esc(plantilla.categoria)}). No se puede enviar hasta que Meta la apruebe.
-      Esto se recalcula solo cada vez que abrís esta página &mdash; no hace falta esperar un mail.
+      Se recalcula solo cada vez que abrís esta página.
     </div>`;
   } else {
     $("alerta").innerHTML = "";
   }
 }
 
-async function marcar(id, estado, btn){
-  btn.disabled = true;
-  btn.textContent = "guardando…";
-  try{
-    const r = await fetch(API_PLAN, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ id, estado }),
-    });
-    if(!r.ok) throw new Error("HTTP " + r.status);
-    await cargarPlan();
-  }catch(e){
-    btn.disabled = false;
-    btn.textContent = "reintentar";
-    alert("No se pudo guardar: " + e.message);
-  }
-}
-
-function filaTarea(t){
+function filaTareaLectura(t){
   const hecha = t.estado === "hecho";
-  const bloqueada = t.estado === "bloqueado";
   const okTag = t.necesita_ok ? ` <span class="tag t-ok">SEBA aprueba</span>` : "";
-  const boton = bloqueada
-    ? `<button class="tarea-btn" disabled>bloqueado</button>`
-    : `<button class="tarea-btn" onclick="marcar(${t.id}, '${hecha ? "pendiente" : "hecho"}', this)">${hecha ? "deshacer" : "marcar hecho"}</button>`;
+  const estadoTxt = t.estado === "bloqueado" ? ' <span class="tag p-mal" style="padding:2px 6px">bloqueado</span>' : "";
   return `<div class="tarea ${hecha ? "hecho" : ""}">
-    <div class="tarea-texto">${esc(t.texto)} ${tagOwner(t.quien)}${okTag}</div>
-    ${boton}
+    <span class="check ${hecha ? "si" : ""}"></span>
+    <div class="tarea-texto">${esc(t.texto)} ${tagOwner(t.quien)}${okTag}${estadoTxt}</div>
   </div>`;
 }
 
@@ -313,22 +303,21 @@ async function cargarPlan(){
     $("hoy-fecha").textContent = fechaLarga(hoy);
     const deHoy = tareas.filter(t => t.fecha === hoy);
     $("hoy-tareas").innerHTML = deHoy.length
-      ? deHoy.map(filaTarea).join("")
+      ? deHoy.map(filaTareaLectura).join("")
       : `<p class="vacio-hoy">Nada con fecha de hoy en el plan.</p>`;
 
-    const resto = tareas.filter(t => t.fecha !== hoy);
-    $("semana-cuerpo").innerHTML = resto.length
-      ? `<h2>Resto de la semana</h2><div class="tw"><table><thead><tr><th>Fecha</th><th>Qué</th><th>Quién</th><th>Estado</th></tr></thead><tbody>
-        ${resto.map(t => `<tr>
+    $("semana-cuerpo").innerHTML = tareas.length
+      ? `<div class="tw"><table><thead><tr><th>Fecha</th><th>Qué</th><th>Quién</th><th>Estado</th></tr></thead><tbody>
+        ${tareas.map(t => `<tr>
           <td class="m">${esc(fechaLarga(t.fecha))}</td>
           <td>${esc(t.texto)}${t.necesita_ok ? ' <span class="tag t-ok">SEBA aprueba</span>' : ""}</td>
           <td>${tagOwner(t.quien)}</td>
           <td><span class="pill ${t.estado === "hecho" ? "p-ok" : t.estado === "bloqueado" ? "p-mal" : "p-warn"}">${esc(t.estado)}</span></td>
         </tr>`).join("")}
       </tbody></table></div>`
-      : "";
+      : `<p class="nota">No hay actividades cargadas.</p>`;
   }catch(e){
-    $("hoy-tareas").innerHTML = `<p class="vacio-hoy">No se pudo cargar el plan: ${esc(e.message)}</p>`;
+    $("hoy-tareas").innerHTML = `<p class="vacio-hoy">No se pudo cargar: ${esc(e.message)}</p>`;
   }
 }
 
@@ -368,24 +357,6 @@ async function accionContenido(id, accion, btn){
 
 const canalNombre = { linkedin: "LinkedIn", instagram: "Instagram", tiktok: "TikTok", facebook: "Facebook", whatsapp: "WhatsApp", mail: "Mail" };
 
-async function accionContacto(id, estado, btn){
-  btn.disabled = true; btn.textContent = "…";
-  try{
-    const r = await fetch(API_CONTACTOS, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ id, estado }),
-    });
-    if(!r.ok) throw new Error("HTTP " + r.status);
-    await cargarContactos();
-  }catch(e){
-    btn.disabled = false;
-    alert("No se pudo guardar: " + e.message);
-  }
-}
-
-const estadoContactoPill = e => e === "respondio" ? "p-ok" : e === "enviado" ? "p-warn" : e === "excluido" || e === "frio" ? "p-mal" : "p-warn";
-
 async function cargarContactos(){
   try{
     const r = await fetch(API_CONTACTOS, { cache: "no-store" });
@@ -396,19 +367,18 @@ async function cargarContactos(){
 
     let h = `<div class="kpis">
       <div class="kpi"><span class="n oro">${d.total ?? 0}</span><span class="l">Contactos totales</span></div>
-      <div class="kpi"><span class="n ${d.pendientes ? "warn" : "ok"}">${d.pendientes ?? 0}</span><span class="l">Sin contactar</span></div>
+      <div class="kpi"><span class="n">${d.pendientes ?? 0}</span><span class="l">Sin contactar</span></div>
       ${tandas.map(t => `<div class="kpi"><span class="n">${pt[t].enviado}/${pt[t].total}</span><span class="l">Tanda ${esc(t)}</span></div>`).join("")}
     </div>`;
 
     const pendientes = (d.contactos ?? []).filter(c => c.estado === "pendiente");
     if (pendientes.length){
-      h += `<div class="tw" style="margin-top:16px"><table><thead><tr><th>Nombre</th><th>Tanda</th><th>Momento</th><th>¿Dueño?</th><th></th></tr></thead><tbody>
+      h += `<div class="tw" style="margin-top:14px"><table><thead><tr><th>Nombre</th><th>Tanda</th><th>Momento</th><th>¿Dueño?</th></tr></thead><tbody>
         ${pendientes.map(c => `<tr>
           <td>${esc(c.primer_nombre)}</td>
           <td class="m">${c.tanda}</td>
           <td class="m">${esc(c.momento ?? "")}</td>
           <td class="m">${c.es_dueno ? "sí" : "no"}</td>
-          <td><button class="tarea-btn" onclick="accionContacto(${c.id}, 'enviado', this)">marcar enviado</button></td>
         </tr>`).join("")}
       </tbody></table></div>`;
     } else {
@@ -428,7 +398,7 @@ async function cargarContenido(){
     const d = await r.json();
     const piezas = d.piezas ?? [];
     $("contenido-cuerpo").innerHTML = piezas.length
-      ? piezas.map(p => `<div class="hoy" style="border-color:var(--linea);margin-bottom:12px">
+      ? piezas.map(p => `<div class="hoy" style="margin-bottom:10px">
           <div class="hoy-fecha">${esc(canalNombre[p.canal] ?? p.canal)} &middot; ${esc(p.fecha)}</div>
           <div class="tarea">
             <div class="tarea-texto"><strong>${esc(p.titulo)}</strong>
@@ -467,7 +437,7 @@ async function cargarLinkedin(){
 
     const pend = d.pendientes ?? [];
     if (pend.length){
-      h += `<div class="hoy" style="border-color:var(--linea);margin-top:16px">
+      h += `<div class="hoy" style="margin-top:14px">
         <div class="hoy-fecha">Mensajes 1 para revisar</div>
         ${pend.map(p => `<div class="tarea">
           <div class="tarea-texto"><strong>${esc(p.nombre)}</strong>${p.cargo ? " — " + esc(p.cargo) : ""}${p.empresa ? " (" + esc(p.empresa) + ")" : ""}
@@ -484,7 +454,7 @@ async function cargarLinkedin(){
     }
 
     if (logs.length){
-      h += `<div class="tw" style="margin-top:16px"><table><thead><tr><th>Fecha</th><th>Qué pasó</th><th>Solicitudes</th><th>Mensajes</th></tr></thead><tbody>
+      h += `<div class="tw" style="margin-top:14px"><table><thead><tr><th>Fecha</th><th>Qué pasó</th><th>Solicitudes</th><th>Mensajes</th></tr></thead><tbody>
         ${logs.map(l => `<tr>
           <td class="m">${esc(l.fecha)}</td>
           <td>${esc(l.resumen)}${l.error ? `<br><span style="color:var(--mal)">Error: ${esc(l.error)}</span>` : ""}</td>
@@ -501,7 +471,6 @@ async function cargarLinkedin(){
 }
 
 const moneda = n => "$" + Math.round(n).toLocaleString("es-AR");
-const fechaCorta = f => new Date(f + "T12:00:00").toLocaleDateString("es-AR", { day: "numeric", month: "short" });
 
 async function guardarFase(id, btn){
   const card = btn.closest(".fase");
@@ -511,10 +480,9 @@ async function guardarFase(id, btn){
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        accion: "editar", id,
+        accion: "editar_fase", id,
         acciones: card.querySelector("[data-campo='acciones']").value,
         meta: card.querySelector("[data-campo='meta']").value,
-        estado: card.querySelector("[data-campo='estado']").value,
       }),
     });
     if(!r.ok) throw new Error("HTTP " + r.status);
@@ -532,42 +500,54 @@ async function cargarEstrategia(){
     if(!r.ok) throw new Error("HTTP " + r.status);
     const d = await r.json();
     const fases = d.fases ?? [];
+    const crono = d.cronograma ?? [];
+    const recordatorios = d.recordatorios ?? [];
     const hoy = hoyISO();
 
     $("estrategia-cuerpo").innerHTML = `
-      <p class="lead" style="font-size:14px;color:#D8D2C2;max-width:70ch;margin:0 0 18px">
+      <p class="nota" style="max-width:70ch;margin:0 0 16px;font-size:12.5px">
         Una sola puerta de entrada (el diagnóstico de 30 minutos), tres caminos de salida
         (el líder, la organización, el equipo), y una base recurrente — Talento &amp; Desarrollo —
         que sostiene el negocio mientras la consultoría crece.
       </p>
       ${fases.map(f => {
         const actual = hoy >= f.desde && hoy <= f.hasta;
+        const items = crono.filter(c => c.fase_id === f.id);
         return `<div class="fase ${actual ? "actual" : ""}">
           <div class="fase-cab">
-            <span class="fase-nombre">${esc(f.nombre)}${actual ? ' <span class="tag t-ok">TRAMO ACTUAL</span>' : ""}</span>
+            <span class="fase-nombre">${esc(f.nombre)}${actual ? ' <span class="tag t-ok">tramo actual</span>' : ""}</span>
             <span class="fase-fechas">${fechaCorta(f.desde)} — ${fechaCorta(f.hasta)}</span>
           </div>
           <div class="fase-label">Qué se hace</div>
           <textarea data-campo="acciones">${esc(f.acciones)}</textarea>
           <div class="fase-label">La meta de este tramo</div>
-          <textarea data-campo="meta" style="min-height:40px">${esc(f.meta)}</textarea>
+          <textarea data-campo="meta" style="min-height:38px">${esc(f.meta)}</textarea>
           <div class="fase-acciones">
-            <select data-campo="estado">
-              <option value="no_iniciada" ${f.estado === "no_iniciada" ? "selected" : ""}>No iniciada</option>
-              <option value="en_curso" ${f.estado === "en_curso" ? "selected" : ""}>En curso</option>
-              <option value="completa" ${f.estado === "completa" ? "selected" : ""}>Completa</option>
-            </select>
             <button class="fase-guardar" onclick="guardarFase(${f.id}, this)">Guardar</button>
           </div>
+          ${items.length ? `<div class="fase-label" style="margin-top:14px">Cronograma de este tramo</div>
+          <div class="crono">
+            ${items.map(it => `<div class="crono-item ${it.hecho ? "hecho" : ""}">
+              <span class="crono-fecha">${fechaCorta(it.fecha)}</span>
+              <span class="crono-texto">${esc(it.item)}</span>
+            </div>`).join("")}
+          </div>` : ""}
         </div>`;
       }).join("")}
     `;
+
+    $("recordatorios-cuerpo").innerHTML = recordatorios.length ? `
+      <h2>Recordatorios</h2>
+      <div class="hoy">
+        ${recordatorios.map(r => `<div class="tarea ${r.hecho ? "hecho" : ""}">
+          <span class="check ${r.hecho ? "si" : ""}"></span>
+          <div class="tarea-texto">${esc(r.texto)} <span class="tag" style="color:var(--gris);background:transparent">${fechaCorta(r.fecha)}</span></div>
+        </div>`).join("")}
+      </div>` : "";
   }catch(e){
-    $("estrategia-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar la estrategia: ${esc(e.message)}</p>`;
+    $("estrategia-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar: ${esc(e.message)}</p>`;
   }
 }
-
-async function cargarAgenteHelp(){}
 
 async function enviarDiagnostico(ev){
   ev.preventDefault();
@@ -646,7 +626,7 @@ async function cargarNegocio(){
 
     const rec = d.diagnosticos_recientes ?? [];
     if (rec.length){
-      h += `<div class="tw" style="margin-top:16px"><table><thead><tr><th>Fecha</th><th>Contacto</th><th>Origen</th><th>Estado</th><th>Resultado</th></tr></thead><tbody>
+      h += `<div class="tw" style="margin-top:14px"><table><thead><tr><th>Fecha</th><th>Contacto</th><th>Origen</th><th>Estado</th><th>Resultado</th></tr></thead><tbody>
         ${rec.map(x => `<tr>
           <td class="m">${esc(x.fecha_agendada)}</td>
           <td>${esc(x.contacto)}</td>
@@ -667,18 +647,18 @@ async function cargarNegocio(){
     };
     $("unidades-cuerpo").innerHTML = `<div class="unidades">
       <div class="unidad"><h3>Consultoría</h3>
-        <p class="nota" style="margin:0 0 12px">${FOCO.consultoria}</p>
+        <p class="nota" style="margin:0 0 10px">${FOCO.consultoria}</p>
         <div class="unidad-fila"><span>Diagnósticos este mes</span><span>${u.consultoria?.diagnosticos_mes ?? 0}</span></div>
         <div class="unidad-fila"><span>Ventas este mes</span><span>${u.consultoria?.ventas_mes ?? 0}</span></div>
       </div>
       <div class="unidad"><h3>Talento &amp; Desarrollo</h3>
-        <p class="nota" style="margin:0 0 12px">${FOCO.talento}</p>
+        <p class="nota" style="margin:0 0 10px">${FOCO.talento}</p>
         <div class="unidad-fila"><span>Empresas</span><span>${u.talento?.empresas ?? 0}</span></div>
         <div class="unidad-fila"><span>Candidatos</span><span>${u.talento?.candidatos ?? 0}</span></div>
         <div class="unidad-fila"><span>Vacantes</span><span>${u.talento?.vacantes ?? 0}</span></div>
       </div>
       <div class="unidad"><h3>Academia</h3>
-        <p class="nota" style="margin:0 0 12px">${FOCO.academia}</p>
+        <p class="nota" style="margin:0 0 10px">${FOCO.academia}</p>
         <div class="unidad-fila"><span>Cursos publicados</span><span>${u.academia?.cursos_publicados ?? 0}</span></div>
         <div class="unidad-fila"><span>Inscriptos</span><span>${u.academia?.inscriptos ?? 0}</span></div>
       </div>
@@ -696,7 +676,7 @@ async function cargarNegocio(){
       return `<div class="agente-card">
         <div><div class="agente-nombre">${esc(agentesNombre[a.agente] ?? a.agente)}</div>
         ${a.resumen ? `<div class="agente-detalle">${esc(a.resumen)}</div>` : ""}
-        <div class="agente-detalle" style="color:var(--dorado-light)">próxima corrida: ${esc(proximaCorrida[a.agente] ?? "?")}</div></div>
+        <div class="agente-detalle" style="color:var(--acento-suave)">próxima corrida: ${esc(proximaCorrida[a.agente] ?? "?")}</div></div>
         <span class="pill ${clase}">${texto}</span>
       </div>`;
     }).join("");
@@ -717,7 +697,6 @@ function render(d){
   const aprobadas = p.filter(x => x.estado === "APPROVED").length;
   const n = d.numero ?? {};
   const w = d.whatsapp ?? {};
-  const t = d.talento ?? {};
   const ent = w.entregas_7d ?? {};
 
   const claseCalidad = n.calidad === "GREEN" ? "ok" : n.calidad === "YELLOW" ? "warn" : n.calidad ? "mal" : "";
@@ -771,15 +750,13 @@ async function cargar(){
     $("sello").textContent = "sin conexión";
   }
 }
-cargarEstrategia();
-cargarPlan();
-cargar();
-cargarContactos();
-cargarContenido();
-cargarLinkedin();
-cargarNegocio();
-setInterval(() => { cargarEstrategia(); cargarPlan(); cargar(); cargarContactos(); cargarContenido(); cargarLinkedin(); cargarNegocio(); }, 60000);
-document.addEventListener("visibilitychange", () => { if(!document.hidden) { cargarEstrategia(); cargarPlan(); cargar(); cargarContactos(); cargarContenido(); cargarLinkedin(); cargarNegocio(); } });
+
+function cargarTodo(){
+  cargarEstrategia(); cargarPlan(); cargar(); cargarContactos(); cargarContenido(); cargarLinkedin(); cargarNegocio();
+}
+cargarTodo();
+setInterval(cargarTodo, 60000);
+document.addEventListener("visibilitychange", () => { if(!document.hidden) cargarTodo(); });
 </script>
 </body>
 </html>
