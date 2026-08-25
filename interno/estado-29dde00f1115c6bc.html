@@ -110,6 +110,12 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
 .fase-guardar{font-family:var(--mono);font-size:10.5px;font-weight:700;background:var(--dorado);color:var(--verde-950);
   border:none;padding:7px 14px;border-radius:3px;cursor:pointer}
 .fase-guardar:disabled{opacity:.5}
+.unidades{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--linea);border:1px solid var(--linea)}
+.unidad{background:var(--verde-900);padding:16px 18px}
+.unidad h3{font-family:var(--serif);font-size:15px;font-weight:600;margin:0 0 12px}
+.unidad-fila{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid var(--linea)}
+.unidad-fila:last-child{border-bottom:none}
+.unidad-fila span:last-child{font-family:var(--mono);font-variant-numeric:tabular-nums}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -135,6 +141,9 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
 
   <h2>La estrategia &middot; objetivo: USD 2.500/mes para el 20 de noviembre</h2>
   <div id="estrategia-cuerpo"><p class="cargando">Cargando la estrategia&hellip;</p></div>
+
+  <h2>Unidades de negocio</h2>
+  <div id="unidades-cuerpo"><p class="cargando">Cargando unidades&hellip;</p></div>
 
   <h2>Objetivo del mes</h2>
   <div id="negocio-cuerpo"><p class="cargando">Cargando el negocio&hellip;</p></div>
@@ -546,19 +555,45 @@ async function cargarNegocio(){
 
     $("negocio-cuerpo").innerHTML = h;
 
+    const u = d.unidades ?? {};
+    $("unidades-cuerpo").innerHTML = `<div class="unidades">
+      <div class="unidad"><h3>Consultoría</h3>
+        <div class="unidad-fila"><span>Diagnósticos este mes</span><span>${u.consultoria?.diagnosticos_mes ?? 0}</span></div>
+        <div class="unidad-fila"><span>Ventas este mes</span><span>${u.consultoria?.ventas_mes ?? 0}</span></div>
+        <div class="unidad-fila"><span>Facturado</span><span>${moneda(u.consultoria?.facturado_mes ?? 0)}</span></div>
+      </div>
+      <div class="unidad"><h3>Talento &amp; Desarrollo</h3>
+        <div class="unidad-fila"><span>Empresas</span><span>${u.talento?.empresas ?? 0}</span></div>
+        <div class="unidad-fila"><span>Candidatos</span><span>${u.talento?.candidatos ?? 0}</span></div>
+        <div class="unidad-fila"><span>Vacantes</span><span>${u.talento?.vacantes ?? 0}</span></div>
+        <div class="unidad-fila"><span>Facturado</span><span>${moneda(u.talento?.facturado_mes ?? 0)}</span></div>
+      </div>
+      <div class="unidad"><h3>Academia</h3>
+        <div class="unidad-fila"><span>Cursos publicados</span><span>${u.academia?.cursos_publicados ?? 0}</span></div>
+        <div class="unidad-fila"><span>Inscriptos</span><span>${u.academia?.inscriptos ?? 0}</span></div>
+        <div class="unidad-fila"><span>Facturado</span><span style="color:var(--gris)">sin datos todavía</span></div>
+      </div>
+    </div>`;
+
     const agentesNombre = { contenido: "Contenido", seguimiento: "Seguimiento", administracion: "Administración", linkedin: "LinkedIn" };
+    const proximaCorrida = {
+      contenido: "lunes 9:10", seguimiento: "lunes y jueves 10:04",
+      administracion: "todos los días 19:11", linkedin: "26/8 9:15 (prueba)",
+    };
     $("agentes-cuerpo").innerHTML = (d.agentes ?? []).map(a => {
       const nunca = !a.ultima_corrida;
       const clase = nunca ? "p-mal" : a.estado === "error" ? "p-mal" : a.estado === "vacio" ? "p-warn" : "p-ok";
       const texto = nunca ? "nunca corrió" : `${a.estado} · ${hace(a.ultima_corrida)}`;
       return `<div class="agente-card">
         <div><div class="agente-nombre">${esc(agentesNombre[a.agente] ?? a.agente)}</div>
-        ${a.resumen ? `<div class="agente-detalle">${esc(a.resumen)}</div>` : ""}</div>
+        ${a.resumen ? `<div class="agente-detalle">${esc(a.resumen)}</div>` : ""}
+        <div class="agente-detalle" style="color:var(--dorado-light)">próxima corrida: ${esc(proximaCorrida[a.agente] ?? "?")}</div></div>
         <span class="pill ${clase}">${texto}</span>
       </div>`;
     }).join("");
   }catch(e){
     $("negocio-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar: ${esc(e.message)}</p>`;
+    $("unidades-cuerpo").innerHTML = "";
     $("agentes-cuerpo").innerHTML = "";
   }
 }
