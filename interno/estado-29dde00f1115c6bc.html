@@ -194,6 +194,8 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
     <p class="zona-sub">Consulta a Meta y a la base cada vez que abrís la página. No es una foto.</p>
     <div id="err"></div>
     <div id="cuerpo"><p class="cargando">Cargando el estado real&hellip;</p></div>
+    <h2>Lista de contactos &middot; los 53 del stand</h2>
+    <div id="contactos-cuerpo"><p class="cargando">Cargando la lista&hellip;</p></div>
   </section>
 
   <section class="zona" id="z-linkedin">
@@ -221,6 +223,7 @@ const API_LINKEDIN = "https://valncabvniutalzhovuc.supabase.co/functions/v1/link
 const API_NEGOCIO = "https://valncabvniutalzhovuc.supabase.co/functions/v1/negocio-sas?k=29dde00f1115c6bc";
 const API_CAMPANA = "https://valncabvniutalzhovuc.supabase.co/functions/v1/campana-sas?k=29dde00f1115c6bc";
 const API_CONTENIDO = "https://valncabvniutalzhovuc.supabase.co/functions/v1/contenido-sas?k=29dde00f1115c6bc";
+const API_CONTACTOS = "https://valncabvniutalzhovuc.supabase.co/functions/v1/whatsapp-contactos-sas?k=29dde00f1115c6bc";
 const $ = id => document.getElementById(id);
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -364,6 +367,59 @@ async function accionContenido(id, accion, btn){
 }
 
 const canalNombre = { linkedin: "LinkedIn", instagram: "Instagram", tiktok: "TikTok", facebook: "Facebook", whatsapp: "WhatsApp", mail: "Mail" };
+
+async function accionContacto(id, estado, btn){
+  btn.disabled = true; btn.textContent = "…";
+  try{
+    const r = await fetch(API_CONTACTOS, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id, estado }),
+    });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    await cargarContactos();
+  }catch(e){
+    btn.disabled = false;
+    alert("No se pudo guardar: " + e.message);
+  }
+}
+
+const estadoContactoPill = e => e === "respondio" ? "p-ok" : e === "enviado" ? "p-warn" : e === "excluido" || e === "frio" ? "p-mal" : "p-warn";
+
+async function cargarContactos(){
+  try{
+    const r = await fetch(API_CONTACTOS, { cache: "no-store" });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    const pt = d.por_tanda ?? {};
+    const tandas = Object.keys(pt).sort((a,b) => Number(a) - Number(b));
+
+    let h = `<div class="kpis">
+      <div class="kpi"><span class="n oro">${d.total ?? 0}</span><span class="l">Contactos totales</span></div>
+      <div class="kpi"><span class="n ${d.pendientes ? "warn" : "ok"}">${d.pendientes ?? 0}</span><span class="l">Sin contactar</span></div>
+      ${tandas.map(t => `<div class="kpi"><span class="n">${pt[t].enviado}/${pt[t].total}</span><span class="l">Tanda ${esc(t)}</span></div>`).join("")}
+    </div>`;
+
+    const pendientes = (d.contactos ?? []).filter(c => c.estado === "pendiente");
+    if (pendientes.length){
+      h += `<div class="tw" style="margin-top:16px"><table><thead><tr><th>Nombre</th><th>Tanda</th><th>Momento</th><th>¿Dueño?</th><th></th></tr></thead><tbody>
+        ${pendientes.map(c => `<tr>
+          <td>${esc(c.primer_nombre)}</td>
+          <td class="m">${c.tanda}</td>
+          <td class="m">${esc(c.momento ?? "")}</td>
+          <td class="m">${c.es_dueno ? "sí" : "no"}</td>
+          <td><button class="tarea-btn" onclick="accionContacto(${c.id}, 'enviado', this)">marcar enviado</button></td>
+        </tr>`).join("")}
+      </tbody></table></div>`;
+    } else {
+      h += `<p class="nota">No hay contactos pendientes de la lista.</p>`;
+    }
+
+    $("contactos-cuerpo").innerHTML = h;
+  }catch(e){
+    $("contactos-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar: ${esc(e.message)}</p>`;
+  }
+}
 
 async function cargarContenido(){
   try{
@@ -718,11 +774,12 @@ async function cargar(){
 cargarEstrategia();
 cargarPlan();
 cargar();
+cargarContactos();
 cargarContenido();
 cargarLinkedin();
 cargarNegocio();
-setInterval(() => { cargarEstrategia(); cargarPlan(); cargar(); cargarContenido(); cargarLinkedin(); cargarNegocio(); }, 60000);
-document.addEventListener("visibilitychange", () => { if(!document.hidden) { cargarEstrategia(); cargarPlan(); cargar(); cargarContenido(); cargarLinkedin(); cargarNegocio(); } });
+setInterval(() => { cargarEstrategia(); cargarPlan(); cargar(); cargarContactos(); cargarContenido(); cargarLinkedin(); cargarNegocio(); }, 60000);
+document.addEventListener("visibilitychange", () => { if(!document.hidden) { cargarEstrategia(); cargarPlan(); cargar(); cargarContactos(); cargarContenido(); cargarLinkedin(); cargarNegocio(); } });
 </script>
 </body>
 </html>
