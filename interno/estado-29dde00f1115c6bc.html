@@ -17,16 +17,34 @@
   --mono:ui-monospace,'SF Mono',Menlo,monospace;
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;background:var(--verde-950);color:var(--crema);font-family:var(--sans);line-height:1.55}
 .wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,44px)}
 header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;
-  border-bottom:1px solid var(--linea);padding-bottom:16px;margin-bottom:8px}
+  border-bottom:1px solid var(--linea);padding-bottom:16px;margin-bottom:0}
 h1{font-family:var(--serif);font-size:clamp(24px,4vw,34px);margin:0}
 .sub{color:var(--gris);font-size:13.5px;margin-top:4px}
 #sello{font-family:var(--mono);font-size:11.5px;color:var(--gris);border:1px solid var(--linea);
   padding:6px 10px;border-radius:3px;white-space:nowrap}
+
+nav.indice{position:sticky;top:0;z-index:10;display:flex;gap:2px;overflow-x:auto;
+  background:var(--verde-950);border-bottom:1px solid var(--linea);padding:10px 0;margin-bottom:8px;
+  -ms-overflow-style:none;scrollbar-width:none}
+nav.indice::-webkit-scrollbar{display:none}
+nav.indice a{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em;
+  color:var(--gris);text-decoration:none;padding:7px 13px;border-radius:20px;white-space:nowrap;
+  border:1px solid transparent;transition:color .15s,border-color .15s}
+nav.indice a:hover{color:var(--crema);border-color:var(--linea)}
+
+.zona{margin-top:44px;padding-top:6px;scroll-margin-top:56px}
+.zona-titulo{font-family:var(--serif);font-weight:700;font-size:clamp(19px,2.6vw,24px);
+  color:var(--dorado-light);margin:0 0 4px;display:flex;align-items:baseline;gap:12px}
+.zona-titulo .n{font-family:var(--mono);font-size:12px;color:var(--gris);font-weight:400}
+.zona-sub{color:var(--gris);font-size:12.5px;margin:0 0 18px}
+
 h2{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;
-  color:var(--gris);margin:38px 0 12px;display:flex;align-items:center;gap:10px}
+  color:var(--gris);margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+h2:first-of-type{margin-top:0}
 h2::after{content:"";flex:1;height:1px;background:var(--linea)}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;
   background:var(--linea);border:1px solid var(--linea);margin-top:22px}
@@ -129,40 +147,70 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
     <div id="sello">consultando&hellip;</div>
   </header>
 
+  <nav class="indice">
+    <a href="#z-hoy">Tu semana</a>
+    <a href="#z-estrategia">Estrategia</a>
+    <a href="#z-negocio">Negocio</a>
+    <a href="#z-contenido">Contenido</a>
+    <a href="#z-whatsapp">WhatsApp</a>
+    <a href="#z-linkedin">LinkedIn</a>
+    <a href="#z-agentes">Coordinación</a>
+  </nav>
+
   <div id="alerta"></div>
 
-  <h2>Hoy</h2>
-  <div class="hoy">
-    <div class="hoy-fecha" id="hoy-fecha">&nbsp;</div>
-    <div id="hoy-tareas"><p class="vacio-hoy">Cargando el plan&hellip;</p></div>
-  </div>
-  <button class="semana-toggle" id="toggle-semana">ver el resto de la semana</button>
-  <div class="semana" id="semana-cuerpo"></div>
+  <section class="zona" id="z-hoy">
+    <h2 class="zona-titulo">Tu semana</h2>
+    <p class="zona-sub">Lo que te toca a vos, al sistema, y lo que espera tu aprobación &mdash; siempre visible, sin botones para desplegar.</p>
+    <div class="hoy">
+      <div class="hoy-fecha" id="hoy-fecha">&nbsp;</div>
+      <div id="hoy-tareas"><p class="vacio-hoy">Cargando el plan&hellip;</p></div>
+    </div>
+    <div id="semana-cuerpo" style="margin-top:14px"></div>
+  </section>
 
-  <h2>La estrategia &middot; objetivo: USD 2.500/mes para el 20 de noviembre</h2>
-  <div id="estrategia-cuerpo"><p class="cargando">Cargando la estrategia&hellip;</p></div>
+  <section class="zona" id="z-estrategia">
+    <h2 class="zona-titulo">La estrategia</h2>
+    <p class="zona-sub">Objetivo: USD 2.500/mes de recurrencia para el 20 de noviembre. Los 3 tramos del camino, editables acá mismo.</p>
+    <div id="estrategia-cuerpo"><p class="cargando">Cargando la estrategia&hellip;</p></div>
+  </section>
 
-  <h2>Unidades de negocio</h2>
-  <div id="unidades-cuerpo"><p class="cargando">Cargando unidades&hellip;</p></div>
+  <section class="zona" id="z-negocio">
+    <h2 class="zona-titulo">El negocio</h2>
+    <p class="zona-sub">Las 3 unidades y en qué está cada una &mdash; para planificar, no solo para mirar plata.</p>
+    <div id="unidades-cuerpo"><p class="cargando">Cargando unidades&hellip;</p></div>
+    <h2>Diagnósticos y objetivo del mes</h2>
+    <div id="negocio-cuerpo"><p class="cargando">Cargando el negocio&hellip;</p></div>
+  </section>
 
-  <h2>Objetivo del mes</h2>
-  <div id="negocio-cuerpo"><p class="cargando">Cargando el negocio&hellip;</p></div>
+  <section class="zona" id="z-contenido">
+    <h2 class="zona-titulo">Contenido</h2>
+    <p class="zona-sub">Todos los canales en un solo lugar, incluido LinkedIn. Nada se publica sin tu aprobación acá.</p>
+    <div id="contenido-cuerpo"><p class="cargando">Cargando contenido&hellip;</p></div>
+  </section>
 
-  <h2>Agentes locales &middot; corren en tu Mac</h2>
-  <div id="agentes-cuerpo"><p class="cargando">Cargando agentes&hellip;</p></div>
+  <section class="zona" id="z-whatsapp">
+    <h2 class="zona-titulo">WhatsApp</h2>
+    <p class="zona-sub">Consulta a Meta y a la base cada vez que abrís la página. No es una foto.</p>
+    <div id="err"></div>
+    <div id="cuerpo"><p class="cargando">Cargando el estado real&hellip;</p></div>
+  </section>
 
-  <h2>Contenido para aprobar &middot; todos los canales, incluido LinkedIn</h2>
-  <div id="contenido-cuerpo"><p class="cargando">Cargando contenido&hellip;</p></div>
+  <section class="zona" id="z-linkedin">
+    <h2 class="zona-titulo">LinkedIn</h2>
+    <p class="zona-sub">Prospección, conexiones y mensajes &mdash; bajo gerencia acá, no en otra app.</p>
+    <div id="li-cuerpo"><p class="cargando">Cargando LinkedIn&hellip;</p></div>
+  </section>
 
-  <h2>LinkedIn</h2>
-  <div id="li-cuerpo"><p class="cargando">Cargando LinkedIn&hellip;</p></div>
-
-  <div id="err"></div>
-  <div id="cuerpo"><p class="cargando">Cargando el estado real&hellip;</p></div>
+  <section class="zona" id="z-agentes">
+    <h2 class="zona-titulo">Coordinación</h2>
+    <p class="zona-sub">Los agentes que corren en tu Mac &mdash; cuándo corrieron, qué hicieron, cuándo corren de nuevo.</p>
+    <div id="agentes-cuerpo"><p class="cargando">Cargando agentes&hellip;</p></div>
+  </section>
 
   <footer>
-    "Hoy" y "el resto de la semana" son la tabla real del plan &mdash; marc&aacute;s hecho ac&aacute; y queda guardado, sin que yo edite nada a mano.<br>
-    Lo de m&aacute;s abajo (WhatsApp, Talento) consulta Meta y la base cada vez que abr&iacute;s la p&aacute;gina. No es una foto.
+    "Tu semana" y "La estrategia" los edit&aacute;s vos ac&aacute; mismo, sin tocar ning&uacute;n archivo.<br>
+    WhatsApp, LinkedIn y Negocio consultan la fuente real cada vez que abr&iacute;s la p&aacute;gina. No es una foto.
   </footer>
 </div>
 
@@ -267,7 +315,7 @@ async function cargarPlan(){
 
     const resto = tareas.filter(t => t.fecha !== hoy);
     $("semana-cuerpo").innerHTML = resto.length
-      ? `<div class="tw"><table><thead><tr><th>Fecha</th><th>Qué</th><th>Quién</th><th>Estado</th></tr></thead><tbody>
+      ? `<h2>Resto de la semana</h2><div class="tw"><table><thead><tr><th>Fecha</th><th>Qué</th><th>Quién</th><th>Estado</th></tr></thead><tbody>
         ${resto.map(t => `<tr>
           <td class="m">${esc(fechaLarga(t.fecha))}</td>
           <td>${esc(t.texto)}${t.necesita_ok ? ' <span class="tag t-ok">SEBA aprueba</span>' : ""}</td>
@@ -275,7 +323,7 @@ async function cargarPlan(){
           <td><span class="pill ${t.estado === "hecho" ? "p-ok" : t.estado === "bloqueado" ? "p-mal" : "p-warn"}">${esc(t.estado)}</span></td>
         </tr>`).join("")}
       </tbody></table></div>`
-      : `<p class="nota">No hay más tareas cargadas esta semana.</p>`;
+      : "";
   }catch(e){
     $("hoy-tareas").innerHTML = `<p class="vacio-hoy">No se pudo cargar el plan: ${esc(e.message)}</p>`;
   }
@@ -556,22 +604,27 @@ async function cargarNegocio(){
     $("negocio-cuerpo").innerHTML = h;
 
     const u = d.unidades ?? {};
+    const FOCO = {
+      consultoria: "Conectar todos los lead magnets (quizzes, guías, Pulso) al diagnóstico de 30 minutos. Sesión suelta como escalón nuevo entre el curso y Espacio de Orden.",
+      talento: "Preparar el Programa Fundadores (primera búsqueda gratis) para ofrecerlo apenas arranque el tramo del aniversario — a dueños de PyME de LinkedIn, el stand y ex clientes.",
+      academia: "Precio de lanzamiento en los 3 cursos on-demand, vigente hasta el 19/10. Es su propia unidad: vende el contenido en sí mismo, no reclutamiento.",
+    };
     $("unidades-cuerpo").innerHTML = `<div class="unidades">
       <div class="unidad"><h3>Consultoría</h3>
+        <p class="nota" style="margin:0 0 12px">${FOCO.consultoria}</p>
         <div class="unidad-fila"><span>Diagnósticos este mes</span><span>${u.consultoria?.diagnosticos_mes ?? 0}</span></div>
         <div class="unidad-fila"><span>Ventas este mes</span><span>${u.consultoria?.ventas_mes ?? 0}</span></div>
-        <div class="unidad-fila"><span>Facturado</span><span>${moneda(u.consultoria?.facturado_mes ?? 0)}</span></div>
       </div>
       <div class="unidad"><h3>Talento &amp; Desarrollo</h3>
+        <p class="nota" style="margin:0 0 12px">${FOCO.talento}</p>
         <div class="unidad-fila"><span>Empresas</span><span>${u.talento?.empresas ?? 0}</span></div>
         <div class="unidad-fila"><span>Candidatos</span><span>${u.talento?.candidatos ?? 0}</span></div>
         <div class="unidad-fila"><span>Vacantes</span><span>${u.talento?.vacantes ?? 0}</span></div>
-        <div class="unidad-fila"><span>Facturado</span><span>${moneda(u.talento?.facturado_mes ?? 0)}</span></div>
       </div>
       <div class="unidad"><h3>Academia</h3>
+        <p class="nota" style="margin:0 0 12px">${FOCO.academia}</p>
         <div class="unidad-fila"><span>Cursos publicados</span><span>${u.academia?.cursos_publicados ?? 0}</span></div>
         <div class="unidad-fila"><span>Inscriptos</span><span>${u.academia?.inscriptos ?? 0}</span></div>
-        <div class="unidad-fila"><span>Facturado</span><span style="color:var(--gris)">sin datos todavía</span></div>
       </div>
     </div>`;
 
@@ -597,12 +650,6 @@ async function cargarNegocio(){
     $("agentes-cuerpo").innerHTML = "";
   }
 }
-
-$("toggle-semana").addEventListener("click", () => {
-  const el = $("semana-cuerpo");
-  el.classList.toggle("abierta");
-  $("toggle-semana").textContent = el.classList.contains("abierta") ? "ocultar el resto de la semana" : "ver el resto de la semana";
-});
 
 const clasePlantilla = e => e === "APPROVED" ? "p-ok" : e === "PENDING" ? "p-warn" : "p-mal";
 const textoPlantilla = e => e === "APPROVED" ? "aprobada" : e === "PENDING" ? "en revisión" : String(e).toLowerCase();
@@ -649,16 +696,6 @@ function render(d){
     h += `<h2>&Uacute;ltimos mensajes que entraron</h2>
     <p class="nota">Todav&iacute;a no entr&oacute; ning&uacute;n mensaje al n&uacute;mero de la API.</p>`;
   }
-
-  h += `<h2>Talento &amp; Desarrollo</h2>
-  <div class="kpis">
-    <div class="kpi"><span class="n ${t.empresas < 5 ? "mal" : ""}">${t.empresas ?? 0}</span><span class="l">Empresas</span></div>
-    <div class="kpi"><span class="n">${t.candidatos ?? 0}</span><span class="l">Candidatos</span></div>
-    <div class="kpi"><span class="n ${t.vacantes < 3 ? "mal" : ""}">${t.vacantes ?? 0}</span><span class="l">Vacantes</span></div>
-    <div class="kpi"><span class="n ${!t.postulaciones ? "mal" : ""}">${t.postulaciones ?? 0}</span><span class="l">Postulaciones</span></div>
-    <div class="kpi"><span class="n">${t.capacitacion_inscriptos ?? 0}</span><span class="l">Inscriptos a cursos</span></div>
-  </div>
-  <p class="nota">Sin vacantes reales publicadas, los candidatos no tienen motivo para entrar. Sembrar con 3 o 4 de PyMEs que ya te conocen.</p>`;
 
   $("cuerpo").innerHTML = h;
   $("sello").textContent = "actualizado " + hace(d.generado_en);
