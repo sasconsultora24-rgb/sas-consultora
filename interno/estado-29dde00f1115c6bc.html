@@ -98,6 +98,9 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
   <button class="semana-toggle" id="toggle-semana">ver el resto de la semana</button>
   <div class="semana" id="semana-cuerpo"></div>
 
+  <h2>LinkedIn</h2>
+  <div id="li-cuerpo"><p class="cargando">Cargando LinkedIn&hellip;</p></div>
+
   <div id="err"></div>
   <div id="cuerpo"><p class="cargando">Cargando el estado real&hellip;</p></div>
 
@@ -110,6 +113,7 @@ footer{border-top:1px solid var(--linea);margin-top:44px;padding-top:16px;font-s
 <script>
 const API_ESTADO = "https://valncabvniutalzhovuc.supabase.co/functions/v1/estado-sas?k=29dde00f1115c6bc";
 const API_PLAN = "https://valncabvniutalzhovuc.supabase.co/functions/v1/plan-sas?k=29dde00f1115c6bc";
+const API_LINKEDIN = "https://valncabvniutalzhovuc.supabase.co/functions/v1/linkedin-sas?k=29dde00f1115c6bc";
 const $ = id => document.getElementById(id);
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -196,6 +200,76 @@ async function cargarPlan(){
   }
 }
 
+async function accionLinkedin(id, accion, btn){
+  btn.disabled = true;
+  btn.textContent = "guardando…";
+  try{
+    const r = await fetch(API_LINKEDIN, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id, accion }),
+    });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    await cargarLinkedin();
+  }catch(e){
+    btn.disabled = false;
+    btn.textContent = "reintentar";
+    alert("No se pudo guardar: " + e.message);
+  }
+}
+
+async function cargarLinkedin(){
+  try{
+    const r = await fetch(API_LINKEDIN, { cache: "no-store" });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    const res = d.resumen ?? {};
+    const total = Object.values(res).reduce((a,b) => a+b, 0);
+    const logs = d.ultimos_logs ?? [];
+
+    let h = `<div class="kpis">
+      <div class="kpi"><span class="n oro">${total}</span><span class="l">Prospectos totales</span></div>
+      <div class="kpi"><span class="n">${res.solicitud_enviada ?? 0}</span><span class="l">Solicitud enviada</span></div>
+      <div class="kpi"><span class="n ${res.conectado ? "ok" : ""}">${res.conectado ?? 0}</span><span class="l">Conectado</span></div>
+      <div class="kpi"><span class="n ${res.mensaje_borrador ? "warn" : ""}">${res.mensaje_borrador ?? 0}</span><span class="l">Mensajes para revisar</span></div>
+      <div class="kpi"><span class="n">${res.mensaje_enviado ?? 0}</span><span class="l">Mensajes enviados</span></div>
+    </div>`;
+
+    const pend = d.pendientes ?? [];
+    if (pend.length){
+      h += `<div class="hoy" style="border-color:var(--linea);margin-top:16px">
+        <div class="hoy-fecha">Mensajes 1 para revisar</div>
+        ${pend.map(p => `<div class="tarea">
+          <div class="tarea-texto"><strong>${esc(p.nombre)}</strong>${p.cargo ? " — " + esc(p.cargo) : ""}${p.empresa ? " (" + esc(p.empresa) + ")" : ""}
+            <div class="nota" style="white-space:pre-wrap;margin-top:6px">${esc(p.mensaje_1 || "(sin texto todavía)")}</div>
+          </div>
+          <div style="display:flex;gap:8px;flex-shrink:0">
+            ${p.estado === "mensaje_borrador"
+              ? `<button class="tarea-btn" onclick="accionLinkedin(${p.id}, 'aprobar', this)">aprobar</button>`
+              : `<span class="tag t-ok">aprobado, esperando envío</span>`}
+            <button class="tarea-btn" onclick="accionLinkedin(${p.id}, 'descartar', this)">descartar</button>
+          </div>
+        </div>`).join("")}
+      </div>`;
+    }
+
+    if (logs.length){
+      h += `<div class="tw" style="margin-top:16px"><table><thead><tr><th>Fecha</th><th>Qué pasó</th><th>Solicitudes</th><th>Mensajes</th></tr></thead><tbody>
+        ${logs.map(l => `<tr>
+          <td class="m">${esc(l.fecha)}</td>
+          <td>${esc(l.resumen)}${l.error ? `<br><span style="color:var(--mal)">Error: ${esc(l.error)}</span>` : ""}</td>
+          <td class="m">${l.solicitudes_enviadas}</td>
+          <td class="m">${l.mensajes_enviados}</td>
+        </tr>`).join("")}
+      </tbody></table></div>`;
+    }
+
+    $("li-cuerpo").innerHTML = h;
+  }catch(e){
+    $("li-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar LinkedIn: ${esc(e.message)}</p>`;
+  }
+}
+
 $("toggle-semana").addEventListener("click", () => {
   const el = $("semana-cuerpo");
   el.classList.toggle("abierta");
@@ -276,8 +350,9 @@ async function cargar(){
 }
 cargarPlan();
 cargar();
-setInterval(() => { cargarPlan(); cargar(); }, 60000);
-document.addEventListener("visibilitychange", () => { if(!document.hidden) { cargarPlan(); cargar(); } });
+cargarLinkedin();
+setInterval(() => { cargarPlan(); cargar(); cargarLinkedin(); }, 60000);
+document.addEventListener("visibilitychange", () => { if(!document.hidden) { cargarPlan(); cargar(); cargarLinkedin(); } });
 </script>
 </body>
 </html>
