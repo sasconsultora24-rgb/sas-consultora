@@ -392,26 +392,51 @@ async function cargarContactos(){
   }
 }
 
+const pilarLabel = { autoridad: "Autoridad", venta_sutil: "Venta sutil", conversion: "Conversión" };
+
+function piezaHtml(p){
+  return `<div class="tarea" style="${p.es_extra ? "opacity:.75" : ""}">
+    <div class="tarea-texto">
+      <strong>${esc(p.titulo)}</strong>
+      ${p.es_extra ? ' <span class="tag" style="background:transparent;border:1px solid var(--linea);color:var(--gris)">de repuesto</span>' : ""}
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:5px">
+        ${p.formato ? `<span class="tag" style="background:transparent;border:1px solid var(--linea);color:var(--gris)">${esc(p.formato)}</span>` : ""}
+        ${p.pilar ? `<span class="tag t-ok">${esc(pilarLabel[p.pilar] ?? p.pilar)}</span>` : ""}
+      </div>
+      ${p.hooks ? `<div class="nota" style="margin-top:8px"><strong>Hook:</strong> ${esc(p.hooks)}</div>` : ""}
+      <div class="nota" style="white-space:pre-wrap;margin-top:6px">${esc(p.texto)}</div>
+      ${p.cta ? `<div class="nota" style="margin-top:6px"><strong>CTA:</strong> ${esc(p.cta)}</div>` : ""}
+      ${p.hashtags ? `<div class="nota" style="margin-top:4px;color:var(--acento-suave)">${esc(p.hashtags)}</div>` : ""}
+    </div>
+    <div style="display:flex;gap:8px;flex-shrink:0">
+      ${p.estado === "borrador"
+        ? `<button class="tarea-btn" onclick="accionContenido(${p.id}, 'aprobar', this)">aprobar</button>`
+        : `<span class="tag t-ok">aprobado, esperando publicación</span>`}
+      <button class="tarea-btn" onclick="accionContenido(${p.id}, 'descartar', this)">descartar</button>
+    </div>
+  </div>`;
+}
+
 async function cargarContenido(){
   try{
     const r = await fetch(API_CONTENIDO, { cache: "no-store" });
     if(!r.ok) throw new Error("HTTP " + r.status);
     const d = await r.json();
     const piezas = d.piezas ?? [];
+
+    const porFecha = {};
+    for(const p of piezas){
+      const key = p.fecha ?? "sin fecha";
+      (porFecha[key] ??= []).push(p);
+    }
+    const fechas = Object.keys(porFecha).sort();
+
     $("contenido-cuerpo").innerHTML = piezas.length
-      ? piezas.map(p => `<div class="hoy" style="margin-bottom:10px">
-          <div class="hoy-fecha">${esc(canalNombre[p.canal] ?? p.canal)} &middot; ${esc(p.fecha)}</div>
-          <div class="tarea">
-            <div class="tarea-texto"><strong>${esc(p.titulo)}</strong>
-              <div class="nota" style="white-space:pre-wrap;margin-top:6px">${esc(p.texto)}</div>
-            </div>
-            <div style="display:flex;gap:8px;flex-shrink:0">
-              ${p.estado === "borrador"
-                ? `<button class="tarea-btn" onclick="accionContenido(${p.id}, 'aprobar', this)">aprobar</button>`
-                : `<span class="tag t-ok">aprobado, esperando publicación</span>`}
-              <button class="tarea-btn" onclick="accionContenido(${p.id}, 'descartar', this)">descartar</button>
-            </div>
-          </div>
+      ? fechas.map(f => `<div class="hoy" style="margin-bottom:10px">
+          <div class="hoy-fecha">${esc(fechaLarga(f))}</div>
+          ${porFecha[f]
+            .sort((a,b) => (a.es_extra === b.es_extra) ? 0 : a.es_extra ? 1 : -1)
+            .map(p => `<div class="fase-label" style="margin-top:10px">${esc(canalNombre[p.canal] ?? p.canal)}</div>${piezaHtml(p)}`).join("")}
         </div>`).join("")
       : `<p class="nota">No hay piezas esperando revisión.</p>`;
   }catch(e){
