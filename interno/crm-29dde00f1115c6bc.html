@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>CRM en vivo · SAS Consultora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde-950:#F5F2E9;--verde-900:#FFFFFF;--verde-800:#ECE7D8;
+  --acento:#A98F52;--acento-suave:#8F7238;
+  --crema:#1C2A20;--gris:#5C6058;--linea:rgba(28,42,32,.12);
+  --ok:#4F7A63;--warn:#8A6A2C;--mal:#A24B3A;--texto-oscuro:#1C2A20;
+  --serif:'Fraunces',Georgia,serif;--sans:'Montserrat',-apple-system,sans-serif;
+  --mono:ui-monospace,'SF Mono',Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--verde-950);color:var(--crema);font-family:var(--sans);line-height:1.55;font-size:14px}
+.wrap{max-width:1400px;margin:0 auto;padding:clamp(18px,4vw,40px)}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;
+  border-bottom:1px solid var(--linea);padding-bottom:14px;margin-bottom:20px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(21px,3.4vw,28px);margin:0;color:var(--crema)}
+.sub{color:var(--gris);font-size:12.5px;margin-top:4px}
+#sello{font-family:var(--mono);font-size:10.5px;color:var(--gris);border:1px solid var(--linea);
+  padding:5px 9px;border-radius:3px;white-space:nowrap}
+a.volver{font-family:var(--mono);font-size:10.5px;color:var(--gris);text-decoration:none}
+a.volver:hover{color:var(--crema)}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;
+  background:var(--linea);border:1px solid var(--linea);margin-bottom:20px}
+.kpi{background:var(--verde-900);padding:13px 15px}
+.kpi .n{font-family:var(--mono);font-size:21px;font-weight:600;display:block;line-height:1.1;
+  font-variant-numeric:tabular-nums;color:var(--crema)}
+.kpi .l{font-size:10px;text-transform:uppercase;letter-spacing:.03em;color:var(--gris);margin-top:5px;display:block}
+.oro{color:var(--acento-suave)}
+
+.filtros{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.filtro-btn{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;
+  background:var(--verde-900);border:1px solid var(--linea);color:var(--gris);
+  padding:6px 13px;border-radius:20px;cursor:pointer}
+.filtro-btn.activo{background:var(--acento);color:var(--texto-oscuro);border-color:var(--acento)}
+
+.tablero{display:grid;grid-template-columns:repeat(5,minmax(220px,1fr));gap:10px;overflow-x:auto;padding-bottom:10px}
+.columna{background:var(--verde-800);border-radius:6px;padding:10px;min-width:220px}
+.columna-titulo{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.04em;
+  color:var(--gris);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.columna-titulo .cnt{background:var(--verde-900);border-radius:10px;padding:1px 8px;font-weight:600}
+.tarjeta{background:var(--verde-900);border:1px solid var(--linea);border-radius:5px;padding:11px 12px;margin-bottom:8px;cursor:pointer}
+.tarjeta:hover{border-color:var(--acento)}
+.tarjeta-nombre{font-weight:600;font-size:13px;color:var(--crema)}
+.tarjeta-meta{color:var(--gris);font-size:11px;margin-top:2px}
+.tarjeta-canal{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:9px;
+  text-transform:uppercase;letter-spacing:.03em;padding:2px 7px;border-radius:3px;margin-top:7px}
+.c-whatsapp{background:rgba(79,122,99,.13);color:var(--ok)}
+.c-linkedin{background:rgba(138,106,44,.13);color:var(--warn)}
+.c-instagram{background:rgba(162,75,58,.13);color:var(--mal)}
+.c-email{background:rgba(143,114,56,.14);color:var(--acento-suave)}
+.tarjeta-ultima{font-size:10.5px;color:var(--gris);margin-top:6px;border-top:1px solid var(--linea);padding-top:6px}
+.vacio-col{color:var(--gris);font-size:11.5px;padding:10px 4px;text-align:center}
+
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(28,42,32,.35);z-index:50;align-items:center;justify-content:center;padding:20px}
+.modal-bg.abierto{display:flex}
+.modal{background:var(--verde-900);border-radius:8px;padding:22px 24px;max-width:480px;width:100%;max-height:85vh;overflow-y:auto}
+.modal-cerrar{float:right;cursor:pointer;color:var(--gris);font-family:var(--mono);font-size:11px;background:none;border:none}
+.modal h3{font-family:var(--serif);font-size:18px;margin:0 0 4px;color:var(--crema)}
+.modal .sub2{color:var(--gris);font-size:12px;margin-bottom:14px}
+.modal-fila{display:flex;justify-content:space-between;font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--linea)}
+.modal-fila span:first-child{color:var(--gris)}
+.etapa-select{width:100%;margin-top:12px;padding:8px;border:1px solid var(--linea);border-radius:4px;
+  background:var(--verde-950);color:var(--crema);font-family:var(--sans);font-size:12.5px}
+.timeline{margin-top:14px}
+.timeline-item{font-size:12px;padding:7px 0;border-bottom:1px solid var(--linea)}
+.timeline-item .cuando{font-family:var(--mono);font-size:10px;color:var(--gris)}
+.cargando{color:var(--gris);font-size:12.5px;padding:16px 0}
+@media(max-width:900px){.tablero{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>CRM en vivo</h1>
+      <div class="sub">SAS Consultora &middot; WhatsApp, LinkedIn, Instagram, Facebook y mail en un solo lugar &middot; <a class="volver" href="./estado-29dde00f1115c6bc.html">&larr; volver al estado general</a></div>
+    </div>
+    <div id="sello">consultando&hellip;</div>
+  </header>
+
+  <div class="kpis" id="kpis"><p class="cargando">Cargando&hellip;</p></div>
+
+  <div class="filtros" id="filtros"></div>
+
+  <div class="tablero" id="tablero"><p class="cargando">Cargando&hellip;</p></div>
+</div>
+
+<div class="modal-bg" id="modal-bg">
+  <div class="modal">
+    <button class="modal-cerrar" onclick="cerrarModal()">cerrar &times;</button>
+    <div id="modal-cuerpo"></div>
+  </div>
+</div>
+
+<script>
+const API = "https://valncabvniutalzhovuc.supabase.co/functions/v1/crm-sas?k=29dde00f1115c6bc";
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const ETAPAS = [
+  { key: "nuevo", label: "Nuevo" },
+  { key: "contactado", label: "Contactado" },
+  { key: "en_conversacion", label: "En conversación" },
+  { key: "diagnostico_agendado", label: "Diagnóstico agendado" },
+  { key: "cliente", label: "Cliente" },
+];
+
+const canalIcono = { whatsapp: "WA", linkedin: "LI", instagram: "IG", facebook: "FB", email: "@" };
+
+let DATA = null;
+let FILTRO_CANAL = "todos";
+
+function hace(iso){
+  if(!iso) return "";
+  const seg = Math.floor((Date.now() - new Date(iso)) / 1000);
+  if (seg < 60) return "recién";
+  if (seg < 3600) return `hace ${Math.floor(seg/60)} min`;
+  if (seg < 86400) return `hace ${Math.floor(seg/3600)} h`;
+  return `hace ${Math.floor(seg/86400)} días`;
+}
+
+function renderFiltros(){
+  const canales = ["todos", ...Object.keys(DATA.por_canal ?? {})];
+  $("filtros").innerHTML = canales.map(c =>
+    `<button class="filtro-btn ${c === FILTRO_CANAL ? "activo" : ""}" onclick="filtrarCanal('${c}')">${c === "todos" ? "Todos" : esc(c)} ${c !== "todos" ? "(" + DATA.por_canal[c] + ")" : ""}</button>`
+  ).join("");
+}
+
+function filtrarCanal(c){ FILTRO_CANAL = c; renderTodo(); }
+
+function renderKpis(){
+  const total = DATA.total ?? 0;
+  const conv = (DATA.por_etapa?.en_conversacion ?? 0) + (DATA.por_etapa?.diagnostico_agendado ?? 0) + (DATA.por_etapa?.cliente ?? 0);
+  $("kpis").innerHTML = `
+    <div class="kpi"><span class="n oro">${total}</span><span class="l">Contactos totales</span></div>
+    <div class="kpi"><span class="n">${DATA.por_canal?.whatsapp ?? 0}</span><span class="l">WhatsApp</span></div>
+    <div class="kpi"><span class="n">${DATA.por_canal?.linkedin ?? 0}</span><span class="l">LinkedIn</span></div>
+    <div class="kpi"><span class="n">${DATA.por_canal?.instagram ?? 0}</span><span class="l">Instagram/Facebook</span></div>
+    <div class="kpi"><span class="n ${conv ? "oro" : ""}">${conv}</span><span class="l">En conversación o más</span></div>
+  `;
+}
+
+function tarjetaHtml(c){
+  const ultima = (c.interacciones ?? [])[0];
+  return `<div class="tarjeta" onclick="abrirModal(${c.id})">
+    <div class="tarjeta-nombre">${esc(c.nombre)}</div>
+    ${c.empresa || c.cargo ? `<div class="tarjeta-meta">${esc(c.cargo ?? "")}${c.cargo && c.empresa ? " · " : ""}${esc(c.empresa ?? "")}</div>` : ""}
+    <span class="tarjeta-canal c-${esc(c.canal_origen)}">${canalIcono[c.canal_origen] ?? c.canal_origen}</span>
+    ${ultima ? `<div class="tarjeta-ultima">${ultima.direccion === "entrante" ? "↙" : "↗"} ${esc((ultima.texto ?? "").slice(0,60))} · ${hace(ultima.ocurrido_en)}</div>` : ""}
+  </div>`;
+}
+
+function renderTablero(){
+  const contactos = (DATA.contactos ?? []).filter(c => FILTRO_CANAL === "todos" || c.canal_origen === FILTRO_CANAL);
+  $("tablero").innerHTML = ETAPAS.map(e => {
+    const items = contactos.filter(c => c.etapa === e.key);
+    return `<div class="columna">
+      <div class="columna-titulo">${esc(e.label)} <span class="cnt">${items.length}</span></div>
+      ${items.length ? items.map(tarjetaHtml).join("") : `<div class="vacio-col">vacío</div>`}
+    </div>`;
+  }).join("");
+}
+
+function abrirModal(id){
+  const c = (DATA.contactos ?? []).find(x => x.id === id);
+  if(!c) return;
+  const timeline = (c.interacciones ?? []).map(i => `<div class="timeline-item">
+    <span class="cuando">${hace(i.ocurrido_en)}</span> — ${i.direccion === "entrante" ? "↙ recibido" : "↗ enviado"} (${esc(i.canal)}): ${esc((i.texto ?? "").slice(0,140))}
+  </div>`).join("") || `<p class="cargando">Sin interacciones registradas todavía.</p>`;
+
+  $("modal-cuerpo").innerHTML = `
+    <h3>${esc(c.nombre)}</h3>
+    <div class="sub2">${esc(c.cargo ?? "")}${c.cargo && c.empresa ? " · " : ""}${esc(c.empresa ?? "")}</div>
+    ${c.telefono ? `<div class="modal-fila"><span>Teléfono</span><span>${esc(c.telefono)}</span></div>` : ""}
+    ${c.email ? `<div class="modal-fila"><span>Email</span><span>${esc(c.email)}</span></div>` : ""}
+    ${c.linkedin_url ? `<div class="modal-fila"><span>LinkedIn</span><span><a href="${esc(c.linkedin_url)}" target="_blank">perfil</a></span></div>` : ""}
+    <div class="modal-fila"><span>Canal de origen</span><span>${esc(c.canal_origen)}</span></div>
+    <div class="modal-fila"><span>Fuente</span><span>${esc(c.fuente ?? "")}</span></div>
+    <select class="etapa-select" onchange="cambiarEtapa(${c.id}, this.value)">
+      ${ETAPAS.map(e => `<option value="${e.key}" ${e.key === c.etapa ? "selected" : ""}>${esc(e.label)}</option>`).join("")}
+      <option value="perdido" ${c.etapa === "perdido" ? "selected" : ""}>Perdido</option>
+    </select>
+    <div class="timeline"><div class="columna-titulo" style="margin-top:14px">Historial</div>${timeline}</div>
+  `;
+  $("modal-bg").classList.add("abierto");
+}
+
+function cerrarModal(){ $("modal-bg").classList.remove("abierto"); }
+
+async function cambiarEtapa(id, etapa){
+  try{
+    await fetch(API, { method: "POST", headers: {"content-type":"application/json"}, body: JSON.stringify({ accion: "cambiar_etapa", id, etapa }) });
+    await cargar();
+    cerrarModal();
+  }catch(e){ alert("No se pudo guardar: " + e.message); }
+}
+
+function renderTodo(){ renderKpis(); renderFiltros(); renderTablero(); }
+
+async function cargar(){
+  try{
+    const r = await fetch(API, { cache: "no-store" });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    DATA = await r.json();
+    renderTodo();
+    $("sello").textContent = "actualizado " + hace(DATA.generado_en);
+  }catch(e){
+    $("tablero").innerHTML = `<p class="cargando">No se pudo cargar: ${esc(e.message)}</p>`;
+  }
+}
+
+cargar();
+setInterval(cargar, 60000);
+document.addEventListener("visibilitychange", () => { if(!document.hidden) cargar(); });
+$("modal-bg").addEventListener("click", e => { if(e.target === $("modal-bg")) cerrarModal(); });
+</script>
+</body>
+</html>
