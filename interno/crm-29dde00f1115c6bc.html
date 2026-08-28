@@ -152,12 +152,18 @@ function renderKpis(){
   `;
 }
 
+const segmentoLabel = { dueño: "Dueño", mando_medio: "Mando medio", colaborador: "Colaborador", deportista: "Deportista", sin_dato: "", otro: "" };
+
 function tarjetaHtml(c){
   const ultima = (c.interacciones ?? [])[0];
   return `<div class="tarjeta" onclick="abrirModal(${c.id})">
     <div class="tarjeta-nombre">${esc(c.nombre)}</div>
     ${c.empresa || c.cargo ? `<div class="tarjeta-meta">${esc(c.cargo ?? "")}${c.cargo && c.empresa ? " · " : ""}${esc(c.empresa ?? "")}</div>` : ""}
-    <span class="tarjeta-canal c-${esc(c.canal_origen)}">${canalIcono[c.canal_origen] ?? c.canal_origen}</span>
+    <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:7px">
+      <span class="tarjeta-canal c-${esc(c.canal_origen)}">${canalIcono[c.canal_origen] ?? c.canal_origen}</span>
+      ${segmentoLabel[c.segmento] ? `<span class="tarjeta-canal" style="background:var(--verde-800);color:var(--gris)">${esc(segmentoLabel[c.segmento])}</span>` : ""}
+    </div>
+    ${c.procedencia ? `<div class="tarjeta-meta" style="margin-top:5px">${esc(c.procedencia)}</div>` : ""}
     ${ultima ? `<div class="tarjeta-ultima">${ultima.direccion === "entrante" ? "↙" : "↗"} ${esc((ultima.texto ?? "").slice(0,60))} · ${hace(ultima.ocurrido_en)}</div>` : ""}
   </div>`;
 }
@@ -187,7 +193,8 @@ function abrirModal(id){
     ${c.email ? `<div class="modal-fila"><span>Email</span><span>${esc(c.email)}</span></div>` : ""}
     ${c.linkedin_url ? `<div class="modal-fila"><span>LinkedIn</span><span><a href="${esc(c.linkedin_url)}" target="_blank">perfil</a></span></div>` : ""}
     <div class="modal-fila"><span>Canal de origen</span><span>${esc(c.canal_origen)}</span></div>
-    <div class="modal-fila"><span>Fuente</span><span>${esc(c.fuente ?? "")}</span></div>
+    <div class="modal-fila"><span>De dónde salió</span><span>${esc(c.procedencia ?? c.fuente ?? "")}</span></div>
+    <div class="modal-fila"><span>Segmento</span><span>${esc(segmentoLabel[c.segmento] || c.segmento || "sin clasificar")}</span></div>
     <select class="etapa-select" onchange="cambiarEtapa(${c.id}, this.value)">
       ${ETAPAS.map(e => `<option value="${e.key}" ${e.key === c.etapa ? "selected" : ""}>${esc(e.label)}</option>`).join("")}
       <option value="perdido" ${c.etapa === "perdido" ? "selected" : ""}>Perdido</option>
