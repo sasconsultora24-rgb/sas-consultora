@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Contenido · SAS Consultora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde-950:#F5F2E9;--verde-900:#FFFFFF;--verde-800:#ECE7D8;
+  --acento:#A98F52;--acento-suave:#8F7238;
+  --crema:#1C2A20;--gris:#5C6058;--linea:rgba(28,42,32,.12);
+  --ok:#4F7A63;--warn:#8A6A2C;--mal:#A24B3A;--texto-oscuro:#1C2A20;
+  --serif:'Fraunces',Georgia,serif;--sans:'Montserrat',-apple-system,sans-serif;
+  --mono:ui-monospace,'SF Mono',Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--verde-950);color:var(--crema);font-family:var(--sans);line-height:1.55;font-size:14px}
+.wrap{max-width:1200px;margin:0 auto;padding:clamp(18px,4vw,40px)}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;
+  border-bottom:1px solid var(--linea);padding-bottom:14px;margin-bottom:20px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(21px,3.4vw,28px);margin:0;color:var(--crema)}
+.sub{color:var(--gris);font-size:12.5px;margin-top:4px}
+a.volver{font-family:var(--mono);font-size:10.5px;color:var(--gris);text-decoration:none}
+a.volver:hover{color:var(--crema)}
+#sello{font-family:var(--mono);font-size:10.5px;color:var(--gris);border:1px solid var(--linea);padding:5px 9px;border-radius:3px;white-space:nowrap}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;
+  background:var(--linea);border:1px solid var(--linea);margin-bottom:18px}
+.kpi{background:var(--verde-900);padding:12px 14px}
+.kpi .n{font-family:var(--mono);font-size:19px;font-weight:600;display:block;line-height:1.1;color:var(--crema)}
+.kpi .l{font-size:9.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--gris);margin-top:4px;display:block}
+.oro{color:var(--acento-suave)}
+
+.filtros{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.filtro-btn{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.03em;
+  background:var(--verde-900);border:1px solid var(--linea);color:var(--gris);
+  padding:5px 12px;border-radius:20px;cursor:pointer}
+.filtro-btn.activo{background:var(--acento);color:var(--texto-oscuro);border-color:var(--acento)}
+
+.semana-titulo{font-family:var(--serif);font-weight:600;font-size:18px;margin:34px 0 4px;
+  padding-left:11px;border-left:2px solid var(--acento)}
+.semana-titulo:first-of-type{margin-top:0}
+.dia-titulo{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--acento-suave);margin:18px 0 10px}
+
+.piezas-dia{display:grid;gap:10px}
+.pieza{background:var(--verde-900);border:1px solid var(--linea);border-radius:6px;padding:16px 18px}
+.pieza.descartado{opacity:.45}
+.pieza-cab{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.pieza-titulo{font-family:var(--serif);font-size:15.5px;font-weight:600;color:var(--crema)}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.tag{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.03em;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.t-canal{background:var(--crema);color:var(--verde-950)}
+.t-pilar{background:rgba(79,122,99,.13);color:var(--ok)}
+.t-audiencia{border:1px solid var(--acento);color:var(--acento-suave);background:transparent}
+.t-formato{border:1px solid var(--linea);color:var(--gris);background:transparent}
+.botones{display:flex;gap:6px;flex-shrink:0}
+.btn{font-family:var(--mono);font-size:9.5px;font-weight:500;background:transparent;border:1px solid var(--acento);
+  color:var(--acento-suave);padding:5px 11px;border-radius:3px;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--acento);color:var(--texto-oscuro)}
+.btn:disabled{opacity:.35;cursor:default}
+.pill-aprobado{font-family:var(--mono);font-size:9px;padding:3px 9px;border-radius:20px;background:rgba(79,122,99,.13);color:var(--ok)}
+
+.campo-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.04em;color:var(--gris);margin:10px 0 3px}
+.campo-label:first-of-type{margin-top:8px}
+.hook{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--crema);margin:0}
+.texto-pieza{font-size:12.5px;white-space:pre-wrap;line-height:1.6}
+.hashtags{font-family:var(--mono);font-size:11px;color:var(--acento-suave)}
+.justificacion{font-size:11.5px;color:var(--gris);line-height:1.6;background:var(--verde-950);padding:9px 11px;border-radius:4px;margin-top:6px}
+.cta-txt{font-size:12.5px;font-weight:600}
+
+.cargando{color:var(--gris);font-size:12.5px;padding:16px 0}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Contenido</h1>
+      <div class="sub">SAS Consultora &middot; todos los canales, con el porqué de cada pieza &middot; <a class="volver" href="./estado-29dde00f1115c6bc.html">&larr; volver al estado general</a></div>
+    </div>
+    <div id="sello">consultando&hellip;</div>
+  </header>
+
+  <div class="kpis" id="kpis"><p class="cargando">Cargando&hellip;</p></div>
+  <div class="filtros" id="filtros"></div>
+  <div id="cuerpo"><p class="cargando">Cargando&hellip;</p></div>
+</div>
+
+<script>
+const API = "https://valncabvniutalzhovuc.supabase.co/functions/v1/contenido-sas?k=29dde00f1115c6bc";
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const canalNombre = { linkedin: "LinkedIn", instagram: "Instagram", tiktok: "TikTok", facebook: "Facebook", whatsapp: "WhatsApp", mail: "Mail" };
+const pilarLabel = { autoridad: "Autoridad", venta_sutil: "Venta sutil", conversion: "Conversión" };
+
+function hace(iso){
+  const seg = Math.floor((Date.now() - new Date(iso)) / 1000);
+  if (seg < 60) return "recién";
+  if (seg < 3600) return `hace ${Math.floor(seg/60)} min`;
+  if (seg < 86400) return `hace ${Math.floor(seg/3600)} h`;
+  return `hace ${Math.floor(seg/86400)} días`;
+}
+function fechaLarga(f){
+  const d = new Date(f + "T12:00:00");
+  return d.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" });
+}
+function numSemana(f){
+  const inicio = new Date("2026-08-31T12:00:00");
+  const dias = Math.floor((new Date(f + "T12:00:00") - inicio) / 86400000);
+  return Math.max(1, Math.floor(dias / 7) + 1);
+}
+
+let DATA = [];
+let FILTRO = "todos";
+
+function piezaHtml(p){
+  const esGuion = /\[GUION|0-\d/.test(p.texto ?? "");
+  return `<div class="pieza ${p.estado === "descartado" ? "descartado" : ""}">
+    <div class="pieza-cab">
+      <div>
+        <div class="pieza-titulo">${esc(p.titulo)}</div>
+        <div class="tags">
+          <span class="tag t-canal">${esc(canalNombre[p.canal] ?? p.canal)}</span>
+          ${p.formato ? `<span class="tag t-formato">${esc(p.formato)}</span>` : ""}
+          ${p.pilar ? `<span class="tag t-pilar">${esc(pilarLabel[p.pilar] ?? p.pilar)}</span>` : ""}
+          ${p.audiencia ? `<span class="tag t-audiencia">${esc(p.audiencia.replaceAll("_"," "))}</span>` : ""}
+        </div>
+      </div>
+      <div class="botones">
+        ${p.estado === "borrador"
+          ? `<button class="btn" onclick="accion(${p.id}, 'aprobar', this)">aprobar</button><button class="btn" onclick="accion(${p.id}, 'descartar', this)">descartar</button>`
+          : p.estado === "aprobado" ? `<span class="pill-aprobado">aprobado</span>`
+          : `<span class="pill-aprobado" style="background:rgba(162,75,58,.13);color:var(--mal)">descartado</span>`}
+      </div>
+    </div>
+    ${p.hooks ? `<div class="campo-label">Hook</div><p class="hook">${esc(p.hooks)}</p>` : ""}
+    <div class="campo-label">${esGuion ? "Guion / contenido" : "Texto"}</div>
+    <div class="texto-pieza">${esc(p.texto)}</div>
+    ${p.cta ? `<div class="campo-label">CTA</div><div class="cta-txt">${esc(p.cta)}</div>` : ""}
+    ${p.hashtags ? `<div class="campo-label">Hashtags</div><div class="hashtags">${esc(p.hashtags)}</div>` : ""}
+    ${p.justificacion ? `<div class="campo-label">Por qué esta pieza</div><div class="justificacion">${esc(p.justificacion)}</div>` : ""}
+  </div>`;
+}
+
+function renderKpis(){
+  const activas = DATA.filter(p => p.estado !== "descartado");
+  const porCanal = {};
+  for(const p of activas) porCanal[p.canal] = (porCanal[p.canal] ?? 0) + 1;
+  $("kpis").innerHTML = `
+    <div class="kpi"><span class="n oro">${activas.length}</span><span class="l">Piezas activas</span></div>
+    ${Object.keys(porCanal).map(c => `<div class="kpi"><span class="n">${porCanal[c]}</span><span class="l">${esc(canalNombre[c] ?? c)}</span></div>`).join("")}
+  `;
+}
+
+function renderFiltros(){
+  const canales = ["todos", ...new Set(DATA.map(p => p.canal))];
+  $("filtros").innerHTML = canales.map(c =>
+    `<button class="filtro-btn ${c === FILTRO ? "activo" : ""}" onclick="filtrar('${c}')">${c === "todos" ? "Todos" : esc(canalNombre[c] ?? c)}</button>`
+  ).join("");
+}
+function filtrar(c){ FILTRO = c; renderCuerpo(); }
+
+function renderCuerpo(){
+  const piezas = DATA.filter(p => FILTRO === "todos" || p.canal === FILTRO);
+  if(!piezas.length){ $("cuerpo").innerHTML = `<p class="cargando">No hay piezas para este filtro.</p>`; return; }
+
+  const porSemana = {};
+  for(const p of piezas){
+    const s = numSemana(p.fecha);
+    (porSemana[s] ??= {})[p.fecha] ??= [];
+    porSemana[s][p.fecha].push(p);
+  }
+  const semanas = Object.keys(porSemana).sort((a,b) => a - b);
+
+  $("cuerpo").innerHTML = semanas.map(s => {
+    const fechas = Object.keys(porSemana[s]).sort();
+    return `<div class="semana-titulo">Semana ${s}</div>
+      ${fechas.map(f => `<div class="dia-titulo">${esc(fechaLarga(f))}</div>
+        <div class="piezas-dia">${porSemana[s][f].map(piezaHtml).join("")}</div>`).join("")}`;
+  }).join("");
+}
+
+async function accion(id, accion, btn){
+  btn.disabled = true; btn.textContent = "guardando…";
+  try{
+    const r = await fetch(API, { method: "POST", headers: {"content-type":"application/json"}, body: JSON.stringify({ id, accion }) });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    await cargar();
+  }catch(e){ btn.disabled = false; alert("No se pudo guardar: " + e.message); }
+}
+
+async function cargar(){
+  try{
+    const r = await fetch(API, { cache: "no-store" });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    DATA = d.piezas ?? [];
+    renderKpis(); renderFiltros(); renderCuerpo();
+    $("sello").textContent = "actualizado " + hace(new Date().toISOString());
+  }catch(e){
+    $("cuerpo").innerHTML = `<p class="cargando">No se pudo cargar: ${esc(e.message)}</p>`;
+  }
+}
+cargar();
+setInterval(cargar, 60000);
+document.addEventListener("visibilitychange", () => { if(!document.hidden) cargar(); });
+</script>
+</body>
+</html>
