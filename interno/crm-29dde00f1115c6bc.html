@@ -44,7 +44,9 @@ a.volver:hover{color:var(--crema)}
   padding:6px 13px;border-radius:20px;cursor:pointer}
 .filtro-btn.activo{background:var(--acento);color:var(--texto-oscuro);border-color:var(--acento)}
 
-.tablero{display:grid;grid-template-columns:repeat(5,minmax(220px,1fr));gap:10px;overflow-x:auto;padding-bottom:10px}
+.tablero{display:grid;grid-template-columns:repeat(6,minmax(210px,1fr));gap:10px;overflow-x:auto;padding-bottom:10px}
+.columna.alerta .columna-titulo{color:var(--mal)}
+.columna.alerta{background:rgba(162,75,58,.08)}
 .columna{background:var(--verde-800);border-radius:6px;padding:10px;min-width:220px}
 .columna-titulo{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.04em;
   color:var(--gris);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
@@ -112,6 +114,7 @@ const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;
 const ETAPAS = [
   { key: "nuevo", label: "Nuevo" },
   { key: "contactado", label: "Contactado" },
+  { key: "no_entregado", label: "No entregado" },
   { key: "en_conversacion", label: "En conversación" },
   { key: "diagnostico_agendado", label: "Diagnóstico agendado" },
   { key: "cliente", label: "Cliente" },
@@ -172,7 +175,7 @@ function renderTablero(){
   const contactos = (DATA.contactos ?? []).filter(c => FILTRO_CANAL === "todos" || c.canal_origen === FILTRO_CANAL);
   $("tablero").innerHTML = ETAPAS.map(e => {
     const items = contactos.filter(c => c.etapa === e.key);
-    return `<div class="columna">
+    return `<div class="columna ${e.key === "no_entregado" && items.length ? "alerta" : ""}">
       <div class="columna-titulo">${esc(e.label)} <span class="cnt">${items.length}</span></div>
       ${items.length ? items.map(tarjetaHtml).join("") : `<div class="vacio-col">vacío</div>`}
     </div>`;
