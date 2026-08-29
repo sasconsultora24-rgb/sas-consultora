@@ -402,11 +402,13 @@ function piezaHtml(p){
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:5px">
         ${p.formato ? `<span class="tag" style="background:transparent;border:1px solid var(--linea);color:var(--gris)">${esc(p.formato)}</span>` : ""}
         ${p.pilar ? `<span class="tag t-ok">${esc(pilarLabel[p.pilar] ?? p.pilar)}</span>` : ""}
+        ${p.audiencia ? `<span class="tag" style="background:transparent;border:1px solid var(--acento);color:var(--acento-suave)">${esc(p.audiencia.replaceAll("_"," "))}</span>` : ""}
       </div>
       ${p.hooks ? `<div class="nota" style="margin-top:8px"><strong>Hook:</strong> ${esc(p.hooks)}</div>` : ""}
       <div class="nota" style="white-space:pre-wrap;margin-top:6px">${esc(p.texto)}</div>
       ${p.cta ? `<div class="nota" style="margin-top:6px"><strong>CTA:</strong> ${esc(p.cta)}</div>` : ""}
       ${p.hashtags ? `<div class="nota" style="margin-top:4px;color:var(--acento-suave)">${esc(p.hashtags)}</div>` : ""}
+      ${p.justificacion ? `<details style="margin-top:8px"><summary style="cursor:pointer;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--gris)">Por qué esta pieza</summary><div class="nota" style="margin-top:6px">${esc(p.justificacion)}</div></details>` : ""}
     </div>
     <div style="display:flex;gap:8px;flex-shrink:0">
       ${p.estado === "borrador"
