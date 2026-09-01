@@ -145,6 +145,19 @@
   .recordatorio.gerencia { border-left-color: var(--gold); }
   .recordatorio .fecha { color: var(--ink-soft); font-size: 10.5px; float: right; }
 
+  .tarea { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .tarea:last-child { border-bottom: none; }
+  .tarea.hecha .tarea-texto { text-decoration: line-through; color: var(--ink-soft); }
+  .tarea-texto { flex: 1; }
+  .quien-pill { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px; text-transform: uppercase; letter-spacing: .03em; flex-shrink: 0; }
+  .quien-pill.seba { background: var(--gold-bg); color: var(--gold); }
+  .quien-pill.claude { background: var(--blue-bg); color: var(--blue); }
+  .quien-pill.sistema { background: var(--teal-bg); color: var(--teal); }
+  .dia-grupo { margin-bottom: 14px; }
+  .dia-grupo:last-child { margin-bottom: 0; }
+  .dia-fecha { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); margin-bottom: 4px; padding-top: 8px; border-top: 1px solid var(--line); }
+  .dia-grupo:first-child .dia-fecha { border-top: none; padding-top: 0; }
+
   .cargando { padding: 60px 20px; text-align: center; color: var(--ink-soft); font-size: 13px; }
   footer { padding: 22px clamp(16px,3vw,32px); font-size: 11px; color: var(--ink-soft); border-top: 1px solid var(--line); }
 </style>
@@ -234,6 +247,43 @@ function render(d) {
     if (alertas.length) html += `<p style="margin:0">${alertas.slice(0,3).join(" ")}</p>`;
     html += `</div>`;
   }
+
+  // HOY
+  const quienInfo = { SEBA: ["seba","Vos"], CLAUDE: ["claude","Claude"], SISTEMA: ["sistema","Sistema"] };
+  const filaTarea = (t) => {
+    const [clase, etiqueta] = quienInfo[t.quien] || ["sistema", esc(t.quien)];
+    const hecha = t.estado === "hecho";
+    const bloqueada = t.estado === "bloqueado";
+    return `<div class="tarea ${hecha?"hecha":""}">
+      <span class="quien-pill ${clase}">${etiqueta}</span>
+      <span class="tarea-texto">${esc(t.texto)}</span>
+      ${bloqueada ? `<span class="pill alert">bloqueado</span>` : hecha ? `<span class="pill on">hecho</span>` : `<span class="pill off">pendiente</span>`}
+    </div>`;
+  };
+  const hoyList = d.tareas_hoy || [];
+  html += `<section><p class="eyebrow">Lo de hoy, sin vueltas</p><h2>Hoy</h2>
+    <div class="card">
+      ${hoyList.length ? hoyList.map(filaTarea).join("") : `<p class="nota" style="margin:0">Nada cargado para hoy en el plan de tareas.</p>`}
+    </div>
+  </section>`;
+
+  // Semana — agenda agrupada por día
+  const porDia = (lista) => {
+    const grupos = {};
+    lista.forEach(t => { (grupos[t.fecha] ??= []).push(t); });
+    return Object.keys(grupos).sort().map(f => `
+      <div class="dia-grupo">
+        <div class="dia-fecha">${new Date(f+"T00:00:00").toLocaleDateString("es-AR",{weekday:"long",day:"2-digit",month:"2-digit"})}</div>
+        ${grupos[f].map(filaTarea).join("")}
+      </div>`).join("");
+  };
+  html += `<section><p class="eyebrow">Los próximos 7 días</p><h2>Calendario semanal</h2>
+    <div class="card">${porDia(d.tareas_semana || []) || `<p class="nota" style="margin:0">Sin tareas cargadas esta semana.</p>`}</div>
+  </section>`;
+
+  html += `<section><p class="eyebrow">Todo el mes</p><h2>Calendario mensual</h2>
+    <div class="card">${porDia(d.tareas_mes || []) || `<p class="nota" style="margin:0">Sin tareas cargadas este mes.</p>`}</div>
+  </section>`;
 
   // Objetivo del mes
   html += `<section><p class="eyebrow">El número que importa</p><h2>Objetivo del mes</h2>
