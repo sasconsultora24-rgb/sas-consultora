@@ -4,759 +4,336 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Estado en vivo · SAS Consultora</title>
+<title>Panel Central · SAS Consultora</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --verde-950:#F5F2E9;--verde-900:#FFFFFF;--verde-800:#ECE7D8;
-  --acento:#A98F52;--acento-suave:#8F7238;
-  --crema:#1C2A20;--gris:#5C6058;--linea:rgba(28,42,32,.12);
-  --ok:#4F7A63;--warn:#8A6A2C;--mal:#A24B3A;--texto-oscuro:#1C2A20;
-  --serif:'Fraunces',Georgia,serif;--sans:'Montserrat',-apple-system,sans-serif;
-  --mono:ui-monospace,'SF Mono',Menlo,monospace;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--verde-950);color:var(--crema);font-family:var(--sans);line-height:1.55;font-size:14px}
-.wrap{max-width:1080px;margin:0 auto;padding:clamp(18px,4vw,40px)}
-header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;
-  border-bottom:1px solid var(--linea);padding-bottom:14px;margin-bottom:0}
-h1{font-family:var(--serif);font-weight:600;font-size:clamp(21px,3.4vw,28px);margin:0;color:var(--crema)}
-.sub{color:var(--gris);font-size:12.5px;margin-top:4px}
-#sello{font-family:var(--mono);font-size:10.5px;color:var(--gris);border:1px solid var(--linea);
-  padding:5px 9px;border-radius:3px;white-space:nowrap}
+  :root {
+    --paper: #EFEDE6; --surface: #F7F6F1; --raised: #FFFFFF;
+    --ink: #10251B; --ink-soft: #55665C; --line: #CFCEC4;
+    --gold: #9A7818; --gold-bg: #F4EBD3;
+    --good: #2F6B4C; --good-bg: #DFEBE3;
+    --warn: #A2661B; --warn-bg: #F5E7CF;
+    --alert: #9C3A26; --alert-bg: #F4DCD5;
+    --blue: #2E5C8A; --blue-bg: #E1EAF3;
+    --plum: #6B4A8A; --plum-bg: #EAE1F3;
+    --teal: #1F7A6C; --teal-bg: #DCEFEA;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sans: "Inter", -apple-system, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    --display: "Fraunces", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0F251B; --surface: #17301F; --raised: #1C3826;
+      --ink: #E8EDE7; --ink-soft: #9BB0A2; --line: #2C4A36;
+      --gold: #C9A227; --gold-bg: #2E2A12;
+      --good: #6FBE93; --good-bg: #17331F;
+      --warn: #DFA75C; --warn-bg: #33280F;
+      --alert: #E0846E; --alert-bg: #3A2018;
+      --blue: #8FB4DE; --blue-bg: #16283A;
+      --plum: #C6A9E8; --plum-bg: #2A1F3A;
+      --teal: #7ED6C4; --teal-bg: #123330;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0F251B; --surface: #17301F; --raised: #1C3826;
+    --ink: #E8EDE7; --ink-soft: #9BB0A2; --line: #2C4A36;
+    --gold: #C9A227; --gold-bg: #2E2A12;
+    --good: #6FBE93; --good-bg: #17331F;
+    --warn: #DFA75C; --warn-bg: #33280F;
+    --alert: #E0846E; --alert-bg: #3A2018;
+    --blue: #8FB4DE; --blue-bg: #16283A;
+    --plum: #C6A9E8; --plum-bg: #2A1F3A;
+    --teal: #7ED6C4; --teal-bg: #123330;
+  }
+  * { box-sizing: border-box; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--sans);
+    line-height: 1.5; padding: 0 0 60px; max-width: 1220px; margin: 0 auto;
+  }
+  h1,h2,h3,h4 { font-family: var(--display); font-weight: 600; text-wrap: balance; }
+  .mono,.pill,.num,.fecha { font-family: var(--mono); }
+  a { color: inherit; }
 
-nav.indice{position:sticky;top:0;z-index:10;display:flex;gap:2px;overflow-x:auto;
-  background:var(--verde-950);border-bottom:1px solid var(--linea);padding:9px 0;margin-bottom:6px;
-  -ms-overflow-style:none;scrollbar-width:none}
-nav.indice::-webkit-scrollbar{display:none}
-nav.indice a{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;
-  color:var(--gris);text-decoration:none;padding:6px 12px;border-radius:20px;white-space:nowrap;
-  border:1px solid transparent}
-nav.indice a:hover{color:var(--crema);border-color:var(--linea)}
+  header.top {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    padding: 22px clamp(16px,3vw,32px); border-bottom: 2px solid var(--ink); position: sticky; top: 0;
+    background: var(--paper); z-index: 10;
+  }
+  header.top h1 { font-size: 22px; margin: 0; letter-spacing: -0.01em; }
+  header.top .sub { font-size: 11px; color: var(--ink-soft); font-family: var(--mono); margin-top: 3px; }
+  .nav { display: flex; gap: 6px; flex-wrap: wrap; }
+  .nav button, .nav a button {
+    font-family: var(--mono); font-size: 11px; background: var(--surface); color: var(--ink-soft);
+    border: 1px solid var(--line); padding: 7px 14px; border-radius: 4px; cursor: pointer;
+  }
+  .nav button.destacado { background: var(--gold); color: var(--paper); border-color: var(--gold); font-weight: 600; }
 
-.zona{margin-top:38px;padding-top:4px;scroll-margin-top:50px}
-.zona-titulo{font-family:var(--serif);font-weight:600;font-size:clamp(17px,2.2vw,20px);
-  color:var(--crema);margin:0 0 4px;padding-left:11px;border-left:2px solid var(--acento)}
-.zona-sub{color:var(--gris);font-size:12px;margin:0 0 16px}
+  main { padding: 28px clamp(16px,3vw,32px); }
+  section { margin-bottom: 40px; }
+  section > h2 {
+    font-size: 20px; margin: 0 0 16px; display: flex; align-items: baseline; gap: 12px;
+  }
+  section > h2::after { content:""; flex:1; height:1px; background: var(--line); align-self: center; }
+  section > .eyebrow { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--gold); margin: 0 0 4px; }
 
-h2{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;
-  color:var(--gris);margin:26px 0 10px;display:flex;align-items:center;gap:10px;font-weight:500}
-h2:first-of-type{margin-top:0}
-h2::after{content:"";flex:1;height:1px;background:var(--linea)}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;
-  background:var(--linea);border:1px solid var(--linea)}
-.kpi{background:var(--verde-900);padding:13px 15px}
-.kpi .n{font-family:var(--mono);font-size:21px;font-weight:600;display:block;line-height:1.1;
-  font-variant-numeric:tabular-nums;color:var(--crema)}
-.kpi .l{font-size:10px;text-transform:uppercase;letter-spacing:.03em;color:var(--gris);margin-top:5px;display:block}
-.ok{color:var(--ok)}.warn{color:var(--warn)}.mal{color:var(--mal)}.oro{color:var(--acento-suave)}
-table{width:100%;border-collapse:collapse;font-size:12.5px}
-th,td{text-align:left;padding:8px 11px;border-bottom:1px solid var(--linea)}
-th{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gris);font-weight:500}
-td.m{font-family:var(--mono);font-size:11.5px}
-.tw{border:1px solid var(--linea);background:var(--verde-900);overflow-x:auto}
-.pill{font-family:var(--mono);font-size:9.5px;padding:3px 8px;border-radius:3px;white-space:nowrap;font-weight:500}
-.p-ok{background:rgba(79,122,99,.13);color:var(--ok)}
-.p-warn{background:rgba(138,106,44,.13);color:var(--warn)}
-.p-mal{background:rgba(162,75,58,.13);color:var(--mal)}
-.nota{font-size:11.5px;color:var(--gris);margin-top:9px}
-#err{background:rgba(162,75,58,.08);border:1px solid var(--mal);color:var(--mal);
-  padding:12px 15px;border-radius:3px;margin-top:18px;font-size:12.5px;display:none}
-.alerta-bloqueo{background:rgba(162,75,58,.08);border-left:2px solid var(--mal);
-  padding:14px 16px;border-radius:3px;margin-top:18px;font-size:13px;line-height:1.55}
-.alerta-bloqueo b{color:var(--mal)}
-.cargando{color:var(--gris);font-size:12.5px;padding:16px 0}
-footer{border-top:1px solid var(--linea);margin-top:40px;padding-top:14px;font-size:11px;color:var(--gris)}
-.tag{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.02em;
-  padding:2px 6px;border-radius:3px;white-space:nowrap}
-.t-seba{background:rgba(138,106,44,.13);color:var(--warn)}
-.t-sistema{background:rgba(79,122,99,.13);color:var(--ok)}
-.t-claude{background:rgba(143,114,56,.14);color:var(--acento-suave)}
-.t-ok{background:rgba(138,106,44,.18);color:var(--warn)}
+  .alerta { background: var(--alert-bg); border: 1px solid var(--alert); border-left: 4px solid var(--alert); padding: 14px 18px; margin-bottom: 24px; font-size: 13.5px; border-radius: 0 6px 6px 0; }
+  .alerta b { color: var(--alert); }
 
-.hoy{border:1px solid var(--linea);background:var(--verde-900);border-radius:4px;padding:16px 18px 6px}
-.hoy-fecha{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.05em;
-  color:var(--acento-suave);margin-bottom:12px}
-.tarea{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--linea)}
-.tarea:last-child{border-bottom:none}
-.tarea.hecho{opacity:.42}
-.tarea.hecho .tarea-texto{text-decoration:line-through}
-.tarea-texto{flex:1;font-size:13.5px}
-.check{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--linea);flex-shrink:0;margin-top:2px}
-.check.si{background:var(--ok);border-color:var(--ok)}
-.vacio-hoy{color:var(--gris);font-size:13px;padding:6px 0 12px}
+  /* Accesos rápidos */
+  .accesos-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(150px,1fr)); gap: 10px; }
+  .acceso {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    background: var(--raised); border: 1px solid var(--line); border-radius: 10px; padding: 16px 8px;
+    text-decoration: none; text-align: center; transition: transform .12s, border-color .12s, box-shadow .12s;
+  }
+  .acceso:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,.08); }
+  .acceso .ic { font-size: 22px; line-height: 1; }
+  .acceso .nombre { font-size: 11.5px; font-weight: 600; }
 
-.tarea-btn{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.02em;
-  background:transparent;border:1px solid var(--acento);color:var(--acento-suave);
-  padding:6px 12px;border-radius:3px;cursor:pointer;white-space:nowrap;flex-shrink:0}
-.tarea-btn:hover{background:var(--acento);color:var(--texto-oscuro)}
-.tarea-btn:disabled{opacity:.35;cursor:default}
+  .grid-4 { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 14px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap: 14px; }
 
-.barra-bg{background:var(--verde-950);border:1px solid var(--linea);border-radius:20px;height:8px;overflow:hidden;margin-top:8px}
-.barra-fill{background:var(--acento);height:100%;border-radius:20px}
-.form-diag{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;margin-top:14px;
-  padding:14px;background:var(--verde-950);border:1px solid var(--linea);border-radius:4px}
-.form-diag label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.03em;color:var(--gris);display:block;margin-bottom:4px}
-.form-diag input,.form-diag select{width:100%;background:var(--verde-900);border:1px solid var(--linea);color:var(--crema);
-  padding:6px 8px;border-radius:3px;font-family:var(--sans);font-size:12.5px}
-.form-diag button{grid-column:1/-1;justify-self:start;font-family:var(--mono);font-size:10px;font-weight:500;
-  background:var(--acento);color:var(--texto-oscuro);border:none;padding:8px 15px;border-radius:3px;cursor:pointer}
-.form-diag button:disabled{opacity:.5;cursor:default}
-.agente-card{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--linea)}
-.agente-card:last-child{border-bottom:none}
-.agente-nombre{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--crema)}
-.agente-detalle{color:var(--gris);font-size:11.5px;margin-top:3px;max-width:60ch}
+  .card { background: var(--raised); border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px; }
+  .card.unidad { border-top: 4px solid var(--accent, var(--gold)); }
+  .card.unidad.c-consultoria { --accent: var(--gold); }
+  .card.unidad.c-talento { --accent: var(--blue); }
+  .card.unidad.c-academia { --accent: var(--plum); }
+  .card.unidad.c-pmt { --accent: var(--teal); }
+  .card h3 { margin: 0 0 10px; font-size: 16px; }
+  .card .nota { font-size: 11.5px; color: var(--ink-soft); margin: 0 0 12px; }
+  .fila { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .fila:last-child { border-bottom: none; }
+  .fila .num { font-weight: 700; }
 
-.fase{border:1px solid var(--linea);background:var(--verde-950);border-radius:5px;padding:16px 18px;margin-bottom:12px}
-.fase.actual{border-color:var(--acento)}
-.fase-cab{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:9px}
-.fase-nombre{font-family:var(--serif);font-size:15.5px;font-weight:600;color:var(--crema)}
-.fase-fechas{font-family:var(--mono);font-size:10px;color:var(--gris)}
-.fase-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.03em;color:var(--gris);margin:9px 0 4px}
-.fase textarea{width:100%;background:var(--verde-950);border:1px solid var(--linea);color:var(--crema);
-  font-family:var(--sans);font-size:12.5px;line-height:1.5;padding:8px 10px;border-radius:3px;resize:vertical;min-height:56px}
-.fase-acciones{display:flex;gap:8px;align-items:center;margin-top:9px;flex-wrap:wrap}
-.fase-guardar{font-family:var(--mono);font-size:10px;font-weight:500;background:var(--acento);color:var(--texto-oscuro);
-  border:none;padding:6px 13px;border-radius:3px;cursor:pointer}
-.fase-guardar:disabled{opacity:.5}
-.crono{margin-top:8px}
-.crono-item{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--linea);font-size:12.5px;align-items:flex-start}
-.crono-item:last-child{border-bottom:none}
-.crono-fecha{font-family:var(--mono);font-size:10.5px;color:var(--gris);width:70px;flex-shrink:0;padding-top:1px}
-.crono-item.hecho{opacity:.42}
-.crono-item.hecho .crono-texto{text-decoration:line-through}
+  .meta-box { background: var(--surface); border: 1px dashed var(--gold); border-radius: 8px; padding: 18px 22px; display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 16px; margin-bottom: 20px; }
+  .meta-box .m-item b { display: block; color: var(--gold); font-family: var(--mono); font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .meta-box .m-item .v { font-size: 24px; font-weight: 700; font-family: var(--display); }
+  .barra { height: 10px; background: var(--surface); border: 1px solid var(--line); margin-top: 8px; overflow: hidden; border-radius: 5px; }
+  .barra > div { height: 100%; background: linear-gradient(90deg, var(--gold), var(--good)); }
 
-.unidades{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--linea);border:1px solid var(--linea)}
-.unidad{background:var(--verde-900);padding:15px 17px}
-.unidad h3{font-family:var(--serif);font-size:14px;font-weight:600;margin:0 0 10px;color:var(--crema)}
-.unidad-fila{display:flex;justify-content:space-between;font-size:12.5px;padding:5px 0;border-bottom:1px solid var(--linea)}
-.unidad-fila:last-child{border-bottom:none}
-.unidad-fila span:last-child{font-family:var(--mono);font-variant-numeric:tabular-nums}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  .tramo { background: var(--raised); border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin-bottom: 8px; }
+  .tramo.actual { border-left: 4px solid var(--gold); }
+  .tramo-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; }
+  .tramo-head h4 { margin: 0; font-size: 15px; font-family: var(--sans); font-weight: 700; }
+  .tramo .fechas { font-size: 11px; color: var(--ink-soft); font-family: var(--mono); }
+  .tramo .meta { font-size: 12.5px; margin: 6px 0 0; }
+  .pill { font-size: 10px; padding: 3px 9px; border-radius: 20px; text-transform: uppercase; letter-spacing: .03em; font-weight: 600; }
+  .pill.on { background: var(--good-bg); color: var(--good); }
+  .pill.off { background: var(--surface); color: var(--ink-soft); border: 1px solid var(--line); }
+  .pill.warn { background: var(--warn-bg); color: var(--warn); }
+  .pill.alert { background: var(--alert-bg); color: var(--alert); }
+
+  .agente-card { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .agente-card:last-child { border-bottom: none; }
+  .agente-nombre { font-family: var(--mono); font-size: 12.5px; font-weight: 600; }
+  .agente-detalle { font-size: 11.5px; color: var(--ink-soft); margin-top: 3px; max-width: 62ch; }
+  .agente-horario { font-size: 10.5px; color: var(--gold); margin-top: 3px; font-family: var(--mono); }
+
+  table.simple { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  table.simple th, table.simple td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  table.simple th { font-family: var(--mono); font-size: 10px; text-transform: uppercase; color: var(--ink-soft); }
+
+  .sitios-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(190px,1fr)); gap: 8px; }
+  .sitio-link { display: block; background: var(--raised); border: 1px solid var(--line); border-radius: 8px; padding: 13px 15px; font-size: 12.5px; text-decoration: none; transition: border-color .15s; font-weight: 600; }
+  .sitio-link:hover { border-color: var(--gold); }
+  .sitio-link .u { display:block; font-size: 10.5px; color: var(--ink-soft); margin-top: 4px; word-break: break-all; font-family: var(--mono); font-weight: 400; }
+
+  .recordatorio { background: var(--raised); border: 1px solid var(--line); border-left: 3px solid var(--ink-soft); border-radius: 0 6px 6px 0; padding: 11px 15px; margin-bottom: 6px; font-size: 12px; }
+  .recordatorio.gerencia { border-left-color: var(--gold); }
+  .recordatorio .fecha { color: var(--ink-soft); font-size: 10.5px; float: right; }
+
+  .cargando { padding: 60px 20px; text-align: center; color: var(--ink-soft); font-size: 13px; }
+  footer { padding: 22px clamp(16px,3vw,32px); font-size: 11px; color: var(--ink-soft); border-top: 1px solid var(--line); }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div>
-      <h1>Estado en vivo</h1>
-      <div class="sub">SAS Consultora &middot; se actualiza solo cada minuto</div>
+
+<header class="top">
+  <div>
+    <h1>Panel Central · SAS Consultora</h1>
+    <div class="sub" id="actualizado">cargando...</div>
+  </div>
+  <div class="nav">
+    <a href="https://sasconsultora.com/interno/contenido-29dde00f1115c6bc.html" target="_blank"><button class="destacado">Contenido →</button></a>
+    <button onclick="cargar()">↻ Actualizar</button>
+  </div>
+</header>
+
+<main>
+  <section id="accesos">
+    <p class="eyebrow">Todo SAS, un clic</p>
+    <h2>Accesos rápidos</h2>
+    <div class="accesos-grid">
+      <a class="acceso" href="https://sasconsultora.com/interno/contenido-29dde00f1115c6bc.html" target="_blank"><span class="ic">🗂️</span><span class="nombre">Contenido</span></a>
+      <a class="acceso" href="https://sasconsultora.com" target="_blank"><span class="ic">🌐</span><span class="nombre">sasconsultora.com</span></a>
+      <a class="acceso" href="https://talento.sasconsultora.com" target="_blank"><span class="ic">🧑‍💼</span><span class="nombre">Talento &amp; Desarrollo</span></a>
+      <a class="acceso" href="https://academia.sasconsultora.com" target="_blank"><span class="ic">🎓</span><span class="nombre">Academia</span></a>
+      <a class="acceso" href="https://pmt-players.vercel.app/home.html" target="_blank"><span class="ic">🧠</span><span class="nombre">PMT</span></a>
+      <a class="acceso" href="https://drive.google.com/drive/my-drive" target="_blank"><span class="ic">📁</span><span class="nombre">Drive</span></a>
+      <a class="acceso" href="https://www.canva.com" target="_blank"><span class="ic">🎨</span><span class="nombre">Canva</span></a>
+      <a class="acceso" href="https://www.linkedin.com/feed/" target="_blank"><span class="ic">💼</span><span class="nombre">LinkedIn</span></a>
+      <a class="acceso" href="https://www.instagram.com" target="_blank"><span class="ic">📷</span><span class="nombre">Instagram</span></a>
+      <a class="acceso" href="https://www.tiktok.com/@pymesalhorno" target="_blank"><span class="ic">🎵</span><span class="nombre">TikTok</span></a>
+      <a class="acceso" href="https://www.facebook.com" target="_blank"><span class="ic">📘</span><span class="nombre">Facebook</span></a>
+      <a class="acceso" href="https://business.facebook.com" target="_blank"><span class="ic">⚙️</span><span class="nombre">Meta Business</span></a>
     </div>
-    <div id="sello">consultando&hellip;</div>
-  </header>
-
-  <nav class="indice">
-    <a href="#z-hoy">Hoy</a>
-    <a href="#z-semana">Semana</a>
-    <a href="#z-estrategia">Estrategia</a>
-    <a href="#z-negocio">Negocio</a>
-    <a href="#z-contenido">Contenido</a>
-    <a href="#z-whatsapp">WhatsApp</a>
-    <a href="#z-linkedin">LinkedIn</a>
-    <a href="#z-agentes">Coordinación</a>
-    <a href="./crm-29dde00f1115c6bc.html" style="color:var(--acento-suave)">CRM →</a>
-    <a href="./contenido-29dde00f1115c6bc.html" style="color:var(--acento-suave)">Contenido →</a>
-  </nav>
-
-  <div id="alerta"></div>
-
-  <section class="zona" id="z-hoy">
-    <h2 class="zona-titulo">Hoy</h2>
-    <p class="zona-sub">Todo lo que pasa hoy, te involucre o no. Lo marco yo a medida que se hace &mdash; vos avisame cuando termines tu parte.</p>
-    <div class="hoy">
-      <div class="hoy-fecha" id="hoy-fecha">&nbsp;</div>
-      <div id="hoy-tareas"><p class="vacio-hoy">Cargando&hellip;</p></div>
-    </div>
-    <div id="recordatorios-cuerpo" style="margin-top:16px"></div>
   </section>
 
-  <section class="zona" id="z-semana">
-    <h2 class="zona-titulo">Semana</h2>
-    <p class="zona-sub">Todas las actividades de la semana, no solo las tuyas.</p>
-    <div id="semana-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
-  </section>
+  <div id="app">
+    <div class="cargando">Cargando datos en vivo…</div>
+  </div>
+</main>
 
-  <section class="zona" id="z-estrategia">
-    <h2 class="zona-titulo">La estrategia</h2>
-    <p class="zona-sub">Objetivo: USD 2.500/mes de recurrencia para el 20 de noviembre. Los 3 tramos y el cronograma desglosado.</p>
-    <div id="estrategia-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
-  </section>
-
-  <section class="zona" id="z-negocio">
-    <h2 class="zona-titulo">El negocio</h2>
-    <p class="zona-sub">Las 3 unidades y en qué está cada una &mdash; para planificar, no solo para mirar plata.</p>
-    <div id="unidades-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
-    <h2>Diagnósticos y objetivo del mes</h2>
-    <div id="negocio-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
-  </section>
-
-  <section class="zona" id="z-contenido">
-    <h2 class="zona-titulo">Contenido</h2>
-    <p class="zona-sub">Todos los canales, con el porqué de cada pieza al lado. Nada se publica sin tu aprobación. <a href="./contenido-29dde00f1115c6bc.html" style="color:var(--acento-suave)">Abrir panel completo &rarr;</a></p>
-    <div id="contenido-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
-  </section>
-
-  <section class="zona" id="z-whatsapp">
-    <h2 class="zona-titulo">WhatsApp</h2>
-    <p class="zona-sub">Consulta a Meta y a la base cada vez que abrís la página. No es una foto.</p>
-    <div id="err"></div>
-    <div id="cuerpo"><p class="cargando">Cargando&hellip;</p></div>
-    <h2>Lista de contactos &middot; los 53 del stand</h2>
-    <div id="contactos-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
-  </section>
-
-  <section class="zona" id="z-linkedin">
-    <h2 class="zona-titulo">LinkedIn</h2>
-    <p class="zona-sub">Prospección, conexiones y mensajes &mdash; bajo gerencia acá, no en otra app.</p>
-    <div id="li-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
-  </section>
-
-  <section class="zona" id="z-agentes">
-    <h2 class="zona-titulo">Coordinación</h2>
-    <p class="zona-sub">Los agentes que corren en tu Mac &mdash; cuándo corrieron, qué hicieron, cuándo corren de nuevo.</p>
-    <div id="agentes-cuerpo"><p class="cargando">Cargando&hellip;</p></div>
-  </section>
-
-  <footer>
-    Las marcaciones (hecho / pendiente) las hace Claude, no botones acá. WhatsApp, LinkedIn, Negocio y Coordinación consultan la fuente real cada vez que abrís la página.
-  </footer>
-</div>
+<footer>Panel Central SAS Consultora · junta Consultoría, Talento &amp; Desarrollo, Academia, PMT, contenido, WhatsApp, LinkedIn y la estrategia de los 3 tramos en un solo lugar. Datos en vivo desde Supabase.</footer>
 
 <script>
-const API_ESTADO = "https://valncabvniutalzhovuc.supabase.co/functions/v1/estado-sas?k=29dde00f1115c6bc";
-const API_PLAN = "https://valncabvniutalzhovuc.supabase.co/functions/v1/plan-sas?k=29dde00f1115c6bc";
-const API_LINKEDIN = "https://valncabvniutalzhovuc.supabase.co/functions/v1/linkedin-sas?k=29dde00f1115c6bc";
-const API_NEGOCIO = "https://valncabvniutalzhovuc.supabase.co/functions/v1/negocio-sas?k=29dde00f1115c6bc";
-const API_CAMPANA = "https://valncabvniutalzhovuc.supabase.co/functions/v1/campana-sas?k=29dde00f1115c6bc";
-const API_CONTENIDO = "https://valncabvniutalzhovuc.supabase.co/functions/v1/contenido-sas?k=29dde00f1115c6bc";
-const API_CONTACTOS = "https://valncabvniutalzhovuc.supabase.co/functions/v1/whatsapp-contactos-sas?k=29dde00f1115c6bc";
-const $ = id => document.getElementById(id);
+const API = "https://valncabvniutalzhovuc.supabase.co/functions/v1/panel-central-sas?k=29dde00f1115c6bc";
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmtARS = (n) => "$" + Math.round(n||0).toLocaleString("es-AR");
+const fmtFecha = (iso) => iso ? new Date(iso).toLocaleDateString("es-AR",{day:"2-digit",month:"2-digit"}) : "—";
+const hace = (iso) => {
+  if (!iso) return null;
+  const ms = Date.now() - new Date(iso).getTime();
+  const min = Math.floor(ms/60000);
+  if (min < 60) return `hace ${min} min`;
+  const h = Math.floor(min/60);
+  if (h < 24) return `hace ${h} h`;
+  return `hace ${Math.floor(h/24)} d`;
+};
 
-const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-
-function hace(iso){
-  const seg = Math.floor((Date.now() - new Date(iso)) / 1000);
-  if (seg < 60) return "recién";
-  if (seg < 3600) return `hace ${Math.floor(seg/60)} min`;
-  if (seg < 86400) return `hace ${Math.floor(seg/3600)} h`;
-  return `hace ${Math.floor(seg/86400)} días`;
-}
-
-function fechaLarga(f){
-  const d = new Date(f + "T12:00:00");
-  return d.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" });
-}
-function fechaCorta(f){
-  const d = new Date(f + "T12:00:00");
-  return d.toLocaleDateString("es-AR", { day: "numeric", month: "short" });
-}
-
-const tagOwner = q => `<span class="tag t-${q === "SEBA" ? "seba" : q === "CLAUDE" ? "claude" : "sistema"}">${esc(q)}</span>`;
-
-function hoyISO(){
-  const d = new Date();
-  const tz = new Date(d.toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" }));
-  return tz.toISOString().slice(0, 10);
-}
-
-let ULTIMAS_TAREAS = [];
-let ULTIMAS_PLANTILLAS = [];
-
-function chequearBloqueos(){
-  const tandaPendiente = ULTIMAS_TAREAS.some(t => (t.estado === "pendiente" || t.estado === "bloqueado") && /tanda/i.test(t.texto));
-  if (!tandaPendiente || !ULTIMAS_PLANTILLAS.length) { $("alerta").innerHTML = ""; return; }
-
-  const plantilla = ULTIMAS_PLANTILLAS.find(p => p.nombre === "entrega_guia_diagnostico");
-  if (plantilla && plantilla.estado !== "APPROVED"){
-    $("alerta").innerHTML = `<div class="alerta-bloqueo">
-      <b>Bloqueado:</b> hay una Tanda en el plan, pero la plantilla
-      <span class="m">entrega_guia_diagnostico</span> sigue <b>${esc(plantilla.estado)}</b> en Meta
-      (categoría ${esc(plantilla.categoria)}). No se puede enviar hasta que Meta la apruebe.
-      Se recalcula solo cada vez que abrís esta página.
-    </div>`;
-  } else {
-    $("alerta").innerHTML = "";
-  }
-}
-
-function filaTareaLectura(t){
-  const hecha = t.estado === "hecho";
-  const okTag = t.necesita_ok ? ` <span class="tag t-ok">SEBA aprueba</span>` : "";
-  const estadoTxt = t.estado === "bloqueado" ? ' <span class="tag p-mal" style="padding:2px 6px">bloqueado</span>' : "";
-  return `<div class="tarea ${hecha ? "hecho" : ""}">
-    <span class="check ${hecha ? "si" : ""}"></span>
-    <div class="tarea-texto">${esc(t.texto)} ${tagOwner(t.quien)}${okTag}${estadoTxt}</div>
-  </div>`;
-}
-
-async function cargarPlan(){
-  try{
-    const r = await fetch(API_PLAN, { cache: "no-store" });
-    if(!r.ok) throw new Error("HTTP " + r.status);
+async function cargar() {
+  const app = document.getElementById("app");
+  try {
+    const r = await fetch(API, { cache: "no-store" });
     const d = await r.json();
-    const tareas = d.tareas ?? [];
-    ULTIMAS_TAREAS = tareas;
-    chequearBloqueos();
-    const hoy = hoyISO();
-
-    $("hoy-fecha").textContent = fechaLarga(hoy);
-    const deHoy = tareas.filter(t => t.fecha === hoy);
-    $("hoy-tareas").innerHTML = deHoy.length
-      ? deHoy.map(filaTareaLectura).join("")
-      : `<p class="vacio-hoy">Nada con fecha de hoy en el plan.</p>`;
-
-    $("semana-cuerpo").innerHTML = tareas.length
-      ? `<div class="tw"><table><thead><tr><th>Fecha</th><th>Qué</th><th>Quién</th><th>Estado</th></tr></thead><tbody>
-        ${tareas.map(t => `<tr>
-          <td class="m">${esc(fechaLarga(t.fecha))}</td>
-          <td>${esc(t.texto)}${t.necesita_ok ? ' <span class="tag t-ok">SEBA aprueba</span>' : ""}</td>
-          <td>${tagOwner(t.quien)}</td>
-          <td><span class="pill ${t.estado === "hecho" ? "p-ok" : t.estado === "bloqueado" ? "p-mal" : "p-warn"}">${esc(t.estado)}</span></td>
-        </tr>`).join("")}
-      </tbody></table></div>`
-      : `<p class="nota">No hay actividades cargadas.</p>`;
-  }catch(e){
-    $("hoy-tareas").innerHTML = `<p class="vacio-hoy">No se pudo cargar: ${esc(e.message)}</p>`;
-  }
-}
-
-async function accionLinkedin(id, accion, btn){
-  btn.disabled = true;
-  btn.textContent = "guardando…";
-  try{
-    const r = await fetch(API_LINKEDIN, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ id, accion }),
-    });
-    if(!r.ok) throw new Error("HTTP " + r.status);
-    await cargarLinkedin();
-  }catch(e){
-    btn.disabled = false;
-    btn.textContent = "reintentar";
-    alert("No se pudo guardar: " + e.message);
-  }
-}
-
-async function accionContenido(id, accion, btn){
-  btn.disabled = true; btn.textContent = "guardando…";
-  try{
-    const r = await fetch(API_CONTENIDO, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ id, accion }),
-    });
-    if(!r.ok) throw new Error("HTTP " + r.status);
-    await cargarContenido();
-  }catch(e){
-    btn.disabled = false; btn.textContent = "reintentar";
-    alert("No se pudo guardar: " + e.message);
-  }
-}
-
-const canalNombre = { linkedin: "LinkedIn", instagram: "Instagram", tiktok: "TikTok", facebook: "Facebook", whatsapp: "WhatsApp", mail: "Mail" };
-
-async function cargarContactos(){
-  try{
-    const r = await fetch(API_CONTACTOS, { cache: "no-store" });
-    if(!r.ok) throw new Error("HTTP " + r.status);
-    const d = await r.json();
-    const pt = d.por_tanda ?? {};
-    const tandas = Object.keys(pt).sort((a,b) => Number(a) - Number(b));
-
-    let h = `<div class="kpis">
-      <div class="kpi"><span class="n oro">${d.total ?? 0}</span><span class="l">Contactos totales</span></div>
-      <div class="kpi"><span class="n">${d.pendientes ?? 0}</span><span class="l">Sin contactar</span></div>
-      ${tandas.map(t => `<div class="kpi"><span class="n">${pt[t].enviado}/${pt[t].total}</span><span class="l">Tanda ${esc(t)}</span></div>`).join("")}
-    </div>`;
-
-    const pendientes = (d.contactos ?? []).filter(c => c.estado === "pendiente");
-    if (pendientes.length){
-      h += `<div class="tw" style="margin-top:14px"><table><thead><tr><th>Nombre</th><th>Tanda</th><th>Momento</th><th>¿Dueño?</th></tr></thead><tbody>
-        ${pendientes.map(c => `<tr>
-          <td>${esc(c.primer_nombre)}</td>
-          <td class="m">${c.tanda}</td>
-          <td class="m">${esc(c.momento ?? "")}</td>
-          <td class="m">${c.es_dueno ? "sí" : "no"}</td>
-        </tr>`).join("")}
-      </tbody></table></div>`;
-    } else {
-      h += `<p class="nota">No hay contactos pendientes de la lista.</p>`;
-    }
-
-    $("contactos-cuerpo").innerHTML = h;
-  }catch(e){
-    $("contactos-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar: ${esc(e.message)}</p>`;
-  }
-}
-
-async function cargarContenido(){
-  try{
-    const r = await fetch(API_CONTENIDO, { cache: "no-store" });
-    if(!r.ok) throw new Error("HTTP " + r.status);
-    const d = await r.json();
-    const piezas = d.piezas ?? [];
-    const borrador = piezas.filter(p => p.estado === "borrador").length;
-    const aprobado = piezas.filter(p => p.estado === "aprobado").length;
-    const porCanal = {};
-    for(const p of piezas) porCanal[p.canal] = (porCanal[p.canal] ?? 0) + 1;
-
-    $("contenido-cuerpo").innerHTML = piezas.length
-      ? `<div class="kpis">
-          <div class="kpi"><span class="n oro">${piezas.length}</span><span class="l">Piezas cargadas</span></div>
-          <div class="kpi"><span class="n ${borrador ? "warn" : ""}">${borrador}</span><span class="l">Esperando tu revisión</span></div>
-          <div class="kpi"><span class="n ok">${aprobado}</span><span class="l">Aprobadas</span></div>
-          ${Object.keys(porCanal).map(c => `<div class="kpi"><span class="n">${porCanal[c]}</span><span class="l">${esc(canalNombre[c] ?? c)}</span></div>`).join("")}
-        </div>
-        <p class="nota" style="margin-top:14px">Revisá y aprobá cada pieza en el <a href="./contenido-29dde00f1115c6bc.html" style="color:var(--acento-suave)">panel completo de Contenido &rarr;</a></p>`
-      : `<p class="nota">No hay piezas esperando revisión.</p>`;
-  }catch(e){
-    $("contenido-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar: ${esc(e.message)}</p>`;
-  }
-}
-
-async function cargarLinkedin(){
-  try{
-    const r = await fetch(API_LINKEDIN, { cache: "no-store" });
-    if(!r.ok) throw new Error("HTTP " + r.status);
-    const d = await r.json();
-    const res = d.resumen ?? {};
-    const total = Object.values(res).reduce((a,b) => a+b, 0);
-    const logs = d.ultimos_logs ?? [];
-
-    let h = `<div class="kpis">
-      <div class="kpi"><span class="n oro">${total}</span><span class="l">Prospectos totales</span></div>
-      <div class="kpi"><span class="n">${res.solicitud_enviada ?? 0}</span><span class="l">Solicitud enviada</span></div>
-      <div class="kpi"><span class="n ${res.conectado ? "ok" : ""}">${res.conectado ?? 0}</span><span class="l">Conectado</span></div>
-      <div class="kpi"><span class="n ${res.mensaje_borrador ? "warn" : ""}">${res.mensaje_borrador ?? 0}</span><span class="l">Mensajes para revisar</span></div>
-      <div class="kpi"><span class="n">${res.mensaje_enviado ?? 0}</span><span class="l">Mensajes enviados</span></div>
-    </div>`;
-
-    const pend = d.pendientes ?? [];
-    if (pend.length){
-      h += `<div class="hoy" style="margin-top:14px">
-        <div class="hoy-fecha">Mensajes 1 para revisar</div>
-        ${pend.map(p => `<div class="tarea">
-          <div class="tarea-texto"><strong>${esc(p.nombre)}</strong>${p.cargo ? " — " + esc(p.cargo) : ""}${p.empresa ? " (" + esc(p.empresa) + ")" : ""}
-            <div class="nota" style="white-space:pre-wrap;margin-top:6px">${esc(p.mensaje_1 || "(sin texto todavía)")}</div>
-          </div>
-          <div style="display:flex;gap:8px;flex-shrink:0">
-            ${p.estado === "mensaje_borrador"
-              ? `<button class="tarea-btn" onclick="accionLinkedin(${p.id}, 'aprobar', this)">aprobar</button>`
-              : `<span class="tag t-ok">aprobado, esperando envío</span>`}
-            <button class="tarea-btn" onclick="accionLinkedin(${p.id}, 'descartar', this)">descartar</button>
-          </div>
-        </div>`).join("")}
-      </div>`;
-    }
-
-    if (logs.length){
-      h += `<div class="tw" style="margin-top:14px"><table><thead><tr><th>Fecha</th><th>Qué pasó</th><th>Solicitudes</th><th>Mensajes</th></tr></thead><tbody>
-        ${logs.map(l => `<tr>
-          <td class="m">${esc(l.fecha)}</td>
-          <td>${esc(l.resumen)}${l.error ? `<br><span style="color:var(--mal)">Error: ${esc(l.error)}</span>` : ""}</td>
-          <td class="m">${l.solicitudes_enviadas}</td>
-          <td class="m">${l.mensajes_enviados}</td>
-        </tr>`).join("")}
-      </tbody></table></div>`;
-    }
-
-    $("li-cuerpo").innerHTML = h;
-  }catch(e){
-    $("li-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar LinkedIn: ${esc(e.message)}</p>`;
-  }
-}
-
-const moneda = n => "$" + Math.round(n).toLocaleString("es-AR");
-
-async function guardarFase(id, btn){
-  const card = btn.closest(".fase");
-  btn.disabled = true; btn.textContent = "guardando…";
-  try{
-    const r = await fetch(API_CAMPANA, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        accion: "editar_fase", id,
-        acciones: card.querySelector("[data-campo='acciones']").value,
-        meta: card.querySelector("[data-campo='meta']").value,
-      }),
-    });
-    if(!r.ok) throw new Error("HTTP " + r.status);
-    await cargarEstrategia();
-  }catch(e){
-    alert("No se pudo guardar: " + e.message);
-  }finally{
-    btn.disabled = false; btn.textContent = "Guardar";
-  }
-}
-
-async function cargarEstrategia(){
-  try{
-    const r = await fetch(API_CAMPANA, { cache: "no-store" });
-    if(!r.ok) throw new Error("HTTP " + r.status);
-    const d = await r.json();
-    const fases = d.fases ?? [];
-    const crono = d.cronograma ?? [];
-    const recordatorios = d.recordatorios ?? [];
-    const hoy = hoyISO();
-
-    $("estrategia-cuerpo").innerHTML = `
-      <p class="nota" style="max-width:70ch;margin:0 0 16px;font-size:12.5px">
-        Una sola puerta de entrada (el diagnóstico de 30 minutos), tres caminos de salida
-        (el líder, la organización, el equipo), y una base recurrente — Talento &amp; Desarrollo —
-        que sostiene el negocio mientras la consultoría crece.
-      </p>
-      ${fases.map(f => {
-        const actual = hoy >= f.desde && hoy <= f.hasta;
-        const items = crono.filter(c => c.fase_id === f.id);
-        return `<div class="fase ${actual ? "actual" : ""}">
-          <div class="fase-cab">
-            <span class="fase-nombre">${esc(f.nombre)}${actual ? ' <span class="tag t-ok">tramo actual</span>' : ""}</span>
-            <span class="fase-fechas">${fechaCorta(f.desde)} — ${fechaCorta(f.hasta)}</span>
-          </div>
-          <div class="fase-label">Qué se hace</div>
-          <textarea data-campo="acciones">${esc(f.acciones)}</textarea>
-          <div class="fase-label">La meta de este tramo</div>
-          <textarea data-campo="meta" style="min-height:38px">${esc(f.meta)}</textarea>
-          <div class="fase-acciones">
-            <button class="fase-guardar" onclick="guardarFase(${f.id}, this)">Guardar</button>
-          </div>
-          ${items.length ? `<div class="fase-label" style="margin-top:14px">Cronograma de este tramo</div>
-          <div class="crono">
-            ${items.map(it => `<div class="crono-item ${it.hecho ? "hecho" : ""}">
-              <span class="crono-fecha">${fechaCorta(it.fecha)}</span>
-              <span class="crono-texto">${esc(it.item)}</span>
-            </div>`).join("")}
-          </div>` : ""}
-        </div>`;
-      }).join("")}
-    `;
-
-    $("recordatorios-cuerpo").innerHTML = recordatorios.length ? `
-      <h2>Recordatorios</h2>
-      <div class="hoy">
-        ${recordatorios.map(r => `<div class="tarea ${r.hecho ? "hecho" : ""}">
-          <span class="check ${r.hecho ? "si" : ""}"></span>
-          <div class="tarea-texto">${esc(r.texto)} <span class="tag" style="color:var(--gris);background:transparent">${fechaCorta(r.fecha)}</span></div>
-        </div>`).join("")}
-      </div>` : "";
-  }catch(e){
-    $("estrategia-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar: ${esc(e.message)}</p>`;
-  }
-}
-
-async function enviarDiagnostico(ev){
-  ev.preventDefault();
-  const f = ev.target;
-  const btn = f.querySelector("button");
-  btn.disabled = true; btn.textContent = "guardando…";
-  try{
-    const r = await fetch(API_NEGOCIO, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        accion: "diagnostico",
-        fecha_agendada: f.fecha.value,
-        contacto: f.contacto.value,
-        telefono: f.telefono.value || null,
-        origen: f.origen.value,
-        estado: f.estado.value,
-        resultado: f.resultado.value,
-        producto: f.producto.value || null,
-        monto: f.monto.value ? Number(f.monto.value) : null,
-      }),
-    });
-    if(!r.ok) throw new Error("HTTP " + r.status);
-    f.reset();
-    await cargarNegocio();
-  }catch(e){
-    alert("No se pudo guardar: " + e.message);
-  }finally{
-    btn.disabled = false; btn.textContent = "Guardar diagnóstico";
-  }
-}
-
-async function cargarNegocio(){
-  try{
-    const r = await fetch(API_NEGOCIO, { cache: "no-store" });
-    if(!r.ok) throw new Error("HTTP " + r.status);
-    const d = await r.json();
-    const total = (d.facturado_consultoria ?? 0) + (d.facturado_talento ?? 0);
-    const meta = d.objetivo_mensual_ars ?? 0;
-    const pct = meta ? Math.min(100, (total / meta) * 100) : 0;
-    const e = d.embudo ?? {};
-
-    let h = `
-    <div class="kpis">
-      <div class="kpi"><span class="n oro">${moneda(total)}</span><span class="l">Facturado este mes</span></div>
-      <div class="kpi"><span class="n">${moneda(meta)}</span><span class="l">Objetivo (USD 2.500)</span></div>
-      <div class="kpi"><span class="n">${e.agendados ?? 0}</span><span class="l">Diagnósticos agendados</span></div>
-      <div class="kpi"><span class="n">${e.realizados ?? 0}</span><span class="l">Realizados</span></div>
-      <div class="kpi"><span class="n ${e.ventas ? "ok" : ""}">${e.ventas ?? 0}</span><span class="l">Ventas</span></div>
-    </div>
-    <div class="barra-bg"><div class="barra-fill" style="width:${pct.toFixed(1)}%"></div></div>
-    <p class="nota">${pct.toFixed(0)}% del objetivo del mes. Facturado consultoría: ${moneda(d.facturado_consultoria ?? 0)} · Talento &amp; Desarrollo: ${moneda(d.facturado_talento ?? 0)}.</p>
-
-    <form class="form-diag" onsubmit="enviarDiagnostico(event)">
-      <div><label>Fecha</label><input type="date" name="fecha" required value="${hoyISO()}"></div>
-      <div><label>Contacto</label><input type="text" name="contacto" required placeholder="Nombre"></div>
-      <div><label>Teléfono</label><input type="text" name="telefono" placeholder="opcional"></div>
-      <div><label>Origen</label><select name="origen" required>
-        <option value="linkedin">LinkedIn</option><option value="whatsapp">WhatsApp</option>
-        <option value="stand">Stand</option><option value="instagram">Instagram</option>
-        <option value="referido">Referido</option><option value="institucional">Institucional</option>
-        <option value="otro">Otro</option></select></div>
-      <div><label>Estado</label><select name="estado">
-        <option value="agendado">Agendado</option><option value="realizado">Realizado</option>
-        <option value="no_show">No se presentó</option><option value="cancelado">Cancelado</option></select></div>
-      <div><label>Resultado</label><select name="resultado">
-        <option value="pendiente">Pendiente</option><option value="venta">Venta</option>
-        <option value="no_venta">No venta</option></select></div>
-      <div><label>Producto</label><select name="producto">
-        <option value="">—</option><option value="curso">Curso</option>
-        <option value="sesion_suelta">Sesión suelta</option><option value="espacio_orden">Espacio de Orden</option>
-        <option value="refoco">Refoco</option><option value="cpp">CPP</option><option value="ninguno">Ninguno</option></select></div>
-      <div><label>Monto</label><input type="number" name="monto" placeholder="si hubo venta"></div>
-      <button type="submit">Guardar diagnóstico</button>
-    </form>`;
-
-    const rec = d.diagnosticos_recientes ?? [];
-    if (rec.length){
-      h += `<div class="tw" style="margin-top:14px"><table><thead><tr><th>Fecha</th><th>Contacto</th><th>Origen</th><th>Estado</th><th>Resultado</th></tr></thead><tbody>
-        ${rec.map(x => `<tr>
-          <td class="m">${esc(x.fecha_agendada)}</td>
-          <td>${esc(x.contacto)}</td>
-          <td class="m">${esc(x.origen)}</td>
-          <td><span class="pill ${x.estado === "realizado" ? "p-ok" : x.estado === "cancelado" ? "p-mal" : "p-warn"}">${esc(x.estado)}</span></td>
-          <td><span class="pill ${x.resultado === "venta" ? "p-ok" : x.resultado === "no_venta" ? "p-mal" : "p-warn"}">${esc(x.resultado)}</span></td>
-        </tr>`).join("")}
-      </tbody></table></div>`;
-    }
-
-    $("negocio-cuerpo").innerHTML = h;
-
-    const u = d.unidades ?? {};
-    const FOCO = {
-      consultoria: "Conectar todos los lead magnets (quizzes, guías, Pulso) al diagnóstico de 30 minutos. Sesión suelta como escalón nuevo entre el curso y Espacio de Orden.",
-      talento: "Preparar el Programa Fundadores (primera búsqueda gratis) para ofrecerlo apenas arranque el tramo del aniversario — a dueños de PyME de LinkedIn, el stand y ex clientes.",
-      academia: "Precio de lanzamiento en los 3 cursos on-demand, vigente hasta el 19/10. Es su propia unidad: vende el contenido en sí mismo, no reclutamiento.",
-    };
-    $("unidades-cuerpo").innerHTML = `<div class="unidades">
-      <div class="unidad"><h3>Consultoría</h3>
-        <p class="nota" style="margin:0 0 10px">${FOCO.consultoria}</p>
-        <div class="unidad-fila"><span>Diagnósticos este mes</span><span>${u.consultoria?.diagnosticos_mes ?? 0}</span></div>
-        <div class="unidad-fila"><span>Ventas este mes</span><span>${u.consultoria?.ventas_mes ?? 0}</span></div>
-      </div>
-      <div class="unidad"><h3>Talento &amp; Desarrollo</h3>
-        <p class="nota" style="margin:0 0 10px">${FOCO.talento}</p>
-        <div class="unidad-fila"><span>Empresas</span><span>${u.talento?.empresas ?? 0}</span></div>
-        <div class="unidad-fila"><span>Candidatos</span><span>${u.talento?.candidatos ?? 0}</span></div>
-        <div class="unidad-fila"><span>Vacantes</span><span>${u.talento?.vacantes ?? 0}</span></div>
-      </div>
-      <div class="unidad"><h3>Academia</h3>
-        <p class="nota" style="margin:0 0 10px">${FOCO.academia}</p>
-        <div class="unidad-fila"><span>Cursos publicados</span><span>${u.academia?.cursos_publicados ?? 0}</span></div>
-        <div class="unidad-fila"><span>Inscriptos</span><span>${u.academia?.inscriptos ?? 0}</span></div>
-      </div>
-    </div>`;
-
-    const agentesNombre = { contenido: "Contenido", seguimiento: "Seguimiento", administracion: "Administración", linkedin: "LinkedIn" };
-    const proximaCorrida = {
-      contenido: "lunes 9:10", seguimiento: "lunes y jueves 10:04",
-      administracion: "todos los días 19:11", linkedin: "26/8 9:15 (prueba)",
-    };
-    $("agentes-cuerpo").innerHTML = (d.agentes ?? []).map(a => {
-      const nunca = !a.ultima_corrida;
-      const clase = nunca ? "p-mal" : a.estado === "error" ? "p-mal" : a.estado === "vacio" ? "p-warn" : "p-ok";
-      const texto = nunca ? "nunca corrió" : `${a.estado} · ${hace(a.ultima_corrida)}`;
-      return `<div class="agente-card">
-        <div><div class="agente-nombre">${esc(agentesNombre[a.agente] ?? a.agente)}</div>
-        ${a.resumen ? `<div class="agente-detalle">${esc(a.resumen)}</div>` : ""}
-        <div class="agente-detalle" style="color:var(--acento-suave)">próxima corrida: ${esc(proximaCorrida[a.agente] ?? "?")}</div></div>
-        <span class="pill ${clase}">${texto}</span>
-      </div>`;
-    }).join("");
-  }catch(e){
-    $("negocio-cuerpo").innerHTML = `<p class="vacio-hoy">No se pudo cargar: ${esc(e.message)}</p>`;
-    $("unidades-cuerpo").innerHTML = "";
-    $("agentes-cuerpo").innerHTML = "";
-  }
-}
-
-const clasePlantilla = e => e === "APPROVED" ? "p-ok" : e === "PENDING" ? "p-warn" : "p-mal";
-const textoPlantilla = e => e === "APPROVED" ? "aprobada" : e === "PENDING" ? "en revisión" : String(e).toLowerCase();
-
-function render(d){
-  const p = d.plantillas ?? [];
-  ULTIMAS_PLANTILLAS = p;
-  chequearBloqueos();
-  const aprobadas = p.filter(x => x.estado === "APPROVED").length;
-  const n = d.numero ?? {};
-  const w = d.whatsapp ?? {};
-  const ent = w.entregas_7d ?? {};
-
-  const claseCalidad = n.calidad === "GREEN" ? "ok" : n.calidad === "YELLOW" ? "warn" : n.calidad ? "mal" : "";
-  const puedeEnviar = n.puede_enviar === "AVAILABLE" ? ["ok","sí"]
-                    : n.puede_enviar === "LIMITED" ? ["warn","con límite"]
-                    : ["mal","bloqueado"];
-
-  let h = `
-  <div class="kpis">
-    <div class="kpi"><span class="n ${claseCalidad}">${esc(n.calidad ?? "?")}</span><span class="l">Calidad del n&uacute;mero</span></div>
-    <div class="kpi"><span class="n ${puedeEnviar[0]}">${puedeEnviar[1]}</span><span class="l">&iquest;Puede enviar?</span></div>
-    <div class="kpi"><span class="n oro">${aprobadas}/${p.length}</span><span class="l">Plantillas aprobadas</span></div>
-    <div class="kpi"><span class="n ${w.sin_leer ? "warn" : ""}">${w.sin_leer ?? 0}</span><span class="l">Mensajes sin leer</span></div>
-    <div class="kpi"><span class="n">${ent.delivered ?? 0}</span><span class="l">Entregados (7 d&iacute;as)</span></div>
-  </div>
-
-  <h2>Plantillas de WhatsApp</h2>
-  <div class="tw"><table><thead><tr><th>Nombre</th><th>Estado</th><th>Categor&iacute;a</th></tr></thead><tbody>
-  ${p.map(x => `<tr><td class="m">${esc(x.nombre)}</td>
-    <td><span class="pill ${clasePlantilla(x.estado)}">${textoPlantilla(x.estado)}</span></td>
-    <td class="m">${esc(x.categoria ?? "")}</td></tr>`).join("")}
-  </tbody></table></div>`;
-
-  if (w.ultimos?.length){
-    h += `<h2>&Uacute;ltimos mensajes que entraron</h2>
-    <div class="tw"><table><thead><tr><th>De</th><th>Dice</th><th>Cu&aacute;ndo</th></tr></thead><tbody>
-    ${w.ultimos.map(m => `<tr>
-      <td>${esc(m.nombre || "sin nombre")}<br><span class="m" style="color:var(--gris)">+${esc(m.telefono)}</span></td>
-      <td>${esc(m.texto)}</td><td class="m">${esc(hace(m.cuando))}</td></tr>`).join("")}
-    </tbody></table></div>`;
-  } else {
-    h += `<h2>&Uacute;ltimos mensajes que entraron</h2>
-    <p class="nota">Todav&iacute;a no entr&oacute; ning&uacute;n mensaje al n&uacute;mero de la API.</p>`;
-  }
-
-  $("cuerpo").innerHTML = h;
-  $("sello").textContent = "actualizado " + hace(d.generado_en);
-}
-
-async function cargar(){
-  try{
-    const r = await fetch(API_ESTADO, {cache:"no-store"});
-    if(!r.ok) throw new Error("HTTP " + r.status);
-    const d = await r.json();
-    $("err").style.display = "none";
     render(d);
-    if (d.meta_error) { $("err").style.display="block"; $("err").textContent = "Meta: " + d.meta_error; }
-  }catch(e){
-    $("err").style.display = "block";
-    $("err").textContent = "No se pudo leer el estado: " + e.message + ". Reintento en un minuto.";
-    $("sello").textContent = "sin conexión";
+    document.getElementById("actualizado").textContent = "actualizado " + new Date(d.generado_en).toLocaleTimeString("es-AR");
+  } catch(e) {
+    app.innerHTML = `<div class="alerta"><b>No se pudo cargar:</b> ${esc(e.message)}</div>`;
   }
 }
 
-function cargarTodo(){
-  cargarEstrategia(); cargarPlan(); cargar(); cargarContactos(); cargarContenido(); cargarLinkedin(); cargarNegocio();
+function render(d) {
+  const u = d.unidades || {};
+  const facturado = d.facturado_total_mes || 0;
+  const objetivo = d.objetivo_mensual_ars || 3375000;
+  const pctObjetivo = Math.min(100, Math.round((facturado/objetivo)*100));
+
+  const alertas = [];
+  (d.agentes||[]).forEach(a => { if (!a.ultima_corrida) alertas.push(`<b>${esc(a.nombre)}</b> nunca dejó registro de haber corrido.`); });
+  const tramoUrgente = (d.estrategia?.tramos||[]).find(t => t.en_curso && t.dias_restantes <= 7);
+
+  let html = "";
+
+  if (alertas.length || tramoUrgente) {
+    html += `<div class="alerta">`;
+    if (tramoUrgente) html += `<p style="margin:0 0 6px"><b>Tramo "${esc(tramoUrgente.nombre)}"</b> cierra en ${tramoUrgente.dias_restantes} días — meta: ${esc(tramoUrgente.meta)}.</p>`;
+    if (alertas.length) html += `<p style="margin:0">${alertas.slice(0,3).join(" ")}</p>`;
+    html += `</div>`;
+  }
+
+  // Objetivo del mes
+  html += `<section><p class="eyebrow">El número que importa</p><h2>Objetivo del mes</h2>
+    <div class="meta-box">
+      <div class="m-item"><b>Facturado</b><span class="v">${fmtARS(facturado)}</span></div>
+      <div class="m-item"><b>Objetivo (USD 2.500)</b><span class="v">${fmtARS(objetivo)}</span></div>
+      <div class="m-item" style="grid-column: span 2">
+        <b>${pctObjetivo}% del objetivo</b>
+        <div class="barra"><div style="width:${pctObjetivo}%"></div></div>
+      </div>
+    </div>
+  </section>`;
+
+  // 4 unidades
+  const cardUnidad = (nombre, clase, filas, error) => `
+    <div class="card unidad ${clase}"><h3>${esc(nombre)}</h3>
+      ${error ? `<p class="nota">Sin datos: ${esc(error)}</p>` : filas.map(([k,v]) => `<div class="fila"><span>${esc(k)}</span><span class="num">${esc(v)}</span></div>`).join("")}
+    </div>`;
+  html += `<section><p class="eyebrow">Cómo está cada frente</p><h2>Las 4 unidades de negocio</h2><div class="grid-4">
+    ${cardUnidad("Consultoría", "c-consultoria", [["Diagnósticos este mes", u.consultoria?.diagnosticos_mes ?? 0], ["Realizados", u.consultoria?.realizados_mes ?? 0], ["Ventas", u.consultoria?.ventas_mes ?? 0], ["Facturado", fmtARS(u.consultoria?.facturado_mes)]])}
+    ${cardUnidad("Talento & Desarrollo", "c-talento", [["Empresas", u.talento?.empresas ?? 0], ["Candidatos", u.talento?.candidatos ?? 0], ["Vacantes", u.talento?.vacantes ?? 0], ["Postulaciones", u.talento?.postulaciones ?? 0]])}
+    ${cardUnidad("Academia", "c-academia", [["Cursos publicados", u.academia?.cursos_publicados ?? 0], ["Inscriptos", u.academia?.inscriptos ?? 0]])}
+    ${cardUnidad("PMT — Players Mind Training", "c-pmt", u.pmt?.error ? null : [["Usuarios", u.pmt?.usuarios ?? 0], ["Juegos", u.pmt?.juegos ?? 0], ["Sesiones", u.pmt?.sesiones ?? 0], ["Planteles", u.pmt?.planteles ?? 0]], u.pmt?.error)}
+  </div></section>`;
+
+  // Estrategia
+  html += `<section><p class="eyebrow">Hacia dónde vamos</p><h2>La estrategia — ${esc(d.estrategia?.objetivo || "")}</h2>`;
+  (d.estrategia?.tramos||[]).forEach(t => {
+    html += `<div class="tramo ${t.en_curso ? "actual":""}">
+      <div class="tramo-head">
+        <h4>${esc(t.nombre)}</h4>
+        <span class="pill ${t.en_curso ? "on":"off"}">${t.en_curso ? (t.dias_restantes+" días restantes") : (new Date() < new Date(t.desde) ? "próximo" : "cerrado")}</span>
+      </div>
+      <div class="fechas">${fmtFecha(t.desde)} → ${fmtFecha(t.hasta)}</div>
+      <p class="meta">Meta: ${esc(t.meta)}</p>
+    </div>`;
+  });
+  html += `</section>`;
+
+  // Automatización
+  html += `<section><p class="eyebrow">Confía, pero verifica</p><h2>Automatización — qué corrió de verdad</h2><div class="card">`;
+  (d.agentes||[]).forEach(a => {
+    const nunca = !a.ultima_corrida;
+    const clase = nunca ? "alert" : a.estado === "error" ? "alert" : a.estado === "vacio" ? "warn" : "on";
+    const texto = nunca ? "nunca corrió" : `${a.estado||"ok"} · ${hace(a.ultima_corrida)}`;
+    html += `<div class="agente-card">
+      <div><div class="agente-nombre">${esc(a.nombre)}</div>
+      ${a.resumen ? `<div class="agente-detalle">${esc(a.resumen)}</div>` : ""}
+      <div class="agente-horario">próxima: ${esc(a.horario)}</div></div>
+      <span class="pill ${clase}">${esc(texto)}</span>
+    </div>`;
+  });
+  html += `</div></section>`;
+
+  // Contenido + WhatsApp + LinkedIn
+  const c = d.contenido || {}, w = d.whatsapp || {}, li = d.linkedin || {};
+  html += `<section><p class="eyebrow">Canales, hoy</p><h2>Contenido, WhatsApp, LinkedIn</h2><div class="grid-2">
+    <div class="card"><h3>Contenido</h3>
+      <div class="fila"><span>Borrador</span><span class="num">${c.borrador??0}</span></div>
+      <div class="fila"><span>Aprobado, esperando diseño</span><span class="num">${c.esperando_diseno??0}</span></div>
+      <div class="fila"><span>Aprobado, esperando tu teléfono</span><span class="num">${c.esperando_telefono??0}</span></div>
+      <div class="fila"><span>Publicado</span><span class="num">${c.publicado??0}</span></div>
+    </div>
+    <div class="card"><h3>WhatsApp</h3>
+      <div class="fila"><span>Sin leer</span><span class="num">${w.sin_leer??0}</span></div>
+      <div class="fila"><span>Entregados (7 días)</span><span class="num">${w.entregas_7d?.delivered??0}</span></div>
+      <div class="fila"><span>Leídos (7 días)</span><span class="num">${w.entregas_7d?.read??0}</span></div>
+      <div class="fila"><span>Fallidos (7 días)</span><span class="num">${w.entregas_7d?.failed??0}</span></div>
+    </div>
+    <div class="card"><h3>LinkedIn — por track</h3>
+      ${(li.por_track||[]).map(t => `<div class="fila"><span>${esc(t.track)}</span><span class="num">${t.total}</span></div>`).join("")}
+    </div>
+    <div class="card"><h3>LinkedIn — por estado</h3>
+      ${(li.por_estado||[]).map(t => `<div class="fila"><span>${esc(t.estado)}</span><span class="num">${t.total}</span></div>`).join("")}
+    </div>
+  </div></section>`;
+
+  // Sitios (dinámico, además de los accesos rápidos fijos de arriba)
+  if ((d.sitios||[]).length) {
+    html += `<section><p class="eyebrow">Más enlaces</p><h2>Otros sitios y herramientas</h2><div class="sitios-grid">
+      ${(d.sitios||[]).map(s => `<a class="sitio-link" href="${esc(s.url)}" target="_blank">${esc(s.nombre)}<span class="u">${esc(s.url)}</span></a>`).join("")}
+    </div></section>`;
+  }
+
+  // Recordatorios
+  const pend = (d.recordatorios||[]).filter(r => !r.hecho).slice(0,8);
+  if (pend.length) {
+    html += `<section><p class="eyebrow">Lo último</p><h2>Recordatorios sin resolver</h2>`;
+    pend.forEach(r => {
+      const esGerencia = r.texto.startsWith("GERENCIA");
+      html += `<div class="recordatorio ${esGerencia?"gerencia":""}"><span class="fecha">${fmtFecha(r.fecha)}</span>${esc(r.texto).slice(0,240)}${r.texto.length>240?"…":""}</div>`;
+    });
+    html += `</section>`;
+  }
+
+  document.getElementById("app").innerHTML = html;
 }
-cargarTodo();
-setInterval(cargarTodo, 60000);
-document.addEventListener("visibilitychange", () => { if(!document.hidden) cargarTodo(); });
+
+cargar();
+setInterval(cargar, 60000);
 </script>
 </body>
 </html>
