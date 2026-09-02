@@ -248,6 +248,17 @@ function render(d) {
     html += `</div>`;
   }
 
+  // Gerencia de hoy — el único bloque que Seba necesita leer primero
+  if (d.gerencia_hoy) {
+    const g = d.gerencia_hoy;
+    html += `<section><p class="eyebrow">La única tarea de hoy que mueve la aguja</p><h2>Gerencia</h2>
+      <div class="card" style="white-space:pre-wrap;line-height:1.6">${esc(g.texto)}</div>
+      <p class="nota" style="margin-top:6px">${g.es_de_hoy ? "generado hoy" : "⚠️ es de " + esc(g.fecha) + " — todavía no corrió la de hoy"}</p>
+    </section>`;
+  } else {
+    html += `<div class="alerta"><b>Todavía no hay gerencia del día.</b> La corrida automática de las 7:30 no dejó nada — hace falta correrla a mano.</div>`;
+  }
+
   // HOY
   const quienInfo = { SEBA: ["seba","Vos"], CLAUDE: ["claude","Claude"], SISTEMA: ["sistema","Sistema"] };
   const filaTarea = (t) => {
