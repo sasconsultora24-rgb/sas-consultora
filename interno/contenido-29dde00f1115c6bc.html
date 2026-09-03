@@ -161,9 +161,9 @@ function galeriaHtml(p){
   if(!p.diseno_url) return "";
   const urls = String(p.diseno_url).split(",").map(u => u.trim()).filter(u => u.startsWith("http"));
   if(!urls.length) return "";
-  return `<div class="campo-label">Diseño (${urls.length > 1 ? urls.length + " imágenes — click para bajar cada una" : "click para bajar"})</div>
+  return `<div class="campo-label">Diseño (${urls.length > 1 ? urls.length + " imágenes — click para abrir cada una" : "click para abrir"})</div>
     <div class="galeria">
-      ${urls.map(u => `<a href="${esc(u)}" target="_blank" rel="noopener" download><img src="${esc(u)}" loading="lazy" alt="Diseño de la pieza"></a>`).join("")}
+      ${urls.map(u => `<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" loading="lazy" alt="Diseño de la pieza"></a>`).join("")}
     </div>`;
 }
 
@@ -223,7 +223,13 @@ async function cargar(){
     renderKpis(); renderFiltros(); renderCuerpo();
     $("sello").textContent = "actualizado " + hace(new Date().toISOString());
   }catch(e){
-    $("cuerpo").innerHTML = `<p class="cargando">No se pudo cargar: ${esc(e.message)}</p>`;
+    // No borrar lo que ya está en pantalla por un hipo de red pasajero
+    // (p.ej. mientras se descarga una imagen pesada en otra pestaña) —
+    // si nunca cargó nada, ahí sí mostramos el error.
+    if(!DATA.length){
+      $("cuerpo").innerHTML = `<p class="cargando">No se pudo cargar: ${esc(e.message)}</p>`;
+    }
+    $("sello").textContent = "sin conexión — mostrando lo último cargado";
   }
 }
 cargar();
