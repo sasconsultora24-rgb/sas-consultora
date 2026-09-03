@@ -50,6 +50,11 @@
   .card { background: var(--raised); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin-bottom: 16px; }
   .card h3 { margin: 0 0 2px; font-size: 17px; }
   .meta { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); margin-bottom: 12px; text-transform: uppercase; letter-spacing: .03em; }
+  .tag { display: inline-block; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .03em; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
+  .tag.respuesta { background: var(--blue-bg); color: var(--blue); }
+  .tag.mensaje_1 { background: var(--gold-bg); color: var(--gold); }
+  .entrante { background: var(--blue-bg); border-radius: 8px; padding: 10px 14px; font-size: 13px; white-space: pre-wrap; margin-bottom: 8px; color: var(--ink); }
+  .entrante-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; color: var(--blue); margin-bottom: 4px; }
   .msg { background: var(--surface); border-radius: 8px; padding: 12px 14px; font-size: 14px; white-space: pre-wrap; margin-bottom: 12px; }
   .actions { display: flex; gap: 10px; }
   button { font-family: var(--sans); font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 7px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
@@ -64,7 +69,7 @@
 <header>
   <a class="back" href="https://sasconsultora.com/interno/estado-29dde00f1115c6bc.html">← volver al estado general</a>
   <h1>LinkedIn</h1>
-  <p>Mensajes 1 esperando tu aprobación antes de mandarse</p>
+  <p>Mensajes 1 y respuestas esperando tu aprobación — una vez aprobados se mandan solos</p>
 </header>
 <main id="app"><div class="cargando">cargando…</div></main>
 <script>
@@ -85,35 +90,45 @@ async function cargar() {
 function render(items) {
   const app = document.getElementById("app");
   if (!items.length) {
-    app.innerHTML = `<div class="vacio">No hay mensajes esperando aprobación ahora mismo.</div>`;
+    app.innerHTML = `<div class="vacio">No hay nada esperando aprobación ahora mismo.</div>`;
     return;
   }
-  app.innerHTML = items.map(p => `
-    <div class="card" id="card-${p.id}">
+  app.innerHTML = items.map(p => {
+    const cardId = `${p.tipo}-${p.id}`;
+    const tabla = p.tipo === "respuesta" ? "respuestas" : "prospectos";
+    const entrante = p.tipo === "respuesta"
+      ? `<div class="entrante-label">Te escribió</div><div class="entrante">${esc(p.mensaje_entrante)}</div>`
+      : "";
+    const label = p.tipo === "respuesta" ? "tu respuesta" : "mensaje 1";
+    return `
+    <div class="card" id="card-${cardId}">
+      <span class="tag ${p.tipo}">${p.tipo === "respuesta" ? "Respuesta" : "Mensaje 1"}</span>
       <h3>${esc(p.nombre)}</h3>
-      <div class="meta">${esc(p.cargo||"")} · ${esc(p.empresa||"")} · ${esc(p.estado)}</div>
-      <div class="msg">${esc(p.mensaje_1)}</div>
+      <div class="meta">${esc(p.cargo||"")} ${p.empresa ? "· " + esc(p.empresa) : ""} · ${esc(p.estado)}</div>
+      ${entrante}
+      <div class="msg">${esc(p.texto)}</div>
       <div class="actions">
-        <button class="aprobar" onclick="accion(${p.id},'aprobar')">Aprobar (se manda solo, próxima corrida)</button>
-        <button class="descartar" onclick="accion(${p.id},'descartar')">Descartar</button>
+        <button class="aprobar" onclick="accion('${tabla}',${p.id},'aprobar','${cardId}')">Aprobar ${label} (se manda solo)</button>
+        <button class="descartar" onclick="accion('${tabla}',${p.id},'descartar','${cardId}')">Descartar</button>
       </div>
     </div>
-  `).join("");
+  `;
+  }).join("");
 }
 
-async function accion(id, accion) {
-  document.querySelectorAll(`#card-${id} button`).forEach(b => b.disabled = true);
+async function accion(tabla, id, accion, cardId) {
+  document.querySelectorAll(`#card-${cardId} button`).forEach(b => b.disabled = true);
   try {
     const r = await fetch(API, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, accion })
+      body: JSON.stringify({ tabla, id, accion })
     });
     if (!r.ok) throw new Error("error " + r.status);
-    document.getElementById(`card-${id}`).remove();
+    document.getElementById(`card-${cardId}`).remove();
   } catch(e) {
     alert("No se pudo: " + e.message);
-    document.querySelectorAll(`#card-${id} button`).forEach(b => b.disabled = false);
+    document.querySelectorAll(`#card-${cardId} button`).forEach(b => b.disabled = false);
   }
 }
 
