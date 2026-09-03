@@ -74,6 +74,12 @@ a.volver:hover{color:var(--crema)}
 .justificacion{font-size:11.5px;color:var(--gris);line-height:1.6;background:var(--verde-950);padding:9px 11px;border-radius:4px;margin-top:6px}
 .cta-txt{font-size:12.5px;font-weight:600}
 
+.galeria{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.galeria a{display:block;position:relative}
+.galeria img{width:96px;height:171px;object-fit:cover;border-radius:4px;border:1px solid var(--linea);display:block;background:var(--verde-950)}
+.galeria a::after{content:"\2193";position:absolute;top:4px;right:4px;width:18px;height:18px;line-height:18px;text-align:center;
+  background:rgba(28,42,32,.72);color:#fff;border-radius:50%;font-size:11px;font-family:var(--mono)}
+
 .cargando{color:var(--gris);font-size:12.5px;padding:16px 0}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -146,8 +152,19 @@ function piezaHtml(p){
     <div class="texto-pieza">${esc(p.texto)}</div>
     ${p.cta ? `<div class="campo-label">CTA</div><div class="cta-txt">${esc(p.cta)}</div>` : ""}
     ${p.hashtags ? `<div class="campo-label">Hashtags</div><div class="hashtags">${esc(p.hashtags)}</div>` : ""}
+    ${galeriaHtml(p)}
     ${p.justificacion ? `<div class="campo-label">Por qué esta pieza</div><div class="justificacion">${esc(p.justificacion)}</div>` : ""}
   </div>`;
+}
+
+function galeriaHtml(p){
+  if(!p.diseno_url) return "";
+  const urls = String(p.diseno_url).split(",").map(u => u.trim()).filter(u => u.startsWith("http"));
+  if(!urls.length) return "";
+  return `<div class="campo-label">Diseño (${urls.length > 1 ? urls.length + " imágenes — click para bajar cada una" : "click para bajar"})</div>
+    <div class="galeria">
+      ${urls.map(u => `<a href="${esc(u)}" target="_blank" rel="noopener" download><img src="${esc(u)}" loading="lazy" alt="Diseño de la pieza"></a>`).join("")}
+    </div>`;
 }
 
 function renderKpis(){
