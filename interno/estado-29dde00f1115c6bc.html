@@ -283,6 +283,13 @@ function render(d) {
     </div>
   </section>`;
 
+  const mananaList = d.tareas_manana || [];
+  html += `<section><p class="eyebrow">Ya planificado</p><h2>Mañana</h2>
+    <div class="card">
+      ${mananaList.length ? mananaList.map(filaTarea).join("") : `<p class="nota" style="margin:0">Nada cargado para mañana todavía.</p>`}
+    </div>
+  </section>`;
+
   // Semana — agenda agrupada por día
   const porDia = (lista) => {
     const grupos = {};
