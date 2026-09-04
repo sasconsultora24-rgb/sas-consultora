@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel Estratégico · SAS Consultora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EFEDE6; --surface: #F7F6F1; --raised: #FFFFFF;
+    --ink: #10251B; --ink-soft: #55665C; --line: #CFCEC4;
+    --gold: #9A7818; --gold-bg: #F4EBD3;
+    --good: #2F6B4C; --good-bg: #DFEBE3;
+    --alert: #9C3A26; --alert-bg: #F4DCD5;
+    --blue: #2E5C8A; --blue-bg: #E1EAF3;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sans: "Inter", -apple-system, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    --display: "Fraunces", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0F251B; --surface: #17301F; --raised: #1C3826;
+      --ink: #E8EDE7; --ink-soft: #9BB0A2; --line: #2C4A36;
+      --gold: #C9A227; --gold-bg: #2E2A12;
+      --good: #6FBE93; --good-bg: #17331F;
+      --alert: #E0846E; --alert-bg: #3A2018;
+      --blue: #8FB4DE; --blue-bg: #16283A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0F251B; --surface: #17301F; --raised: #1C3826;
+    --ink: #E8EDE7; --ink-soft: #9BB0A2; --line: #2C4A36;
+    --gold: #C9A227; --gold-bg: #2E2A12;
+    --good: #6FBE93; --good-bg: #17331F;
+    --alert: #E0846E; --alert-bg: #3A2018;
+    --blue: #8FB4DE; --blue-bg: #16283A;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.5; padding: 0 0 60px; max-width: 900px; margin: 0 auto; }
+  h1,h2,h3 { font-family: var(--display); font-weight: 600; }
+  .mono { font-family: var(--mono); }
+  header { padding: 28px 20px 18px; border-bottom: 1px solid var(--line); }
+  header h1 { font-size: 26px; margin: 0 0 4px; }
+  header p { color: var(--ink-soft); font-size: 13px; margin: 0; }
+  nav.links { display: flex; gap: 14px; margin-top: 10px; }
+  nav.links a { color: var(--blue); font-size: 13px; text-decoration: none; font-weight: 600; }
+  main { padding: 20px; }
+  section { margin-bottom: 32px; }
+  section h2 { font-size: 19px; margin: 0 0 14px; }
+  .card { background: var(--raised); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; }
+  .fase-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .fase-head h3 { margin: 0; font-size: 17px; }
+  .badge { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .03em; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
+  .badge.en_curso { background: var(--gold-bg); color: var(--gold); }
+  .badge.no_iniciada { background: var(--surface); color: var(--ink-soft); }
+  .badge.cerrado { background: var(--good-bg); color: var(--good); }
+  .dias { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+  .dias.urgente { color: var(--alert); font-weight: 600; }
+  .meta { background: var(--surface); border-radius: 8px; padding: 10px 14px; font-size: 13.5px; margin-top: 10px; }
+  .meta b { color: var(--ink-soft); font-family: var(--mono); font-size: 10px; text-transform: uppercase; display: block; margin-bottom: 3px; }
+  .acciones { font-size: 13px; color: var(--ink-soft); margin-top: 10px; }
+  .kpis { display: flex; gap: 12px; flex-wrap: wrap; }
+  .kpi { background: var(--raised); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 100px; }
+  .kpi .n { display: block; font-family: var(--display); font-size: 26px; font-weight: 700; color: var(--gold); }
+  .kpi .l { font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .02em; }
+  ul.tareas { list-style: none; margin: 0; padding: 0; }
+  ul.tareas li { padding: 10px 14px; background: var(--raised); border: 1px solid var(--line); border-left: 3px solid var(--alert); border-radius: 6px; margin-bottom: 8px; font-size: 14px; display: flex; justify-content: space-between; gap: 10px; }
+  ul.tareas li .f { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); white-space: nowrap; }
+  .brief { background: var(--blue-bg); color: var(--ink); border-radius: 8px; padding: 14px 16px; font-size: 13.5px; white-space: pre-wrap; }
+  .vacio { text-align: center; padding: 40px 20px; color: var(--ink-soft); }
+  .cargando { text-align: center; padding: 60px 20px; color: var(--ink-soft); }
+  footer { padding: 20px; text-align: center; font-size: 11px; color: var(--ink-soft); font-family: var(--mono); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Panel Estratégico</h1>
+  <p>Los 3 tramos, lo pendiente de hoy, y los otros paneles — todo en un solo lugar, actualizado en vivo</p>
+  <nav class="links">
+    <a href="https://sasconsultora.com/interno/contenido-29dde00f1115c6bc.html">→ Panel de contenido</a>
+    <a href="https://sasconsultora.com/interno/linkedin-29dde00f1115c6bc.html">→ Panel de LinkedIn</a>
+    <a href="https://sasconsultora.com">→ Sitio público</a>
+  </nav>
+</header>
+<main id="app"><div class="cargando">cargando…</div></main>
+<footer id="pie"></footer>
+<script>
+const API = "https://valncabvniutalzhovuc.supabase.co/functions/v1/estrategia-sas?k=29dde00f1115c6bc";
+const esc = s => (s||"").replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const fmtFecha = f => new Date(f + "T12:00:00").toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit" });
+
+function diasRestantes(hasta) {
+  const hoy = new Date(); hoy.setHours(0,0,0,0);
+  const fin = new Date(hasta + "T00:00:00");
+  return Math.round((fin - hoy) / 86400000);
+}
+
+async function cargar() {
+  const app = document.getElementById("app");
+  try {
+    const r = await fetch(API, { cache: "no-store" });
+    const d = await r.json();
+    render(d);
+  } catch(e) {
+    app.innerHTML = `<div class="vacio">No se pudo cargar: ${esc(e.message)}</div>`;
+  }
+}
+
+function render(d) {
+  const app = document.getElementById("app");
+  const fases = (d.fases || []).map(f => {
+    const dias = diasRestantes(f.hasta);
+    const diasTxt = f.estado === "no_iniciada" ? "" :
+      dias >= 0 ? `<div class="dias ${dias <= 3 ? "urgente" : ""}">${dias} día${dias===1?"":"s"} para el cierre (${fmtFecha(f.hasta)})</div>` :
+      `<div class="dias">cerró hace ${-dias} día${-dias===1?"":"s"}</div>`;
+    return `
+    <div class="card">
+      <div class="fase-head">
+        <h3>Tramo ${f.orden} · ${esc(f.nombre)}</h3>
+        <span class="badge ${f.estado}">${f.estado.replace("_"," ")}</span>
+      </div>
+      <div class="mono" style="font-size:12px;color:var(--ink-soft)">${fmtFecha(f.desde)} → ${fmtFecha(f.hasta)}</div>
+      ${diasTxt}
+      <div class="meta"><b>Meta de cierre</b>${esc(f.meta)}</div>
+      <div class="acciones">${esc(f.acciones)}</div>
+    </div>`;
+  }).join("");
+
+  const pendHoy = (d.pendientes_hoy || []);
+  const tareas = pendHoy.length
+    ? `<ul class="tareas">${pendHoy.map(p => `<li><span>${esc(p.item)}</span><span class="f">${fmtFecha(p.fecha)}</span></li>`).join("")}</ul>`
+    : `<div class="vacio">Nada atrasado ahora mismo.</div>`;
+
+  const t = d.talento || {};
+  const kpis = `<div class="kpis">
+    <div class="kpi"><span class="n">${t.empresas ?? "–"}</span><span class="l">Empresas Talento</span></div>
+    <div class="kpi"><span class="n">${t.candidatos ?? "–"}</span><span class="l">Candidatos</span></div>
+    <div class="kpi"><span class="n">${t.vacantes_activas ?? "–"}</span><span class="l">Vacantes activas</span></div>
+  </div>`;
+
+  const brief = d.ultimo_brief
+    ? `<div class="brief">${esc(d.ultimo_brief.texto)}</div>`
+    : `<div class="vacio">Sin brief todavía.</div>`;
+
+  app.innerHTML = `
+    <section>
+      <h2>Los 3 tramos</h2>
+      ${fases}
+    </section>
+    <section>
+      <h2>Pendiente ahora mismo</h2>
+      ${tareas}
+    </section>
+    <section>
+      <h2>Talento &amp; Desarrollo, en números reales</h2>
+      ${kpis}
+    </section>
+    <section>
+      <h2>Último brief de gerencia</h2>
+      ${brief}
+    </section>
+  `;
+  document.getElementById("pie").textContent = "actualizado " + new Date(d.generado_en).toLocaleString("es-AR");
+}
+
+cargar();
+</script>
+</body>
+</html>
