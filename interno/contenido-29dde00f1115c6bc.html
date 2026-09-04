@@ -161,9 +161,9 @@ function galeriaHtml(p){
   if(!p.diseno_url) return "";
   const urls = String(p.diseno_url).split(",").map(u => u.trim()).filter(u => u.startsWith("http"));
   if(!urls.length) return "";
-  return `<div class="campo-label">Diseño (${urls.length > 1 ? urls.length + " imágenes — click para abrir cada una" : "click para abrir"})</div>
+  return `<div class="campo-label">Diseño (${urls.length > 1 ? urls.length + " imágenes — click para descargar cada una" : "click para descargar"})</div>
     <div class="galeria">
-      ${urls.map(u => `<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" loading="lazy" alt="Diseño de la pieza"></a>`).join("")}
+      ${urls.map(u => `<a href="${esc(u)}" download rel="noopener"><img src="${esc(u)}" loading="lazy" alt="Diseño de la pieza"></a>`).join("")}
     </div>`;
 }
 
