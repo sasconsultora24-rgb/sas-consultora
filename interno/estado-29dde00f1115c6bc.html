@@ -207,7 +207,11 @@
 const API = "https://valncabvniutalzhovuc.supabase.co/functions/v1/panel-central-sas?k=29dde00f1115c6bc";
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmtARS = (n) => "$" + Math.round(n||0).toLocaleString("es-AR");
-const fmtFecha = (iso) => iso ? new Date(iso).toLocaleDateString("es-AR",{day:"2-digit",month:"2-digit"}) : "—";
+const fmtFecha = (iso) => {
+  if (!iso) return "—";
+  const d = /^\d{4}-\d{2}-\d{2}$/.test(iso) ? new Date(iso + "T12:00:00") : new Date(iso);
+  return d.toLocaleDateString("es-AR",{day:"2-digit",month:"2-digit"});
+};
 const hace = (iso) => {
   if (!iso) return null;
   const ms = Date.now() - new Date(iso).getTime();
