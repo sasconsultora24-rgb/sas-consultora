@@ -25,26 +25,43 @@ body{margin:0;font-family:var(--sans);background:var(--verde-950);color:var(--cr
 .topbar{position:sticky;top:0;z-index:20;background:var(--acento);color:#fff;text-align:center;padding:10px 16px;font-size:12.5px;font-weight:700}
 .topbar a{color:#fff;text-decoration:underline}
 
-/* HERO — typographic, no photo competing with copy */
-.hero{background:radial-gradient(ellipse 100% 80% at 50% -10%,#1c4234 0%,var(--verde-950) 60%);padding:64px 0 56px;text-align:center}
-.badge{display:inline-flex;align-items:center;gap:9px;background:rgba(226,112,58,.14);border:1px solid rgba(226,112,58,.4);color:var(--acento-light);font-size:12px;font-weight:700;letter-spacing:.04em;padding:8px 16px 8px 12px;border-radius:30px;margin:0 0 28px}
+/* HERO — dos columnas, foto real a la derecha */
+.hero{background:radial-gradient(ellipse 100% 80% at 50% -10%,#1c4234 0%,var(--verde-950) 60%);padding:56px 0 60px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:36px;text-align:center}}
+.badge{display:inline-flex;align-items:center;gap:9px;background:rgba(226,112,58,.14);border:1px solid rgba(226,112,58,.4);color:var(--acento-light);font-size:12px;font-weight:700;letter-spacing:.04em;padding:8px 16px 8px 12px;border-radius:30px;margin:0 0 26px}
 .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--acento);flex-shrink:0}
-h1{font-family:var(--serif);font-weight:900;letter-spacing:-.015em;font-size:clamp(44px,8vw,86px);line-height:1;margin:0 0 18px;text-wrap:balance}
+h1{font-family:var(--serif);font-weight:900;letter-spacing:-.015em;font-size:clamp(40px,6.2vw,68px);line-height:1.02;margin:0 0 16px;text-wrap:balance}
 h1 .dot-acc{color:var(--acento)}
-.subtit{font-family:var(--serif);font-style:italic;font-size:clamp(15px,1.8vw,18px);color:var(--dorado-light);margin:0 0 30px}
-.lead{font-size:clamp(17px,2.2vw,20px);color:#E4DFCF;margin:0 auto 8px;max-width:640px;text-wrap:pretty}
+.subtit{font-family:var(--serif);font-style:italic;font-size:clamp(15px,1.8vw,17px);color:var(--dorado-light);margin:0 0 26px}
+.lead{font-size:clamp(16px,2vw,18.5px);color:#E4DFCF;margin:0 0 8px;max-width:520px;text-wrap:pretty}
+@media (max-width:900px){.lead{margin-left:auto;margin-right:auto}}
 .lead b{color:var(--crema);font-weight:700}
-.lead-close{font-size:clamp(17px,2.2vw,20px);color:var(--crema);font-weight:700;max-width:640px;margin:14px auto 34px}
+.lead-close{font-size:clamp(16px,2vw,18.5px);color:var(--crema);font-weight:700;max-width:520px;margin:14px 0 30px}
+@media (max-width:900px){.lead-close{margin-left:auto;margin-right:auto}}
 .cta{display:inline-flex;align-items:center;gap:10px;background:var(--acento);color:#fff;font-weight:700;font-size:16px;text-decoration:none;padding:19px 32px;border-radius:40px;box-shadow:0 10px 30px -8px rgba(226,112,58,.55);transition:transform .18s,box-shadow .18s,background .18s}
 .cta:hover,.cta:focus-visible{background:var(--acento-light);transform:translateY(-2px);box-shadow:0 14px 34px -6px rgba(226,112,58,.65)}
 .cta:focus-visible{outline:3px solid var(--crema);outline-offset:3px}
 .fine{font-size:13px;color:var(--gris-600);margin:16px 0 0;text-align:center}
-.hero-stats{display:flex;justify-content:center;gap:clamp(24px,6vw,56px);margin-top:44px;padding-top:28px;border-top:1px solid var(--linea-invert);max-width:600px;margin-left:auto;margin-right:auto}
+.hero .fine{text-align:left}
+@media (max-width:900px){.hero .fine{text-align:center}}
+.hero-stats{display:flex;gap:clamp(20px,4vw,44px);margin-top:40px;padding-top:26px;border-top:1px solid var(--linea-invert);max-width:520px}
+@media (max-width:900px){.hero-stats{justify-content:center;margin-left:auto;margin-right:auto}}
 .stat{text-align:center}
-.stat b{display:block;font-family:var(--serif);font-size:28px;color:var(--acento-light);line-height:1}
-.stat span{display:block;font-size:11.5px;color:var(--gris-600);margin-top:6px;max-width:120px}
+.stat b{display:block;font-family:var(--serif);font-size:26px;color:var(--acento-light);line-height:1}
+.stat span{display:block;font-size:11px;color:var(--gris-600);margin-top:6px;max-width:110px}
 
-section{padding:56px 0}
+.hero-photo{position:relative}
+.hero-photo-frame{position:relative;aspect-ratio:4/5;-webkit-mask-image:radial-gradient(ellipse 78% 88% at 50% 45%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 78% 88% at 50% 45%,#000 62%,transparent 100%)}
+.hero-photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block}
+.hero-photo-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,29,23,0) 55%,rgba(11,29,23,.5) 100%)}
+.hero-photo-tag{position:absolute;left:6px;bottom:22px;z-index:2;background:var(--verde-950);border:1px solid var(--linea-invert);border-radius:10px;padding:10px 16px}
+.hero-photo-tag b{display:block;font-family:var(--serif);font-size:14.5px;color:var(--crema)}
+.hero-photo-tag span{font-size:10.5px;color:var(--dorado-light)}
+@media (max-width:900px){.hero-photo{max-width:340px;margin:0 auto}.hero-photo-tag{left:50%;transform:translateX(calc(-50% + 6px))}}
+
+section{padding:56px 0;border-top:1px solid var(--linea-invert)}
+section:first-of-type{border-top:none}
 h2{font-family:var(--serif);font-size:clamp(24px,3.6vw,32px);font-weight:700;margin:0 0 24px;text-align:center}
 .eyebrow2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acento-light);text-align:center;margin:0 0 10px;font-weight:700}
 
@@ -64,26 +81,29 @@ h2{font-family:var(--serif);font-size:clamp(24px,3.6vw,32px);font-weight:700;mar
 
 .practico-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:800px;margin:0 auto}
 @media (max-width:700px){.practico-grid{grid-template-columns:1fr}}
-.pcard{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:14px;padding:22px 24px}
+.pcard{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:14px;padding:22px 24px;box-shadow:0 14px 30px -18px rgba(0,0,0,.5);transition:transform .18s,box-shadow .18s}
+.pcard:hover{transform:translateY(-3px);box-shadow:0 18px 36px -16px rgba(0,0,0,.6)}
 .pcard b{display:block;color:var(--crema);font-size:15px;margin-bottom:6px}
 .pcard p{margin:0;font-size:13.5px;color:var(--gris-600)}
 
-.dia{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:16px;padding:28px clamp(22px,4vw,32px);margin:0 0 18px;display:flex;gap:22px;max-width:800px;margin-left:auto;margin-right:auto}
+.dia{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:16px;padding:28px clamp(22px,4vw,32px);margin:0 0 18px;display:flex;gap:22px;max-width:800px;margin-left:auto;margin-right:auto;box-shadow:0 16px 34px -20px rgba(0,0,0,.55)}
 @media (max-width:600px){.dia{flex-direction:column;gap:14px}}
 .dia-badge{flex-shrink:0;width:48px;height:48px;border-radius:14px;background:var(--acento);color:#fff;font-family:var(--serif);font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center}
 .dia-cont{flex:1}
 .dia-num{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acento-light);margin:0 0 6px;font-weight:700}
-.dia h3{font-family:var(--serif);font-size:20px;font-weight:700;margin:0 0 10px;color:var(--crema)}
-.dia p{margin:0 0 12px;font-size:15px;color:#DCD6C4}
-.dia p:last-child{margin-bottom:0}
-.dia .ejercicio{font-size:13.5px;color:var(--dorado-light);font-weight:600;background:rgba(184,151,42,.1);padding:12px 14px;border-radius:8px}
+.dia h3{font-family:var(--serif);font-size:22px;font-weight:700;margin:0 0 16px;color:var(--crema)}
+.dia-row{margin:0 0 14px}
+.dia-row:last-of-type{margin-bottom:0}
+.dia-row b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-600);margin:0 0 4px}
+.dia-row p{margin:0;font-size:15px;color:#DCD6C4}
+.dia .ejercicio{font-size:13.5px;color:var(--dorado-light);font-weight:600;background:rgba(184,151,42,.1);padding:12px 14px;border-radius:8px;margin-top:14px}
 .dias-cierre{text-align:center;font-size:14.5px;color:var(--gris-600);margin-top:22px;max-width:600px;margin-left:auto;margin-right:auto}
 
-.precio-box{text-align:center;background:linear-gradient(160deg,var(--verde-900),var(--verde-950));border:1px solid var(--acento);border-radius:18px;padding:44px 28px;max-width:460px;margin:0 auto 20px}
-.precio{font-family:var(--serif);font-size:clamp(46px,9vw,64px);font-weight:800;color:var(--acento-light);margin:0 0 8px}
-.precio-nota{font-size:13.5px;color:var(--gris-600);margin:0}
+.precio-box{text-align:center;background:linear-gradient(160deg,var(--verde-900),var(--verde-950));border:1px solid var(--acento);border-radius:18px;padding:40px 28px;max-width:460px;margin:0 auto 20px;box-shadow:0 16px 40px -18px rgba(226,112,58,.3)}
+.precio{font-family:var(--serif);font-size:clamp(26px,4vw,32px);font-weight:800;color:var(--acento-light);margin:0 0 14px}
+.precio-nota{font-family:var(--serif);font-size:clamp(18px,2.6vw,22px);font-weight:700;color:var(--crema);margin:0;line-height:1.4}
 
-.bio-card{max-width:800px;margin:0 auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:0;background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:18px;overflow:hidden}
+.bio-card{max-width:800px;margin:0 auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:0;background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:18px;overflow:hidden;box-shadow:0 16px 34px -20px rgba(0,0,0,.55)}
 @media (max-width:640px){.bio-card{grid-template-columns:1fr}}
 .bio-foto{position:relative}
 .bio-foto img{width:100%;height:100%;object-fit:cover;display:block;min-height:260px}
@@ -92,7 +112,7 @@ h2{font-family:var(--serif);font-size:clamp(24px,3.6vw,32px);font-weight:700;mar
 .bio-badges{display:flex;flex-wrap:wrap;gap:10px}
 .bio-badges span{font-size:11.5px;color:var(--verde-950);background:var(--dorado-light);font-weight:700;padding:6px 13px;border-radius:20px}
 
-.equipo-real{max-width:800px;margin:0 auto;background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:18px;overflow:hidden}
+.equipo-real{max-width:800px;margin:0 auto;background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:18px;overflow:hidden;box-shadow:0 16px 34px -20px rgba(0,0,0,.55)}
 .equipo-real img{width:100%;display:block}
 .equipo-real p{margin:0;padding:18px 24px;font-size:13.5px;color:var(--gris-600);text-align:center}
 .equipo-real p b{color:var(--dorado-light)}
@@ -115,7 +135,8 @@ footer a{color:var(--dorado-light)}
 <div class="topbar">Entrenamiento en vivo &middot; 1 y 2 de octubre &middot; USD 9 &mdash; <a href="#anotarme">quiero mi lugar</a></div>
 
 <div class="hero">
-<div class="narrow">
+<div class="wrap hero-grid">
+<div>
 <div class="badge"><span class="dot"></span>ENTRENAMIENTO EN VIVO &middot; POR ZOOM &middot; 1 Y 2 DE OCTUBRE</div>
 <h1>Soltá el peso, no el liderazgo<span class="dot-acc">.</span></h1>
 <p class="subtit">10 años liderando personas y equipos &mdash; ahora te enseño a hacerlo sin cargarlo todo solo.</p>
@@ -130,6 +151,13 @@ footer a{color:var(--dorado-light)}
 <div class="stat"><b>USD 9</b><span>por el aniversario</span></div>
 </div>
 </div>
+<div class="hero-photo">
+<div class="hero-photo-frame">
+<img src="/assets/seba-bio-v2.jpg" alt="Sebastián Svetliza">
+<div class="hero-photo-tag"><b>Sebastián Svetliza</b><span>SAS Consultora</span></div>
+</div>
+</div>
+</div>
 </div>
 
 <section>
@@ -138,9 +166,12 @@ footer a{color:var(--dorado-light)}
 <h2>Esto es para vos si...</h2>
 <div class="identi">
 <p>Sos dueño de una pyme, entrenás un equipo, coordinás un grupo o simplemente lideras tu familia &mdash; y todo, siempre, pasa por vos.</p>
-<p>Le decís lo mismo a la misma persona por décima vez y nada cambia.</p>
-<p>Delegás algo y vuelve igual, como si no hubieras dicho nada.</p>
-<p>Sabés que si vos no estás, algo se cae &mdash; y ya no sabés si eso te enorgullece o te agota.</p>
+<p>Contestás el mismo mensaje que ya contestaste ayer, y anteayer, y la semana pasada.</p>
+<p>Le explicás algo por décima vez a la misma persona, y a la próxima te vuelve a preguntar lo mismo.</p>
+<p>Delegás una tarea y a las pocas horas la tenés de vuelta en tu escritorio, sin resolver.</p>
+<p>Te vas a dormir pensando en todo lo que puede fallar mañana si vos no estás ahí.</p>
+<p>Hace tiempo que no te tomás un día libre de verdad, porque "libre" igual significa que te llaman.</p>
+<p>Sabés que si te enfermás una semana, algo se cae &mdash; y ya no sabés si eso te enorgullece o te agota.</p>
 </div>
 </div>
 </section>
@@ -163,8 +194,14 @@ footer a{color:var(--dorado-light)}
 <div class="tabla-item">Soltás sin miedo, porque por primera vez sabés que nada se va a caer</div>
 <div class="tabla-item">Corregís lo mismo una y otra vez, sin resultado</div>
 <div class="tabla-item">Tenés una estructura simple para que una corrección cambie algo de verdad</div>
-<div class="tabla-item">Delegás y vuelve igual</div>
+<div class="tabla-item">Delegás y vuelve igual, sin resolver</div>
 <div class="tabla-item">Distinguís lo que solo vos podés hacer de lo que podés soltar hoy</div>
+<div class="tabla-item">Sentís que pedir ayuda es reconocer que no podés solo</div>
+<div class="tabla-item">Tenés un método para soltar, no solo la intención de hacerlo</div>
+<div class="tabla-item">No te tomás un día libre de verdad hace meses</div>
+<div class="tabla-item">Tu equipo resuelve sin que vos estés encima de cada paso</div>
+<div class="tabla-item">Confundís estar ocupado todo el día con estar liderando</div>
+<div class="tabla-item">Sabés la diferencia entre las dos cosas, y actuás distinto</div>
 </div>
 </div>
 </section>
@@ -174,12 +211,12 @@ footer a{color:var(--dorado-light)}
 <p class="eyebrow2">100% en vivo</p>
 <h2>100% práctico</h2>
 <div class="practico-grid">
-<div class="pcard"><b>Tu problema real, no un caso ajeno</b><p>Trabajás sobre tu propio equipo, tu gente, tu quilombo real. Nada de ejemplos genéricos.</p></div>
-<div class="pcard"><b>Te vas con algo hecho, no con apuntes</b><p>Las herramientas quedan aplicadas en vivo, no para "después".</p></div>
-<div class="pcard"><b>Soltás el peso, no el control</b><p>Cada ejercicio te deja decidiendo vos, con menos carga encima.</p></div>
+<div class="pcard"><b>Tu problema real, no un caso ajeno</b><p>Trabajás sobre tu propio equipo y tu propia situación. Nada de ejemplos genéricos.</p></div>
+<div class="pcard"><b>Lo aplicás ahí mismo, no "cuando tengas tiempo"</b><p>Cada herramienta se prueba en vivo, sobre tu caso. No es información para guardar: es una decisión que ya tomaste.</p></div>
+<div class="pcard"><b>Soltás tu carga, no tu liderazgo</b><p>Cada ejercicio te deja decidiendo vos, con menos peso encima.</p></div>
 <div class="pcard"><b>Funciona en cualquier lugar que lideres</b><p>Pyme, plantel deportivo o tu propia casa: mismo problema, misma solución.</p></div>
-<div class="pcard"><b>Grupo real, en vivo</b><p>Nada de webinar con cientos de personas mirando en silencio: participás de verdad.</p></div>
-<div class="pcard"><b>Lo doy yo, no un facilitador genérico</b><p>Diez años haciendo esto en pymes y equipos reales, no en teoría.</p></div>
+<div class="pcard"><b>Funciona aunque no tengas tiempo libre</b><p>90 minutos por día. Nada de módulos eternos ni tareas para "la semana que viene".</p></div>
+<div class="pcard"><b>El método nace de casos reales</b><p>Diez años de trabajo con pymes, planteles y familias reales &mdash; no de un manual genérico.</p></div>
 </div>
 </div>
 </section>
@@ -187,7 +224,7 @@ footer a{color:var(--dorado-light)}
 <section>
 <div class="narrow">
 <p class="eyebrow2">No es la primera vez</p>
-<h2>Esto ya pasa en equipos reales</h2>
+<h2>Esto ya le está pasando a líderes</h2>
 <div class="equipo-real">
 <img src="/assets/equipo-real-v2.jpg" alt="Encuentro grupal con un equipo real, trabajando roles y funcionamiento">
 <p><b>Encuentro grupal</b> &middot; un equipo real, trabajando roles y funcionamiento en vivo. Esto es, literalmente, un entrenamiento de liderazgo.</p>
@@ -203,8 +240,9 @@ footer a{color:var(--dorado-light)}
 <div class="dia-cont">
 <p class="dia-num">Día 1 &middot; 1 de octubre</p>
 <h3>Todo depende de mí</h3>
-<p>El problema más universal, y cruza empresa, deporte y familia: nada funciona si el líder no está.</p>
-<p class="ejercicio">Ejercicio en vivo: armás en tu cuaderno tu propio mapa de "lo que solo vos podés hacer" vs. "lo que podés soltar hoy mismo" — y en una encuesta en vivo vemos cuántos en la sala cargan exactamente lo mismo. Salís con 2-3 cosas concretas para delegar esta semana.</p>
+<div class="dia-row"><b>El problema</b><p>Nada funciona si vos no estás — ni tu pyme, ni tu plantel, ni tu casa.</p></div>
+<div class="dia-row"><b>Qué hacemos</b><p>Armás en vivo tu propio mapa: qué solo vos podés hacer, y qué podés soltar ya. Una encuesta en vivo te muestra cuántos en la sala cargan exactamente lo mismo.</p></div>
+<div class="dia-row"><b>Con qué te vas</b><p>2 a 3 cosas concretas para delegar esta semana. No una idea suelta: una lista con nombre y apellido.</p></div>
 </div>
 </div>
 <div class="dia">
@@ -212,11 +250,12 @@ footer a{color:var(--dorado-light)}
 <div class="dia-cont">
 <p class="dia-num">Día 2 &middot; 2 de octubre</p>
 <h3>Lo digo mil veces y no cambia nada</h3>
-<p>Repetís la misma corrección hasta cansarte, y quedás peor: más solo, con la sensación de que si no estás encima, nada funciona. Hoy te vas con una forma de corregir que la persona realmente escucha — sin gritar, sin repetir, sin estar encima.</p>
-<p class="ejercicio">Ejercicio en vivo: escribís en tu cuaderno, palabra por palabra, la corrección real que tenés pendiente, con la estructura que te doy. Trabajamos en vivo algunos casos de la sala, en conjunto, para que la ajustes antes de darla de verdad.</p>
+<div class="dia-row"><b>El problema</b><p>Repetís la misma corrección hasta cansarte, y la persona sigue exactamente igual.</p></div>
+<div class="dia-row"><b>Qué hacemos</b><p>Te doy una estructura para corregir que realmente se escucha — sin gritar, sin repetir, sin estar encima. La escribís, palabra por palabra, sobre tu caso real.</p></div>
+<div class="dia-row"><b>Con qué te vas</b><p>La corrección ya escrita y lista para dar esta semana. No la teoría de cómo corregir: las palabras exactas.</p></div>
 </div>
 </div>
-<p class="dias-cierre">Cerrás el día 2 con dos herramientas ya usadas. Ahí te cuento del programa grupal para sostener el cambio en el tiempo — no es obligatorio, ni se vende en la sala.</p>
+<p class="dias-cierre">Cerrás el día 2 con dos herramientas ya usadas, no escuchadas. Ahí te cuento del programa grupal para sostener el cambio en el tiempo — no es obligatorio, ni se vende en la sala.</p>
 </div>
 </section>
 
@@ -241,8 +280,9 @@ footer a{color:var(--dorado-light)}
 <p>Soy Sebastián Svetliza. Antes de los 10 años de SAS Consultora, pasé más de 30 liderando equipos de alto rendimiento &mdash; 20 de ellos como entrenador de básquet a nivel nacional e internacional. Este entrenamiento sale de la misma pregunta que me hacen todas las semanas, ya sea un dueño de pyme, un entrenador o un padre: "¿cómo hago para que esto funcione sin que yo esté siempre encima?"</p>
 <div class="bio-badges">
 <span>30+ años liderando equipos</span>
-<span>20 años entrenador de básquet</span>
+<span>20 años entrenador profesional de básquetbol</span>
 <span>Coach Ontológico certificado</span>
+<span>Consultor pyme certificado</span>
 </div>
 </div>
 </div>
