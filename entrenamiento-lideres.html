@@ -3,80 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El Líder Innecesario &middot; SAS Consultora</title>
+<title>Dejá de ser imprescindible &middot; SAS Consultora</title>
 <meta name="description" content="Entrenamiento en vivo de 2 días por Zoom para líderes de pyme, equipos y deporte. 1 y 2 de octubre, 90 minutos cada día, USD 9 por los 10 años de SAS Consultora.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800;9..144,900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
 --verde-950:#0B1D17; --verde-900:#122F26; --verde-700:#1E4B3D;
 --dorado:#B8972A; --dorado-light:#D9BD6B;
---crema:#F3EFE3; --gris-900:#1C1F1E; --gris-600:#565B57;
---linea-invert:rgba(243,239,227,.18);
---rojo:#C0563E; --verde-check:#7FA37A;
+--acento:#E2703A; --acento-light:#F0925C;
+--crema:#F3EFE3; --gris-900:#1C1F1E; --gris-600:#8A9089;
+--linea-invert:rgba(243,239,227,.16);
+--rojo:#D9704F; --verde-check:#7FA37A;
 --serif:'Fraunces',Georgia,serif; --sans:'Montserrat',-apple-system,sans-serif;
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:var(--sans);background:var(--verde-950);color:var(--crema);line-height:1.65;-webkit-font-smoothing:antialiased}
-.wrap{max-width:780px;margin:0 auto;padding:clamp(24px,6vw,64px) clamp(20px,5vw,32px)}
-.topbar{position:sticky;top:0;z-index:20;background:var(--dorado);color:var(--verde-950);text-align:center;padding:10px 16px;font-size:12.5px;font-weight:700}
-.topbar a{color:var(--verde-950);text-decoration:underline}
-.logo10{display:block;margin:0 auto 30px;height:clamp(100px,14vw,150px);width:auto}
-.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dorado-light);margin:0 0 18px;text-align:center}
-h1{font-family:var(--serif);font-weight:800;font-size:clamp(36px,7vw,58px);line-height:1.05;margin:0 0 10px;text-wrap:balance;text-align:center}
-h1 em{font-style:italic;color:var(--dorado-light)}
-.subtit{font-family:var(--serif);font-style:italic;font-size:clamp(16px,2.4vw,19px);color:var(--dorado-light);text-align:center;margin:0 0 26px}
-.lead{font-size:clamp(16px,2.2vw,18.5px);color:#DCD6C4;margin:0 auto 32px;text-wrap:pretty;text-align:center;max-width:620px}
-h2{font-family:var(--serif);font-size:clamp(22px,4vw,28px);font-weight:700;margin:0 0 20px;text-align:center}
-h3{font-family:var(--serif);font-size:18px;font-weight:700;margin:0 0 10px}
-.stats{display:flex;justify-content:center;gap:clamp(18px,5vw,44px);flex-wrap:wrap;margin:0 0 48px;padding-top:28px;border-top:1px solid var(--linea-invert)}
-.stat{text-align:center}
-.stat b{display:block;font-family:var(--serif);font-size:26px;color:var(--dorado-light)}
-.stat span{font-size:12px;color:var(--gris-600)}
-.card{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:6px;padding:26px 28px;margin:0 0 22px}
-ul{margin:0;padding:0;list-style:none}
-li{padding:11px 0 11px 26px;position:relative;border-bottom:1px solid var(--linea-invert);font-size:15.5px}
-li:last-child{border-bottom:none}
-li::before{content:"";position:absolute;left:0;top:19px;width:11px;height:1px;background:var(--dorado)}
-.cta{display:block;text-align:center;background:var(--dorado);color:var(--verde-950);font-weight:700;font-size:16px;text-decoration:none;padding:19px 28px;border-radius:6px;margin:34px 0 14px;transition:background .18s,transform .18s}
-.cta:hover,.cta:focus-visible{background:var(--dorado-light);transform:translateY(-2px)}
+.wrap{max-width:1020px;margin:0 auto;padding:0 clamp(20px,5vw,32px)}
+.narrow{max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,32px)}
+.topbar{position:sticky;top:0;z-index:20;background:var(--acento);color:#fff;text-align:center;padding:10px 16px;font-size:12.5px;font-weight:700}
+.topbar a{color:#fff;text-decoration:underline}
+
+/* HERO */
+.hero{background:radial-gradient(ellipse 90% 70% at 30% 0%,#1a3d30 0%,var(--verde-950) 55%);padding:38px 0 60px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+@media (max-width:840px){.hero-grid{grid-template-columns:1fr;gap:32px}}
+.badge{display:inline-flex;align-items:center;gap:9px;background:rgba(226,112,58,.14);border:1px solid rgba(226,112,58,.4);color:var(--acento-light);font-size:12px;font-weight:700;letter-spacing:.04em;padding:8px 16px 8px 12px;border-radius:30px;margin:0 0 26px}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--acento);flex-shrink:0}
+h1{font-family:var(--serif);font-weight:800;font-size:clamp(34px,5.4vw,52px);line-height:1.06;margin:0 0 14px;text-wrap:balance}
+h1 em{font-style:italic;color:var(--acento-light)}
+.subtit{font-family:var(--serif);font-style:italic;font-size:clamp(15px,1.8vw,17px);color:var(--dorado-light);margin:0 0 22px}
+.lead{font-size:clamp(15.5px,1.9vw,17.5px);color:#DCD6C4;margin:0 0 30px;max-width:480px}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--acento);color:#fff;font-weight:700;font-size:15.5px;text-decoration:none;padding:18px 30px;border-radius:40px;box-shadow:0 10px 30px -8px rgba(226,112,58,.55);transition:transform .18s,box-shadow .18s,background .18s}
+.cta:hover,.cta:focus-visible{background:var(--acento-light);transform:translateY(-2px);box-shadow:0 14px 34px -6px rgba(226,112,58,.65)}
 .cta:focus-visible{outline:3px solid var(--crema);outline-offset:3px}
-.fine{text-align:center;font-size:13.5px;color:var(--gris-600);margin:0 0 56px}
-.quote{font-family:var(--serif);font-size:clamp(19px,3vw,23px);font-style:italic;color:var(--dorado-light);text-align:center;max-width:600px;margin:0 auto}
-.quote-wrap{padding:16px 0;border-top:1px solid var(--linea-invert);border-bottom:1px solid var(--linea-invert)}
-section{margin:0 0 56px}
-.identi{display:grid;gap:0;border-top:1px solid var(--linea-invert)}
-.identi p{padding:16px 0 16px 30px;position:relative;border-bottom:1px solid var(--linea-invert);font-size:15.5px;color:#DCD6C4;margin:0}
-.identi p::before{content:"—";position:absolute;left:0;color:var(--dorado)}
-.tabla{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linea-invert);border:1px solid var(--linea-invert);border-radius:6px;overflow:hidden;margin:0 0 8px}
-.tabla-head{background:var(--verde-900);padding:14px 18px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.cta.block{display:flex;justify-content:center;text-align:center;margin:0 auto}
+.fine{font-size:13px;color:var(--gris-600);margin:14px 0 0}
+.fine.center{text-align:center;margin:14px auto 0}
+.hero-stats{display:flex;gap:clamp(20px,4vw,40px);margin-top:38px;padding-top:26px;border-top:1px solid var(--linea-invert)}
+.stat b{display:block;font-family:var(--serif);font-size:26px;color:var(--acento-light);line-height:1}
+.stat span{display:block;font-size:11.5px;color:var(--gris-600);margin-top:6px;max-width:110px}
+
+.hero-photo{position:relative}
+.hero-photo-frame{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:var(--verde-700);border:1px solid var(--linea-invert)}
+.hero-photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+.hero-photo-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,29,23,0) 55%,rgba(11,29,23,.55) 100%)}
+.hero-photo-tag{position:absolute;left:18px;bottom:18px;z-index:2;background:var(--verde-950);border:1px solid var(--linea-invert);border-radius:10px;padding:10px 16px}
+.hero-photo-tag b{display:block;font-family:var(--serif);font-size:15px;color:var(--crema)}
+.hero-photo-tag span{font-size:11px;color:var(--dorado-light)}
+.hero-photo-frame img.logo10-small{position:absolute;top:16px;right:16px;z-index:2;width:auto;height:46px;object-fit:contain;opacity:.92}
+
+section{padding:56px 0}
+h2{font-family:var(--serif);font-size:clamp(24px,3.6vw,32px);font-weight:700;margin:0 0 24px;text-align:center}
+.eyebrow2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acento-light);text-align:center;margin:0 0 10px;font-weight:700}
+
+.identi{display:grid;gap:0;border-top:1px solid var(--linea-invert);max-width:720px;margin:0 auto}
+.identi p{padding:18px 0 18px 32px;position:relative;border-bottom:1px solid var(--linea-invert);font-size:16px;color:#DCD6C4;margin:0}
+.identi p::before{content:"—";position:absolute;left:0;color:var(--acento)}
+
+.quote-wrap{background:var(--verde-900);border-radius:16px;padding:36px clamp(24px,5vw,52px);text-align:center;max-width:820px;margin:0 auto}
+.quote{font-family:var(--serif);font-size:clamp(20px,3vw,25px);font-style:italic;color:var(--crema);margin:0}
+.quote span{color:var(--acento-light)}
+
+.tabla{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linea-invert);border:1px solid var(--linea-invert);border-radius:12px;overflow:hidden;max-width:720px;margin:0 auto}
+.tabla-head{background:var(--verde-900);padding:16px 20px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
 .tabla-head.mal{color:var(--rojo)}
 .tabla-head.bien{color:var(--verde-check)}
-.tabla-item{background:var(--verde-950);padding:14px 18px;font-size:14.5px}
-.dia{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:6px;padding:26px 28px;margin:0 0 16px;display:flex;gap:20px}
-.dia-badge{flex-shrink:0;width:44px;height:44px;border-radius:50%;background:var(--dorado);color:var(--verde-950);font-family:var(--serif);font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center}
+.tabla-item{background:var(--verde-950);padding:16px 20px;font-size:14.5px}
+
+.practico-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:820px;margin:0 auto}
+@media (max-width:700px){.practico-grid{grid-template-columns:1fr}}
+.pcard{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:14px;padding:22px 24px}
+.pcard b{display:block;color:var(--crema);font-size:15px;margin-bottom:6px}
+.pcard p{margin:0;font-size:13.5px;color:var(--gris-600)}
+
+.dia{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:16px;padding:28px clamp(22px,4vw,32px);margin:0 0 18px;display:flex;gap:22px;max-width:820px;margin-left:auto;margin-right:auto}
+@media (max-width:600px){.dia{flex-direction:column;gap:14px}}
+.dia-badge{flex-shrink:0;width:48px;height:48px;border-radius:14px;background:var(--acento);color:#fff;font-family:var(--serif);font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center}
 .dia-cont{flex:1}
-.dia-num{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--dorado-light);margin:0 0 6px}
-.dia h3{margin:0 0 10px}
-.dia p{margin:0 0 10px;font-size:15px;color:#DCD6C4}
+.dia-num{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acento-light);margin:0 0 6px;font-weight:700}
+.dia h3{font-family:var(--serif);font-size:20px;font-weight:700;margin:0 0 10px;color:var(--crema)}
+.dia p{margin:0 0 12px;font-size:15px;color:#DCD6C4}
 .dia p:last-child{margin-bottom:0}
-.dia .ejercicio{font-size:13.5px;color:var(--dorado-light);font-weight:600}
-.precio-box{text-align:center;background:var(--verde-900);border:1px solid var(--dorado);border-radius:6px;padding:36px 28px;margin:0 0 8px}
-.precio{font-family:var(--serif);font-size:clamp(42px,8vw,60px);font-weight:800;color:var(--dorado-light);margin:0 0 6px}
-.precio-nota{font-size:14px;color:var(--gris-600);margin:0}
-.bio{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
-.foto-frame{flex-shrink:0;width:130px;height:130px;border-radius:50%;background:var(--verde-700);border:2px solid var(--dorado);display:flex;align-items:center;justify-content:center;overflow:hidden;margin:0 auto}
-.foto-frame img{width:100%;height:100%;object-fit:cover}
-.foto-frame span{font-family:var(--serif);font-size:34px;color:var(--dorado-light)}
+.dia .ejercicio{font-size:13.5px;color:var(--dorado-light);font-weight:600;background:rgba(184,151,42,.1);padding:12px 14px;border-radius:8px}
+.dias-cierre{text-align:center;font-size:14.5px;color:var(--gris-600);margin-top:22px;max-width:600px;margin-left:auto;margin-right:auto}
+
+.precio-box{text-align:center;background:linear-gradient(160deg,var(--verde-900),var(--verde-950));border:1px solid var(--acento);border-radius:18px;padding:44px 28px;max-width:460px;margin:0 auto 20px}
+.precio{font-family:var(--serif);font-size:clamp(46px,9vw,64px);font-weight:800;color:var(--acento-light);margin:0 0 8px}
+.precio-nota{font-size:13.5px;color:var(--gris-600);margin:0}
+
+.bio-card{max-width:720px;margin:0 auto;display:flex;gap:28px;align-items:center;flex-wrap:wrap;background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:18px;padding:32px}
+@media (max-width:600px){.bio-card{flex-direction:column;text-align:center}}
+.foto-frame{flex-shrink:0;width:120px;height:120px;border-radius:50%;overflow:hidden;border:3px solid var(--acento)}
+.foto-frame img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
 .bio-texto{flex:1;min-width:240px}
-.bio-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.bio-badges span{font-size:12px;color:var(--dorado-light);background:var(--verde-900);border:1px solid var(--linea-invert);padding:6px 12px;border-radius:20px}
-.faq-item{border-bottom:1px solid var(--linea-invert);padding:18px 0}
+.bio-texto p{margin:0 0 14px;font-size:15px;color:#DCD6C4}
+.bio-badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start}
+@media (max-width:600px){.bio-badges{justify-content:center}}
+.bio-badges span{font-size:11.5px;color:var(--verde-950);background:var(--dorado-light);font-weight:700;padding:6px 13px;border-radius:20px}
+
+.faq-item{border-bottom:1px solid var(--linea-invert);padding:20px 0;max-width:720px;margin:0 auto}
 .faq-item:last-child{border-bottom:none}
-.faq-item h3{margin:0 0 8px;font-size:16px}
+.faq-item h3{margin:0 0 8px;font-size:16.5px;font-family:var(--serif);color:var(--crema)}
 .faq-item p{margin:0;font-size:14.5px;color:#DCD6C4}
-footer{border-top:1px solid var(--linea-invert);margin-top:0;padding-top:22px;font-size:13px;color:var(--gris-600);text-align:center}
+
+.final{text-align:center;background:radial-gradient(ellipse 80% 100% at 50% 100%,#1a3d30 0%,var(--verde-950) 60%);padding:64px 0}
+
+footer{border-top:1px solid var(--linea-invert);padding:28px 0;font-size:13px;color:var(--gris-600);text-align:center}
 footer a{color:var(--dorado-light)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -85,39 +119,54 @@ footer a{color:var(--dorado-light)}
 
 <div class="topbar">Entrenamiento en vivo &middot; 1 y 2 de octubre &middot; USD 9 &mdash; <a href="#anotarme">quiero mi lugar</a></div>
 
-<main class="wrap">
-
-<img class="logo10" src="/assets/logo-full-darkmode.png" alt="SAS Consultora — 10 años 2016-2026">
-
-<p class="eyebrow">Entrenamiento en vivo &middot; por Zoom &middot; 1 y 2 de octubre</p>
-<h1>El Líder <em>Innecesario</em></h1>
-<p class="subtit">10 años liderando personas, equipos y básquet</p>
-<p class="lead">Para quien lidera una pyme, un equipo, un plantel o una familia y está cansado de que todo dependa de que él esté ahí. Nada de teoría genérica: dos ejercicios en vivo, con tu caso real, que salen usados — no escuchados.</p>
-
-<a class="cta" href="https://payhip.com/b/p1YIx" id="anotarme">Quiero mi lugar &mdash; USD 9</a>
+<div class="hero">
+<div class="wrap hero-grid">
+<div>
+<div class="badge"><span class="dot"></span>ENTRENAMIENTO EN VIVO &middot; POR ZOOM &middot; 1 Y 2 DE OCTUBRE</div>
+<h1>Dejá de ser <em>imprescindible</em>.</h1>
+<p class="subtit">El Líder Innecesario &middot; 10 años liderando personas, equipos y básquet</p>
+<p class="lead">Para quien lidera una pyme, un equipo, un plantel o una familia y está cansado de que todo dependa de que él esté ahí. Dos ejercicios en vivo, con tu caso real, que salen usados &mdash; no escuchados.</p>
+<a class="cta" href="https://payhip.com/b/p1YIx" id="anotarme">Quiero mi lugar &mdash; USD 9 →</a>
 <p class="fine">2 días, 90 minutos cada día, por Zoom. Pago único.</p>
-
-<div class="stats">
+<div class="hero-stats">
 <div class="stat"><b>10</b><span>años liderando personas y equipos</span></div>
 <div class="stat"><b>2</b><span>días en vivo, 90 min cada uno</span></div>
 <div class="stat"><b>USD 9</b><span>por el aniversario</span></div>
 </div>
-
-<div class="quote-wrap">
-<p class="quote">El líder que se vuelve innecesario para su equipo es, en realidad, el que más lideró.</p>
+</div>
+<div class="hero-photo">
+<div class="hero-photo-frame">
+<img src="/assets/seba-foto.jpg" alt="Sebastián Svetliza">
+<img class="logo10-small" src="/assets/logo-full-darkmode.png" alt="SAS Consultora 10 años">
+<div class="hero-photo-tag"><b>Sebastián Svetliza</b><span>SAS Consultora</span></div>
+</div>
+</div>
+</div>
 </div>
 
 <section>
+<div class="narrow">
+<p class="eyebrow2">¿Te suena?</p>
 <h2>Este entrenamiento es para vos si...</h2>
 <div class="identi">
-<p>Sos dueño de una pyme, entrenás un equipo, coordinás un grupo o simplemente lideras tu familia — y todo, siempre, pasa por vos.</p>
+<p>Sos dueño de una pyme, entrenás un equipo, coordinás un grupo o simplemente lideras tu familia &mdash; y todo, siempre, pasa por vos.</p>
 <p>Le decís lo mismo a la misma persona por décima vez y nada cambia.</p>
 <p>Delegás una tarea y vuelve intacta a tu escritorio, como si no hubieras dicho nada.</p>
-<p>Sabés que si vos no estás, algo se cae — y ya no sabés si eso te enorgullece o te agota.</p>
+<p>Sabés que si vos no estás, algo se cae &mdash; y ya no sabés si eso te enorgullece o te agota.</p>
+</div>
 </div>
 </section>
 
 <section>
+<div class="wrap">
+<div class="quote-wrap">
+<p class="quote">El líder que se vuelve <span>innecesario</span> para su equipo es, en realidad, el que más lideró.</p>
+</div>
+</div>
+</section>
+
+<section>
+<div class="narrow">
 <h2>Antes y después</h2>
 <div class="tabla">
 <div class="tabla-head mal">Hoy</div>
@@ -129,22 +178,24 @@ footer a{color:var(--dorado-light)}
 <div class="tabla-item">Delegás y la tarea vuelve igual</div>
 <div class="tabla-item">Distinguís lo que solo vos podés hacer de lo que podés soltar hoy</div>
 </div>
-</section>
-
-<section>
-<h2>100% en vivo, 100% práctico</h2>
-<p style="text-align:center;font-size:15.5px;color:#DCD6C4;margin:0 0 24px">No es una charla. Es un entrenamiento por Zoom con ejercicios en vivo, sobre tu caso real — no sobre un ejemplo ajeno.</p>
-<div class="card">
-<ul>
-<li>Armás en el momento tu propio mapa de qué solo vos podés hacer y qué podés soltar hoy</li>
-<li>Practicás en salas de Zoom, en parejas, una corrección real que tengas pendiente</li>
-<li>Salís con dos herramientas usadas de verdad, no solo escuchadas</li>
-<li>Sirve igual si venís de una pyme, de un equipo deportivo o de coordinar cualquier grupo de personas</li>
-</ul>
 </div>
 </section>
 
 <section>
+<div class="narrow">
+<p class="eyebrow2">100% en vivo</p>
+<h2>100% práctico</h2>
+<div class="practico-grid">
+<div class="pcard"><b>Tu caso, no un ejemplo ajeno</b><p>Armás en el momento tu propio mapa de qué solo vos podés hacer y qué podés soltar hoy.</p></div>
+<div class="pcard"><b>Ejercicio en parejas</b><p>Practicás en salas de Zoom una corrección real que tengas pendiente.</p></div>
+<div class="pcard"><b>Herramientas usadas, no escuchadas</b><p>Salís con dos herramientas ya aplicadas, no con apuntes.</p></div>
+<div class="pcard"><b>Sirve para cualquier equipo</b><p>Pyme, plantel deportivo o cualquier grupo de personas que coordines.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="narrow">
 <h2>Cómo son los 2 días</h2>
 <div class="dia">
 <div class="dia-badge">01</div>
@@ -164,25 +215,29 @@ footer a{color:var(--dorado-light)}
 <p class="ejercicio">Ejercicio en vivo: en parejas, en salas de Zoom, practicás una corrección real que tengas pendiente, con una estructura simple, y la ensayás ahí mismo.</p>
 </div>
 </div>
-<p style="text-align:center;font-size:14.5px;color:var(--gris-600);margin-top:20px">Cerrás el día 2 con dos herramientas ya usadas. Ahí te cuento del programa grupal para sostener el cambio en el tiempo — no es obligatorio, ni se vende en la sala.</p>
+<p class="dias-cierre">Cerrás el día 2 con dos herramientas ya usadas. Ahí te cuento del programa grupal para sostener el cambio en el tiempo — no es obligatorio, ni se vende en la sala.</p>
+</div>
 </section>
 
 <section>
+<div class="narrow">
 <h2>Por qué USD 9</h2>
 <div class="precio-box">
 <p class="precio">USD 9</p>
 <p class="precio-nota">Precio simbólico por los 10 años de SAS Consultora &middot; pago único &middot; acceso a los 2 días en vivo</p>
 </div>
-<a class="cta" href="https://payhip.com/b/p1YIx">Quiero mi lugar &mdash; USD 9</a>
-<p class="fine">También podés pagar en pesos con Mercado Pago, escribiéndome directo.</p>
+<a class="cta block" href="https://payhip.com/b/p1YIx">Quiero mi lugar &mdash; USD 9 →</a>
+<p class="fine center">También podés pagar en pesos con Mercado Pago, escribiéndome directo.</p>
+</div>
 </section>
 
 <section>
+<div class="narrow">
 <h2>Quién da el entrenamiento</h2>
-<div class="bio">
-<div class="foto-frame"><span>SS</span></div>
+<div class="bio-card">
+<div class="foto-frame"><img src="/assets/seba-foto.jpg" alt="Sebastián Svetliza"></div>
 <div class="bio-texto">
-<p style="margin:0 0 12px;font-size:15px;color:#DCD6C4">Soy Sebastián Svetliza. Antes de los 10 años de SAS Consultora, pasé más de 30 liderando equipos de alto rendimiento — 20 de ellos como entrenador de básquet a nivel nacional e internacional. Este entrenamiento sale de la misma pregunta que me hacen todas las semanas, ya sea un dueño de pyme, un entrenador o un padre: "¿cómo hago para que esto funcione sin que yo esté siempre encima?"</p>
+<p>Soy Sebastián Svetliza. Antes de los 10 años de SAS Consultora, pasé más de 30 liderando equipos de alto rendimiento &mdash; 20 de ellos como entrenador de básquet a nivel nacional e internacional. Este entrenamiento sale de la misma pregunta que me hacen todas las semanas, ya sea un dueño de pyme, un entrenador o un padre: "¿cómo hago para que esto funcione sin que yo esté siempre encima?"</p>
 <div class="bio-badges">
 <span>30+ años liderando equipos</span>
 <span>20 años entrenador de básquet</span>
@@ -190,9 +245,11 @@ footer a{color:var(--dorado-light)}
 </div>
 </div>
 </div>
+</div>
 </section>
 
 <section>
+<div class="narrow">
 <h2>Preguntas frecuentes</h2>
 <div class="faq-item">
 <h3>¿Sirve si no tengo una empresa?</h3>
@@ -210,16 +267,23 @@ footer a{color:var(--dorado-light)}
 <h3>¿Cómo pago?</h3>
 <p>En dólares con tarjeta o PayPal desde el botón de esta página, o en pesos por Mercado Pago escribiéndome directo por WhatsApp.</p>
 </div>
+</div>
 </section>
 
-<a class="cta" href="https://payhip.com/b/p1YIx">Quiero mi lugar &mdash; USD 9</a>
-<p class="fine">1 y 2 de octubre, 90 minutos cada día, por Zoom.</p>
+<section class="final">
+<div class="narrow">
+<h2>Que no dependa de vos que esté ahí.</h2>
+<a class="cta block" href="https://payhip.com/b/p1YIx">Quiero mi lugar &mdash; USD 9 →</a>
+<p class="fine center">1 y 2 de octubre, 90 minutos cada día, por Zoom.</p>
+</div>
+</section>
 
 <footer>
+<div class="narrow">
 <strong>SAS Consultora</strong> &middot; Diez años acompañando pymes, organizaciones y sus líderes en Entre Ríos y el litoral.<br>
 <a href="https://sasconsultora.com">sasconsultora.com</a> &middot;
 <a href="https://sasconsultora.com/30-minutos.html">¿Preferís empezar gratis? Diagnóstico de 30 minutos</a>
+</div>
 </footer>
-</main>
 </body>
 </html>
