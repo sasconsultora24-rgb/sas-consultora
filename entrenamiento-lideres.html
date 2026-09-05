@@ -103,6 +103,20 @@ h2{font-family:var(--serif);font-size:clamp(24px,3.6vw,32px);font-weight:700;mar
 .precio{font-family:var(--serif);font-size:clamp(26px,4vw,32px);font-weight:800;color:var(--acento-light);margin:0 0 14px}
 .precio-nota{font-family:var(--serif);font-size:clamp(18px,2.6vw,22px);font-weight:700;color:var(--crema);margin:0;line-height:1.4}
 
+/* OFERTA — tarjeta de venta a mitad de página */
+.oferta{max-width:440px;margin:0 auto;background:linear-gradient(160deg,var(--verde-900),var(--verde-950));border:1px solid var(--acento);border-radius:22px;padding:40px clamp(26px,5vw,40px);box-shadow:0 24px 60px -20px rgba(226,112,58,.35);text-align:center}
+.oferta h3{font-family:var(--serif);font-size:21px;font-weight:700;margin:0 0 4px;color:var(--crema)}
+.oferta .oferta-sub{font-size:12.5px;color:var(--gris-600);margin:0 0 26px}
+.oferta-lista{text-align:left;margin:0 0 28px;list-style:none;padding:0}
+.oferta-lista li{position:relative;padding:0 0 14px 28px;font-size:14.5px;color:#DCD6C4}
+.oferta-lista li:last-child{padding-bottom:0}
+.oferta-lista li::before{content:"✓";position:absolute;left:0;top:0;color:var(--acento-light);font-weight:800}
+.oferta-precio{font-family:var(--serif);font-size:clamp(48px,10vw,62px);font-weight:800;color:var(--acento-light);margin:0 0 6px;line-height:1}
+.oferta-precio span{font-size:16px;font-weight:700;color:var(--gris-600);vertical-align:middle}
+.oferta-precio-nota{font-size:12.5px;color:var(--gris-600);margin:0 0 26px}
+.oferta-pago{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.oferta-pago span{font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--gris-600);border:1px solid var(--linea-invert);border-radius:6px;padding:5px 10px}
+
 .bio-card{max-width:800px;margin:0 auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:0;background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:18px;overflow:hidden;box-shadow:0 16px 34px -20px rgba(0,0,0,.55)}
 @media (max-width:640px){.bio-card{grid-template-columns:1fr}}
 .bio-foto{position:relative}
@@ -186,7 +200,8 @@ footer a{color:var(--dorado-light)}
 
 <section>
 <div class="narrow">
-<h2>Antes y después</h2>
+<p class="eyebrow2">Antes y después</p>
+<h2>Qué cambia cuando soltás el peso</h2>
 <div class="tabla">
 <div class="tabla-head mal">Hoy</div>
 <div class="tabla-head bien">Después del entrenamiento</div>
@@ -222,6 +237,25 @@ footer a{color:var(--dorado-light)}
 </section>
 
 <section>
+<div class="wrap">
+<div class="oferta">
+<h3>Soltá el peso, no el liderazgo</h3>
+<p class="oferta-sub">Entrenamiento en vivo &middot; 1 y 2 de octubre &middot; por Zoom</p>
+<ul class="oferta-lista">
+<li>2 días en vivo, 90 minutos cada uno</li>
+<li>Tu propio caso, no ejemplos ajenos</li>
+<li>2 cosas concretas para delegar esta semana</li>
+<li>Una corrección real, ya escrita y lista para dar</li>
+</ul>
+<p class="oferta-precio"><span>USD</span> 9</p>
+<p class="oferta-precio-nota">Precio simbólico por los 10 años de SAS Consultora &middot; pago único</p>
+<a class="cta" style="display:flex;justify-content:center;margin:0 auto" href="https://payhip.com/b/p1YIx">Quiero soltar el peso &mdash; USD 9 →</a>
+<div class="oferta-pago"><span>TARJETA</span><span>PAYPAL</span><span>MERCADO PAGO</span></div>
+</div>
+</div>
+</section>
+
+<section>
 <div class="narrow">
 <p class="eyebrow2">No es la primera vez</p>
 <h2>Esto ya le está pasando a líderes</h2>
@@ -234,7 +268,8 @@ footer a{color:var(--dorado-light)}
 
 <section>
 <div class="narrow">
-<h2>Cómo son los 2 días</h2>
+<p class="eyebrow2">Cronograma &middot; 1 y 2 de octubre</p>
+<h2>Dos días, dos quiebres</h2>
 <div class="dia">
 <div class="dia-badge">01</div>
 <div class="dia-cont">
@@ -242,7 +277,7 @@ footer a{color:var(--dorado-light)}
 <h3>Todo depende de mí</h3>
 <div class="dia-row"><b>El problema</b><p>Nada funciona si vos no estás — ni tu pyme, ni tu plantel, ni tu casa.</p></div>
 <div class="dia-row"><b>Qué hacemos</b><p>Armás en vivo tu propio mapa: qué solo vos podés hacer, y qué podés soltar ya. Una encuesta en vivo te muestra cuántos en la sala cargan exactamente lo mismo.</p></div>
-<div class="dia-row"><b>Con qué te vas</b><p>2 a 3 cosas concretas para delegar esta semana. No una idea suelta: una lista con nombre y apellido.</p></div>
+<div class="dia-row"><b>Con qué te vas</b><p>2 cosas concretas para delegar esta semana. Con nombre, apellido y fecha — no una idea suelta.</p></div>
 </div>
 </div>
 <div class="dia">
@@ -261,19 +296,7 @@ footer a{color:var(--dorado-light)}
 
 <section>
 <div class="narrow">
-<h2>Por qué USD 9</h2>
-<div class="precio-box">
-<p class="precio">USD 9</p>
-<p class="precio-nota">Precio simbólico por los 10 años de SAS Consultora &middot; pago único &middot; acceso a los 2 días en vivo</p>
-</div>
-<a class="cta" style="display:flex;justify-content:center;margin:0 auto" href="https://payhip.com/b/p1YIx">Quiero soltar el peso &mdash; USD 9 →</a>
-<p class="fine">También podés pagar en pesos con Mercado Pago, escribiéndome directo.</p>
-</div>
-</section>
-
-<section>
-<div class="narrow">
-<h2>Quién da el entrenamiento</h2>
+<h2>Quién te acompaña estos 2 días</h2>
 <div class="bio-card">
 <div class="bio-foto"><img src="/assets/seba-bio-v2.jpg" alt="Sebastián Svetliza, fundador de SAS Consultora"></div>
 <div class="bio-texto">
@@ -291,7 +314,8 @@ footer a{color:var(--dorado-light)}
 
 <section>
 <div class="narrow">
-<h2>Preguntas frecuentes</h2>
+<p class="eyebrow2">Preguntas frecuentes</p>
+<h2>Todo lo que necesitás saber antes de anotarte</h2>
 <div class="faq-item">
 <h3>¿Sirve si no tengo una empresa?</h3>
 <p>Sirve para cualquiera que lidere personas — un plantel, un equipo de trabajo, un grupo de voluntarios o tu propia familia. El problema de fondo es el mismo.</p>
@@ -313,7 +337,10 @@ footer a{color:var(--dorado-light)}
 
 <section class="final">
 <div class="narrow">
-<h2>Soltá el peso. Seguí liderando.</h2>
+<p class="eyebrow2" style="color:var(--dorado-light)">Por qué USD 9</p>
+<h2>Un precio simbólico, por los 10 años de SAS Consultora</h2>
+<p style="font-size:15.5px;color:#DCD6C4;max-width:520px;margin:0 auto 8px">No es un descuento de venta. Es un número elegido: diez años acompañando líderes, y esta vez quiero que el precio no sea la excusa para no venir.</p>
+<p class="lead-close" style="margin:20px auto 30px;max-width:520px">Soltá el peso. Seguí liderando.</p>
 <a class="cta" style="display:flex;justify-content:center;margin:0 auto" href="https://payhip.com/b/p1YIx">Quiero soltar el peso &mdash; USD 9 →</a>
 <p class="fine">1 y 2 de octubre, 90 minutos cada día, por Zoom.</p>
 </div>
