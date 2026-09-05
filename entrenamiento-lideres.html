@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Entrenamiento para Líderes &middot; SAS Consultora</title>
-<meta name="description" content="Entrenamiento en vivo de 2 días para líderes que quieren un equipo que funcione sin ellos encima de cada decisión. 1 y 2 de octubre, USD 9, por los 10 años de SAS Consultora.">
+<title>El Líder Innecesario &middot; SAS Consultora</title>
+<meta name="description" content="Entrenamiento en vivo de 2 días por Zoom para líderes de pyme, equipos y deporte. 1 y 2 de octubre, 90 minutos cada día, USD 9 por los 10 años de SAS Consultora.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -19,43 +19,59 @@
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:var(--sans);background:var(--verde-950);color:var(--crema);line-height:1.65;-webkit-font-smoothing:antialiased}
-.wrap{max-width:760px;margin:0 auto;padding:clamp(28px,6vw,72px) clamp(20px,5vw,32px)}
+.wrap{max-width:780px;margin:0 auto;padding:clamp(24px,6vw,64px) clamp(20px,5vw,32px)}
+.topbar{position:sticky;top:0;z-index:20;background:var(--dorado);color:var(--verde-950);text-align:center;padding:10px 16px;font-size:12.5px;font-weight:700}
+.topbar a{color:var(--verde-950);text-decoration:underline}
+.logo10{display:block;margin:0 auto 30px;height:clamp(100px,14vw,150px);width:auto}
 .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dorado-light);margin:0 0 18px;text-align:center}
-h1{font-family:var(--serif);font-weight:800;font-size:clamp(32px,6.5vw,52px);line-height:1.1;margin:0 0 20px;text-wrap:balance;text-align:center}
-.lead{font-size:clamp(17px,2.4vw,20px);color:#DCD6C4;margin:0 auto 32px;text-wrap:pretty;text-align:center;max-width:600px}
+h1{font-family:var(--serif);font-weight:800;font-size:clamp(36px,7vw,58px);line-height:1.05;margin:0 0 10px;text-wrap:balance;text-align:center}
+h1 em{font-style:italic;color:var(--dorado-light)}
+.subtit{font-family:var(--serif);font-style:italic;font-size:clamp(16px,2.4vw,19px);color:var(--dorado-light);text-align:center;margin:0 0 26px}
+.lead{font-size:clamp(16px,2.2vw,18.5px);color:#DCD6C4;margin:0 auto 32px;text-wrap:pretty;text-align:center;max-width:620px}
 h2{font-family:var(--serif);font-size:clamp(22px,4vw,28px);font-weight:700;margin:0 0 20px;text-align:center}
 h3{font-family:var(--serif);font-size:18px;font-weight:700;margin:0 0 10px}
 .stats{display:flex;justify-content:center;gap:clamp(18px,5vw,44px);flex-wrap:wrap;margin:0 0 48px;padding-top:28px;border-top:1px solid var(--linea-invert)}
 .stat{text-align:center}
 .stat b{display:block;font-family:var(--serif);font-size:26px;color:var(--dorado-light)}
 .stat span{font-size:12px;color:var(--gris-600)}
-.card{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:4px;padding:26px 28px;margin:0 0 22px}
+.card{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:6px;padding:26px 28px;margin:0 0 22px}
 ul{margin:0;padding:0;list-style:none}
 li{padding:11px 0 11px 26px;position:relative;border-bottom:1px solid var(--linea-invert);font-size:15.5px}
 li:last-child{border-bottom:none}
 li::before{content:"";position:absolute;left:0;top:19px;width:11px;height:1px;background:var(--dorado)}
-.cta{display:block;text-align:center;background:var(--dorado);color:var(--verde-950);font-weight:700;font-size:16px;text-decoration:none;padding:19px 28px;border-radius:4px;margin:34px 0 14px;transition:background .18s}
-.cta:hover,.cta:focus-visible{background:var(--dorado-light)}
+.cta{display:block;text-align:center;background:var(--dorado);color:var(--verde-950);font-weight:700;font-size:16px;text-decoration:none;padding:19px 28px;border-radius:6px;margin:34px 0 14px;transition:background .18s,transform .18s}
+.cta:hover,.cta:focus-visible{background:var(--dorado-light);transform:translateY(-2px)}
 .cta:focus-visible{outline:3px solid var(--crema);outline-offset:3px}
 .fine{text-align:center;font-size:13.5px;color:var(--gris-600);margin:0 0 56px}
-.quote{font-family:var(--serif);font-size:19px;font-style:italic;color:var(--dorado-light);border-left:2px solid var(--dorado);padding-left:20px;margin:38px 0}
+.quote{font-family:var(--serif);font-size:clamp(19px,3vw,23px);font-style:italic;color:var(--dorado-light);text-align:center;max-width:600px;margin:0 auto}
+.quote-wrap{padding:16px 0;border-top:1px solid var(--linea-invert);border-bottom:1px solid var(--linea-invert)}
 section{margin:0 0 56px}
-.preguntas{display:grid;gap:14px}
-.pregunta{font-family:var(--serif);font-size:clamp(18px,3vw,22px);font-style:italic;color:var(--crema);text-align:center}
-.tabla{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linea-invert);border:1px solid var(--linea-invert);border-radius:4px;overflow:hidden;margin:0 0 8px}
+.identi{display:grid;gap:0;border-top:1px solid var(--linea-invert)}
+.identi p{padding:16px 0 16px 30px;position:relative;border-bottom:1px solid var(--linea-invert);font-size:15.5px;color:#DCD6C4;margin:0}
+.identi p::before{content:"—";position:absolute;left:0;color:var(--dorado)}
+.tabla{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linea-invert);border:1px solid var(--linea-invert);border-radius:6px;overflow:hidden;margin:0 0 8px}
 .tabla-head{background:var(--verde-900);padding:14px 18px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
 .tabla-head.mal{color:var(--rojo)}
 .tabla-head.bien{color:var(--verde-check)}
 .tabla-item{background:var(--verde-950);padding:14px 18px;font-size:14.5px}
-.dia{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:4px;padding:24px 26px;margin:0 0 16px}
+.dia{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:6px;padding:26px 28px;margin:0 0 16px;display:flex;gap:20px}
+.dia-badge{flex-shrink:0;width:44px;height:44px;border-radius:50%;background:var(--dorado);color:var(--verde-950);font-family:var(--serif);font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center}
+.dia-cont{flex:1}
 .dia-num{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--dorado-light);margin:0 0 6px}
-.dia h3{margin:0 0 12px}
-.precio-box{text-align:center;background:var(--verde-900);border:1px solid var(--dorado);border-radius:4px;padding:36px 28px;margin:0 0 8px}
-.precio-tachado{font-size:16px;color:var(--gris-600);text-decoration:line-through;margin:0 0 4px}
+.dia h3{margin:0 0 10px}
+.dia p{margin:0 0 10px;font-size:15px;color:#DCD6C4}
+.dia p:last-child{margin-bottom:0}
+.dia .ejercicio{font-size:13.5px;color:var(--dorado-light);font-weight:600}
+.precio-box{text-align:center;background:var(--verde-900);border:1px solid var(--dorado);border-radius:6px;padding:36px 28px;margin:0 0 8px}
 .precio{font-family:var(--serif);font-size:clamp(42px,8vw,60px);font-weight:800;color:var(--dorado-light);margin:0 0 6px}
 .precio-nota{font-size:14px;color:var(--gris-600);margin:0}
-.bio{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.bio{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.foto-frame{flex-shrink:0;width:130px;height:130px;border-radius:50%;background:var(--verde-700);border:2px solid var(--dorado);display:flex;align-items:center;justify-content:center;overflow:hidden;margin:0 auto}
+.foto-frame img{width:100%;height:100%;object-fit:cover}
+.foto-frame span{font-family:var(--serif);font-size:34px;color:var(--dorado-light)}
 .bio-texto{flex:1;min-width:240px}
+.bio-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.bio-badges span{font-size:12px;color:var(--dorado-light);background:var(--verde-900);border:1px solid var(--linea-invert);padding:6px 12px;border-radius:20px}
 .faq-item{border-bottom:1px solid var(--linea-invert);padding:18px 0}
 .faq-item:last-child{border-bottom:none}
 .faq-item h3{margin:0 0 8px;font-size:16px}
@@ -66,61 +82,64 @@ footer a{color:var(--dorado-light)}
 </style>
 </head>
 <body>
+
+<div class="topbar">Entrenamiento en vivo &middot; 1 y 2 de octubre &middot; USD 9 &mdash; <a href="#anotarme">quiero mi lugar</a></div>
+
 <main class="wrap">
 
-<p class="eyebrow">Vivo &middot; 1 y 2 de octubre &middot; por los 10 años de SAS Consultora</p>
-<h1>Un equipo que funciona sin vos</h1>
-<p class="lead">Entrenamiento en vivo de 2 días para dueños de pyme y gerentes que están cansados de ser el único que sostiene todo. Nada de teoría genérica: salís con movimientos concretos para tu propio equipo.</p>
+<img class="logo10" src="/assets/logo-full-darkmode.png" alt="SAS Consultora — 10 años 2016-2026">
 
-<a class="cta" href="https://payhip.com/b/p1YIx">Quiero mi lugar &mdash; USD 9</a>
-<p class="fine">Cupos limitados a la sala en vivo. Sin cupo mínimo de compromiso después: el que quiere seguir, sigue.</p>
+<p class="eyebrow">Entrenamiento en vivo &middot; por Zoom &middot; 1 y 2 de octubre</p>
+<h1>El Líder <em>Innecesario</em></h1>
+<p class="subtit">10 años liderando personas, equipos y básquet</p>
+<p class="lead">Para quien lidera una pyme, un equipo, un plantel o una familia y está cansado de que todo dependa de que él esté ahí. Nada de teoría genérica: dos ejercicios en vivo, con tu caso real, que salen usados — no escuchados.</p>
+
+<a class="cta" href="https://payhip.com/b/p1YIx" id="anotarme">Quiero mi lugar &mdash; USD 9</a>
+<p class="fine">2 días, 90 minutos cada día, por Zoom. Pago único.</p>
 
 <div class="stats">
-<div class="stat"><b>10</b><span>años acompañando pymes</span></div>
-<div class="stat"><b>2</b><span>días en vivo</span></div>
+<div class="stat"><b>10</b><span>años liderando personas y equipos</span></div>
+<div class="stat"><b>2</b><span>días en vivo, 90 min cada uno</span></div>
 <div class="stat"><b>USD 9</b><span>por el aniversario</span></div>
 </div>
 
+<div class="quote-wrap">
+<p class="quote">El líder que se vuelve innecesario para su equipo es, en realidad, el que más lideró.</p>
+</div>
+
 <section>
-<h2>¿Te suena alguna de estas?</h2>
-<div class="preguntas">
-<p class="pregunta">¿Tu empresa funciona solo cuando vos estás ahí?</p>
-<p class="pregunta">¿Cuántas veces por semana te hacen la misma pregunta que ya contestaste?</p>
-<p class="pregunta">¿Delegás una tarea y termina volviendo a tu escritorio igual?</p>
+<h2>Este entrenamiento es para vos si...</h2>
+<div class="identi">
+<p>Sos dueño de una pyme, entrenás un equipo, coordinás un grupo o simplemente lideras tu familia — y todo, siempre, pasa por vos.</p>
+<p>Le decís lo mismo a la misma persona por décima vez y nada cambia.</p>
+<p>Delegás una tarea y vuelve intacta a tu escritorio, como si no hubieras dicho nada.</p>
+<p>Sabés que si vos no estás, algo se cae — y ya no sabés si eso te enorgullece o te agota.</p>
 </div>
 </section>
 
 <section>
-<p class="quote">Un líder que sostiene todo solo no está liderando. Está apagando incendios.</p>
-<p style="text-align:center;font-size:15.5px;color:#DCD6C4">Diez años acompañando pymes de Entre Ríos y el litoral me enseñaron algo simple: el problema casi nunca es la gente. Es que nadie armó nunca los roles, los límites y las conversaciones que hacen que un equipo funcione sin que el dueño esté encima de cada decisión.</p>
-</section>
-
-<section>
-<h2>Antes y después del entrenamiento</h2>
+<h2>Antes y después</h2>
 <div class="tabla">
 <div class="tabla-head mal">Hoy</div>
 <div class="tabla-head bien">Después del entrenamiento</div>
-<div class="tabla-item">Cada decisión pasa por vos, hasta las chicas</div>
-<div class="tabla-item">Tu equipo sabe qué puede resolver solo</div>
-<div class="tabla-item">Delegás y la tarea vuelve igual, sin resolver</div>
-<div class="tabla-item">Delegás con un método que se sostiene sin vos atrás</div>
-<div class="tabla-item">Confundís urgencia con importancia todo el día</div>
-<div class="tabla-item">Distinguís lo que grita de lo que realmente importa</div>
-<div class="tabla-item">Evitás la conversación difícil con tu gente</div>
-<div class="tabla-item">Tenés un modo concreto de tener esa charla</div>
+<div class="tabla-item">Todo depende de que vos estés ahí</div>
+<div class="tabla-item">Tenés una lista concreta de qué soltar esta semana</div>
+<div class="tabla-item">Corregís lo mismo una y otra vez, sin resultado</div>
+<div class="tabla-item">Tenés una estructura simple para que una corrección cambie algo de verdad</div>
+<div class="tabla-item">Delegás y la tarea vuelve igual</div>
+<div class="tabla-item">Distinguís lo que solo vos podés hacer de lo que podés soltar hoy</div>
 </div>
 </section>
 
 <section>
 <h2>100% en vivo, 100% práctico</h2>
-<p style="text-align:center;font-size:15.5px;color:#DCD6C4;margin:0 0 24px">No es una charla motivacional. Es un entrenamiento: trabajamos con tu equipo real, tus conflictos reales, y salís con algo aplicado, no con apuntes.</p>
+<p style="text-align:center;font-size:15.5px;color:#DCD6C4;margin:0 0 24px">No es una charla. Es un entrenamiento por Zoom con ejercicios en vivo, sobre tu caso real — no sobre un ejemplo ajeno.</p>
 <div class="card">
 <ul>
-<li>Ejercicios en vivo sobre tu propio equipo, no casos ajenos</li>
-<li>Un método simple para distinguir qué se delega y qué no</li>
-<li>Cómo tener la conversación difícil sin que se rompa el vínculo</li>
-<li>Roles claros: quién decide qué, sin que todo vuelva a vos</li>
-<li>Grupo reducido en vivo, con espacio real para tu caso</li>
+<li>Armás en el momento tu propio mapa de qué solo vos podés hacer y qué podés soltar hoy</li>
+<li>Practicás en salas de Zoom, en parejas, una corrección real que tengas pendiente</li>
+<li>Salís con dos herramientas usadas de verdad, no solo escuchadas</li>
+<li>Sirve igual si venís de una pyme, de un equipo deportivo o de coordinar cualquier grupo de personas</li>
 </ul>
 </div>
 </section>
@@ -128,23 +147,31 @@ footer a{color:var(--dorado-light)}
 <section>
 <h2>Cómo son los 2 días</h2>
 <div class="dia">
+<div class="dia-badge">01</div>
+<div class="dia-cont">
 <p class="dia-num">Día 1 &middot; 1 de octubre</p>
-<h3>Por qué todo vuelve a vos</h3>
-<p style="margin:0;font-size:15px;color:#DCD6C4">Identificamos en qué momento tu equipo dejó de decidir solo, y armamos el primer movimiento concreto para cortar ese patrón.</p>
+<h3>Todo depende de mí</h3>
+<p>El problema más universal, y cruza empresa, deporte y familia: nada funciona si el líder no está.</p>
+<p class="ejercicio">Ejercicio en vivo: armás tu propio mapa de "lo que solo vos podés hacer" vs. "lo que podés soltar hoy mismo" — salís con 2-3 cosas concretas para delegar esta semana.</p>
+</div>
 </div>
 <div class="dia">
+<div class="dia-badge">02</div>
+<div class="dia-cont">
 <p class="dia-num">Día 2 &middot; 2 de octubre</p>
-<h3>Un equipo que se sostiene sin vos</h3>
-<p style="margin:0;font-size:15px;color:#DCD6C4">Salís con roles definidos, un método de delegación real y la conversación pendiente que venías postergando, ya lista para tener.</p>
+<h3>Lo digo mil veces y no cambia nada</h3>
+<p>Cómo dar una corrección o instrucción que realmente modifique el comportamiento — tan válido en un plantel como en una pyme o en casa.</p>
+<p class="ejercicio">Ejercicio en vivo: en parejas, en salas de Zoom, practicás una corrección real que tengas pendiente, con una estructura simple, y la ensayás ahí mismo.</p>
 </div>
+</div>
+<p style="text-align:center;font-size:14.5px;color:var(--gris-600);margin-top:20px">Cerrás el día 2 con dos herramientas ya usadas. Ahí te cuento del programa grupal para sostener el cambio en el tiempo — no es obligatorio, ni se vende en la sala.</p>
 </section>
 
 <section>
 <h2>Por qué USD 9</h2>
 <div class="precio-box">
-<p class="precio-tachado">Un entrenamiento así, valdría bastante más</p>
 <p class="precio">USD 9</p>
-<p class="precio-nota">Precio simbólico por los 10 años de SAS Consultora &middot; pago único</p>
+<p class="precio-nota">Precio simbólico por los 10 años de SAS Consultora &middot; pago único &middot; acceso a los 2 días en vivo</p>
 </div>
 <a class="cta" href="https://payhip.com/b/p1YIx">Quiero mi lugar &mdash; USD 9</a>
 <p class="fine">También podés pagar en pesos con Mercado Pago, escribiéndome directo.</p>
@@ -153,8 +180,14 @@ footer a{color:var(--dorado-light)}
 <section>
 <h2>Quién da el entrenamiento</h2>
 <div class="bio">
+<div class="foto-frame"><span>SS</span></div>
 <div class="bio-texto">
-<p style="margin:0 0 12px;font-size:15px;color:#DCD6C4">Soy Sebastián Svetliza. Hace diez años acompaño dueños de pyme y sus equipos en Entre Ríos y el litoral &mdash; consultoría, capacitación y procesos de orden real, no de power point. Este entrenamiento nace de la misma pregunta que me hacen todas las semanas en las charlas: "¿cómo hago para que esto funcione sin que yo esté siempre encima?"</p>
+<p style="margin:0 0 12px;font-size:15px;color:#DCD6C4">Soy Sebastián Svetliza. Antes de los 10 años de SAS Consultora, pasé más de 30 liderando equipos de alto rendimiento — 20 de ellos como entrenador de básquet a nivel nacional e internacional. Este entrenamiento sale de la misma pregunta que me hacen todas las semanas, ya sea un dueño de pyme, un entrenador o un padre: "¿cómo hago para que esto funcione sin que yo esté siempre encima?"</p>
+<div class="bio-badges">
+<span>30+ años liderando equipos</span>
+<span>20 años entrenador de básquet</span>
+<span>Coach Ontológico certificado</span>
+</div>
 </div>
 </div>
 </section>
@@ -162,12 +195,12 @@ footer a{color:var(--dorado-light)}
 <section>
 <h2>Preguntas frecuentes</h2>
 <div class="faq-item">
-<h3>¿Es en vivo o queda grabado?</h3>
-<p>Es en vivo, los dos días. Si no podés estar en algún momento puntual, te aviso cómo recuperarlo.</p>
+<h3>¿Sirve si no tengo una empresa?</h3>
+<p>Sirve para cualquiera que lidere personas — un plantel, un equipo de trabajo, un grupo de voluntarios o tu propia familia. El problema de fondo es el mismo.</p>
 </div>
 <div class="faq-item">
-<h3>¿Sirve si tengo un equipo chico?</h3>
-<p>Sirve para cualquier tamaño de equipo donde vos seas quien termina resolviendo todo. El método se adapta a tu caso puntual.</p>
+<h3>¿Es en vivo o queda grabado?</h3>
+<p>Es en vivo, por Zoom, los dos días. Si no podés estar en algún momento puntual, te aviso cómo recuperarlo.</p>
 </div>
 <div class="faq-item">
 <h3>¿Hay algo después del entrenamiento?</h3>
@@ -180,7 +213,7 @@ footer a{color:var(--dorado-light)}
 </section>
 
 <a class="cta" href="https://payhip.com/b/p1YIx">Quiero mi lugar &mdash; USD 9</a>
-<p class="fine">1 y 2 de octubre, en vivo. Cupos limitados a la sala.</p>
+<p class="fine">1 y 2 de octubre, 90 minutos cada día, por Zoom.</p>
 
 <footer>
 <strong>SAS Consultora</strong> &middot; Diez años acompañando pymes, organizaciones y sus líderes en Entre Ríos y el litoral.<br>
