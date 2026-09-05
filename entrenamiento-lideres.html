@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrenamiento para Líderes &middot; SAS Consultora</title>
+<meta name="description" content="Entrenamiento en vivo de 2 días para líderes que quieren un equipo que funcione sin ellos encima de cada decisión. 1 y 2 de octubre, USD 9, por los 10 años de SAS Consultora.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--verde-950:#0B1D17; --verde-900:#122F26; --verde-700:#1E4B3D;
+--dorado:#B8972A; --dorado-light:#D9BD6B;
+--crema:#F3EFE3; --gris-900:#1C1F1E; --gris-600:#565B57;
+--linea-invert:rgba(243,239,227,.18);
+--rojo:#C0563E; --verde-check:#7FA37A;
+--serif:'Fraunces',Georgia,serif; --sans:'Montserrat',-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);background:var(--verde-950);color:var(--crema);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:clamp(28px,6vw,72px) clamp(20px,5vw,32px)}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dorado-light);margin:0 0 18px;text-align:center}
+h1{font-family:var(--serif);font-weight:800;font-size:clamp(32px,6.5vw,52px);line-height:1.1;margin:0 0 20px;text-wrap:balance;text-align:center}
+.lead{font-size:clamp(17px,2.4vw,20px);color:#DCD6C4;margin:0 auto 32px;text-wrap:pretty;text-align:center;max-width:600px}
+h2{font-family:var(--serif);font-size:clamp(22px,4vw,28px);font-weight:700;margin:0 0 20px;text-align:center}
+h3{font-family:var(--serif);font-size:18px;font-weight:700;margin:0 0 10px}
+.stats{display:flex;justify-content:center;gap:clamp(18px,5vw,44px);flex-wrap:wrap;margin:0 0 48px;padding-top:28px;border-top:1px solid var(--linea-invert)}
+.stat{text-align:center}
+.stat b{display:block;font-family:var(--serif);font-size:26px;color:var(--dorado-light)}
+.stat span{font-size:12px;color:var(--gris-600)}
+.card{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:4px;padding:26px 28px;margin:0 0 22px}
+ul{margin:0;padding:0;list-style:none}
+li{padding:11px 0 11px 26px;position:relative;border-bottom:1px solid var(--linea-invert);font-size:15.5px}
+li:last-child{border-bottom:none}
+li::before{content:"";position:absolute;left:0;top:19px;width:11px;height:1px;background:var(--dorado)}
+.cta{display:block;text-align:center;background:var(--dorado);color:var(--verde-950);font-weight:700;font-size:16px;text-decoration:none;padding:19px 28px;border-radius:4px;margin:34px 0 14px;transition:background .18s}
+.cta:hover,.cta:focus-visible{background:var(--dorado-light)}
+.cta:focus-visible{outline:3px solid var(--crema);outline-offset:3px}
+.fine{text-align:center;font-size:13.5px;color:var(--gris-600);margin:0 0 56px}
+.quote{font-family:var(--serif);font-size:19px;font-style:italic;color:var(--dorado-light);border-left:2px solid var(--dorado);padding-left:20px;margin:38px 0}
+section{margin:0 0 56px}
+.preguntas{display:grid;gap:14px}
+.pregunta{font-family:var(--serif);font-size:clamp(18px,3vw,22px);font-style:italic;color:var(--crema);text-align:center}
+.tabla{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linea-invert);border:1px solid var(--linea-invert);border-radius:4px;overflow:hidden;margin:0 0 8px}
+.tabla-head{background:var(--verde-900);padding:14px 18px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.tabla-head.mal{color:var(--rojo)}
+.tabla-head.bien{color:var(--verde-check)}
+.tabla-item{background:var(--verde-950);padding:14px 18px;font-size:14.5px}
+.dia{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:4px;padding:24px 26px;margin:0 0 16px}
+.dia-num{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--dorado-light);margin:0 0 6px}
+.dia h3{margin:0 0 12px}
+.precio-box{text-align:center;background:var(--verde-900);border:1px solid var(--dorado);border-radius:4px;padding:36px 28px;margin:0 0 8px}
+.precio-tachado{font-size:16px;color:var(--gris-600);text-decoration:line-through;margin:0 0 4px}
+.precio{font-family:var(--serif);font-size:clamp(42px,8vw,60px);font-weight:800;color:var(--dorado-light);margin:0 0 6px}
+.precio-nota{font-size:14px;color:var(--gris-600);margin:0}
+.bio{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.bio-texto{flex:1;min-width:240px}
+.faq-item{border-bottom:1px solid var(--linea-invert);padding:18px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-item h3{margin:0 0 8px;font-size:16px}
+.faq-item p{margin:0;font-size:14.5px;color:#DCD6C4}
+footer{border-top:1px solid var(--linea-invert);margin-top:0;padding-top:22px;font-size:13px;color:var(--gris-600);text-align:center}
+footer a{color:var(--dorado-light)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<p class="eyebrow">Vivo &middot; 1 y 2 de octubre &middot; por los 10 años de SAS Consultora</p>
+<h1>Un equipo que funciona sin vos</h1>
+<p class="lead">Entrenamiento en vivo de 2 días para dueños de pyme y gerentes que están cansados de ser el único que sostiene todo. Nada de teoría genérica: salís con movimientos concretos para tu propio equipo.</p>
+
+<a class="cta" href="https://payhip.com/b/p1YIx">Quiero mi lugar &mdash; USD 9</a>
+<p class="fine">Cupos limitados a la sala en vivo. Sin cupo mínimo de compromiso después: el que quiere seguir, sigue.</p>
+
+<div class="stats">
+<div class="stat"><b>10</b><span>años acompañando pymes</span></div>
+<div class="stat"><b>2</b><span>días en vivo</span></div>
+<div class="stat"><b>USD 9</b><span>por el aniversario</span></div>
+</div>
+
+<section>
+<h2>¿Te suena alguna de estas?</h2>
+<div class="preguntas">
+<p class="pregunta">¿Tu empresa funciona solo cuando vos estás ahí?</p>
+<p class="pregunta">¿Cuántas veces por semana te hacen la misma pregunta que ya contestaste?</p>
+<p class="pregunta">¿Delegás una tarea y termina volviendo a tu escritorio igual?</p>
+</div>
+</section>
+
+<section>
+<p class="quote">Un líder que sostiene todo solo no está liderando. Está apagando incendios.</p>
+<p style="text-align:center;font-size:15.5px;color:#DCD6C4">Diez años acompañando pymes de Entre Ríos y el litoral me enseñaron algo simple: el problema casi nunca es la gente. Es que nadie armó nunca los roles, los límites y las conversaciones que hacen que un equipo funcione sin que el dueño esté encima de cada decisión.</p>
+</section>
+
+<section>
+<h2>Antes y después del entrenamiento</h2>
+<div class="tabla">
+<div class="tabla-head mal">Hoy</div>
+<div class="tabla-head bien">Después del entrenamiento</div>
+<div class="tabla-item">Cada decisión pasa por vos, hasta las chicas</div>
+<div class="tabla-item">Tu equipo sabe qué puede resolver solo</div>
+<div class="tabla-item">Delegás y la tarea vuelve igual, sin resolver</div>
+<div class="tabla-item">Delegás con un método que se sostiene sin vos atrás</div>
+<div class="tabla-item">Confundís urgencia con importancia todo el día</div>
+<div class="tabla-item">Distinguís lo que grita de lo que realmente importa</div>
+<div class="tabla-item">Evitás la conversación difícil con tu gente</div>
+<div class="tabla-item">Tenés un modo concreto de tener esa charla</div>
+</div>
+</section>
+
+<section>
+<h2>100% en vivo, 100% práctico</h2>
+<p style="text-align:center;font-size:15.5px;color:#DCD6C4;margin:0 0 24px">No es una charla motivacional. Es un entrenamiento: trabajamos con tu equipo real, tus conflictos reales, y salís con algo aplicado, no con apuntes.</p>
+<div class="card">
+<ul>
+<li>Ejercicios en vivo sobre tu propio equipo, no casos ajenos</li>
+<li>Un método simple para distinguir qué se delega y qué no</li>
+<li>Cómo tener la conversación difícil sin que se rompa el vínculo</li>
+<li>Roles claros: quién decide qué, sin que todo vuelva a vos</li>
+<li>Grupo reducido en vivo, con espacio real para tu caso</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h2>Cómo son los 2 días</h2>
+<div class="dia">
+<p class="dia-num">Día 1 &middot; 1 de octubre</p>
+<h3>Por qué todo vuelve a vos</h3>
+<p style="margin:0;font-size:15px;color:#DCD6C4">Identificamos en qué momento tu equipo dejó de decidir solo, y armamos el primer movimiento concreto para cortar ese patrón.</p>
+</div>
+<div class="dia">
+<p class="dia-num">Día 2 &middot; 2 de octubre</p>
+<h3>Un equipo que se sostiene sin vos</h3>
+<p style="margin:0;font-size:15px;color:#DCD6C4">Salís con roles definidos, un método de delegación real y la conversación pendiente que venías postergando, ya lista para tener.</p>
+</div>
+</section>
+
+<section>
+<h2>Por qué USD 9</h2>
+<div class="precio-box">
+<p class="precio-tachado">Un entrenamiento así, valdría bastante más</p>
+<p class="precio">USD 9</p>
+<p class="precio-nota">Precio simbólico por los 10 años de SAS Consultora &middot; pago único</p>
+</div>
+<a class="cta" href="https://payhip.com/b/p1YIx">Quiero mi lugar &mdash; USD 9</a>
+<p class="fine">También podés pagar en pesos con Mercado Pago, escribiéndome directo.</p>
+</section>
+
+<section>
+<h2>Quién da el entrenamiento</h2>
+<div class="bio">
+<div class="bio-texto">
+<p style="margin:0 0 12px;font-size:15px;color:#DCD6C4">Soy Sebastián Svetliza. Hace diez años acompaño dueños de pyme y sus equipos en Entre Ríos y el litoral &mdash; consultoría, capacitación y procesos de orden real, no de power point. Este entrenamiento nace de la misma pregunta que me hacen todas las semanas en las charlas: "¿cómo hago para que esto funcione sin que yo esté siempre encima?"</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Preguntas frecuentes</h2>
+<div class="faq-item">
+<h3>¿Es en vivo o queda grabado?</h3>
+<p>Es en vivo, los dos días. Si no podés estar en algún momento puntual, te aviso cómo recuperarlo.</p>
+</div>
+<div class="faq-item">
+<h3>¿Sirve si tengo un equipo chico?</h3>
+<p>Sirve para cualquier tamaño de equipo donde vos seas quien termina resolviendo todo. El método se adapta a tu caso puntual.</p>
+</div>
+<div class="faq-item">
+<h3>¿Hay algo después del entrenamiento?</h3>
+<p>Sí, para quien quiera seguir hay un programa grupal de varias semanas para sostener lo trabajado. No es obligatorio ni se vende en la sala &mdash; te llega la propuesta después, sin presión.</p>
+</div>
+<div class="faq-item">
+<h3>¿Cómo pago?</h3>
+<p>En dólares con tarjeta o PayPal desde el botón de esta página, o en pesos por Mercado Pago escribiéndome directo por WhatsApp.</p>
+</div>
+</section>
+
+<a class="cta" href="https://payhip.com/b/p1YIx">Quiero mi lugar &mdash; USD 9</a>
+<p class="fine">1 y 2 de octubre, en vivo. Cupos limitados a la sala.</p>
+
+<footer>
+<strong>SAS Consultora</strong> &middot; Diez años acompañando pymes, organizaciones y sus líderes en Entre Ríos y el litoral.<br>
+<a href="https://sasconsultora.com">sasconsultora.com</a> &middot;
+<a href="https://sasconsultora.com/30-minutos.html">¿Preferís empezar gratis? Diagnóstico de 30 minutos</a>
+</footer>
+</main>
+</body>
+</html>
