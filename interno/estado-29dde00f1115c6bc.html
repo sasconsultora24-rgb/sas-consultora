@@ -201,7 +201,7 @@
   </div>
 </main>
 
-<footer>Panel Central SAS Consultora · junta Consultoría, Talento &amp; Desarrollo, Academia, PMT, contenido, WhatsApp, LinkedIn y la estrategia de los 3 tramos en un solo lugar. Datos en vivo desde Supabase.</footer>
+<footer>Panel Central SAS Consultora · junta Consultoría, Talento &amp; Desarrollo, Academia, PMT, contenido, WhatsApp, LinkedIn y la estrategia de las 3 columnas + entrenamientos en un solo lugar. Datos en vivo desde Supabase.</footer>
 
 <script>
 const API = "https://valncabvniutalzhovuc.supabase.co/functions/v1/panel-central-sas?k=29dde00f1115c6bc";
@@ -333,7 +333,7 @@ function render(d) {
   </div></section>`;
 
   // Estrategia
-  html += `<section><p class="eyebrow">Hacia dónde vamos</p><h2>La estrategia — ${esc(d.estrategia?.objetivo || "")}</h2>`;
+  html += `<section><p class="eyebrow">Hacia dónde vamos — 4 frentes en paralelo, sin mezclarse</p><h2>La estrategia — ${esc(d.estrategia?.objetivo || "")}</h2>`;
   (d.estrategia?.tramos||[]).forEach(t => {
     html += `<div class="tramo ${t.en_curso ? "actual":""}">
       <div class="tramo-head">
