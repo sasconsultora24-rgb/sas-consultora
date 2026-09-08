@@ -58,6 +58,7 @@ a.volver:hover{color:var(--crema)}
 .t-canal{background:var(--crema);color:var(--verde-950)}
 .t-pilar{background:rgba(79,122,99,.13);color:var(--ok)}
 .t-pilar-falta{background:rgba(162,75,58,.15);color:var(--mal)}
+.t-modo{border:1px solid var(--dorado, #c9a227);color:var(--dorado, #c9a227);background:rgba(201,162,39,.1)}
 .t-audiencia{border:1px solid var(--acento);color:var(--acento-suave);background:transparent}
 .t-formato{border:1px solid var(--linea);color:var(--gris);background:transparent}
 .botones{display:flex;gap:6px;flex-shrink:0}
@@ -116,6 +117,13 @@ const pilarLabel = {
   venta_sutil: "Venta sutil (pre-estrategia nueva)",
   conversion: "Conversión (pre-estrategia nueva)",
 };
+const modoLabel = {
+  identificacion: "Identificación",
+  autoridad: "Autoridad",
+  vender_sin_vender: "Vender sin vender",
+  curiosidad: "Curiosidad",
+  venta_directa: "Venta directa",
+};
 
 function hace(iso){
   const seg = Math.floor((Date.now() - new Date(iso)) / 1000);
@@ -147,6 +155,7 @@ function piezaHtml(p){
           <span class="tag t-canal">${esc(canalNombre[p.canal] ?? p.canal)}</span>
           ${p.formato ? `<span class="tag t-formato">${esc(p.formato)}</span>` : ""}
           <span class="tag t-pilar${p.pilar ? "" : " t-pilar-falta"}">${p.pilar ? esc(pilarLabel[p.pilar] ?? p.pilar) : "⚠ sin columna asignada"}</span>
+          <span class="tag t-modo">${p.modo ? esc(modoLabel[p.modo] ?? p.modo) : "⚠ sin modo asignado"}</span>
           ${p.audiencia ? `<span class="tag t-audiencia">${esc(p.audiencia.replaceAll("_"," "))}</span>` : ""}
         </div>
       </div>
