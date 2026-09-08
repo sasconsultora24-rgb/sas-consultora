@@ -57,6 +57,7 @@ a.volver:hover{color:var(--crema)}
 .tag{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.03em;padding:2px 8px;border-radius:20px;white-space:nowrap}
 .t-canal{background:var(--crema);color:var(--verde-950)}
 .t-pilar{background:rgba(79,122,99,.13);color:var(--ok)}
+.t-pilar-falta{background:rgba(162,75,58,.15);color:var(--mal)}
 .t-audiencia{border:1px solid var(--acento);color:var(--acento-suave);background:transparent}
 .t-formato{border:1px solid var(--linea);color:var(--gris);background:transparent}
 .botones{display:flex;gap:6px;flex-shrink:0}
@@ -105,7 +106,16 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 const canalNombre = { linkedin: "LinkedIn", instagram: "Instagram", tiktok: "TikTok", facebook: "Facebook", whatsapp: "WhatsApp", mail: "Mail" };
-const pilarLabel = { autoridad: "Autoridad", venta_sutil: "Venta sutil", conversion: "Conversión" };
+const pilarLabel = {
+  espacio_de_orden: "Columna 1 · Espacio de Orden",
+  talento_desarrollo: "Columna 2 · Talento & Desarrollo",
+  sasconsultora_com: "Columna 3 · sasconsultora.com",
+  entrenamiento: "Entrenamientos",
+  // taxonomía vieja (piezas de antes del 7/9/2026, antes de la estrategia de 4 columnas)
+  autoridad: "Autoridad (pre-estrategia nueva)",
+  venta_sutil: "Venta sutil (pre-estrategia nueva)",
+  conversion: "Conversión (pre-estrategia nueva)",
+};
 
 function hace(iso){
   const seg = Math.floor((Date.now() - new Date(iso)) / 1000);
@@ -136,7 +146,7 @@ function piezaHtml(p){
         <div class="tags">
           <span class="tag t-canal">${esc(canalNombre[p.canal] ?? p.canal)}</span>
           ${p.formato ? `<span class="tag t-formato">${esc(p.formato)}</span>` : ""}
-          ${p.pilar ? `<span class="tag t-pilar">${esc(pilarLabel[p.pilar] ?? p.pilar)}</span>` : ""}
+          <span class="tag t-pilar${p.pilar ? "" : " t-pilar-falta"}">${p.pilar ? esc(pilarLabel[p.pilar] ?? p.pilar) : "⚠ sin columna asignada"}</span>
           ${p.audiencia ? `<span class="tag t-audiencia">${esc(p.audiencia.replaceAll("_"," "))}</span>` : ""}
         </div>
       </div>
