@@ -39,7 +39,7 @@ h1 .dot-acc{color:var(--acento)}
 .lead b{color:var(--crema);font-weight:700}
 .lead-close{font-size:clamp(16px,2vw,18.5px);color:var(--crema);font-weight:700;max-width:520px;margin:14px 0 30px}
 @media (max-width:900px){.lead-close{margin-left:auto;margin-right:auto}}
-.cta{display:inline-flex;align-items:center;gap:10px;background:var(--acento);color:#fff;font-weight:700;font-size:16px;text-decoration:none;padding:19px 32px;border-radius:40px;box-shadow:0 10px 30px -8px rgba(226,112,58,.55);transition:transform .18s,box-shadow .18s,background .18s}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--acento);color:#fff;font-weight:700;font-size:16px;text-decoration:none;padding:19px 32px;border-radius:40px;box-shadow:0 10px 30px -8px rgba(226,112,58,.55);transition:transform .18s,box-shadow .18s,background .18s;border:none;cursor:pointer;font-family:var(--sans)}
 .cta:hover,.cta:focus-visible{background:var(--acento-light);transform:translateY(-2px);box-shadow:0 14px 34px -6px rgba(226,112,58,.65)}
 .cta:focus-visible{outline:3px solid var(--crema);outline-offset:3px}
 .fine{font-size:13px;color:var(--gris-600);margin:16px 0 0;text-align:center}
@@ -152,6 +152,25 @@ h2{font-family:var(--serif);font-size:clamp(24px,3.6vw,32px);font-weight:700;mar
 footer{border-top:1px solid var(--linea-invert);padding:28px 0;font-size:13px;color:var(--gris-600);text-align:center}
 footer a{color:var(--dorado-light)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* MODAL — formulario previo al checkout */
+.insc-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(11,29,23,.72);backdrop-filter:blur(2px);padding:20px;overflow-y:auto}
+.insc-overlay.abierto{display:flex;align-items:center;justify-content:center}
+.insc-modal{background:var(--verde-900);border:1px solid var(--linea-invert);border-radius:18px;max-width:440px;width:100%;padding:32px clamp(22px,5vw,34px);box-shadow:0 30px 70px -20px rgba(0,0,0,.6);position:relative}
+.insc-cerrar{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--gris-600);font-size:22px;line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px}
+.insc-cerrar:hover{color:var(--crema);background:var(--linea-invert)}
+.insc-modal h3{font-family:var(--serif);font-size:21px;font-weight:700;margin:0 0 6px;color:var(--crema)}
+.insc-modal .insc-sub{font-size:13.5px;color:var(--gris-600);margin:0 0 22px}
+.insc-campo{margin-bottom:14px}
+.insc-campo label{display:block;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--dorado-light);margin:0 0 6px}
+.insc-campo input{width:100%;background:var(--verde-950);border:1px solid var(--linea-invert);border-radius:10px;padding:12px 14px;font-size:15px;color:var(--crema);font-family:var(--sans)}
+.insc-campo input:focus{outline:2px solid var(--acento);outline-offset:1px}
+.insc-campo input::placeholder{color:var(--gris-600)}
+.insc-fila2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.insc-modal .cta{width:100%;justify-content:center;margin-top:8px}
+.insc-error{display:none;color:var(--rojo);font-size:13px;margin:0 0 14px}
+.insc-error.visible{display:block}
+.insc-nota{font-size:11.5px;color:var(--gris-600);margin:14px 0 0;text-align:center}
 </style>
 </head>
 <body>
@@ -167,7 +186,7 @@ footer a{color:var(--dorado-light)}
 <p class="lead">Sabés que si soltás, algo se cae. Por eso cargás todo vos &mdash; solo.</p>
 <p class="lead">Este entrenamiento no te da otra técnica para probar una semana y olvidar. Te corre la cabeza de cómo cargás el peso &mdash; y ese corrimiento se queda, como hábito, sin tocar tu forma de liderar.</p>
 <p class="lead-close">Dos días. El mismo liderazgo. Sin el peso.</p>
-<a class="cta" href="https://payhip.com/b/p1YIx" id="anotarme">Quiero soltar el peso &mdash; USD 9 →</a>
+<button class="cta" id="anotarme" data-checkout="https://payhip.com/b/p1YIx">Quiero soltar el peso &mdash; USD 9 →</button>
 <p class="fine">2 días, 90 minutos cada día, por Zoom. Pago único.</p>
 <div class="hero-stats">
 <div class="stat"><b>30</b><span>años liderando personas y equipos</span></div>
@@ -259,7 +278,7 @@ footer a{color:var(--dorado-light)}
 </ul>
 <p class="oferta-precio"><span>USD</span> 9</p>
 <p class="oferta-precio-nota">Inversión simbólica por los 10 años de SAS Consultora &middot; pago único</p>
-<a class="cta" style="display:flex;justify-content:center;margin:0 auto" href="https://payhip.com/b/p1YIx">Quiero soltar el peso &mdash; USD 9 →</a>
+<button class="cta" style="display:flex;justify-content:center;margin:0 auto" data-checkout="https://payhip.com/b/p1YIx">Quiero soltar el peso &mdash; USD 9 →</button>
 <div class="oferta-pago"><span>TARJETA</span><span>PAYPAL</span><span>MERCADO PAGO</span></div>
 </div>
 </div>
@@ -360,6 +379,10 @@ footer a{color:var(--dorado-light)}
 <h3>¿Cómo pago?</h3>
 <p>En dólares con tarjeta o PayPal desde el botón de esta página, o en pesos por Mercado Pago escribiéndome directo por WhatsApp.</p>
 </div>
+<div class="faq-item">
+<h3>¿Qué pasa después de anotarme?</h3>
+<p>Antes de pagar completás un formulario breve (nombre, WhatsApp y email). Al toque te llega un mail confirmando tu lugar, y ahí vas a tener el acceso al grupo de WhatsApp del entrenamiento, donde mando la info previa y los bonos.</p>
+</div>
 </div>
 </section>
 
@@ -369,7 +392,7 @@ footer a{color:var(--dorado-light)}
 <h2>Una inversión simbólica, por los 10 años de SAS Consultora</h2>
 <p style="font-size:15.5px;color:#DCD6C4;max-width:520px;margin:0 auto 8px">No es un descuento de venta. Es un número elegido: diez años acompañando líderes, y esta vez quiero que la inversión no sea la excusa para no venir.</p>
 <p class="lead-close" style="margin:20px auto 30px;max-width:520px">Soltá el peso. Seguí liderando.</p>
-<a class="cta" style="display:flex;justify-content:center;margin:0 auto" href="https://payhip.com/b/p1YIx">Quiero soltar el peso &mdash; USD 9 →</a>
+<button class="cta" style="display:flex;justify-content:center;margin:0 auto" data-checkout="https://payhip.com/b/p1YIx">Quiero soltar el peso &mdash; USD 9 →</button>
 <p class="fine">15 y 16 de octubre, 90 minutos cada día, por Zoom.</p>
 </div>
 </section>
@@ -381,5 +404,107 @@ footer a{color:var(--dorado-light)}
 <a href="https://sasconsultora.com/30-minutos.html">¿Preferís empezar gratis? Diagnóstico de 30 minutos</a>
 </div>
 </footer>
+
+<div class="insc-overlay" id="insc-overlay">
+<div class="insc-modal">
+<button class="insc-cerrar" id="insc-cerrar" aria-label="Cerrar">×</button>
+<h3>Reservá tu lugar</h3>
+<p class="insc-sub">Completá tus datos antes de pagar. Con esto te llega la confirmación y el acceso al grupo de WhatsApp del entrenamiento.</p>
+<p class="insc-error" id="insc-error"></p>
+<form id="insc-form">
+<div class="insc-fila2">
+<div class="insc-campo">
+<label for="insc-nombre">Nombre</label>
+<input type="text" id="insc-nombre" name="nombre" required autocomplete="given-name">
+</div>
+<div class="insc-campo">
+<label for="insc-apellido">Apellido</label>
+<input type="text" id="insc-apellido" name="apellido" required autocomplete="family-name">
+</div>
+</div>
+<div class="insc-campo">
+<label for="insc-whatsapp">WhatsApp (con código de país)</label>
+<input type="tel" id="insc-whatsapp" name="whatsapp" placeholder="+54 9 11 1234-5678" required autocomplete="tel">
+</div>
+<div class="insc-campo">
+<label for="insc-email">Email</label>
+<input type="email" id="insc-email" name="email" required autocomplete="email">
+</div>
+<button type="submit" class="cta" id="insc-submit">Continuar al pago →</button>
+</form>
+<p class="insc-nota">El pago (USD 9) se hace en la pantalla siguiente, con tarjeta, PayPal o Mercado Pago.</p>
+</div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('insc-overlay');
+  var form = document.getElementById('insc-form');
+  var errorEl = document.getElementById('insc-error');
+  var submitBtn = document.getElementById('insc-submit');
+  var checkoutUrl = 'https://payhip.com/b/p1YIx';
+
+  function abrirModal(url){
+    checkoutUrl = url || checkoutUrl;
+    errorEl.classList.remove('visible');
+    errorEl.textContent = '';
+    overlay.classList.add('abierto');
+    document.getElementById('insc-nombre').focus();
+  }
+  function cerrarModal(){
+    overlay.classList.remove('abierto');
+  }
+
+  document.querySelectorAll('.cta[data-checkout]').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      abrirModal(btn.getAttribute('data-checkout'));
+    });
+  });
+
+  document.getElementById('insc-cerrar').addEventListener('click', cerrarModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) cerrarModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && overlay.classList.contains('abierto')) cerrarModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errorEl.classList.remove('visible');
+    var datos = {
+      nombre: document.getElementById('insc-nombre').value.trim(),
+      apellido: document.getElementById('insc-apellido').value.trim(),
+      whatsapp: document.getElementById('insc-whatsapp').value.trim(),
+      email: document.getElementById('insc-email').value.trim()
+    };
+    if (!datos.nombre || !datos.apellido || !datos.whatsapp || !datos.email){
+      errorEl.textContent = 'Completá los cuatro campos para continuar.';
+      errorEl.classList.add('visible');
+      return;
+    }
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Guardando...';
+
+    var yaSiguio = false;
+    function seguirAlPago(){
+      if (yaSiguio) return;
+      yaSiguio = true;
+      window.location.href = checkoutUrl;
+    }
+    // Si el guardado tarda demasiado, igual dejamos pasar al pago: nunca
+    // bloqueamos una venta por un problema nuestro de guardado/email.
+    var salvavidas = setTimeout(seguirAlPago, 4000);
+
+    fetch('https://valncabvniutalzhovuc.supabase.co/functions/v1/entrenamiento-inscripcion', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datos)
+    }).catch(function(){ /* seguimos igual al pago */ })
+      .finally(function(){
+        clearTimeout(salvavidas);
+        seguirAlPago();
+      });
+  });
+})();
+</script>
+
 </body>
 </html>
