@@ -108,7 +108,7 @@ function render(items) {
       ${entrante}
       <div class="msg">${esc(p.texto)}</div>
       <div class="actions">
-        <button class="aprobar" onclick="accion('${tabla}',${p.id},'aprobar','${cardId}')">Aprobar ${label} (se manda solo)</button>
+        ${(p.estado==='mensaje_aprobado'||p.estado==='aprobado') ? '<div class="aprobado-ok">Aprobado — esperando envío automático</div>' : `<button class="aprobar" onclick="accion('${tabla}',${p.id},'aprobar','${cardId}')">Aprobar ${label} (se manda solo)</button>`}
         <button class="descartar" onclick="accion('${tabla}',${p.id},'descartar','${cardId}')">Descartar</button>
       </div>
     </div>
