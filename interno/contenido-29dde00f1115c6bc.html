@@ -61,6 +61,8 @@ a.volver:hover{color:var(--crema)}
 .t-modo{border:1px solid var(--dorado, #c9a227);color:var(--dorado, #c9a227);background:rgba(201,162,39,.1)}
 .t-audiencia{border:1px solid var(--acento);color:var(--acento-suave);background:transparent}
 .t-formato{border:1px solid var(--linea);color:var(--gris);background:transparent}
+.t-tanda{background:rgba(169,143,82,.15);color:var(--acento-suave);font-weight:600}
+.t-tanda-manual{background:rgba(92,96,88,.13);color:var(--gris)}
 .botones{display:flex;gap:6px;flex-shrink:0}
 .btn{font-family:var(--mono);font-size:9.5px;font-weight:500;background:transparent;border:1px solid var(--acento);
   color:var(--acento-suave);padding:5px 11px;border-radius:3px;cursor:pointer;white-space:nowrap}
@@ -124,6 +126,11 @@ const modoLabel = {
   curiosidad: "Curiosidad",
   venta_directa: "Venta directa",
 };
+const tandaLabel = {
+  "11hs": "Tanda 11:00hs",
+  "19hs": "Tanda 19:00hs",
+  "manual": "Manual (celular) — Seba",
+};
 
 function hace(iso){
   const seg = Math.floor((Date.now() - new Date(iso)) / 1000);
@@ -155,6 +162,7 @@ function piezaHtml(p){
           <span class="tag t-canal">${esc(canalNombre[p.canal] ?? p.canal)}</span>
           ${p.formato ? `<span class="tag t-formato">${esc(p.formato)}</span>` : ""}
           <span class="tag t-pilar${p.pilar ? "" : " t-pilar-falta"}">${p.pilar ? esc(pilarLabel[p.pilar] ?? p.pilar) : "⚠ sin columna asignada"}</span>
+          <span class="tag ${p.tanda === "manual" ? "t-tanda-manual" : "t-tanda"}">${esc(tandaLabel[p.tanda] ?? p.tanda ?? "⚠ sin tanda asignada")}</span>
           <span class="tag t-modo">${p.modo ? esc(modoLabel[p.modo] ?? p.modo) : "⚠ sin modo asignado"}</span>
           ${p.audiencia ? `<span class="tag t-audiencia">${esc(p.audiencia.replaceAll("_"," "))}</span>` : ""}
         </div>
