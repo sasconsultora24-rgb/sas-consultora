@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscriptos · Entrenamiento SAS</title>
+<style>
+:root{
+  --paper:#0F251B; --surface:#17301F; --raised:#1C3826;
+  --ink:#E8EDE7; --ink-soft:#9BB0A2; --line:#2C4A36;
+  --gold:#C9A227; --gold-bg:#2E2A12;
+  --good:#6FBE93; --good-bg:#17331F;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sans: -apple-system, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5;margin:0;padding:0 0 60px;max-width:900px;margin:0 auto}
+h1,.mono{font-family:var(--mono)}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:20px clamp(16px,3vw,32px);border-bottom:2px solid var(--ink);position:sticky;top:0;background:var(--paper);z-index:10}
+header h1{font-size:17px;margin:0}
+header .sub{font-size:11px;color:var(--ink-soft)}
+button{font-family:var(--mono);font-size:11px;background:var(--surface);color:var(--ink-soft);border:1px solid var(--line);padding:6px 12px;border-radius:3px;cursor:pointer}
+main{padding:24px clamp(16px,3vw,32px)}
+.meta-box{background:var(--surface);border:1px dashed var(--gold);padding:16px 20px;display:flex;gap:24px;margin-bottom:20px}
+.meta-box .v{font-size:24px;font-weight:700;color:var(--gold)}
+.meta-box b{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);text-transform:uppercase;margin-bottom:4px}
+.card{background:var(--raised);border:1px solid var(--line);padding:16px 18px;margin-bottom:10px}
+.card .top{display:flex;justify-content:space-between;align-items:baseline}
+.card .nombre{font-size:15px;font-weight:700}
+.card .fecha{font-size:11px;color:var(--ink-soft);font-family:var(--mono)}
+.card .datos{margin-top:8px;font-size:13px;color:var(--ink-soft)}
+.card .datos a{color:var(--good)}
+.pill{font-size:10px;padding:2px 8px;border-radius:3px;text-transform:uppercase;background:var(--good-bg);color:var(--good);margin-top:8px;display:inline-block}
+.cargando{padding:60px 20px;text-align:center;color:var(--ink-soft);font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>INSCRIPTOS · ENTRENAMIENTO 15-16/10</h1>
+    <div class="sub" id="actualizado">cargando...</div>
+  </div>
+  <button onclick="cargar()">↻ Actualizar</button>
+</header>
+<main id="app"><div class="cargando">Cargando…</div></main>
+
+<script>
+const API = "https://valncabvniutalzhovuc.supabase.co/functions/v1/entrenamiento-listado?k=29dde00f1115c6bc";
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+async function cargar(){
+  const app = document.getElementById("app");
+  try{
+    const r = await fetch(API, {cache:"no-store"});
+    const d = await r.json();
+    document.getElementById("actualizado").textContent = "actualizado " + new Date(d.generado_en).toLocaleTimeString("es-AR");
+    let html = `<div class="meta-box"><div><b>Total registrados</b><span class="v">${d.total}</span></div></div>`;
+    html += `<p style="font-size:12px;color:var(--ink-soft);margin:0 0 16px">Este registro es el formulario previo al pago — no confirma que hayan pagado en Payhip. Revisá el panel de Payhip para saber quién pagó de verdad.</p>`;
+    (d.inscriptos||[]).forEach(p => {
+      html += `<div class="card">
+        <div class="top"><span class="nombre">${esc(p.nombre)} ${esc(p.apellido)}</span><span class="fecha">${new Date(p.creado_en).toLocaleString("es-AR")}</span></div>
+        <div class="datos">WhatsApp: ${esc(p.whatsapp)} · <a href="mailto:${esc(p.email)}">${esc(p.email)}</a></div>
+        <div class="pill">${p.email_confirmacion_enviado ? "mail enviado" : "mail NO enviado"}</div>
+      </div>`;
+    });
+    app.innerHTML = html;
+  }catch(e){
+    app.innerHTML = `<div class="cargando">No se pudo cargar: ${esc(e.message)}</div>`;
+  }
+}
+cargar();
+setInterval(cargar, 60000);
+</script>
+</body>
+</html>
