@@ -1,0 +1,152 @@
+<title>Panel de Seguimiento</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#0F1A15; --surface:#16241D; --raised:#1D2F24;
+  --ink:#EDE7D8; --ink-soft:#9CAB9E; --line:#2C4A36;
+  --gold:#C9A227; --gold-soft:#E8C89B; --gold-bg:#2A2412;
+  --good:#7FBE93; --good-bg:#173322;
+  --warn:#D98C5F; --warn-bg:#33231A;
+  --bad:#E0846E; --bad-bg:#3A2018;
+  --serif:'Fraunces', Georgia, serif;
+  --sans:'IBM Plex Sans', -apple-system, sans-serif;
+  --mono:'IBM Plex Mono', ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --paper:#F7F4EC; --surface:#FFFFFF; --raised:#FFFFFF;
+    --ink:#1C2A20; --ink-soft:#5B6B60; --line:#DCD3BE;
+    --gold:#9C7A1E; --gold-soft:#7A5E17; --gold-bg:#F1E6C4;
+    --good:#2E7D4F; --good-bg:#E4F2E9;
+    --warn:#A85226; --warn-bg:#F5E2D5;
+    --bad:#B23A22; --bad-bg:#F6DFD8;
+  }
+}
+:root[data-theme="light"]{
+  --paper:#F7F4EC; --surface:#FFFFFF; --raised:#FFFFFF;
+  --ink:#1C2A20; --ink-soft:#5B6B60; --line:#DCD3BE;
+  --gold:#9C7A1E; --gold-soft:#7A5E17; --gold-bg:#F1E6C4;
+  --good:#2E7D4F; --good-bg:#E4F2E9;
+  --warn:#A85226; --warn-bg:#F5E2D5;
+  --bad:#B23A22; --bad-bg:#F6DFD8;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);margin:0;padding:0 0 60px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;padding:28px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--paper);z-index:10}
+header h1{font-family:var(--serif);font-size:22px;margin:0;font-weight:700}
+header .sub{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);margin-top:4px}
+button{font-family:var(--mono);font-size:11px;background:var(--raised);color:var(--ink-soft);border:1px solid var(--line);padding:7px 14px;border-radius:4px;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:22px 0}
+.tile{background:var(--raised);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.tile b{display:block;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin-bottom:8px}
+.tile .v{font-family:var(--serif);font-size:32px;font-weight:700;font-variant-numeric:tabular-nums}
+.tile .v.gold{color:var(--gold)}
+.tile .v.bad{color:var(--bad)}
+.tile .note{font-size:11.5px;color:var(--ink-soft);margin-top:6px}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:10px}
+.bar>div{height:100%;background:var(--gold)}
+section{margin:32px 0}
+h2{font-family:var(--serif);font-size:17px;margin:0 0 14px;display:flex;align-items:center;gap:8px}
+.card{background:var(--raised);border:1px solid var(--line);border-radius:8px;padding:16px 18px;margin-bottom:8px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.pill{font-family:var(--mono);font-size:10px;text-transform:uppercase;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.pill.good{background:var(--good-bg);color:var(--good)}
+.pill.warn{background:var(--warn-bg);color:var(--warn)}
+.pill.bad{background:var(--bad-bg);color:var(--bad)}
+.tandas{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px}
+.tanda-chip{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:8px;text-align:center}
+.tanda-chip .n{font-family:var(--mono);font-size:10px;color:var(--ink-soft)}
+.tanda-chip .e{font-family:var(--serif);font-size:18px;font-weight:700}
+.piece-row{display:grid;grid-template-columns:90px 90px 1fr 80px;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:12.5px}
+.piece-row:first-child{border-top:none}
+.piece-row .canal{font-family:var(--mono);font-size:10.5px;color:var(--gold-soft);text-transform:uppercase}
+.loading{padding:60px;text-align:center;color:var(--ink-soft)}
+footer{font-family:var(--mono);font-size:11px;color:var(--ink-soft);text-align:center;padding-top:30px}
+</style>
+
+<div class="wrap">
+<header>
+  <div>
+    <h1>Panel de Seguimiento — Entrenamiento 15-16/10</h1>
+    <div class="sub" id="actualizado">cargando...</div>
+  </div>
+  <button onclick="cargar()">↻ Actualizar</button>
+</header>
+
+<div id="app"><div class="loading">Cargando datos reales...</div></div>
+
+<footer>Datos en vivo desde Supabase — se actualiza solo cada 60s</footer>
+</div>
+
+<script>
+const API = "https://valncabvniutalzhovuc.supabase.co/functions/v1/panel-seguimiento?k=29dde00f1115c6bc";
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+async function cargar(){
+  const app = document.getElementById("app");
+  try{
+    const r = await fetch(API, {cache:"no-store"});
+    const d = await r.json();
+    document.getElementById("actualizado").textContent = "actualizado " + new Date(d.generado_en).toLocaleTimeString("es-AR") + " · faltan " + d.dias_para_evento + " días para el evento";
+
+    const pct = Math.min(100, Math.round((d.inscripciones.total / d.inscripciones.meta) * 100));
+
+    let html = `<div class="grid">
+      <div class="tile">
+        <b>Inscriptos</b>
+        <div class="v gold">${d.inscripciones.total} <span style="font-size:16px;color:var(--ink-soft)">/ ${d.inscripciones.meta}</span></div>
+        <div class="bar"><div style="width:${pct}%"></div></div>
+        <div class="note">${d.inscripciones.pagados} pagaron · faltan ${d.inscripciones.faltan}</div>
+      </div>
+      <div class="tile">
+        <b>WhatsApp contactados</b>
+        <div class="v">${d.whatsapp.contactados} <span style="font-size:16px;color:var(--ink-soft)">/ ${d.whatsapp.total_contactos}</span></div>
+        <div class="note">Lead Meta cargados en la base</div>
+      </div>
+      <div class="tile">
+        <b>Conversión real</b>
+        <div class="v ${d.whatsapp.contactados > 0 && (d.inscripciones.total / d.whatsapp.contactados) < 0.02 ? 'bad' : ''}">${d.whatsapp.contactados > 0 ? ((d.inscripciones.total / d.whatsapp.contactados) * 100).toFixed(1) : '0'}%</div>
+        <div class="note">inscriptos / contactados por WhatsApp</div>
+      </div>
+      <div class="tile">
+        <b>Contenido de hoy</b>
+        <div class="v">${d.contenido_hoy.entrenamiento}<span style="font-size:16px;color:var(--ink-soft)"> entren. </span>${d.contenido_hoy.otras_columnas}<span style="font-size:16px;color:var(--ink-soft)"> otras</span></div>
+        <div class="note">80/20 ${d.contenido_hoy.otras_columnas > 0 ? '✓ visible hoy' : '✗ falta la otra columna'}</div>
+      </div>
+    </div>`;
+
+    html += `<section><h2>Tandas de WhatsApp</h2><div class="tandas">`;
+    for (const [tanda, s] of Object.entries(d.whatsapp.tandas)) {
+      html += `<div class="tanda-chip"><div class="n">Tanda ${esc(tanda)}</div><div class="e">${s.enviado}</div><div class="n">${s.fallido > 0 ? s.fallido + ' fallidos' : 'ok'}</div></div>`;
+    }
+    html += `</div></section>`;
+
+    html += `<section><h2>Piezas de hoy</h2><div class="card">`;
+    const activas = d.contenido_hoy.piezas.filter(p => p.estado !== 'descartado');
+    activas.forEach(p => {
+      const pillClass = p.publicado ? 'good' : (p.estado === 'aprobado' ? 'warn' : 'bad');
+      const pillText = p.publicado ? 'publicado' : p.estado;
+      html += `<div class="piece-row">
+        <span class="canal">${esc(p.canal)}</span>
+        <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">${esc(p.pilar)}</span>
+        <span>${esc(p.titulo)}</span>
+        <span class="pill ${pillClass}">${esc(pillText)}</span>
+      </div>`;
+    });
+    html += `</div></section>`;
+
+    html += `<section><h2>Contenido de la semana por columna</h2><div class="card row" style="flex-wrap:wrap;gap:16px">`;
+    for (const [pilar, n] of Object.entries(d.contenido_semana_por_pilar)) {
+      html += `<div><span style="font-family:var(--serif);font-size:20px;font-weight:700">${n}</span> <span style="color:var(--ink-soft);font-size:12px">${esc(pilar)}</span></div>`;
+    }
+    html += `</div></section>`;
+
+    app.innerHTML = html;
+  }catch(e){
+    app.innerHTML = `<div class="loading">No se pudo cargar: ${esc(e.message)}</div>`;
+  }
+}
+cargar();
+setInterval(cargar, 60000);
+</script>
