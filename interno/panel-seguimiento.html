@@ -94,10 +94,10 @@ async function cargar(){
 
     let html = `<div class="grid">
       <div class="tile">
-        <b>Inscriptos</b>
-        <div class="v gold">${d.inscripciones.total} <span style="font-size:16px;color:var(--ink-soft)">/ ${d.inscripciones.meta}</span></div>
-        <div class="bar"><div style="width:${pct}%"></div></div>
-        <div class="note">${d.inscripciones.pagados} pagaron · faltan ${d.inscripciones.faltan}</div>
+        <b>Inscriptos reales (pagos)</b>
+        <div class="v ${d.inscripciones.pagados === 0 ? 'bad' : 'gold'}">${d.inscripciones.pagados} <span style="font-size:16px;color:var(--ink-soft)">/ ${d.inscripciones.meta}</span></div>
+        <div class="bar"><div style="width:${Math.round((d.inscripciones.pagados / d.inscripciones.meta) * 100)}%"></div></div>
+        <div class="note">${d.inscripciones.total} registros sin pagar todavía (1 es prueba interna, no cuenta) · faltan ${d.inscripciones.meta - d.inscripciones.pagados}</div>
       </div>
       <div class="tile">
         <b>WhatsApp contactados</b>
