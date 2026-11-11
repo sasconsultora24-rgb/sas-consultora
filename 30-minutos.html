@@ -38,6 +38,74 @@ footer{border-top:1px solid var(--linea-invert);margin-top:48px;padding-top:22px
 footer a{color:var(--dorado-light)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
+<!-- SAS-META-START -->
+<script>
+/* SAS Consultora - Pixel Meta + eventos + captura de origen. v1 11/11/2026 (auditoria Meta).
+ * Fuente unica. Se incrusta inline en cada pagina con aplicar_pixel.py (no depende de hosting de un .js).
+ * - Pixel base 677022900962262: se inicializa SOLO si la pagina no lo trae ya (no duplica PageView).
+ * - Contact: clic en cualquier enlace wa.me / api.whatsapp.com / whatsapp://  (event_id c_xxx)
+ * - Lead: window.sasLead(extra) (llamar al confirmar el envio) o submit de <form> con data-sas-lead (event_id l_xxx)
+ * - Schedule: window.sasSchedule(extra) (para una futura pagina de reserva) o clic en enlaces data-sas-schedule
+ * - Origen: guarda en localStorage (90 dias, primer toque) utm_*, fbclid, fbc, fbp, landing_url, referrer.
+ *   window.sasOrigen() devuelve ese objeto + event_id del ultimo Lead, listo para mandar al backend.
+ * - Codigo de origen en wa.me: DESACTIVADO por defecto (SAS_META.codigoWa=false). Si se activa, agrega " [W-<pagina>]" al texto precargado.
+ * Revertir: quitar el bloque entre <!-- SAS-META-START --> y <!-- SAS-META-END -->. Con eso la pagina vuelve a como estaba. */
+(function () {
+  var PIXEL = '677022900962262';
+  var W = window, D = document;
+  if (W.__sasMeta) return; W.__sasMeta = 1;
+  var CFG = W.SAS_META = W.SAS_META || { codigoWa: false, pagina: (location.hostname.replace(/^www\./, '').split('.')[0] + location.pathname.replace(/[^a-z0-9]+/gi, '-')).replace(/-+$/, '').slice(0, 12).toUpperCase() };
+  function rid(p) { return p + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+  function ck(n) { var m = D.cookie.match('(?:^|; )' + n + '=([^;]*)'); return m ? decodeURIComponent(m[1]) : null; }
+  // --- pixel base (solo si falta)
+  if (!W.fbq) {
+    !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s) }(W, D, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL); fbq('track', 'PageView', {}, { eventID: rid('pv_') });
+  }
+  function track(ev, data, id) { try { fbq('track', ev, data || {}, { eventID: id }); } catch (e) { } return id; }
+  // --- origen (primer toque)
+  var KEY = 'sas_origen', DIAS = 90 * 864e5;
+  function leerStore() { try { var o = JSON.parse(localStorage.getItem(KEY) || 'null'); if (o && Date.now() - o.ts < DIAS) return o; } catch (e) { } return null; }
+  (function capturar() {
+    try {
+      var q = new URLSearchParams(location.search), o = leerStore() || { ts: Date.now() };
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) { if (q.get(k) && !o[k]) o[k] = q.get(k).slice(0, 100); });
+      var fbclid = q.get('fbclid');
+      if (fbclid) {
+        o.fbclid = fbclid.slice(0, 300);
+        if (!ck('_fbc')) { var fbc = 'fb.1.' + Date.now() + '.' + fbclid; D.cookie = '_fbc=' + fbc + ';max-age=7776000;path=/;domain=' + location.hostname.split('.').slice(-2).join('.') + ';SameSite=Lax'; }
+      }
+      if (!o.landing_url) o.landing_url = location.href.split('#')[0].slice(0, 500);
+      if (!o.referrer && D.referrer) o.referrer = D.referrer.slice(0, 300);
+      localStorage.setItem(KEY, JSON.stringify(o));
+    } catch (e) { }
+  })();
+  W.sasOrigen = function () {
+    var o = leerStore() || {}, r = {};
+    for (var k in o) if (k !== 'ts') r[k] = o[k];
+    r.fbp = ck('_fbp') || null; r.fbc = ck('_fbc') || (o.fbclid ? 'fb.1.' + o.ts + '.' + o.fbclid : null);
+    r.event_id = W.__sasLeadId || null; r.pagina = location.href.split('#')[0].slice(0, 500);
+    return r;
+  };
+  // --- eventos
+  W.sasLead = function (extra) { W.__sasLeadId = rid('l_'); return track('Lead', extra, W.__sasLeadId); };
+  W.sasSchedule = function (extra) { return track('Schedule', extra, rid('s_')); };
+  D.addEventListener('submit', function (e) { var f = e.target; if (f && f.hasAttribute && f.hasAttribute('data-sas-lead') && !f.__sasL) { f.__sasL = 1; W.sasLead({ content_name: CFG.pagina }); } }, true);
+  D.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a') : null; if (!a) return;
+    var h = a.getAttribute('href') || '';
+    if (/(^|\/\/)(wa\.me|api\.whatsapp\.com)|^whatsapp:/i.test(h)) track('Contact', { content_name: CFG.pagina }, rid('c_'));
+    else if (a.hasAttribute('data-sas-schedule')) W.sasSchedule({ content_name: CFG.pagina });
+  }, true);
+  if (CFG.codigoWa) {
+    D.querySelectorAll('a[href*="wa.me/"]').forEach(function (a) {
+      try { var u = new URL(a.href), t = u.searchParams.get('text') || ''; if (/\[[A-Z0-9]{1,6}-[A-Z0-9-]{1,12}\]/i.test(t)) return; u.searchParams.set('text', (t ? t + ' ' : 'Hola ') + '[W-' + CFG.pagina + ']'); a.href = u.toString(); } catch (e) { }
+    });
+  }
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=677022900962262&ev=PageView&noscript=1"/></noscript>
+<!-- SAS-META-END -->
 </head>
 <body>
 <main class="wrap">
